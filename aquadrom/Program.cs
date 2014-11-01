@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using aquadrom.Utilities;
+using DB;
 
 namespace aquadrom
 {
@@ -14,6 +16,8 @@ namespace aquadrom
         [STAThread]
         static void Main()
         {
+            DBConnector connector = new DBConnector();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
