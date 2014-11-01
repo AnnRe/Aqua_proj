@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using aquadrom.Utilities;
 using DB;
+using Objects;
 
 namespace aquadrom
 {
@@ -17,7 +18,7 @@ namespace aquadrom
         static void Main()
         {
             DBConnector connector = new DBConnector();
-            
+            Pracownik prac = new Pracownik();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

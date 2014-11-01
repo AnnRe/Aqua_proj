@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using DB;
 
 
 namespace aquadrom
@@ -36,11 +37,14 @@ namespace aquadrom
            
             string sql = "SELECT * FROM Pracownik";
             SqlCommand cmdsel = new SqlCommand(sql, polaczenie);
-            DataTable dt3 = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, polaczenie);
-            da.Fill(dt3);
+            //DataTable dt3 = new DataTable();
+            //SqlDataAdapter da = new SqlDataAdapter(sql, polaczenie);
+            DBAdapter adapter = new DBAdapter();
+            DataTable table = adapter.GetData(sql);
+            //da.Fill(dt3);
 
-            dataGridView1.DataSource = dt3.DefaultView;
+            //dataGridView1.DataSource = dt3.DefaultView;
+            dataGridView1.DataSource = table.DefaultView;
           
         }
     }

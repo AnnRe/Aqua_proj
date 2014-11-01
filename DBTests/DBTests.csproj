@@ -70,6 +70,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DBTests.cs" />
+    <Compile Include="PracownikTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
