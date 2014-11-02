@@ -69,5 +69,15 @@ namespace Objects
             this.haslo= haslo;
  
         }
+
+        private bool ValidatePesel(string pesel)
+        {
+            return true; //TODO
+        }
+
+        private bool ValidateMail(string mail)
+        {
+            return true; //TODO
+        }
     }
 }
