@@ -79,5 +79,10 @@ namespace Objects
         {
             return true; //TODO
         }
+
+        private bool CanWork()
+        {
+            return true;//TODO: sprawdzenie daty badań
+        }
     }
 }
