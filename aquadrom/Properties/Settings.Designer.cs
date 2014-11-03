@@ -26,7 +26,7 @@ namespace aquadrom.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MADZIA-LAPTOP\\SQLEXPRESS;Initial Catalog=aquadrom;Integrated Security" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=I5-750\\SQLEXPRESS;Initial Catalog=aquadrom;Integrated Security" +
             "=True")]
         public string AquadromConnectionString {
             get {
