@@ -1,0 +1,10 @@
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\bin\Release\aquadrom.exe.config
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\bin\Release\aquadrom.exe
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\bin\Release\aquadrom.pdb
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.Properties.Resources.resources
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.csproj.GenerateResource.Cache
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.exe
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.pdb
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.csprojResolveAssemblyReference.cache
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.Login.resources
+C:\Users\Leszek Nalepka\Desktop\Aqua_proj-master\Aqua_proj-master\aquadrom\obj\Release\aquadrom.Test.resources
