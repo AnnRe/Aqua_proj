@@ -34,25 +34,51 @@ namespace DB
                 {
                     Pracownik pracownik = new Pracownik();
                     
-                    int colIndex = reader.GetOrdinal(Constants.PracownikImieKol);
-                    pracownik.imie = reader.IsDBNull(colIndex) ?
-                                   string.Empty :
-                                   reader.GetString(colIndex);
+                    //int colIndex = reader.GetOrdinal(Constants.PracownikImieKol);
+                    //pracownik.imie = reader.IsDBNull(colIndex) ?
+                    //               string.Empty :
+                    //               reader.GetString(colIndex);
+                    pracownik.imie = GetString(Constants.PracownikImieKol, reader);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikNazwiskoKol);
+                    //pracownik.nazwisko = reader.IsDBNull(colIndex) ?
+                    //               string.Empty :
+                    //               reader.GetString(colIndex);
+                    pracownik.nazwisko = GetString(Constants.PracownikNazwiskoKol, reader);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikMailKol);
+                    //pracownik.mail = reader.IsDBNull(colIndex) ?
+                    //               string.Empty :
+                    //               reader.GetString(colIndex);
+                    pracownik.mail = GetString(Constants.PracownikMailKol, reader);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikMiastoKol);
+                    //pracownik.miasto = reader.IsDBNull(colIndex) ?
+                    //               string.Empty :
+                    //               reader.GetString(colIndex);
 
-                    colIndex = reader.GetOrdinal(Constants.PracownikNazwiskoKol);
-                    pracownik.nazwisko = reader.IsDBNull(colIndex) ?
-                                   string.Empty :
-                                   reader.GetString(colIndex);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikUlicaKol);
+                    pracownik.ulica = GetString(Constants.PracownikUlicaKol,reader);
+                        //reader.IsDBNull(colIndex) ?
+                        //           string.Empty :
+                        //           reader.GetString(colIndex);
 
-                    colIndex = reader.GetOrdinal(Constants.PracownikWaznKPPKol);
-                    pracownik.dataWażnościKPP = reader.IsDBNull(colIndex) ?
-                                   DateTime.Now :
-                                   reader.GetDateTime(colIndex);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikPeselKol);
+                    //pracownik.pesel = reader.IsDBNull(colIndex) ?
+                    //               string.Empty :
+                    //               reader.GetString(colIndex);
+                    pracownik.pesel = GetString(Constants.PracownikPeselKol, reader);
 
-                    colIndex = reader.GetOrdinal(Constants.PracownikDataBadanKol);
-                    pracownik.dataBadan = reader.IsDBNull(colIndex) ?
-                                   DateTime.Now :
-                                   reader.GetDateTime(colIndex);
+                    //colIndex = reader.GetOrdinal(Constants.PracownikWaznKPPKol);
+                    //pracownik.dataWażnościKPP = reader.IsDBNull(colIndex) ?
+                    //               DateTime.Now :
+                    //               reader.GetDateTime(colIndex);
+                    pracownik.dataWażnościKPP = GetDateTime(Constants.PracownikWaznKPPKol, reader);
+
+                    //colIndex = reader.GetOrdinal(Constants.PracownikDataBadanKol);
+                    //pracownik.dataBadan = reader.IsDBNull(colIndex) ?
+                    //               DateTime.Now :
+                    //               reader.GetDateTime(colIndex);
+                    pracownik.dataBadan = GetDateTime(Constants.PracownikDataBadanKol, reader);
+                    
+                   // colIndex=reader.GetOrdinal(Constants.)
                     //TODO: dokończyć wczytywanie kolumn
                     pracownicy.Add(pracownik);
 
@@ -74,5 +100,22 @@ namespace DB
         {
             return new SqlDataAdapter(query,polaczenie);
         }
+
+        private string GetString(string colName,SqlDataReader reader)
+        {
+            int colIndex = reader.GetOrdinal(colName);
+            return reader.IsDBNull(colIndex) ?
+                                   string.Empty :
+                                   reader.GetString(colIndex);
+        }
+
+        private DateTime GetDateTime(string colName, SqlDataReader reader)
+        {
+            int colIndex = reader.GetOrdinal(colName);
+            return reader.IsDBNull(colIndex) ?
+                                   DateTime.Now :
+                                   reader.GetDateTime(colIndex); ;
+        }
+        
     }
 }
