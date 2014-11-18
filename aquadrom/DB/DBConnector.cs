@@ -74,5 +74,11 @@ namespace DB
         {
             return new SqlDataAdapter(query,polaczenie);
         }
+
+        public void Select(string query)
+        {
+            string queryText = "SELECT " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+        }
     }
 }
