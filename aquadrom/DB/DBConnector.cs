@@ -102,6 +102,7 @@ namespace DB
             return new SqlDataAdapter(query,polaczenie);
         }
 
+<<<<<<< HEAD
         private string GetString(string colName,SqlDataReader reader)
         {
             int colIndex = reader.GetOrdinal(colName);
@@ -149,6 +150,12 @@ namespace DB
                 pracownik.mail +
                 pracownik.dataBadan + ")";
             
+=======
+        public void Select(string query)
+        {
+            string queryText = "SELECT " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+>>>>>>> master
         }
     }
 }

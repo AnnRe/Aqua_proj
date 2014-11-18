@@ -11,47 +11,57 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using DB;
-
+using aquadrom.Utilities;
+using System.Security.Cryptography;
 
 namespace aquadrom
 {
     public partial class Login : Form
     {
-        public static string login, haslo;
+        //public static string login, haslo;
         private static bool ZgodaNaLogowanie = false;
-        SqlConnection connection;
-
+       // SqlConnection connection;
+        AdminPanel TestPanel = new AdminPanel();
+        DBAdapter adapter = new DBAdapter();
+        
         public Login()
         {
             InitializeComponent();
         }
 
+        public static String sha256_hash(String value)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+            return Sb.ToString();
+        }
+
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            connection = new SqlConnection();
-            connection.ConnectionString = aquadrom.Properties.Settings.Default.AquadromConnectionString;
-            connection.Open();
-
-            string sql_testLogin = "SELECT Login, Haslo FROM Pracownik";
-
-            SqlCommand select = new SqlCommand(sql_testLogin, connection);
-            SqlDataAdapter da2 = new SqlDataAdapter(select);
-            DataTable dtCustomers = new DataTable();
-            da2.Fill(dtCustomers);
+            string sql_testLogin = "SELECT Login, Haslo, Typ_konta FROM Pracownik";            
+            DataTable dtCustomers = adapter.GetData(sql_testLogin);
             foreach (DataRow row in dtCustomers.Rows)
             {
-                if (row["Login"].ToString() == this.UserNameBox.Text && row["Haslo"].ToString() == this.UserPasswordBox.Text)
+                if (row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text && row[Constants.PracownikHasloKol].ToString() == sha256_hash(this.UserPasswordBox.Text))
                 {
                     ZgodaNaLogowanie = true;
-                    if (this.UserNameBox.Text == "admin")
+                    if (row[Constants.PracownikTypKontaKol].ToString()=="A")
                     {
-                        Test TestPanel = new Test();
-                        TestPanel.Show();
+                        AdminPanel AdminPanel = new AdminPanel();
+                        AdminPanel.Show();
                     }
-                    else
+                    if (row[Constants.PracownikTypKontaKol].ToString()=="U")
                     {
-                        Test TestPanel = new Test();
-                        TestPanel.Show();
+                        UserPanel UserPanel = new UserPanel();
+                        UserPanel.Show();
                     }
                     break;
                 }
@@ -82,6 +92,16 @@ namespace aquadrom
                 LoginButton_Click(sender, e);
                 e.Handled = true;
             }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

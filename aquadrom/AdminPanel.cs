@@ -15,10 +15,10 @@ using DB;
 
 namespace aquadrom
 {
-    public partial class Test : Form
+    public partial class AdminPanel : Form
     {
         SqlConnection polaczenie;
-       public Test()
+        public AdminPanel()
         {
             InitializeComponent();
         }
@@ -43,9 +43,6 @@ namespace aquadrom
             {
                 MessageBox.Show("Błąd :" + ex.Message);
             }
-            //DBAdapter adapter = new DBAdapter();
-            //DataTable table = adapter.GetData(sql);
-            //dataGridView1.DataSource = table.DefaultView;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -53,6 +50,9 @@ namespace aquadrom
 
         }
 
-
+        private void Test_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

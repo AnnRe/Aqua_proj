@@ -3860,8 +3860,8 @@ namespace aquadrom.aquadromDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Godziny_pracy] ([Od], [Do], [ID_pracownika]) VALUES (@Od, @Do," +
-                " @ID_pracownika);\r\nSELECT ID_g, Od, Do, ID_pracownika FROM Godziny_pracy WHERE (" +
-                "ID_g = SCOPE_IDENTITY())";
+                " @ID_pracownika);\nSELECT ID_g, Od, Do, ID_pracownika FROM Godziny_pracy WHERE (I" +
+                "D_g = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Od", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Od", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Do", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Do", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4679,8 +4679,8 @@ SELECT ID_n, Opis, Czas, Rodzaj_zdarzenia, Uwagi, Akceptacja_KZ, Akceptacja_KSR,
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Otwarcie_stanowiska] ([Od], [Do], [Typ_dnia], [ID_stanowiska])" +
-                " VALUES (@Od, @Do, @Typ_dnia, @ID_stanowiska);\r\nSELECT ID_o, Od, Do, Typ_dnia, I" +
-                "D_stanowiska FROM Otwarcie_stanowiska WHERE (ID_o = SCOPE_IDENTITY())";
+                " VALUES (@Od, @Do, @Typ_dnia, @ID_stanowiska);\nSELECT ID_o, Od, Do, Typ_dnia, ID" +
+                "_stanowiska FROM Otwarcie_stanowiska WHERE (ID_o = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Od", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Od", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Do", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Do", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5854,8 +5854,8 @@ SELECT ID_p, Imie, Nazwisko, Pesel, Mail, Miasto, Ulica, Numer_domu, Numer_miesz
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Stanowisko] ([Nazwa], [Strefa], [Liczba pracowników]) VALUES (" +
-                "@Nazwa, @Strefa, @Liczba_pracowników);\r\nSELECT ID_s, Nazwa, Strefa, [Liczba prac" +
-                "owników] FROM Stanowisko WHERE (ID_s = SCOPE_IDENTITY())";
+                "@Nazwa, @Strefa, @Liczba_pracowników);\nSELECT ID_s, Nazwa, Strefa, [Liczba praco" +
+                "wników] FROM Stanowisko WHERE (ID_s = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nazwa", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nazwa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Strefa", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Strefa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6212,9 +6212,9 @@ SELECT ID_s, Nazwa, Strefa, [Liczba pracowników] FROM Stanowisko WHERE (ID_s = 
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Umowa] ([Typ], [Wymiar_godzin], [Poczatek_umowy], [Koniec_umow" +
-                "y]) VALUES (@Typ, @Wymiar_godzin, @Poczatek_umowy, @Koniec_umowy);\r\nSELECT ID_u," +
-                " Typ, Wymiar_godzin, Poczatek_umowy, Koniec_umowy FROM Umowa WHERE (ID_u = SCOPE" +
-                "_IDENTITY())";
+                "y]) VALUES (@Typ, @Wymiar_godzin, @Poczatek_umowy, @Koniec_umowy);\nSELECT ID_u, " +
+                "Typ, Wymiar_godzin, Poczatek_umowy, Koniec_umowy FROM Umowa WHERE (ID_u = SCOPE_" +
+                "IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Typ", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Typ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Wymiar_godzin", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wymiar_godzin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
