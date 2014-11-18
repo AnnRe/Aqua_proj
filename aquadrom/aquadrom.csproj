@@ -63,6 +63,8 @@
     <Compile Include="AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Harmonogram.cs" />
+    <Compile Include="Objects\Notatka.cs" />
     <Compile Include="Objects\Pracownik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
