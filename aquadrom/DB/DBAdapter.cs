@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using aquadrom.Utilities;
+using Objects;
 
 namespace DB
 {
@@ -23,6 +25,20 @@ namespace DB
             adapter = polaczenie.getAdapter(query); 
             adapter.Fill(dataTable);
             return dataTable;
+        }
+
+        public bool Insert(string query)
+        {
+            try {  polaczenie.Insert(query);  }
+            catch { return false; }
+            return true;
+        }
+
+        public bool Insert(Pracownik pracownik)
+        {
+            try { polaczenie.Insert(pracownik); }
+            catch { return false; }
+            return true;
         }
     }
 }

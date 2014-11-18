@@ -8,19 +8,23 @@ namespace aquadrom.Utilities
 {
     static class Constants
     {
+        public const string PracownikIDpKol = "ID_p";
         public const string PracownikImieKol = "Imie";
         public const string PracownikNazwiskoKol = "Nazwisko";
         public const string PracownikPeselKol = "Pesel";
-        public const string PracownikStanowiskoKol = "Stanowisko";
         public const string PracownikMailKol = "Mail";
         public const string PracownikMiastoKol = "Miasto";
         public const string PracownikUlicaKol = "Ulica";
-        public const string PracownikNrDomKol = "NumerDomu";
-        public const string PracownikTelKol = "Telefon";
-        public const string PracownikWaznKPPKol = "DataKPP";
-        public const string PracownikDataBadanKol = "DataBadan";
+        public const string PracownikNrDomKol = "Numer_domu";
+        public const string PracownikNrMieszkaniaKol = "Numer_mieszkania";
+        public const string PracownikTelKol = "Numer_telefonu";
+        public const string PracownikStanowiskoKol = "Stanowisko";
+        public const string PracownikWaznKPPKol = "Data_waznosci_KPP";
+        public const string PracownikDataBadanKol = "Data_Badan";
         public const string PracownikStopienBadanKol = "Stopien";
-        public const string PracownikLoginBadanKol = "Login";
-        public const string PracownikHasloBadanKol = "Haslo";
+        public const string PracownikLoginKol = "Login";
+        public const string PracownikHasloKol = "Haslo";
+        public const string PracownikIDUmowyKol = "ID_umowy";
+        public const string PracownikTypKontaKol = "Typ_konta";
     }
 }
