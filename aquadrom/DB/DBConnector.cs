@@ -117,6 +117,38 @@ namespace DB
                                    DateTime.Now :
                                    reader.GetDateTime(colIndex); ;
         }
-        
+
+        public void Insert(Pracownik pracownik)
+        {
+            string query = "Pracownik (" +
+               Constants.PracownikImieKol + "," +
+               Constants.PracownikNazwiskoKol + "," +
+               Constants.PracownikMiastoKol + "," +
+               Constants.PracownikUlicaKol + "," +
+               Constants.PracownikNrDomKol + "," +
+               Constants.PracownikNrMieszkaniaKol + "," +
+               Constants.PracownikPeselKol + "," +
+               Constants.PracownikStanowiskoKol + "," +
+               Constants.PracownikStopienBadanKol + "," +
+               Constants.PracownikTelKol + "," +
+               Constants.PracownikWaznKPPKol + "," +
+               Constants.PracownikMailKol + "," +
+               Constants.PracownikDataBadanKol;
+            query += ") VALUES (";
+            query += pracownik.imie +
+                pracownik.nazwisko +
+                pracownik.miasto +
+                pracownik.ulica +
+                pracownik.numerDomu +
+                pracownik.numerMieszkania +
+                pracownik.pesel +
+                pracownik.stanowisko +
+                pracownik.stopien +
+                pracownik.numerTelefonu +
+                pracownik.dataWażnościKPP +
+                pracownik.mail +
+                pracownik.dataBadan + ")";
+            
+        }
     }
 }
