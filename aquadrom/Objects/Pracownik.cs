@@ -22,7 +22,7 @@ namespace Objects
         public string numerTelefonu{ get; set; } 
         public DateTime dataWażnościKPP{ get; set; } 
         public DateTime dataBadan{ get; set; } 
-        public eStopien stopien{ get{this.ToString()}; set; } 
+        public eStopien stopien{ get; set; } 
         public string login{ private get; set; } 
         public string haslo{ private get; set; } 
 
