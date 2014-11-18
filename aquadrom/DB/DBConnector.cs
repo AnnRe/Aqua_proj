@@ -94,6 +94,7 @@ namespace DB
         {
             string queryText = "Insert " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.BeginExecuteNonQuery();
         }
 
         public SqlDataAdapter getAdapter(string query)
