@@ -53,6 +53,17 @@ namespace aquadrom
 
         }
 
+        private void dodajPracownikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 Form = new Form2();
+            Form.Show();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
