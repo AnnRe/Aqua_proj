@@ -69,10 +69,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(354, 112);
+            this.ClientSize = new System.Drawing.Size(348, 112);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DeleteWorkerComboBox);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DeleteWorker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteWorker";

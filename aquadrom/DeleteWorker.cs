@@ -20,6 +20,7 @@ namespace aquadrom
     {
         DBAdapter adapter = new DBAdapter();
         public static bool exist = false;
+        private string chosen_id = "";
         private string WhichUser = "";
         private string sql_deleteuser = "from Pracownik where ID_p=";
         public DeleteWorker()
@@ -49,8 +50,13 @@ namespace aquadrom
             {
                 if (row[1].ToString() == WhichUser)
                 {
-                    sql_deleteuser += row[0].ToString();
-                    MessageBox.Show(row[0].ToString());
+                    if (chosen_id != "")
+                    {
+                        sql_deleteuser = sql_deleteuser.Remove(sql_deleteuser.Length - chosen_id.Length);
+                    }
+                    chosen_id = row[0].ToString();
+                    sql_deleteuser += chosen_id;
+                    MessageBox.Show(chosen_id);
                     break;
                 }
             }

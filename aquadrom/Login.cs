@@ -73,6 +73,7 @@ namespace aquadrom
             else
             {
                 MessageBox.Show("Nieprawidłowy login lub hasło.");
+                MessageBox.Show(sha256_hash(this.UserPasswordBox.Text));
             }
         }
 
