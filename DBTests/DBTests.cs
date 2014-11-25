@@ -1,6 +1,8 @@
 ﻿using System;
 using aquadrom.Utilities;
 using DB;
+using System.Data;
+using System.Data.SqlClient;
 using NUnit.Framework;
 using Objects;
 
@@ -17,7 +19,7 @@ namespace DBTests
             //when
             connector = new DBConnector();
             //then
-            Assert.Pass();
+            Assert.That(connector,Is.TypeOf<DBConnector>());
         }
         [Test]
         public void ShouldOpenConnection()
@@ -26,6 +28,7 @@ namespace DBTests
             DBConnector connector = new DBConnector();
             //when
             connector.Open();
+            
             //then
             Assert.Pass();
         }
@@ -54,7 +57,10 @@ namespace DBTests
             //when
             adapter.Insert(pracownik);
             //then
-            
+            string query="Select * from pracownik where nazwisko="+pracownik.nazwisko+"and imie="+pracownik.imie;
+            DataTable data = adapter.GetData(query);
+            Assert.Pass();
+            Assert.NotNull(data);
         }
        
     }

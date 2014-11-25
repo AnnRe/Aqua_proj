@@ -17,16 +17,26 @@ namespace DB
         {
             polaczenie = new SqlConnection(aquadrom.Properties.Settings.Default.AquadromConnectionString);
         }
+        ~DBConnector()
+        {
+            polaczenie.Close();
+        }
 
         public void Open()
         {
             polaczenie.Open();
         }
 
+        public void Close()
+        {
+            polaczenie.Close();
+        }
+
         public List<Pracownik> SelectPracownicy(string query)
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
             string queryText = "Select " + query;
+            Open();
             using (SqlCommand cmdsel = new SqlCommand(queryText, polaczenie))
             {
                 SqlDataReader reader = cmdsel.ExecuteReader();
@@ -86,17 +96,10 @@ namespace DB
                 var columns = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
                 reader.Close();
             }
+            Close();
             return pracownicy;
         }
-
-
-        public void Insert(string query)
-        {
-            string queryText = "Insert " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
-        }
-
+       
         public SqlDataAdapter getAdapter(string query)
         {
             return new SqlDataAdapter(query,polaczenie);
@@ -116,6 +119,15 @@ namespace DB
             return reader.IsDBNull(colIndex) ?
                                    DateTime.Now :
                                    reader.GetDateTime(colIndex); ;
+        }
+
+        public void Insert(string query)
+        {
+            Open();
+            string queryText = "Insert " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.BeginExecuteNonQuery();
+            Close();
         }
 
         public void Insert(Pracownik pracownik)
@@ -155,7 +167,9 @@ namespace DB
         public void Select(string query)
         {
             string queryText = "SELECT " + query;
+            Open();
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            Close();
         }
     }
 }
