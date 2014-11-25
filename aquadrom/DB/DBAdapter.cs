@@ -21,9 +21,11 @@ namespace DB
 
         public DataTable GetData(string query)
         {
+            polaczenie.Open();
             DataTable dataTable = new DataTable();
             adapter = polaczenie.getAdapter(query); 
             adapter.Fill(dataTable);
+            polaczenie.Close();
             return dataTable;
         }
 
@@ -37,7 +39,9 @@ namespace DB
         public bool Insert(Pracownik pracownik)
         {
             try { polaczenie.Insert(pracownik); }
-            catch { return false; }
+            catch {
+                return false; 
+            }
             return true;
         }
     }
