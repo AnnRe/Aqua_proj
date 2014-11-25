@@ -1,8 +1,10 @@
-// SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256', 'seba')), 3, 64)
+//HASHOWANIE HASEL W BAZIE
 
 update pracownik
-set Haslo=SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256', 'seba')), 3, 64)
-where ID_p=4;
+set Haslo=SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256', Haslo)), 3, 64);
+
+----
+
 
 USE [aquadrom]
 GO
