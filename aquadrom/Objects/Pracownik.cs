@@ -16,7 +16,9 @@ namespace Objects
         public string mail { get; set; } 
         public string miasto{ get; set; } 
         public string ulica{ get; set; } 
-        public string numerDomu{ get; set; } 
+        public string numerDomu{ get; set; }
+        public string numerMieszkania { get; set; } 
+
         public string numerTelefonu{ get; set; } 
         public DateTime dataWażnościKPP{ get; set; } 
         public DateTime dataBadan{ get; set; } 
