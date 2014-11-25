@@ -25,12 +25,12 @@ namespace aquadrom
 
         private void Test_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("TEST");
             polaczenie = new SqlConnection();
             polaczenie.ConnectionString = aquadrom.Properties.Settings.Default.AquadromConnectionString;
             polaczenie.Open();
             string sql = "SELECT * FROM Pracownik";
             DataTable dt3 = new DataTable();
+            dt3.Clear();
 
             try
             {
@@ -54,5 +54,21 @@ namespace aquadrom
         {
             Application.Exit();
         }
+
+        private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(DeleteWorker.exist==false)
+            {
+                DeleteWorker DelWor = new DeleteWorker();
+                DelWor.Show();
+            }
+        }
+
+        private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

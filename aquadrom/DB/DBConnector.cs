@@ -97,6 +97,13 @@ namespace DB
             cmdsel.BeginExecuteNonQuery();
         }
 
+        public void Delete(string query)
+        {
+            string queryText = "delete " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.BeginExecuteNonQuery();
+        }
+
         public SqlDataAdapter getAdapter(string query)
         {
             return new SqlDataAdapter(query,polaczenie);
