@@ -41,7 +41,8 @@ namespace DB
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
             string queryText = "Select " + query;
-            Open();
+            
+          //  Open();
             using (SqlCommand cmdsel = new SqlCommand(queryText, polaczenie))
             {
                 SqlDataReader reader = cmdsel.ExecuteReader();

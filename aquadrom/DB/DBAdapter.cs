@@ -18,6 +18,19 @@ namespace DB
         {
             polaczenie = new DBConnector();
         }
+        ~DBAdapter()
+        {
+            polaczenie.Close();
+        }
+        public void Open()
+        {
+            polaczenie.Open();
+        }
+
+        public void Close()
+        {
+            polaczenie.Close();
+        }
 
         public DataTable GetData(string query)
         {
@@ -31,6 +44,7 @@ namespace DB
 
         public bool Insert(string query)
         {
+            
             try {  polaczenie.Insert(query);  }
             catch { return false; }
             return true;
