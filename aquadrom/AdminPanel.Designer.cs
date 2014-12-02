@@ -92,6 +92,7 @@
             this.PrzeglądajUżytkownikówToolStripMenuItem.Name = "PrzeglądajUżytkownikówToolStripMenuItem";
             this.PrzeglądajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.PrzeglądajUżytkownikówToolStripMenuItem.Text = "Przeglądaj użytkowników";
+            this.PrzeglądajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.PrzeglądajUżytkownikówToolStripMenuItem_Click);
             // 
             // AdminPanel
             // 

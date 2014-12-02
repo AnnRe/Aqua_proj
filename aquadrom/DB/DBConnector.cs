@@ -23,6 +23,11 @@ namespace DB
             polaczenie.Open();
         }
 
+        public void Close()
+        {
+            polaczenie.Close();
+        }
+
         public List<Pracownik> SelectPracownicy(string query)
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
@@ -99,6 +104,7 @@ namespace DB
 
         public void Delete(string query)
         {
+            Open();
             string queryText = "delete " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
             cmdsel.BeginExecuteNonQuery();

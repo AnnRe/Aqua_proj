@@ -33,7 +33,6 @@ namespace aquadrom
         {
             string sql_workers = "select ID_p, concat(Nazwisko,' ',Imie) from Pracownik order by 2 asc;";
             DataTable dtWorkers = adapter.GetData(sql_workers);
-
             foreach (DataRow row in dtWorkers.Rows)
             {
                 DeleteWorkerComboBox.Items.Add(row[1].ToString());
@@ -43,10 +42,10 @@ namespace aquadrom
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             WhichUser = this.DeleteWorkerComboBox.Text;
-            string sql_workers = "select ID_p, concat(Nazwisko,' ',Imie) from Pracownik order by 2 asc;";
-            DataTable dtWorkers = adapter.GetData(sql_workers);
+            string sql_workers2 = "select ID_p, concat(Nazwisko,' ',Imie) from Pracownik order by 2 asc;";
+            DataTable dtWorkers2 = adapter.GetData(sql_workers2);
 
-            foreach (DataRow row in dtWorkers.Rows)
+            foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)
                 {
@@ -56,7 +55,6 @@ namespace aquadrom
                     }
                     chosen_id = row[0].ToString();
                     sql_deleteuser += chosen_id;
-                    MessageBox.Show(chosen_id);
                     break;
                 }
             }
@@ -71,6 +69,7 @@ namespace aquadrom
                 {
                     adapter.Delete(sql_deleteuser);
                     MessageBox.Show("Użytkownik został usunięty");
+                    this.Close();
                 }
             }
         }

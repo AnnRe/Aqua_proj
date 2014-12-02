@@ -21,7 +21,7 @@ namespace aquadrom
         //public static string login, haslo;
         private static bool ZgodaNaLogowanie = false;
        // SqlConnection connection;
-        AdminPanel TestPanel = new AdminPanel();
+        AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
         
         public Login()

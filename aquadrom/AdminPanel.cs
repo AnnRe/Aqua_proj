@@ -17,7 +17,7 @@ namespace aquadrom
 {
     public partial class AdminPanel : Form
     {
-        SqlConnection polaczenie;
+        DBAdapter adapter = new DBAdapter();
         public AdminPanel()
         {
             InitializeComponent();
@@ -25,24 +25,9 @@ namespace aquadrom
 
         private void Test_Load(object sender, EventArgs e)
         {
-            polaczenie = new SqlConnection();
-            polaczenie.ConnectionString = aquadrom.Properties.Settings.Default.AquadromConnectionString;
-            polaczenie.Open();
-            string sql = "SELECT * FROM Pracownik";
-            DataTable dt3 = new DataTable();
-            dt3.Clear();
-
-            try
-            {
-                SqlCommand cmdsel = new SqlCommand(sql, polaczenie);
-                SqlDataAdapter da = new SqlDataAdapter(sql, polaczenie);
-                da.Fill(dt3);
-                dataGridView1.DataSource = dt3.DefaultView;
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                MessageBox.Show("Błąd :" + ex.Message);
-            }
+            string sql_workers = "SELECT * FROM Pracownik";
+            DataTable dtlista = adapter.GetData(sql_workers);
+            dataGridView1.DataSource = dtlista.DefaultView;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -62,9 +47,15 @@ namespace aquadrom
                 DeleteWorker DelWor = new DeleteWorker();
                 DelWor.Show();
             }
+            Test_Load(this,e);
         }
 
         private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PrzeglądajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
