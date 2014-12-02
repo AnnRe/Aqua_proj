@@ -24,7 +24,12 @@ namespace DB
 
         public void Open()
         {
-            polaczenie.Open();
+            try { polaczenie.Open(); }
+            catch(Exception e)
+            {
+                Console.WriteLine( e.Message);
+            }
+            
         }
 
         public void Close()
