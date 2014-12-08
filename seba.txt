@@ -1,0 +1,50 @@
+//HASHOWANIE HASEL W BAZIE
+
+update pracownik
+set Haslo=SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256', Haslo)), 3, 64);
+
+----
+
+
+USE [aquadrom]
+GO
+
+INSERT INTO [dbo].[Pracownik]
+           ([Imie]
+           ,[Nazwisko]
+           ,[Pesel]
+           ,[Mail]
+           ,[Miasto]
+           ,[Ulica]
+           ,[Numer_domu]
+           ,[Numer_mieszkania]
+           ,[Numer_telefonu]
+           ,[Stanowisko]
+           ,[Data_waznosci_KPP]
+           ,[Data_badan]
+           ,[Stopien]
+           ,[Login]
+           ,[Haslo]
+           ,[ID_umowy]
+           ,[Typ_konta])
+     VALUES
+           ('seba'
+           ,'nal'
+           ,'92090909596'
+           ,'seba992@gmail.com'
+           ,'siemce'
+           ,'kosci'
+           ,'3'
+           ,'3'
+           ,'123123123'
+           ,'KSR'
+           ,'2015-11-11'
+           ,'2015-11-11'
+           ,'RW'
+           ,'seba'
+           ,'seba'
+           ,'2'
+           ,'A')
+GO
+
+

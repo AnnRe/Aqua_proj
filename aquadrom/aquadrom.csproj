@@ -53,6 +53,12 @@
     </Compile>
     <Compile Include="DB\DBAdapter.cs" />
     <Compile Include="DB\DBConnector.cs" />
+    <Compile Include="DeleteWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteWorker.Designer.cs">
+      <DependentUpon>DeleteWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Utilities\eStanowisko.cs" />
     <Compile Include="Utilities\eStopien.cs" />
     <Compile Include="Utilities\eStrefa.cs" />
+    <EmbeddedResource Include="DeleteWorker.resx">
+      <DependentUpon>DeleteWorker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>

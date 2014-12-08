@@ -50,6 +50,13 @@ namespace DB
             return true;
         }
 
+        public bool Delete(string query)
+        {
+            try { polaczenie.Delete(query); }
+            catch { return false; }
+            return true;
+        }
+
         public bool Insert(Pracownik pracownik)
         {
             try { polaczenie.Insert(pracownik); }

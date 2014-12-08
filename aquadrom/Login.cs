@@ -21,7 +21,7 @@ namespace aquadrom
         //public static string login, haslo;
         private static bool ZgodaNaLogowanie = false;
        // SqlConnection connection;
-        AdminPanel TestPanel = new AdminPanel();
+        AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
         
         public Login()
@@ -47,8 +47,8 @@ namespace aquadrom
         private void LoginButton_Click(object sender, EventArgs e)
         {
             string sql_testLogin = "SELECT Login, Haslo, Typ_konta FROM Pracownik";            
-            DataTable dtCustomers = adapter.GetData(sql_testLogin);
-            foreach (DataRow row in dtCustomers.Rows)
+            DataTable dtUserLogin = adapter.GetData(sql_testLogin);
+            foreach (DataRow row in dtUserLogin.Rows)
             {
                 if (row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text && row[Constants.PracownikHasloKol].ToString() ==/* sha256_hash(*/this.UserPasswordBox.Text)//)
                 {
@@ -73,6 +73,7 @@ namespace aquadrom
             else
             {
                 MessageBox.Show("Nieprawidłowy login lub hasło.");
+                MessageBox.Show(sha256_hash(this.UserPasswordBox.Text));
             }
         }
 

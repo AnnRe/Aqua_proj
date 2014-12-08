@@ -21,5 +21,10 @@ namespace aquadrom
         {
 
         }
+
+        private void UserPanel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

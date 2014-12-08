@@ -28,27 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // menuStrip1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(152, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "UserPanel v1.0";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.harmonogramToolStripMenuItem,
+            this.notatkiToolStripMenuItem,
+            this.umowaToolStripMenuItem,
+            this.daneToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(488, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // harmonogramToolStripMenuItem
+            // 
+            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.harmonogramToolStripMenuItem.Text = "harmonogram";
+            // 
+            // notatkiToolStripMenuItem
+            // 
+            this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
+            this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.notatkiToolStripMenuItem.Text = "notatki";
+            // 
+            // umowaToolStripMenuItem
+            // 
+            this.umowaToolStripMenuItem.Name = "umowaToolStripMenuItem";
+            this.umowaToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.umowaToolStripMenuItem.Text = "umowa";
+            // 
+            // daneToolStripMenuItem
+            // 
+            this.daneToolStripMenuItem.Name = "daneToolStripMenuItem";
+            this.daneToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.daneToolStripMenuItem.Text = "dane";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // UserPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(488, 343);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserPanel";
             this.Text = "UserPanel";
+            this.Load += new System.EventHandler(this.UserPanel_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,6 +99,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem umowaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem daneToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
