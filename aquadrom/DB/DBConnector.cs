@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using System.Data;
 
 namespace DB
 {
@@ -166,7 +167,7 @@ namespace DB
                 pracownik.dataWażnościKPP +
                 pracownik.mail +
                 pracownik.dataBadan + ")";
-
+            //TODO: uzupełnić kolumny
             Insert(query);
         }
 
@@ -177,5 +178,19 @@ namespace DB
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
             Close();
         }
-    }
+
+        public void Delete(string query)
+        {
+            string queryText = "Delete " + query;
+            Open();
+            try {
+                SqlCommand cmddel = new SqlCommand(queryText, polaczenie);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+           }
 }

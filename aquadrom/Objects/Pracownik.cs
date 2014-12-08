@@ -9,6 +9,7 @@ namespace Objects
 {
     public class Pracownik
     {
+        public int id_p { get; set; }
         public eStanowisko stanowisko { get; set; } 
         public string imie { get; set; } 
         public string nazwisko { get; set; } 

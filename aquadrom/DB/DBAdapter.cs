@@ -65,5 +65,21 @@ namespace DB
             }
             return true;
         }
+
+        public DataTable SelectWorkersAtTime(DateTime time)
+        {
+            polaczenie.Open();
+            string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + " from pracownik,godziny_pracy where ("
+                + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
+                " and "
+                + time.Date.ToString("yyyy-MM-dd HH:mm:ss") + " between " + Constants.GodzinyPracyOd + " and " + Constants.GodzinyPracyDo+")";
+            DataTable toRet = new DataTable();
+            try { toRet = GetData(query); }
+            catch (Exception e)
+            { Console.WriteLine(e.Message); }
+            polaczenie.Close();
+
+            return toRet;
+        }
     }
 }
