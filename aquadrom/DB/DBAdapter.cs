@@ -30,7 +30,7 @@ namespace DB
         public bool Insert(string query)
         {
             try {  polaczenie.Insert(query);  }
-            catch { return false; }
+            catch { return false; }     //?flagi
             return true;
         }
 

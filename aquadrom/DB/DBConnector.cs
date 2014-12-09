@@ -97,9 +97,11 @@ namespace DB
 
         public void Insert(string query)
         {
+            Open();
             string queryText = "Insert " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
+            cmdsel.ExecuteNonQuery();
+            Close();
         }
 
         public void Delete(string query)
@@ -107,7 +109,8 @@ namespace DB
             Open();
             string queryText = "delete " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
+            cmdsel.ExecuteNonQuery();
+            Close();
         }
 
         public SqlDataAdapter getAdapter(string query)
