@@ -33,19 +33,20 @@
             this.godzinypracyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.godziny_pracyTableAdapter = new aquadrom.aquadromDataSetTableAdapters.Godziny_pracyTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aquadromDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaTableAdapter = new aquadrom.aquadromDataSetTableAdapters.NotatkaTableAdapter();
-            this.aquadromDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
             this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.notatkaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.notatkaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // aquadromDataSet
@@ -68,12 +69,23 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.imieDataGridViewTextBoxColumn,
-            this.nazwiskoDataGridViewTextBoxColumn});
+            this.nazwiskoDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.pracownikBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(64, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(370, 150);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // pracownikBindingSource
+            // 
+            this.pracownikBindingSource.DataMember = "Pracownik";
+            this.pracownikBindingSource.DataSource = this.aquadromDataSetBindingSource;
+            // 
+            // aquadromDataSetBindingSource
+            // 
+            this.aquadromDataSetBindingSource.DataSource = this.aquadromDataSet;
+            this.aquadromDataSetBindingSource.Position = 0;
             // 
             // notatkaBindingSource
             // 
@@ -84,16 +96,6 @@
             // 
             this.notatkaTableAdapter.ClearBeforeFill = true;
             // 
-            // aquadromDataSetBindingSource
-            // 
-            this.aquadromDataSetBindingSource.DataSource = this.aquadromDataSet;
-            this.aquadromDataSetBindingSource.Position = 0;
-            // 
-            // pracownikBindingSource
-            // 
-            this.pracownikBindingSource.DataMember = "Pracownik";
-            this.pracownikBindingSource.DataSource = this.aquadromDataSetBindingSource;
-            // 
             // pracownikTableAdapter
             // 
             this.pracownikTableAdapter.ClearBeforeFill = true;
@@ -103,18 +105,28 @@
             this.imieDataGridViewTextBoxColumn.DataPropertyName = "Imie";
             this.imieDataGridViewTextBoxColumn.HeaderText = "Imie";
             this.imieDataGridViewTextBoxColumn.Name = "imieDataGridViewTextBoxColumn";
+            this.imieDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nazwiskoDataGridViewTextBoxColumn
             // 
             this.nazwiskoDataGridViewTextBoxColumn.DataPropertyName = "Nazwisko";
             this.nazwiskoDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
             this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
+            this.nazwiskoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Stanowisko";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Stanowisko";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(697, 262);
             this.Controls.Add(this.dataGridView1);
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
@@ -122,9 +134,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.notatkaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.notatkaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +154,6 @@
         private aquadromDataSetTableAdapters.PracownikTableAdapter pracownikTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
