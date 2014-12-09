@@ -5,3 +5,4 @@ aquadrom/App.config
 aquadrom.sql.orig
 aquadrom.v12.suo
 *.exe
+DBTests/bin/Debug/DBTests.dll

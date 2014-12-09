@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
-using System.Data;
 
 namespace DB
 {
@@ -18,19 +17,10 @@ namespace DB
         {
             polaczenie = new SqlConnection(aquadrom.Properties.Settings.Default.AquadromConnectionString);
         }
-        ~DBConnector()
-        {
-            polaczenie.Close();
-        }
 
         public void Open()
         {
-            try { polaczenie.Open(); }
-            catch(Exception e)
-            {
-                Console.WriteLine( e.Message);
-            }
-            
+            polaczenie.Open();
         }
 
         public void Close()
@@ -42,8 +32,6 @@ namespace DB
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
             string queryText = "Select " + query;
-            
-          //  Open();
             using (SqlCommand cmdsel = new SqlCommand(queryText, polaczenie))
             {
                 SqlDataReader reader = cmdsel.ExecuteReader();
@@ -103,10 +91,28 @@ namespace DB
                 var columns = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
                 reader.Close();
             }
-            Close();
             return pracownicy;
         }
-       
+
+
+        public void Insert(string query)
+        {
+            Open();
+            string queryText = "Insert " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
+        public void Delete(string query)
+        {
+            Open();
+            string queryText = "delete " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
         public SqlDataAdapter getAdapter(string query)
         {
             return new SqlDataAdapter(query,polaczenie);
@@ -126,15 +132,6 @@ namespace DB
             return reader.IsDBNull(colIndex) ?
                                    DateTime.Now :
                                    reader.GetDateTime(colIndex); ;
-        }
-
-        public void Insert(string query)
-        {
-            Open();
-            string queryText = "Insert " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
-            Close();
         }
 
         public void Insert(Pracownik pracownik)
@@ -167,30 +164,14 @@ namespace DB
                 pracownik.dataWażnościKPP +
                 pracownik.mail +
                 pracownik.dataBadan + ")";
-            //TODO: uzupełnić kolumny
+
             Insert(query);
         }
 
         public void Select(string query)
         {
             string queryText = "SELECT " + query;
-            Open();
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            Close();
         }
-
-        public void Delete(string query)
-        {
-            string queryText = "Delete " + query;
-            Open();
-            try {
-                SqlCommand cmddel = new SqlCommand(queryText, polaczenie);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-           }
+    }
 }

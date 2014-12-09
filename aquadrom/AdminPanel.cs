@@ -23,11 +23,14 @@ namespace aquadrom
             InitializeComponent();
         }
 
-        private void Test_Load(object sender, EventArgs e)
+        public void Test_Load(object sender, EventArgs e)
         {
-            string sql_workers = "SELECT * FROM Pracownik";
+            // TODO: This line of code loads data into the 'aquadromDataSet.Pracownik' table. You can move, or remove it, as needed.
+            this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
+//            dataGridView1.Columns.Add[]
+/*            string sql_workers = "SELECT * FROM Pracownik";
             DataTable dtlista = adapter.GetData(sql_workers);
-            dataGridView1.DataSource = dtlista.DefaultView;
+            dataGridView1.DataSource = dtlista.DefaultView; */
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,12 +45,11 @@ namespace aquadrom
 
         private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(DeleteWorker.exist==false)
+            if(DeleteWorker.exist==false)   // jeśli okno DeleteWorker zamknięte to je otwórz else nic
             {
-                DeleteWorker DelWor = new DeleteWorker();
+                DeleteWorker DelWor = new DeleteWorker(this);
                 DelWor.Show();
             }
-            Test_Load(this,e);
         }
 
         private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace aquadrom
 
         private void PrzeglądajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Test_Load(this, e);
         }
 
 

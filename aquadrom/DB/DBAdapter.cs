@@ -46,7 +46,7 @@ namespace DB
         {
             
             try {  polaczenie.Insert(query);  }
-            catch { return false; }
+            catch { return false; }     //?flagi
             return true;
         }
 
