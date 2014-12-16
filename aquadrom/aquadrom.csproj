@@ -95,6 +95,7 @@
       <DependentUpon>UserPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\DateConvertor.cs" />
     <Compile Include="Utilities\eStanowisko.cs" />
     <Compile Include="Utilities\eStopien.cs" />
     <Compile Include="Utilities\eStrefa.cs" />

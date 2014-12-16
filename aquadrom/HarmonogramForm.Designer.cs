@@ -41,6 +41,7 @@
             this.notatkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaTableAdapter = new aquadrom.aquadromDataSetTableAdapters.NotatkaTableAdapter();
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
+            this.listBoxMiesiace = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -122,11 +123,34 @@
             // 
             this.pracownikTableAdapter.ClearBeforeFill = true;
             // 
+            // listBoxMiesiace
+            // 
+            this.listBoxMiesiace.FormattingEnabled = true;
+            this.listBoxMiesiace.Items.AddRange(new object[] {
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"});
+            this.listBoxMiesiace.Location = new System.Drawing.Point(26, 14);
+            this.listBoxMiesiace.Name = "listBoxMiesiace";
+            this.listBoxMiesiace.Size = new System.Drawing.Size(120, 17);
+            this.listBoxMiesiace.TabIndex = 1;
+            this.listBoxMiesiace.SelectedIndexChanged += new System.EventHandler(this.listBoxMiesiace_SelectedIndexChanged);
+            // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 262);
+            this.Controls.Add(this.listBoxMiesiace);
             this.Controls.Add(this.dataGridView1);
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
@@ -155,5 +179,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ListBox listBoxMiesiace;
     }
 }

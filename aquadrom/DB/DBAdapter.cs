@@ -36,15 +36,19 @@ namespace DB
         {
             polaczenie.Open();
             DataTable dataTable = new DataTable();
-            adapter = polaczenie.getAdapter(query); 
-            adapter.Fill(dataTable);
+            adapter = polaczenie.getAdapter(query);
+            try{adapter.Fill(dataTable);}
+            catch (Exception e)
+            {
+                return dataTable;
+            }
             polaczenie.Close();
             return dataTable;
         }
 
         public bool Insert(string query)
         {
-            
+           
             try {  polaczenie.Insert(query);  }
             catch { return false; }     //?flagi
             return true;
@@ -85,25 +89,21 @@ namespace DB
 
         public DataTable SelectWorkersAtDate(DateTime time)
         {
-            polaczenie.Open();
             DateTime odTime = new DateTime(time.Year, time.Month, time.Day, 8, 0, 0);
-            string odddd = odTime.ToString("yyyy-MM-dd HH:mm:ss");
             DateTime doTime = new DateTime(time.Year, time.Month, time.Day, 22, 0, 0);
             string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + ", "+
-               "{fn HOUR( " + Constants.GodzinyPracyOd + " )} as 'od_godz.'" + "," +
-               "{fn MINUTE( " + Constants.GodzinyPracyOd + " )} as 'od_min'" + "," + 
-               "{fn HOUR( " + Constants.GodzinyPracyDo + " )} as 'do_godz'" + "," +
-               "{fn MINUTE( " + Constants.GodzinyPracyDo + " )} as 'do_min'" +
+                "CONVERT(VARCHAR(5), "+Constants.GodzinyPracyOd+",108) as 'OD', "+
+                "CONVERT(VARCHAR(5), " + Constants.GodzinyPracyDo + ",108) as 'DO' " +
                " from pracownik,godziny_pracy where ("
                 + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
                 " and "
-                + Constants.GodzinyPracyOd+ " between " + odTime.ToString("yyyy-MM-dd HH:mm:ss") + " and " + doTime.ToString("yyyy-MM-dd HH:mm:ss") + ")";
+                + Constants.GodzinyPracyOd+ " between '" + odTime.ToString("yyyy-MM-dd HH:mm:ss") + "' and '" + doTime.ToString("yyyy-MM-dd HH:mm:ss") + "')";
             DataTable toRet = new DataTable();
 
-            try { toRet = GetData(query); }
+            try { toRet = GetData(query);  }
             catch (Exception e)
             { Console.WriteLine(e.Message); }
-            polaczenie.Close();
+            
 
             return toRet;
         }
