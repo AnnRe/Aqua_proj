@@ -90,9 +90,11 @@ namespace DB
             string odddd = odTime.ToString("yyyy-MM-dd HH:mm:ss");
             DateTime doTime = new DateTime(time.Year, time.Month, time.Day, 22, 0, 0);
             string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + ", "+
-               "Cast ("+ Constants.GodzinyPracyOd+" As time(0))"+","+
-               "Cast ("+ Constants.GodzinyPracyDo+" As time(0))"+
-                " from pracownik,godziny_pracy where ("
+               "{fn HOUR( " + Constants.GodzinyPracyOd + " )} as 'od_godz.'" + "," +
+               "{fn MINUTE( " + Constants.GodzinyPracyOd + " )} as 'od_min'" + "," + 
+               "{fn HOUR( " + Constants.GodzinyPracyDo + " )} as 'do_godz'" + "," +
+               "{fn MINUTE( " + Constants.GodzinyPracyDo + " )} as 'do_min'" +
+               " from pracownik,godziny_pracy where ("
                 + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
                 " and "
                 + Constants.GodzinyPracyOd+ " between " + odTime.ToString("yyyy-MM-dd HH:mm:ss") + " and " + doTime.ToString("yyyy-MM-dd HH:mm:ss") + ")";
