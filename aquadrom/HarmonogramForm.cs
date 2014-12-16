@@ -46,8 +46,11 @@ namespace aquadrom
                     {
                         if (godziny.Rows[j][1] == dataGridView1.Rows[k].Cells[1] && godziny.Rows[j][2] == dataGridView1.Rows[k].Cells[2])
                         {
-                            string colName=i.ToString();
-                            dataGridView1.Rows[k].Cells[colName];
+                            string odText = godziny.Rows[j][3].ToString() +godziny.Rows[j][4].ToString();
+                            dataGridView1.Rows[k].Cells[j.ToString() + "od"].Value =odText;
+
+                            string doText = godziny.Rows[j][5].ToString() + godziny.Rows[j][6].ToString();
+                            dataGridView1.Rows[k].Cells[j.ToString() + "do"].Value =doText;
                         }
                     }
                 }
@@ -66,12 +69,12 @@ namespace aquadrom
             {
                 if (i % 2 == 0)
                 {
-                    dataGridView1.Columns.Add(i.ToString(), day.ToShortDateString());
+                    dataGridView1.Columns.Add(i.ToString()+"od", day.ToShortDateString());
 
                     day = day.AddDays(1);
                 }
                 else
-                    dataGridView1.Columns.Add(i.ToString(), "");
+                    dataGridView1.Columns.Add(i.ToString()+"do", "");
             }
         }
     }

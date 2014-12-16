@@ -33,14 +33,14 @@
             this.godzinypracyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.godziny_pracyTableAdapter = new aquadrom.aquadromDataSetTableAdapters.Godziny_pracyTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aquadromDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaTableAdapter = new aquadrom.aquadromDataSetTableAdapters.NotatkaTableAdapter();
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
-            this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,10 +72,32 @@
             this.nazwiskoDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.pracownikBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 47);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 47);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(370, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(673, 203);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // imieDataGridViewTextBoxColumn
+            // 
+            this.imieDataGridViewTextBoxColumn.DataPropertyName = "Imie";
+            this.imieDataGridViewTextBoxColumn.HeaderText = "Imie";
+            this.imieDataGridViewTextBoxColumn.Name = "imieDataGridViewTextBoxColumn";
+            this.imieDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nazwiskoDataGridViewTextBoxColumn
+            // 
+            this.nazwiskoDataGridViewTextBoxColumn.DataPropertyName = "Nazwisko";
+            this.nazwiskoDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
+            this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
+            this.nazwiskoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Stanowisko";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Stanowisko";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // pracownikBindingSource
             // 
@@ -99,28 +121,6 @@
             // pracownikTableAdapter
             // 
             this.pracownikTableAdapter.ClearBeforeFill = true;
-            // 
-            // imieDataGridViewTextBoxColumn
-            // 
-            this.imieDataGridViewTextBoxColumn.DataPropertyName = "Imie";
-            this.imieDataGridViewTextBoxColumn.HeaderText = "Imie";
-            this.imieDataGridViewTextBoxColumn.Name = "imieDataGridViewTextBoxColumn";
-            this.imieDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nazwiskoDataGridViewTextBoxColumn
-            // 
-            this.nazwiskoDataGridViewTextBoxColumn.DataPropertyName = "Nazwisko";
-            this.nazwiskoDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
-            this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
-            this.nazwiskoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Stanowisko";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Stanowisko";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // HarmonogramForm
             // 
