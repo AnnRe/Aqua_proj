@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using System.Data;
 
 namespace DB
 {
@@ -115,6 +116,10 @@ namespace DB
 
         public SqlDataAdapter getAdapter(string query)
         {
+            SqlDataAdapter adapt = new SqlDataAdapter(query, polaczenie);
+            DataTable tab=new DataTable();
+            adapt.Fill(tab);
+
             return new SqlDataAdapter(query,polaczenie);
         }
 
@@ -173,5 +178,7 @@ namespace DB
             string queryText = "SELECT " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
         }
+
+ 
     }
 }
