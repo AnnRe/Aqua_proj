@@ -6,3 +6,5 @@ aquadrom.sql.orig
 aquadrom.v12.suo
 *.exe
 DBTests/bin/Debug/DBTests.dll
+TestResults/aquadrom.TE.Tests_log.ldf
+TestResults/aquadrom.TE.Tests.mdf
