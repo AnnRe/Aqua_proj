@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aquadromDataSet = new aquadrom.aquadromDataSet();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.ądzajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DodajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aquadromDataSet = new aquadrom.aquadromDataSet();
-            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
             this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +51,10 @@
             this.datawaznosciKPPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.databadanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stopienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDumowyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -80,8 +79,7 @@
             this.stanowiskoDataGridViewTextBoxColumn,
             this.datawaznosciKPPDataGridViewTextBoxColumn,
             this.databadanDataGridViewTextBoxColumn,
-            this.stopienDataGridViewTextBoxColumn,
-            this.iDumowyDataGridViewTextBoxColumn});
+            this.stopienDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.pracownikBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 43);
             this.dataGridView1.Name = "dataGridView1";
@@ -90,6 +88,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(956, 386);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // pracownikBindingSource
+            // 
+            this.pracownikBindingSource.DataMember = "Pracownik";
+            this.pracownikBindingSource.DataSource = this.aquadromDataSet;
+            // 
+            // aquadromDataSet
+            // 
+            this.aquadromDataSet.DataSetName = "aquadromDataSet";
+            this.aquadromDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // menuStrip2
             // 
@@ -131,16 +139,6 @@
             this.PrzeglądajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.PrzeglądajUżytkownikówToolStripMenuItem.Text = "Przeglądaj użytkowników";
             this.PrzeglądajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.PrzeglądajUżytkownikówToolStripMenuItem_Click);
-            // 
-            // aquadromDataSet
-            // 
-            this.aquadromDataSet.DataSetName = "aquadromDataSet";
-            this.aquadromDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pracownikBindingSource
-            // 
-            this.pracownikBindingSource.DataMember = "Pracownik";
-            this.pracownikBindingSource.DataSource = this.aquadromDataSet;
             // 
             // pracownikTableAdapter
             // 
@@ -237,13 +235,6 @@
             this.stopienDataGridViewTextBoxColumn.Name = "stopienDataGridViewTextBoxColumn";
             this.stopienDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // iDumowyDataGridViewTextBoxColumn
-            // 
-            this.iDumowyDataGridViewTextBoxColumn.DataPropertyName = "ID_umowy";
-            this.iDumowyDataGridViewTextBoxColumn.HeaderText = "ID_umowy";
-            this.iDumowyDataGridViewTextBoxColumn.Name = "iDumowyDataGridViewTextBoxColumn";
-            this.iDumowyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,10 +251,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Test_FormClosing);
             this.Load += new System.EventHandler(this.Test_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +284,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datawaznosciKPPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn databadanDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stopienDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDumowyDataGridViewTextBoxColumn;
 
     }
 }
