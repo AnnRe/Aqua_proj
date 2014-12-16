@@ -36,7 +36,7 @@ namespace aquadrom
             //Select od do from godziny pracy where id_p =...
             DBAdapter adapter = new DBAdapter();
             DateTime iDate = new DateTime(date.Year, date.Month, 1);
-
+            ClearHours();
             for (int nrDnia = 1; nrDnia <= DateTime.DaysInMonth(date.Year,date.Month); nrDnia++)
             {
                 DataTable godziny = adapter.SelectWorkersAtDate(iDate);
@@ -63,6 +63,14 @@ namespace aquadrom
             }
                                    
         }
+
+        private void ClearHours()
+        {
+            for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                for (int i = 2; i < dataGridView1.ColumnCount; i++)
+                    dataGridView1.Rows[j].Cells[i].Value = "";
+                
+        }
         private void AddDayColumns()
         {
             int iloscDni = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
@@ -81,6 +89,7 @@ namespace aquadrom
         private void listBoxMiesiace_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            FillFromDB(new DateTime(DateTime.Now.Year, listBoxMiesiace.SelectedIndex + 1, 1));
         }
     }
 }
