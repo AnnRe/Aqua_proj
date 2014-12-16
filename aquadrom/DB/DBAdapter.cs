@@ -74,6 +74,30 @@ namespace DB
                 " and "
                 + time.Date.ToString("yyyy-MM-dd HH:mm:ss") + " between " + Constants.GodzinyPracyOd + " and " + Constants.GodzinyPracyDo+")";
             DataTable toRet = new DataTable();
+
+            try { toRet = GetData(query); }
+            catch (Exception e)
+            { Console.WriteLine(e.Message); }
+            polaczenie.Close();
+
+            return toRet;
+        }
+
+        public DataTable SelectWorkersAtDate(DateTime time)
+        {
+            polaczenie.Open();
+            DateTime odTime = new DateTime(time.Year, time.Month, time.Day, 8, 0, 0);
+            string odddd = odTime.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime doTime = new DateTime(time.Year, time.Month, time.Day, 22, 0, 0);
+            string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + ", "+
+               "Cast ("+ Constants.GodzinyPracyOd+" As time(0))"+","+
+               "Cast ("+ Constants.GodzinyPracyDo+" As time(0))"+
+                " from pracownik,godziny_pracy where ("
+                + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
+                " and "
+                + Constants.GodzinyPracyOd+ " between " + odTime.ToString("yyyy-MM-dd HH:mm:ss") + " and " + doTime.ToString("yyyy-MM-dd HH:mm:ss") + ")";
+            DataTable toRet = new DataTable();
+
             try { toRet = GetData(query); }
             catch (Exception e)
             { Console.WriteLine(e.Message); }

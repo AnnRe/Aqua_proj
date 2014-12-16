@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,17 +23,38 @@ namespace aquadrom
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
 
             AddDayColumns();
-            FillFromDB();
+            FillFromDB(DateTime.Now);//Todo: czas w zależności od aktualnie wyśqietlanego harmonogramu
 
                 // TODO: This line of code loads data into the 'aquadromDataSet.Godziny_pracy' table. You can move, or remove it, as needed.
                 this.godziny_pracyTableAdapter.Fill(this.aquadromDataSet.Godziny_pracy);
 
         }
 
-        private void FillFromDB()
+        private void FillFromDB(DateTime date)
         {
             //Select od do from godziny pracy where id_p =...
-            throw new NotImplementedException();
+            DBAdapter adapter = new DBAdapter();
+            DateTime iDate = new DateTime(date.Year, date.Month, 1);
+
+            for (int i = 1; i <= DateTime.DaysInMonth(date.Year,date.Month); i++)
+            {
+                DataTable godziny = adapter.SelectWorkersAtDate(iDate);
+
+                for (int j = 0; j < godziny.Rows.Count; j++)
+                {
+                    for (int k = 0; k < dataGridView1.RowCount; k++)
+                    {
+                        if (godziny.Rows[j][1] == dataGridView1.Rows[k].Cells[1] && godziny.Rows[j][2] == dataGridView1.Rows[k].Cells[2])
+                        {
+                            string colName=i.ToString();
+                            dataGridView1.Rows[k].Cells[colName];
+                        }
+                    }
+                }
+
+                iDate = iDate.AddDays(1);
+            }
+                                   
         }
 
         private void AddDayColumns()
