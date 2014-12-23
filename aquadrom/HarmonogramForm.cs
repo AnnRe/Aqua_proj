@@ -23,12 +23,12 @@ namespace aquadrom
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
 
             AddDayColumns();
-            listBoxMiesiace.SetSelected(DateTime.Now.Month-1,true);
             FillFromDB(DateTime.Now);
 
                 // TODO: This line of code loads data into the 'aquadromDataSet.Godziny_pracy' table. You can move, or remove it, as needed.
                 this.godziny_pracyTableAdapter.Fill(this.aquadromDataSet.Godziny_pracy);
-
+           
+            comboBoxMiesiace.SelectedIndex = DateTime.Now.Month - 1;
         }
 
         private void FillFromDB(DateTime date)
@@ -79,17 +79,39 @@ namespace aquadrom
             for (int i = 1; i <=  iloscDni; i++)
             {
                 string xyz = i.ToString() + "od" + "  ,  " + i.ToString() + "do";
-               dataGridView1.Columns.Add(i.ToString()+"od", day.ToShortDateString());
-               dataGridView1.Columns.Add(i.ToString()+"do", "");
-               day = day.AddDays(1);
-                    
+                dataGridView1.Columns.Add(i.ToString()+"od", day.ToShortDateString());
+                dataGridView1.Columns.Add(i.ToString()+"do", "");
+                day = day.AddDays(1);
+                DataGridViewColumn column1 = dataGridView1.Columns[i.ToString() + "od"];
+                DataGridViewColumn column2 = dataGridView1.Columns[i.ToString() + "do"];
+                column1.Width = 70;
+                column2.Width = 70;
+                column2.DividerWidth = 1;
+                dataGridView1.Columns[i.ToString() + "od"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; 
+                
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                DataGridViewColumn column = dataGridView1.Columns[i];
+                column.DividerWidth = 1;
+                dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
-        private void listBoxMiesiace_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            FillFromDB(new DateTime(DateTime.Now.Year, listBoxMiesiace.SelectedIndex + 1, 1));
         }
+
+        private void comboBoxMiesiace_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillFromDB(new DateTime(DateTime.Now.Year, comboBoxMiesiace.SelectedIndex + 1, 1));
+        }
+
+
+
     }
 }
