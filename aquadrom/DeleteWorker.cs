@@ -19,6 +19,7 @@ namespace aquadrom
     public partial class DeleteWorker : Form
     {
         DBAdapter adapter = new DBAdapter();
+        DBConnector connector = new DBConnector();
         public static bool exist = false;
         private AdminPanel _mainform = null;
 
@@ -34,20 +35,18 @@ namespace aquadrom
 
         public void DeleteWorker_Load(object sender, EventArgs e)   // dodawanie imion i nazwisk wszystkich pracownikow do DeleteWorkerComboBox
         {
-            string sql_workers = "select " + Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' ',"+Constants.PracownikImieKol+") from Pracownik order by 2 asc;";
-            DataTable dtWorkers = adapter.GetData(sql_workers);
+            DataTable dtWorkers = connector.Select(Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers.Rows)
             {
                 DeleteWorkerComboBox.Items.Add(row[1].ToString());
             }
+            IfLocked(DeleteWorkerComboBox, DeleteButton);
         }
 
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {                                                       // którego użytkownika usunąć
             WhichUser = this.DeleteWorkerComboBox.Text;
-            string sql_workers2 = "select ID_p, concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;";
-            DataTable dtWorkers2 = adapter.GetData(sql_workers2);
-
+            DataTable dtWorkers2 = connector.Select(Constants.PracownikIDpKol+", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)
@@ -61,6 +60,7 @@ namespace aquadrom
                     break;
                 }
             }
+            IfLocked(DeleteWorkerComboBox,DeleteButton);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e) // usuwanie użytkownika po kliknięciu 'usuń'
@@ -86,6 +86,14 @@ namespace aquadrom
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void IfLocked(ComboBox WhatEmpty, Button WhatLock)
+        {
+            if (WhatEmpty.Text == "")
+                WhatLock.Enabled = false;
+            else
+                WhatLock.Enabled = true;
         }
     }
 }
