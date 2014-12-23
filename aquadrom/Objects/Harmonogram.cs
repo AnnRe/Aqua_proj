@@ -15,7 +15,7 @@ namespace aquadrom.Objects
         public void Add(Pracownik pracownik, DateTime pocz, DateTime koniec)
         {
             DBAdapter polaczenie = new DBAdapter();
-            string query = "into " + Constants.GodzinyPracyTable + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," +
+            string query = "into " + Constants.TabGodzinyPracy + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," +
                 Constants.GodzinyPracyIdP+") values ("+
                 pocz.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+koniec.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+pracownik.id_p+")";
             polaczenie.Insert(query);

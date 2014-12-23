@@ -72,7 +72,7 @@ namespace aquadrom
                 {
                     adapter.Delete(sql_deleteuser);
                     MessageBox.Show("Użytkownik został usunięty");
-                    _mainform.Test_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
+                    _mainform.AdminPanel_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
                     this.Close();
                 }
             }
