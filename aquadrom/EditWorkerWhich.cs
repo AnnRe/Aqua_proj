@@ -42,7 +42,7 @@ namespace aquadrom
         }
 
         private void EditWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {                                                       // którego użytkownika usunąć
+        {                                                    
             WhichUser = this.EditWorkerComboBox.Text;
             DataTable dtWorkers2 = connector.Select(Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
