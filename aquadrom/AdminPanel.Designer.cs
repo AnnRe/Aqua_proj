@@ -34,6 +34,7 @@
             this.DodajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,8 @@
             this.ądzajToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DodajUżytkownikówToolStripMenuItem,
             this.UsuńUżytkownikaToolStripMenuItem,
-            this.PrzeglądajUżytkownikówToolStripMenuItem});
+            this.PrzeglądajUżytkownikówToolStripMenuItem,
+            this.napiszNotatkęToolStripMenuItem});
             this.ądzajToolStripMenuItem.Name = "ądzajToolStripMenuItem";
             this.ądzajToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.ądzajToolStripMenuItem.Text = "Zarządzaj";
@@ -92,6 +94,13 @@
             this.PrzeglądajUżytkownikówToolStripMenuItem.Name = "PrzeglądajUżytkownikówToolStripMenuItem";
             this.PrzeglądajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.PrzeglądajUżytkownikówToolStripMenuItem.Text = "Przeglądaj użytkowników";
+            // 
+            // napiszNotatkęToolStripMenuItem
+            // 
+            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
+            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
+            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click);
             // 
             // AdminPanel
             // 
@@ -124,6 +133,7 @@
         private System.Windows.Forms.ToolStripMenuItem DodajUżytkownikówToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsuńUżytkownikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PrzeglądajUżytkownikówToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem napiszNotatkęToolStripMenuItem;
 
     }
 }

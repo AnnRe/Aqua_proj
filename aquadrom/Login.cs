@@ -50,7 +50,7 @@ namespace aquadrom
             DataTable dtUserLogin = adapter.GetData(sql_testLogin);
             foreach (DataRow row in dtUserLogin.Rows)
             {
-                if (row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text && row[Constants.PracownikHasloKol].ToString() == sha256_hash(this.UserPasswordBox.Text))
+                if (row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text && row[Constants.PracownikHasloKol].ToString() == this.UserPasswordBox.Text)
                 {
                     ZgodaNaLogowanie = true;
                     if (row[Constants.PracownikTypKontaKol].ToString()=="A")
@@ -58,7 +58,7 @@ namespace aquadrom
                         AdminPanel AdminPanel = new AdminPanel();
                         AdminPanel.Show();
                     }
-                    if (row[Constants.PracownikTypKontaKol].ToString()=="U")
+                    if (row[Constants.PracownikTypKontaKol].ToString()=="u")
                     {
                         UserPanel UserPanel = new UserPanel();
                         UserPanel.Show();

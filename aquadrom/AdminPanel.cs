@@ -66,7 +66,21 @@ namespace aquadrom
 
         private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (Form2.exist == false)
+            {
+                Form2 AddEmployer = new Form2();
+                AddEmployer.Show();
+            }
 
+        }
+
+        private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (GeneratorNotatek.exist == false)
+            {
+                GeneratorNotatek notatka = new GeneratorNotatek();
+                notatka.Show();
+            }
         }
 
 
