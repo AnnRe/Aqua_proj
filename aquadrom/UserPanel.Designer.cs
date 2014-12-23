@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wyświetlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edytujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.wyświetlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edytujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,32 +59,9 @@
             this.wyświetlToolStripMenuItem,
             this.edytujToolStripMenuItem});
             this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
-            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.harmonogramToolStripMenuItem.Text = "harmonogram";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
             this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            // 
-            // notatkiToolStripMenuItem
-            // 
-            this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
-            this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.notatkiToolStripMenuItem.Text = "notatki";
-            // 
-            // umowaToolStripMenuItem
-            // 
-            this.umowaToolStripMenuItem.Name = "umowaToolStripMenuItem";
-            this.umowaToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.umowaToolStripMenuItem.Text = "umowa";
-            // 
-            // daneToolStripMenuItem
-            // 
-            this.daneToolStripMenuItem.Name = "daneToolStripMenuItem";
-            this.daneToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.daneToolStripMenuItem.Text = "dane";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // wyświetlToolStripMenuItem
             // 
@@ -98,6 +75,29 @@
             this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
             this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.edytujToolStripMenuItem.Text = "Edytuj";
+            // 
+            // notatkiToolStripMenuItem
+            // 
+            this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
+            this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.notatkiToolStripMenuItem.Text = "Notatki";
+            // 
+            // umowaToolStripMenuItem
+            // 
+            this.umowaToolStripMenuItem.Name = "umowaToolStripMenuItem";
+            this.umowaToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.umowaToolStripMenuItem.Text = "Umowa";
+            // 
+            // daneToolStripMenuItem
+            // 
+            this.daneToolStripMenuItem.Name = "daneToolStripMenuItem";
+            this.daneToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.daneToolStripMenuItem.Text = "Dane";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // UserPanel
             // 

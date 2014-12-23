@@ -137,6 +137,7 @@
     <None Include="aquadromDataSet.xss">
       <DependentUpon>aquadromDataSet.xsd</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
