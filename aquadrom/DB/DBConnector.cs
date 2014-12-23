@@ -114,12 +114,19 @@ namespace DB
             Close();
         }
 
+        public DataTable Select(string query)
+        {
+            Open();
+            string queryText = "SELECT " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            DBAdapter adapter = new DBAdapter();
+            DataTable dtWorkers = adapter.GetData(queryText);
+            Close();
+            return dtWorkers;
+        }
+
         public SqlDataAdapter getAdapter(string query)
         {
-            SqlDataAdapter adapt = new SqlDataAdapter(query, polaczenie);
-            DataTable tab=new DataTable();
-            adapt.Fill(tab);
-
             return new SqlDataAdapter(query,polaczenie);
         }
 
@@ -172,13 +179,5 @@ namespace DB
 
             Insert(query);
         }
-
-        public void Select(string query)
-        {
-            string queryText = "SELECT " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-        }
-
- 
     }
 }

@@ -46,9 +46,9 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(86, 77);
+            this.DeleteButton.Location = new System.Drawing.Point(62, 77);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.Size = new System.Drawing.Size(110, 23);
             this.DeleteButton.TabIndex = 1;
             this.DeleteButton.Text = "Usuń";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(187, 77);
+            this.CancelButton.Location = new System.Drawing.Point(183, 77);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(110, 23);
             this.CancelButton.TabIndex = 2;
             this.CancelButton.Text = "Anuluj";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             this.MinimizeBox = false;
             this.Name = "DeleteWorker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DeleteWorker";
+            this.Text = "Usuń pracownika";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DeleteWorker_FormClosing);
             this.Load += new System.EventHandler(this.DeleteWorker_Load);
             this.ResumeLayout(false);

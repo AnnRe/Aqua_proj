@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.aquadromDataSet = new aquadrom.aquadromDataSet();
             this.godzinypracyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.godziny_pracyTableAdapter = new aquadrom.aquadromDataSetTableAdapters.Godziny_pracyTableAdapter();
@@ -41,7 +42,7 @@
             this.notatkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaTableAdapter = new aquadrom.aquadromDataSetTableAdapters.NotatkaTableAdapter();
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
-            this.listBoxMiesiace = new System.Windows.Forms.ListBox();
+            this.comboBoxMiesiace = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,6 +68,14 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.imieDataGridViewTextBoxColumn,
@@ -77,8 +86,12 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(673, 203);
             this.dataGridView1.TabIndex = 0;
+<<<<<<< HEAD
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+=======
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+>>>>>>> 1504433d4c91e8f8772d0feb2b7171936aebae46
             // 
             // imieDataGridViewTextBoxColumn
             // 
@@ -125,10 +138,10 @@
             // 
             this.pracownikTableAdapter.ClearBeforeFill = true;
             // 
-            // listBoxMiesiace
+            // comboBoxMiesiace
             // 
-            this.listBoxMiesiace.FormattingEnabled = true;
-            this.listBoxMiesiace.Items.AddRange(new object[] {
+            this.comboBoxMiesiace.FormattingEnabled = true;
+            this.comboBoxMiesiace.Items.AddRange(new object[] {
             "Styczeń",
             "Luty",
             "Marzec",
@@ -141,18 +154,18 @@
             "Październik",
             "Listopad",
             "Grudzień"});
-            this.listBoxMiesiace.Location = new System.Drawing.Point(26, 14);
-            this.listBoxMiesiace.Name = "listBoxMiesiace";
-            this.listBoxMiesiace.Size = new System.Drawing.Size(120, 17);
-            this.listBoxMiesiace.TabIndex = 1;
-            this.listBoxMiesiace.SelectedIndexChanged += new System.EventHandler(this.listBoxMiesiace_SelectedIndexChanged);
+            this.comboBoxMiesiace.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxMiesiace.Name = "comboBoxMiesiace";
+            this.comboBoxMiesiace.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMiesiace.TabIndex = 2;
+            this.comboBoxMiesiace.SelectedIndexChanged += new System.EventHandler(this.comboBoxMiesiace_SelectedIndexChanged);
             // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 262);
-            this.Controls.Add(this.listBoxMiesiace);
+            this.Controls.Add(this.comboBoxMiesiace);
             this.Controls.Add(this.dataGridView1);
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
@@ -181,6 +194,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.ListBox listBoxMiesiace;
+        private System.Windows.Forms.ComboBox comboBoxMiesiace;
     }
 }

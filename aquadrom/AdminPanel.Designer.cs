@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.aquadromDataSet = new aquadrom.aquadromDataSet();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.ądzajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DodajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
             this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.peselDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +43,15 @@
             this.datawaznosciKPPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.databadanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stopienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pracownikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aquadromDataSet = new aquadrom.aquadromDataSet();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.ądzajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DodajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edytujUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pracownikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
@@ -88,61 +89,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(956, 386);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // pracownikBindingSource
-            // 
-            this.pracownikBindingSource.DataMember = "Pracownik";
-            this.pracownikBindingSource.DataSource = this.aquadromDataSet;
-            // 
-            // aquadromDataSet
-            // 
-            this.aquadromDataSet.DataSetName = "aquadromDataSet";
-            this.aquadromDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ądzajToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(980, 24);
-            this.menuStrip2.TabIndex = 3;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // ądzajToolStripMenuItem
-            // 
-            this.ądzajToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DodajUżytkownikówToolStripMenuItem,
-            this.UsuńUżytkownikaToolStripMenuItem,
-            this.PrzeglądajUżytkownikówToolStripMenuItem});
-            this.ądzajToolStripMenuItem.Name = "ądzajToolStripMenuItem";
-            this.ądzajToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.ądzajToolStripMenuItem.Text = "Zarządzaj";
-            // 
-            // DodajUżytkownikówToolStripMenuItem
-            // 
-            this.DodajUżytkownikówToolStripMenuItem.Name = "DodajUżytkownikówToolStripMenuItem";
-            this.DodajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.DodajUżytkownikówToolStripMenuItem.Text = "Dodaj użytkownika";
-            this.DodajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.DodajUżytkownikówToolStripMenuItem_Click);
-            // 
-            // UsuńUżytkownikaToolStripMenuItem
-            // 
-            this.UsuńUżytkownikaToolStripMenuItem.Name = "UsuńUżytkownikaToolStripMenuItem";
-            this.UsuńUżytkownikaToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.UsuńUżytkownikaToolStripMenuItem.Text = "Usuń użytkownika";
-            this.UsuńUżytkownikaToolStripMenuItem.Click += new System.EventHandler(this.UsuńToolStripMenuItem_Click);
-            // 
-            // PrzeglądajUżytkownikówToolStripMenuItem
-            // 
-            this.PrzeglądajUżytkownikówToolStripMenuItem.Name = "PrzeglądajUżytkownikówToolStripMenuItem";
-            this.PrzeglądajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.PrzeglądajUżytkownikówToolStripMenuItem.Text = "Przeglądaj użytkowników";
-            this.PrzeglądajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.PrzeglądajUżytkownikówToolStripMenuItem_Click);
-            // 
-            // pracownikTableAdapter
-            // 
-            this.pracownikTableAdapter.ClearBeforeFill = true;
             // 
             // imieDataGridViewTextBoxColumn
             // 
@@ -235,6 +181,70 @@
             this.stopienDataGridViewTextBoxColumn.Name = "stopienDataGridViewTextBoxColumn";
             this.stopienDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // pracownikBindingSource
+            // 
+            this.pracownikBindingSource.DataMember = "Pracownik";
+            this.pracownikBindingSource.DataSource = this.aquadromDataSet;
+            // 
+            // aquadromDataSet
+            // 
+            this.aquadromDataSet.DataSetName = "aquadromDataSet";
+            this.aquadromDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ądzajToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(980, 24);
+            this.menuStrip2.TabIndex = 3;
+            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
+            // 
+            // ądzajToolStripMenuItem
+            // 
+            this.ądzajToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DodajUżytkownikówToolStripMenuItem,
+            this.edytujUżytkownikaToolStripMenuItem,
+            this.UsuńUżytkownikaToolStripMenuItem,
+            this.PrzeglądajUżytkownikówToolStripMenuItem});
+            this.ądzajToolStripMenuItem.Name = "ądzajToolStripMenuItem";
+            this.ądzajToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.ądzajToolStripMenuItem.Text = "Zarządzaj";
+            // 
+            // DodajUżytkownikówToolStripMenuItem
+            // 
+            this.DodajUżytkownikówToolStripMenuItem.Name = "DodajUżytkownikówToolStripMenuItem";
+            this.DodajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.DodajUżytkownikówToolStripMenuItem.Text = "Dodaj użytkownika";
+            this.DodajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.DodajUżytkownikówToolStripMenuItem_Click);
+            // 
+            // edytujUżytkownikaToolStripMenuItem
+            // 
+            this.edytujUżytkownikaToolStripMenuItem.Name = "edytujUżytkownikaToolStripMenuItem";
+            this.edytujUżytkownikaToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.edytujUżytkownikaToolStripMenuItem.Text = "Edytuj użytkownika";
+            this.edytujUżytkownikaToolStripMenuItem.Click += new System.EventHandler(this.edytujUżytkownikaToolStripMenuItem_Click);
+            // 
+            // UsuńUżytkownikaToolStripMenuItem
+            // 
+            this.UsuńUżytkownikaToolStripMenuItem.Name = "UsuńUżytkownikaToolStripMenuItem";
+            this.UsuńUżytkownikaToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.UsuńUżytkownikaToolStripMenuItem.Text = "Usuń użytkownika";
+            this.UsuńUżytkownikaToolStripMenuItem.Click += new System.EventHandler(this.UsuńToolStripMenuItem_Click);
+            // 
+            // PrzeglądajUżytkownikówToolStripMenuItem
+            // 
+            this.PrzeglądajUżytkownikówToolStripMenuItem.Name = "PrzeglądajUżytkownikówToolStripMenuItem";
+            this.PrzeglądajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.PrzeglądajUżytkownikówToolStripMenuItem.Text = "Przeglądaj użytkowników";
+            this.PrzeglądajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.PrzeglądajUżytkownikówToolStripMenuItem_Click);
+            // 
+            // pracownikTableAdapter
+            // 
+            this.pracownikTableAdapter.ClearBeforeFill = true;
+            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +294,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datawaznosciKPPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn databadanDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stopienDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem edytujUżytkownikaToolStripMenuItem;
 
     }
 }
