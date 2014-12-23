@@ -46,7 +46,15 @@ namespace DB
         {
             
             try {  polaczenie.Insert(query);  }
-            catch { return false; }     //?flagi
+            catch { return false; }     
+            return true;
+        }
+
+        public bool Select(string query)
+        {
+
+            try { polaczenie.Select(query); }
+            catch { return false; }
             return true;
         }
 

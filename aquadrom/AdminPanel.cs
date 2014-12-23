@@ -17,6 +17,7 @@ namespace aquadrom
 {
     public partial class AdminPanel : Form
     {
+        DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
         public AdminPanel()
         {
@@ -45,7 +46,7 @@ namespace aquadrom
 
         private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(DeleteWorker.exist==false)   // jeśli okno DeleteWorker zamknięte to je otwórz else nic
+            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) )  // jeśli okno DeleteWorker,WhichWorker zamknięte to je otwórz else nic
             {
                 DeleteWorker DelWor = new DeleteWorker(this);
                 DelWor.Show();
@@ -60,6 +61,20 @@ namespace aquadrom
         private void PrzeglądajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Test_Load(this, e);
+        }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void edytujUżytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) )
+            {
+                EditWorkerWhich EdWor = new EditWorkerWhich(this);
+                EdWor.Show();
+            }
         }
 
 

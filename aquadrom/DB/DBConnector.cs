@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using System.Data;
 
 namespace DB
 {
@@ -113,6 +114,17 @@ namespace DB
             Close();
         }
 
+        public DataTable Select(string query)
+        {
+            Open();
+            string queryText = "SELECT " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            DBAdapter adapter = new DBAdapter();
+            DataTable dtWorkers = adapter.GetData(queryText);
+            Close();
+            return dtWorkers;
+        }
+
         public SqlDataAdapter getAdapter(string query)
         {
             return new SqlDataAdapter(query,polaczenie);
@@ -166,12 +178,6 @@ namespace DB
                 pracownik.dataBadan + ")";
 
             Insert(query);
-        }
-
-        public void Select(string query)
-        {
-            string queryText = "SELECT " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
         }
     }
 }

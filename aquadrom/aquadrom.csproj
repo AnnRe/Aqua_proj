@@ -51,6 +51,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>aquadromDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EditWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWorker.Designer.cs">
+      <DependentUpon>EditWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWorkerWhich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWorkerWhich.Designer.cs">
+      <DependentUpon>EditWorkerWhich.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB\DBAdapter.cs" />
     <Compile Include="DB\DBConnector.cs" />
     <Compile Include="DeleteWorker.cs">
@@ -98,6 +110,12 @@
     <Compile Include="Utilities\eStanowisko.cs" />
     <Compile Include="Utilities\eStopien.cs" />
     <Compile Include="Utilities\eStrefa.cs" />
+    <EmbeddedResource Include="EditWorker.resx">
+      <DependentUpon>EditWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWorkerWhich.resx">
+      <DependentUpon>EditWorkerWhich.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteWorker.resx">
       <DependentUpon>DeleteWorker.cs</DependentUpon>
     </EmbeddedResource>
