@@ -11,57 +11,66 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using DB;
+using aquadrom.Utilities;
 
 
 namespace aquadrom
 {
     public partial class AdminPanel : Form
     {
+        DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
         public AdminPanel()
         {
             InitializeComponent();
         }
 
-        public void Test_Load(object sender, EventArgs e)
+        public void AdminPanel_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'aquadromDataSet.Pracownik' table. You can move, or remove it, as needed.
-            this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
-//            dataGridView1.Columns.Add[]
-/*            string sql_workers = "SELECT * FROM Pracownik";
-            DataTable dtlista = adapter.GetData(sql_workers);
-            dataGridView1.DataSource = dtlista.DefaultView; */
+            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowyKol+"=u."+Constants.UmowaIDu);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtlista.Columns.Remove(Constants.UmowaIDu);
+            dtlista.Columns.Remove(Constants.PracownikIDUmowyKol);
+            dtlista.Columns.Remove(Constants.PracownikHasloKol);
+            dataGridView1.DataSource = dtlista.DefaultView;
+
+ /*           foreach (DataGridView row in dataGridView1.Rows)
+            {
+                MessageBox.Show();
+            }*/
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Test_FormClosing(object sender, FormClosingEventArgs e)
+        private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
         private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(DeleteWorker.exist==false)   // jeśli okno DeleteWorker zamknięte to je otwórz else nic
+            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) )  // jeśli okno DeleteWorker,WhichWorker zamknięte to je otwórz else nic
             {
                 DeleteWorker DelWor = new DeleteWorker(this);
                 DelWor.Show();
             }
         }
 
-        private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PrzeglądajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Test_Load(this, e);
+            AdminPanel_Load(this, e);
         }
 
+        private void edytujUżytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) )
+            {
+                EditWorkerWhich EdWor = new EditWorkerWhich(this);
+                EdWor.Show();
+            }
+        }
 
+        private void CheckUserAccount()
+        {
+            
+        }
     }
 }

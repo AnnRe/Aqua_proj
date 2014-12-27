@@ -27,12 +27,22 @@ namespace aquadrom.Utilities
         public const string PracownikIDUmowyKol = "ID_umowy";
         public const string PracownikTypKontaKol = "Typ_konta";
 
-        public const string GodzinyPracyTable = "Godziny_pracy";
         public const string GodzinyPracyIdG = "ID_g";
         public const string GodzinyPracyOd = "Od";
         public const string GodzinyPracyDo = "Do";
         public const string GodzinyPracyIdP = "ID_pracownika";
 
+        public const string UmowaIDu = "ID_u";
+        public const string UmowaTyp = "Typ";
+        public const string UmowaWymiarGodzin = "Wymiar_godzin";
+        public const string UmowaPoczatekUmowy = "Poczatek_umowy";
+        public const string UmowaKoniecUmowy = "Koniec_umowy";
 
+        public const string TabGodzinyPracy = "Godziny_pracy";
+        public const string TabNotatka = "Notatka";
+        public const string TabOtwarcieStanowiska = "Otwarcie_stanowiska";
+        public const string TabPracownik = "Pracownik";
+        public const string TabStanowisko = "Stanowisko";
+        public const string TabUmowa = "Umowa";
     }
 }

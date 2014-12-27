@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp">
+      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting">
+      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -50,6 +56,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>aquadromDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EditWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWorker.Designer.cs">
+      <DependentUpon>EditWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWorkerWhich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWorkerWhich.Designer.cs">
+      <DependentUpon>EditWorkerWhich.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\DBAdapter.cs" />
     <Compile Include="DB\DBConnector.cs" />
@@ -99,6 +117,12 @@
     <Compile Include="Utilities\eStanowisko.cs" />
     <Compile Include="Utilities\eStopien.cs" />
     <Compile Include="Utilities\eStrefa.cs" />
+    <EmbeddedResource Include="EditWorker.resx">
+      <DependentUpon>EditWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWorkerWhich.resx">
+      <DependentUpon>EditWorkerWhich.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteWorker.resx">
       <DependentUpon>DeleteWorker.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +161,11 @@
     <None Include="aquadromDataSet.xss">
       <DependentUpon>aquadromDataSet.xsd</DependentUpon>
     </None>
+<<<<<<< HEAD
+    <None Include="packages.config" />
+=======
+    <None Include="ClassDiagram1.cd" />
+>>>>>>> 1504433d4c91e8f8772d0feb2b7171936aebae46
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
