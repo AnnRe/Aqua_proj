@@ -38,7 +38,7 @@ namespace DB
             DataTable dataTable = new DataTable();
             adapter = polaczenie.getAdapter(query);
             try{adapter.Fill(dataTable);}
-            catch (Exception e)
+            catch (Exception)
             {
                 return dataTable;
             }

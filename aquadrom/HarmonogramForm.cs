@@ -22,11 +22,11 @@ namespace aquadrom
         {
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
 
-            AddDayColumns();
-            FillFromDB(DateTime.Now);
+            CreateDayColumns();
+            //FillFromDB(DateTime.Now);
 
-                // TODO: This line of code loads data into the 'aquadromDataSet.Godziny_pracy' table. You can move, or remove it, as needed.
-                this.godziny_pracyTableAdapter.Fill(this.aquadromDataSet.Godziny_pracy);
+            // TODO: This line of code loads data into the 'aquadromDataSet.Godziny_pracy' table. You can move, or remove it, as needed.
+            this.godziny_pracyTableAdapter.Fill(this.aquadromDataSet.Godziny_pracy);
            
             comboBoxMiesiace.SelectedIndex = DateTime.Now.Month - 1;
         }
@@ -71,12 +71,14 @@ namespace aquadrom
                     dataGridView1.Rows[j].Cells[i].Value = "";
                 
         }
-        private void AddDayColumns()
+        private void CreateDayColumns()
         {
-            int iloscDni = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            //int month = comboBoxMiesiace.SelectedIndex + 1 >0? comboBoxMiesiace.SelectedIndex + 1 : DateTime.Now.Month;
+            //int iloscDni = DateTime.DaysInMonth(DateTime.Now.Year,month);
             DateTime day = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 
-            for (int i = 1; i <=  iloscDni; i++)
+            //creates 31-day table
+            for (int i = 1; i <=  31; i++)
             {
                 string xyz = i.ToString() + "od" + "  ,  " + i.ToString() + "do";
                 dataGridView1.Columns.Add(i.ToString()+"od", day.ToShortDateString());
@@ -91,13 +93,46 @@ namespace aquadrom
                 dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; 
                 
             }
+
+            UpdateColumnsToMonth();
+
             for (int i = 0; i < 3; i++)
             {
                 DataGridViewColumn column = dataGridView1.Columns[i];
                 column.DividerWidth = 1;
                 dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+
+
         }
+
+        private void UpdateColumnsToMonth()
+        {
+            int month = comboBoxMiesiace.SelectedIndex > 0 ? comboBoxMiesiace.SelectedIndex + 1 : 1;
+            int remainderDays=31-DateTime.DaysInMonth(DateTime.Now.Year,month);
+            int i = 3;
+
+            if (comboBoxMiesiace.SelectedIndex > 0)
+            {
+                MessageBox.Show((65 - remainderDays * 2).ToString());
+                for (; i < 65 - remainderDays * 2; i += 2)
+                {
+                    dataGridView1.Columns[i].Visible = true;
+                    dataGridView1.Columns[i + 1].Visible = true;
+
+                    DateTime oldColumnDate = DateTime.Parse(dataGridView1.Columns[i].HeaderText);
+                    DateTime currentDate = new DateTime(oldColumnDate.Year, comboBoxMiesiace.SelectedIndex + 1, oldColumnDate.Day);
+
+                    dataGridView1.Columns[i].HeaderText = currentDate.ToShortDateString();
+                }
+
+                for (; i < 65; i++)
+                    dataGridView1.Columns[i].Visible = false;
+            }
+
+        }
+
 
 
 
@@ -108,7 +143,7 @@ namespace aquadrom
 
         private void comboBoxMiesiace_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillFromDB(new DateTime(DateTime.Now.Year, comboBoxMiesiace.SelectedIndex + 1, 1));
+            UpdateColumnsToMonth();
         }
 
 
