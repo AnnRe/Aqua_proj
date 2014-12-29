@@ -11,3 +11,4 @@ packages/NUnit.2.6.3/
 *.suo
 *bin
 *obj
+aquadrom/App.config
