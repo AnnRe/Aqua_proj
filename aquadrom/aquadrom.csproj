@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp">
-      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp.Charting">
-      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -161,11 +155,7 @@
     <None Include="aquadromDataSet.xss">
       <DependentUpon>aquadromDataSet.xsd</DependentUpon>
     </None>
-<<<<<<< HEAD
-    <None Include="packages.config" />
-=======
     <None Include="ClassDiagram1.cd" />
->>>>>>> 1504433d4c91e8f8772d0feb2b7171936aebae46
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
