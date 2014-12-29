@@ -86,12 +86,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(673, 203);
             this.dataGridView1.TabIndex = 0;
-<<<<<<< HEAD
-            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-=======
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
->>>>>>> 1504433d4c91e8f8772d0feb2b7171936aebae46
             // 
             // imieDataGridViewTextBoxColumn
             // 
