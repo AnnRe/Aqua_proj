@@ -56,10 +56,22 @@ namespace aquadrom.Objects
         private bool StanowiskaObsadzone(DateTime time)
         {
 
-
             return true;
  
         }
+
+        public bool CorrectFormat(string value)
+        {
+            DateTime dateValue;
+            if (DateTime.TryParse(value, out dateValue))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+         
     
     }
 }
