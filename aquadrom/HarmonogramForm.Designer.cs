@@ -42,7 +42,8 @@
             this.notatkaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notatkaTableAdapter = new aquadrom.aquadromDataSetTableAdapters.NotatkaTableAdapter();
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
-            this.comboBoxMiesiace = new System.Windows.Forms.ComboBox();
+            this.comboBoxMonths = new System.Windows.Forms.ComboBox();
+            this.comboBoxYear = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -135,10 +136,10 @@
             // 
             this.pracownikTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBoxMiesiace
+            // comboBoxMonths
             // 
-            this.comboBoxMiesiace.FormattingEnabled = true;
-            this.comboBoxMiesiace.Items.AddRange(new object[] {
+            this.comboBoxMonths.FormattingEnabled = true;
+            this.comboBoxMonths.Items.AddRange(new object[] {
             "Styczeń",
             "Luty",
             "Marzec",
@@ -151,18 +152,34 @@
             "Październik",
             "Listopad",
             "Grudzień"});
-            this.comboBoxMiesiace.Location = new System.Drawing.Point(12, 12);
-            this.comboBoxMiesiace.Name = "comboBoxMiesiace";
-            this.comboBoxMiesiace.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMiesiace.TabIndex = 2;
-            this.comboBoxMiesiace.SelectedIndexChanged += new System.EventHandler(this.comboBoxMiesiace_SelectedIndexChanged);
+            this.comboBoxMonths.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxMonths.Name = "comboBoxMonths";
+            this.comboBoxMonths.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMonths.TabIndex = 2;
+            this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
+            // 
+            // comboBoxYear
+            // 
+            this.comboBoxYear.FormattingEnabled = true;
+            this.comboBoxYear.Items.AddRange(new object[] {
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016"});
+            this.comboBoxYear.Location = new System.Drawing.Point(170, 12);
+            this.comboBoxYear.Name = "comboBoxYear";
+            this.comboBoxYear.Size = new System.Drawing.Size(58, 21);
+            this.comboBoxYear.TabIndex = 3;
+            this.comboBoxYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear_SelectedIndexChanged);
             // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 262);
-            this.Controls.Add(this.comboBoxMiesiace);
+            this.Controls.Add(this.comboBoxYear);
+            this.Controls.Add(this.comboBoxMonths);
             this.Controls.Add(this.dataGridView1);
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
@@ -191,6 +208,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.ComboBox comboBoxMiesiace;
+        private System.Windows.Forms.ComboBox comboBoxMonths;
+        private System.Windows.Forms.ComboBox comboBoxYear;
     }
 }

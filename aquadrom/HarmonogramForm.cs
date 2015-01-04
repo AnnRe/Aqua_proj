@@ -35,7 +35,8 @@ namespace aquadrom
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
             CreateDayColumns();
 
-            comboBoxMiesiace.SelectedIndex = DateTime.Now.Month - 1;
+            comboBoxMonths.SelectedIndex = DateTime.Now.Month - 1;
+            comboBoxYear.SelectedItem = DateTime.Now.Year.ToString();
 
             loadingFromDB = false;
 
@@ -45,10 +46,10 @@ namespace aquadrom
         {
             loadingFromDB = true;
             DBAdapter adapter = new DBAdapter();
-            DateTime iDate = new DateTime(DateTime.Now.Year,GetMonthFromCombo() , 1);
+            DateTime iDate = new DateTime(GetYearFromCombo(),GetMonthFromCombo() , 1);
             ClearHours();
 
-            for (int nrDnia = 1; nrDnia <= DateTime.DaysInMonth(DateTime.Now.Year,GetMonthFromCombo()); nrDnia++)
+            for (int nrDnia = 1; nrDnia <= DateTime.DaysInMonth(GetYearFromCombo(),GetMonthFromCombo()); nrDnia++)
             {
                 DataTable godziny = adapter.SelectWorkersAtDate(iDate);
 
@@ -76,9 +77,14 @@ namespace aquadrom
                                    
         }
 
+        private int GetYearFromCombo()
+        {
+            return (Convert.ToInt32(comboBoxYear.SelectedIndex.ToString()) >= 0) ? Convert.ToInt32(comboBoxYear.SelectedItem.ToString()) : DateTime.Now.Year;
+        }
+
         private int GetMonthFromCombo()
         {
-            return comboBoxMiesiace.SelectedIndex + 1 > 0 ? comboBoxMiesiace.SelectedIndex + 1 : DateTime.Now.Month;
+            return comboBoxMonths.SelectedIndex + 1 > 0 ? comboBoxMonths.SelectedIndex + 1 : DateTime.Now.Month;
         }
 
         private void ClearHours()
@@ -109,7 +115,7 @@ namespace aquadrom
                 
             }
 
-            UpdateColumnsToMonth();
+            UpdateColumnsToDate();
 
             for (int i = 0; i < 3; i++)
             {
@@ -120,21 +126,29 @@ namespace aquadrom
 
         }
 
-        private void UpdateColumnsToMonth()
+        private void UpdateColumnsToDate()
         {
-            int month = comboBoxMiesiace.SelectedIndex > 0 ? comboBoxMiesiace.SelectedIndex + 1 : 1;
-            int remainderDays=31-DateTime.DaysInMonth(DateTime.Now.Year,month);
             int i = 3;
-
-            if (comboBoxMiesiace.SelectedIndex > 0)
+            int DaysToHide;
+            MessageBox.Show("months: "+comboBoxMonths.SelectedIndex.ToString()+" year: "+comboBoxYear.SelectedIndex.ToString());
+            if (comboBoxMonths.SelectedIndex >= 0)
             {
-                for (; i < 65 - remainderDays * 2; i += 2)
+                DaysToHide = 31 - DateTime.DaysInMonth(DateTime.Now.Year, GetMonthFromCombo());
+                for (; i < 65 - DaysToHide * 2; i += 2)
                 {
                     dataGridView1.Columns[i].Visible = true;
                     dataGridView1.Columns[i + 1].Visible = true;
 
                     DateTime oldColumnDate = DateTime.Parse(dataGridView1.Columns[i].HeaderText);
-                    DateTime currentDate = new DateTime(oldColumnDate.Year, comboBoxMiesiace.SelectedIndex + 1, oldColumnDate.Day);
+                    DateTime currentDate;
+                    if (comboBoxYear.SelectedIndex > 0)
+                    {
+                        currentDate = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), oldColumnDate.Day);
+                    }
+                    else
+                    {
+                        currentDate = new DateTime(oldColumnDate.Year, GetMonthFromCombo(), oldColumnDate.Day);
+                    }
 
                     dataGridView1.Columns[i].HeaderText = currentDate.ToShortDateString();
                 }
@@ -142,13 +156,23 @@ namespace aquadrom
                 for (; i < 65; i++)
                     dataGridView1.Columns[i].Visible = false;
             }
+            else if (comboBoxYear.SelectedIndex > 0)
+            {
+                DaysToHide = 31 - DateTime.DaysInMonth(GetYearFromCombo(), GetMonthFromCombo());
+                for (; i < 65 - DaysToHide * 2; i += 2)
+                {
+                    dataGridView1.Columns[i].Visible = true;
+                    dataGridView1.Columns[i + 1].Visible = true;
 
-        }
+                    DateTime oldColumnDate = DateTime.Parse(dataGridView1.Columns[i].HeaderText);
+                    DateTime currentDate = new DateTime(oldColumnDate.Year, comboBoxMonths.SelectedIndex + 1, oldColumnDate.Day);
 
-        private void comboBoxMiesiace_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateColumnsToMonth();
-            FillFromDB();
+                    dataGridView1.Columns[i].HeaderText = currentDate.ToShortDateString();
+                }
+
+                for (; i < 65; i++)
+                    dataGridView1.Columns[i].Visible = false;
+            }
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -158,7 +182,6 @@ namespace aquadrom
             else
                 valueChanged = true;
         }
-
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!loadingFromDB)
@@ -168,6 +191,8 @@ namespace aquadrom
                     {
                         validated = true;
                         DateTime dateValue;
+                        dataGridView1[0, e.RowIndex].Tag = "";
+
                         if (DateTime.TryParse(e.FormattedValue.ToString(), out dateValue))
                         {
                             DateTime godz = new DateTime(dateValue.Year, dateValue.Month, dateValue.Day, 8, 0, 0);
@@ -177,34 +202,49 @@ namespace aquadrom
                             {
                                 if (secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
                                 {
-                                    e.Cancel = HoursAreCorrect(e.ColumnIndex, e.RowIndex, e.FormattedValue.ToString());
+                                    e.Cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex, e.FormattedValue.ToString());
                                     if (e.Cancel)
+                                    {
                                         dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";//TODO: wyświetlić błąd
+                                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                                    }
+                                    else
+                                    {
+                                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
+                                        dataGridView1[0, e.RowIndex].Tag = "Gotowe";
+                                    }
                                 }
-
                                 dateValue = GetColumnDate(dateValue, e);
                             }
                             else
                             {
                                 e.Cancel=true;
                                 dataGridView1[e.ColumnIndex,e.RowIndex].ErrorText="Błędna godzina";//TODO
+                                MessageBox.Show("Błędna godzina - pracujemy 8-22!");
                             }
                         }
                         else
                             if (e.FormattedValue.ToString().Length > 0)
                             {
-                                dataGridView1[e.RowIndex, e.ColumnIndex].ErrorText = "Zły format!";
-                                MessageBox.Show("cancel");
+                                dataGridView1[ e.ColumnIndex,e.RowIndex].ErrorText = "Zły format!";
                                 e.Cancel = true;
                             }
                         valueChanged = true;
                     }
+
                 }
-           
+        }
+        private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex > 2 && !loadingFromDB)
+            {
+                if (dayCompleted(e.ColumnIndex, e.RowIndex))
+                    MessageBox.Show("ok");
+            }
+
         }
 
-
-        private bool HoursAreCorrect(int columnIndex, int rowIndex, string currentHour)
+        private bool hoursAreCorrect(int columnIndex, int rowIndex, string currentHour)
         {
              DateTime startTime, stopTime;
              if (columnIndex % 2 == 1)//od
@@ -221,8 +261,7 @@ namespace aquadrom
              MessageBox.Show("od: " + startTime.ToShortTimeString() + " do: " + stopTime.ToShortTimeString());
              return (stopTime < startTime);
         }
-
-                private bool dayCompleted(int columnIndex, int rowIndex)
+        private bool dayCompleted(int columnIndex, int rowIndex)
         {
             int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
             MessageBox.Show(dataGridView1[start, rowIndex].Value.ToString() + "  " + dataGridView1[start + 1, rowIndex].Value.ToString());
@@ -231,7 +270,6 @@ namespace aquadrom
             else
                 return false;
         }
-
         private bool secoundTimeIsReady(int columnIndex, int rowIndex)
         {
             int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
@@ -255,14 +293,16 @@ namespace aquadrom
 
         }
 
-        private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+        private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.ColumnIndex > 2 && !loadingFromDB )
-            {
-                if (dayCompleted(e.ColumnIndex, e.RowIndex))
-                    MessageBox.Show("ok");
-            }
-
+            MessageBox.Show("year changed, loading:"+loadingFromDB.ToString());
+            UpdateColumnsToDate();
+            FillFromDB();
+        }
+        private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateColumnsToDate();
+            FillFromDB();
         }
 
     }
