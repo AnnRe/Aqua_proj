@@ -121,10 +121,12 @@ namespace DB
             if (hourExistsForWorkerInDB(imie, nazwisko, startTimeToSave))
             {
                 string query = "Update ";//TODO
+                throw new NotImplementedException();
             }
             else
             {
                 string query = "Insert";//TODO
+                throw new NotImplementedException();
             }
         }
 
