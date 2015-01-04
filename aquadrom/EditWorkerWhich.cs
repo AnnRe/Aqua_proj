@@ -24,7 +24,7 @@ namespace aquadrom
 
         private string chosen_id = "";
         private string WhichUser = "";
-        private string sql_edituser = "from Pracownik where " + Constants.PracownikIDpKol + "=";
+        private string sql_edituser = "from Pracownik where " + Constants.PracownikID + "=";
         public EditWorkerWhich(Form callingForm)
         {
             _mainform = callingForm as AdminPanel;
@@ -34,7 +34,7 @@ namespace aquadrom
 
         public void EditWorkerWhich_Load(object sender, EventArgs e)
         {
-            DataTable dtWorkers = connector.Select(Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
+            DataTable dtWorkers = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers.Rows)
             {
                 EditWorkerComboBox.Items.Add(row[1].ToString());
@@ -44,7 +44,7 @@ namespace aquadrom
         private void EditWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {                                                    
             WhichUser = this.EditWorkerComboBox.Text;
-            DataTable dtWorkers2 = connector.Select(Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
+            DataTable dtWorkers2 = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)

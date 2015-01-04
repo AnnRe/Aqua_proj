@@ -81,8 +81,8 @@ namespace DB
         public DataTable SelectWorkersAtTime(DateTime time)
         {
             polaczenie.Open();
-            string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + " from pracownik,godziny_pracy where ("
-                + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
+            string query = "Select " + Constants.PracownikImie + "," + Constants.PracownikNazwisko + " from pracownik,godziny_pracy where ("
+                + Constants.PracownikID + "=" + Constants.GodzinyPracyIdP +
                 " and "
                 + time.Date.ToString("yyyy-MM-dd HH:mm:ss") + " between " + Constants.GodzinyPracyOd + " and " + Constants.GodzinyPracyDo+")";
             DataTable toRet = new DataTable();
@@ -99,11 +99,11 @@ namespace DB
         {
             DateTime odTime = new DateTime(time.Year, time.Month, time.Day, 8, 0, 0);
             DateTime doTime = new DateTime(time.Year, time.Month, time.Day, 22, 0, 0);
-            string query = "Select " + Constants.PracownikImieKol + "," + Constants.PracownikNazwiskoKol + ", "+
+            string query = "Select " + Constants.PracownikImie + "," + Constants.PracownikNazwisko + ", "+
                 "CONVERT(VARCHAR(5), "+Constants.GodzinyPracyOd+",108) as 'OD', "+
                 "CONVERT(VARCHAR(5), " + Constants.GodzinyPracyDo + ",108) as 'DO' " +
                " from pracownik,godziny_pracy where ("
-                + Constants.PracownikIDpKol + "=" + Constants.GodzinyPracyIdP +
+                + Constants.PracownikID + "=" + Constants.GodzinyPracyIdP +
                 " and "
                 + Constants.GodzinyPracyOd+ " between '" + odTime.ToString("yyyy-MM-dd HH:mm:ss") + "' and '" + doTime.ToString("yyyy-MM-dd HH:mm:ss") + "')";
             DataTable toRet = new DataTable();
@@ -114,6 +114,30 @@ namespace DB
             
 
             return toRet;
+        }
+
+        public void UpdateHour(string imie, string nazwisko, DateTime startTimeToSave, DateTime stopTimeToSave)
+        {
+            if (hourExistsForWorkerInDB(imie, nazwisko, startTimeToSave))
+            {
+                string query = "Update ";//TODO
+            }
+            else
+            {
+                string query = "Insert";//TODO
+            }
+        }
+
+        private bool hourExistsForWorkerInDB(string imie, string nazwisko, DateTime time)
+        {
+            string query = "* from " + Constants.TabGodzinyPracy + "," + Constants.TabPracownik + " WHERE " +
+                Constants.GodzinyPracyIdP + "=" + Constants.PracownikID + " AND " + "CONVERT(VARCHAR(10)," +
+                Constants.GodzinyPracyOd + " ,105) = '" + time.ToString("dd-MM-yyyy") + "'" + " AND " + Constants.PracownikImie + " = '" + imie +
+                "' AND " + Constants.PracownikNazwisko + "= '" + nazwisko + "'";
+
+            DataTable tab= polaczenie.Select(query);
+
+            return tab.Rows.Count>0;
         }
     }
 }

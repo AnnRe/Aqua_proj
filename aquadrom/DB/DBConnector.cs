@@ -44,24 +44,24 @@ namespace DB
                     //pracownik.imie = reader.IsDBNull(colIndex) ?
                     //               string.Empty :
                     //               reader.GetString(colIndex);
-                    pracownik.imie = GetString(Constants.PracownikImieKol, reader);
+                    pracownik.imie = GetString(Constants.PracownikImie, reader);
                     //colIndex = reader.GetOrdinal(Constants.PracownikNazwiskoKol);
                     //pracownik.nazwisko = reader.IsDBNull(colIndex) ?
                     //               string.Empty :
                     //               reader.GetString(colIndex);
-                    pracownik.nazwisko = GetString(Constants.PracownikNazwiskoKol, reader);
+                    pracownik.nazwisko = GetString(Constants.PracownikNazwisko, reader);
                     //colIndex = reader.GetOrdinal(Constants.PracownikMailKol);
                     //pracownik.mail = reader.IsDBNull(colIndex) ?
                     //               string.Empty :
                     //               reader.GetString(colIndex);
-                    pracownik.mail = GetString(Constants.PracownikMailKol, reader);
+                    pracownik.mail = GetString(Constants.PracownikMail, reader);
                     //colIndex = reader.GetOrdinal(Constants.PracownikMiastoKol);
                     //pracownik.miasto = reader.IsDBNull(colIndex) ?
                     //               string.Empty :
                     //               reader.GetString(colIndex);
 
                     //colIndex = reader.GetOrdinal(Constants.PracownikUlicaKol);
-                    pracownik.ulica = GetString(Constants.PracownikUlicaKol,reader);
+                    pracownik.ulica = GetString(Constants.PracownikUlica,reader);
                         //reader.IsDBNull(colIndex) ?
                         //           string.Empty :
                         //           reader.GetString(colIndex);
@@ -70,19 +70,19 @@ namespace DB
                     //pracownik.pesel = reader.IsDBNull(colIndex) ?
                     //               string.Empty :
                     //               reader.GetString(colIndex);
-                    pracownik.pesel = GetString(Constants.PracownikPeselKol, reader);
+                    pracownik.pesel = GetString(Constants.PracownikPesel, reader);
 
                     //colIndex = reader.GetOrdinal(Constants.PracownikWaznKPPKol);
                     //pracownik.dataWażnościKPP = reader.IsDBNull(colIndex) ?
                     //               DateTime.Now :
                     //               reader.GetDateTime(colIndex);
-                    pracownik.dataWażnościKPP = GetDateTime(Constants.PracownikWaznKPPKol, reader);
+                    pracownik.dataWażnościKPP = GetDateTime(Constants.PracownikWaznKPP, reader);
 
                     //colIndex = reader.GetOrdinal(Constants.PracownikDataBadanKol);
                     //pracownik.dataBadan = reader.IsDBNull(colIndex) ?
                     //               DateTime.Now :
                     //               reader.GetDateTime(colIndex);
-                    pracownik.dataBadan = GetDateTime(Constants.PracownikDataBadanKol, reader);
+                    pracownik.dataBadan = GetDateTime(Constants.PracownikDataBadan, reader);
                     
                    // colIndex=reader.GetOrdinal(Constants.)
                     //TODO: dokończyć wczytywanie kolumn
@@ -149,19 +149,19 @@ namespace DB
         public void Insert(Pracownik pracownik)
         {
             string query = "Pracownik (" +
-               Constants.PracownikImieKol + "," +
-               Constants.PracownikNazwiskoKol + "," +
-               Constants.PracownikMiastoKol + "," +
-               Constants.PracownikUlicaKol + "," +
-               Constants.PracownikNrDomKol + "," +
-               Constants.PracownikNrMieszkaniaKol + "," +
-               Constants.PracownikPeselKol + "," +
-               Constants.PracownikStanowiskoKol + "," +
-               Constants.PracownikStopienBadanKol + "," +
-               Constants.PracownikTelKol + "," +
-               Constants.PracownikWaznKPPKol + "," +
-               Constants.PracownikMailKol + "," +
-               Constants.PracownikDataBadanKol;
+               Constants.PracownikImie + "," +
+               Constants.PracownikNazwisko + "," +
+               Constants.PracownikMiasto + "," +
+               Constants.PracownikUlica + "," +
+               Constants.PracownikNrDom + "," +
+               Constants.PracownikNrMieszkania + "," +
+               Constants.PracownikPesel + "," +
+               Constants.PracownikStanowisko + "," +
+               Constants.PracownikStopienBadan + "," +
+               Constants.PracownikTel + "," +
+               Constants.PracownikWaznKPP + "," +
+               Constants.PracownikMail + "," +
+               Constants.PracownikDataBadan;
             query += ") VALUES (";
             query += pracownik.imie +
                 pracownik.nazwisko +

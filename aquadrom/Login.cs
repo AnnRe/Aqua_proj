@@ -53,12 +53,12 @@ namespace aquadrom
                 if (true) /*row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text )&& row[Constants.PracownikHasloKol].ToString() ==/* sha256_hash(this.UserPasswordBox.Text))*/
                 {
                     ZgodaNaLogowanie = true;
-                    if (row[Constants.PracownikTypKontaKol].ToString().ToUpper()=="A")
+                    if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="A")
                     {
                         AdminPanel AdminPanel = new AdminPanel();
                         AdminPanel.Show();
                     }
-                    if (row[Constants.PracownikTypKontaKol].ToString().ToUpper()=="U")
+                    if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="U")
                     {
                         UserPanel UserPanel = new UserPanel();
                         UserPanel.Show();

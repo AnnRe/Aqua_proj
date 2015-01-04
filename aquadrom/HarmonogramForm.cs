@@ -33,6 +33,7 @@ namespace aquadrom
             harmonogram = new Harmonogram();
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
+            SetCellTags();
             CreateDayColumns();
 
             comboBoxMonths.SelectedIndex = DateTime.Now.Month - 1;
@@ -40,6 +41,14 @@ namespace aquadrom
 
             loadingFromDB = false;
 
+        }
+
+        private void SetCellTags()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[0].Tag = "";
+            }
         }
 
         private void FillFromDB()
@@ -228,7 +237,7 @@ namespace aquadrom
                                 dataGridView1[ e.ColumnIndex,e.RowIndex].ErrorText = "Zły format!";
                                 e.Cancel = true;
                             }
-                        valueChanged = true;
+                        valueChanged = false;
                     }
 
                 }
@@ -322,11 +331,17 @@ namespace aquadrom
                             {
                                 DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
                                 DateTime StopTimeToSave = GetColumnDate(col_i+1, row_i);
-                                dataGridView1.Update();
+
+                                DBAdapter adapter = new DBAdapter();
+                                adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave);
+
                                 MessageBox.Show("Zapisano");
                             }
                         }
                     }
+                }
+                else 
+                { //TODO
                 }
             }
         }

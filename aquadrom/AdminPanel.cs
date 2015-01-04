@@ -27,11 +27,11 @@ namespace aquadrom
 
         public void AdminPanel_Load(object sender, EventArgs e)
         {
-            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowyKol+"=u."+Constants.UmowaIDu);
+            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtlista.Columns.Remove(Constants.UmowaIDu);
-            dtlista.Columns.Remove(Constants.PracownikIDUmowyKol);
-            dtlista.Columns.Remove(Constants.PracownikHasloKol);
+            dtlista.Columns.Remove(Constants.PracownikIDUmowy);
+            dtlista.Columns.Remove(Constants.PracownikHaslo);
             dataGridView1.DataSource = dtlista.DefaultView;
 
  /*           foreach (DataGridView row in dataGridView1.Rows)
