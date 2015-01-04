@@ -130,7 +130,6 @@ namespace aquadrom
         {
             int i = 3;
             int DaysToHide;
-            MessageBox.Show("months: "+comboBoxMonths.SelectedIndex.ToString()+" year: "+comboBoxYear.SelectedIndex.ToString());
             if (comboBoxMonths.SelectedIndex >= 0)
             {
                 DaysToHide = 31 - DateTime.DaysInMonth(DateTime.Now.Year, GetMonthFromCombo());
@@ -214,7 +213,7 @@ namespace aquadrom
                                         dataGridView1[0, e.RowIndex].Tag = "Gotowe";
                                     }
                                 }
-                                dateValue = GetColumnDate(dateValue, e);
+                                dateValue = GetColumnDate(dateValue, e.ColumnIndex);
                             }
                             else
                             {
@@ -236,12 +235,7 @@ namespace aquadrom
         }
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex > 2 && !loadingFromDB)
-            {
-                if (dayCompleted(e.ColumnIndex, e.RowIndex))
-                    MessageBox.Show("ok");
-            }
-
+           
         }
 
         private bool hoursAreCorrect(int columnIndex, int rowIndex, string currentHour)
@@ -258,13 +252,12 @@ namespace aquadrom
                  stopTime = DateTime.Parse(currentHour);
              }
 
-             MessageBox.Show("od: " + startTime.ToShortTimeString() + " do: " + stopTime.ToShortTimeString());
              return (stopTime < startTime);
         }
         private bool dayCompleted(int columnIndex, int rowIndex)
         {
             int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
-            MessageBox.Show(dataGridView1[start, rowIndex].Value.ToString() + "  " + dataGridView1[start + 1, rowIndex].Value.ToString());
+            //MessageBox.Show(dataGridView1[start, rowIndex].Value.ToString() + "  " + dataGridView1[start + 1, rowIndex].Value.ToString());
             if (dataGridView1[start, rowIndex].Value.ToString().Length > 2 && dataGridView1[start + 1, rowIndex].Value.ToString().Length > 2)
                 return true;
             else
@@ -279,23 +272,31 @@ namespace aquadrom
                 return dataGridView1[start, rowIndex].Value.ToString().Length > 2;
         }
 
-        private DateTime GetColumnDate(DateTime dateValue, DataGridViewCellValidatingEventArgs e)
+        /// <summary>
+        /// Returns the Date and time using date from selected column and hour from given variable
+        /// </summary>
+        /// <param name="oldDate">Used to get info about the hour</param>
+        /// <param name="columnIndex">Column which from get the date</param>
+        /// <returns></returns>
+        private DateTime GetColumnDate(DateTime oldDate,int columnIndex)
         {
-            string columnName = dataGridView1.Columns[e.ColumnIndex + (e.ColumnIndex % 2 - 1)].HeaderText;
-
+            string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
             DateTime columnDate;
             DateTime.TryParse(columnName, out columnDate);
-            //MessageBox.Show("col: " + columnName + "  " + columnDate.ToString());
-
-            DateTime newDate = new DateTime(columnDate.Year, columnDate.Month, columnDate.Day, dateValue.Hour, dateValue.Minute, dateValue.Second);
-            //MessageBox.Show(newDate.ToString());
+            DateTime newDate = new DateTime(columnDate.Year, columnDate.Month, columnDate.Day, oldDate.Hour, oldDate.Minute, oldDate.Second);
             return newDate;
+        }
+        private DateTime GetColumnDate(int columnIndex, int rowIndex)
+        {
+            string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
+            DateTime cellHour;
+            DateTime.TryParse(dataGridView1[columnIndex, rowIndex].Value.ToString(), out cellHour);
 
+            return GetColumnDate(cellHour, columnIndex);
         }
 
         private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("year changed, loading:"+loadingFromDB.ToString());
             UpdateColumnsToDate();
             FillFromDB();
         }
@@ -303,6 +304,31 @@ namespace aquadrom
         {
             UpdateColumnsToDate();
             FillFromDB();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            for (int row_i = 0; row_i < dataGridView1.RowCount;row_i++ )
+            {
+                if (dataGridView1[0, row_i].Tag.ToString() != "")
+                {
+                   string imie = dataGridView1[0, row_i].Value.ToString();
+                   string nazwisko = dataGridView1[1, row_i].Value.ToString();
+                    for (int col_i = 3; col_i < dataGridView1.ColumnCount; col_i+=2)
+                    {
+                        if (dataGridView1[col_i, row_i].Visible)
+                        {
+                            if (dataGridView1[col_i, row_i].Value != "" && dataGridView1[col_i, row_i].Value != "")
+                            {
+                                DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
+                                DateTime StopTimeToSave = GetColumnDate(col_i+1, row_i);
+                                dataGridView1.Update();
+                                MessageBox.Show("Zapisano");
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }

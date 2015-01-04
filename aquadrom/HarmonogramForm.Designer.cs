@@ -44,6 +44,7 @@
             this.pracownikTableAdapter = new aquadrom.aquadromDataSetTableAdapters.PracownikTableAdapter();
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
+            this.buttonSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -173,11 +174,22 @@
             this.comboBoxYear.TabIndex = 3;
             this.comboBoxYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear_SelectedIndexChanged);
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(234, 10);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(112, 23);
+            this.buttonSave.TabIndex = 4;
+            this.buttonSave.Text = "Zapisz zmiany";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 262);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxYear);
             this.Controls.Add(this.comboBoxMonths);
             this.Controls.Add(this.dataGridView1);
@@ -210,5 +222,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.ComboBox comboBoxMonths;
         private System.Windows.Forms.ComboBox comboBoxYear;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
