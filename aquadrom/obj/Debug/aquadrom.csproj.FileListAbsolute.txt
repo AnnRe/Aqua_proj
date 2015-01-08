@@ -1,6 +1,6 @@
-E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.exe.config
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.exe
-E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.pdb
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.exe.config
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.csprojResolveAssemblyReference.cache
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.EditWorker.resources
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources

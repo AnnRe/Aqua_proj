@@ -188,7 +188,8 @@ namespace aquadrom
 
             if (!loadingFromDB&& !settingUp && e.ColumnIndex>2&&e.RowIndex>=0)
             {
-                if (secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
+                dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Empty;
+                if (dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString()!=""&& secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
                 {
                     bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
                     if (cancel)
@@ -202,6 +203,7 @@ namespace aquadrom
                         dataGridView1[0, e.RowIndex].Tag = "Gotowe";
                     }
                 }
+                else { dataGridView1[0, e.RowIndex].Tag = "Prawie";  }
             }
         }
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -221,13 +223,20 @@ namespace aquadrom
                             
                             if (dateValue.CompareTo(godz) >= 0 && dateValue.CompareTo(godz.AddHours(14)) <= 0)
                             {
-                                dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";//TODO
+                                if(Convert.ToInt32(dateValue.Minute.ToString())%15 == 0)
+                                    dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
+                                else
+                                {
+                                    MessageBox.Show("Czas podajemy co 15min");
+                                    e.Cancel = true;
+                                    dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Czas odmierzamy co 15min";
+                                }
 
                             }
                             else
                             {
                                 e.Cancel=true;
-                                dataGridView1[e.ColumnIndex,e.RowIndex].ErrorText="Błędna godzina";//TODO
+                                dataGridView1[e.ColumnIndex,e.RowIndex].ErrorText="Błędna godzina";
                                 MessageBox.Show("Błędna godzina - pracujemy 8-22!");
                             }
                         }
@@ -317,6 +326,7 @@ namespace aquadrom
         private void buttonSave_Click(object sender, EventArgs e)
         {
             bool saveSucceed = true;
+            bool partialDataAppear = false;
             for (int row_i = 0; row_i < dataGridView1.RowCount;row_i++ )
             {
                 if (dataGridView1[0, row_i].Tag.ToString() != "")
@@ -328,14 +338,19 @@ namespace aquadrom
                     {
                         if (dataGridView1[col_i, row_i].Visible)
                         {
-                            if (dataGridView1[col_i, row_i].Value != "" && dataGridView1[col_i, row_i].Value != "")
+                            if (dataGridView1[col_i, row_i].Value != "" && dataGridView1[col_i+1, row_i].Value != "")
                             {
                                 DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
-                                DateTime StopTimeToSave = GetColumnDate(col_i+1, row_i);
+                                DateTime StopTimeToSave = GetColumnDate(col_i + 1, row_i);
 
                                 DBAdapter adapter = new DBAdapter();
                                 if (!adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
                                     saveSucceed = false;
+                            }
+                            else if (dataGridView1[0, row_i].Tag.ToString()=="Prawie")
+                            {
+                                HighlightMissingCell(row_i, col_i);
+                                partialDataAppear = true;
                             }
                         }
                     }
@@ -344,10 +359,20 @@ namespace aquadrom
                 { //TODO
                 }
             }
-            if (saveSucceed)
+            if (saveSucceed&&!partialDataAppear)
                 MessageBox.Show("Zapisano pomyślnie");
+            else if(partialDataAppear)
+                MessageBox.Show("Godziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane");
             else
                 MessageBox.Show("Błąd podczas zapisywania");
+        }
+
+        private void HighlightMissingCell(int row_i, int col_i)
+        {
+            if (dataGridView1[col_i, row_i].Value.ToString() == "" && dataGridView1[col_i + 1, row_i].Value.ToString() != "")
+                dataGridView1[col_i,row_i].Style.BackColor=Color.LightGray;
+            if (dataGridView1[col_i + 1, row_i].Value.ToString() == "" && dataGridView1[col_i , row_i].Value.ToString() != "")
+                dataGridView1[col_i+1, row_i].Style.BackColor = Color.LightGray;
         }
 
     }
