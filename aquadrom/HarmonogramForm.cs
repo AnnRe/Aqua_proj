@@ -321,8 +321,9 @@ namespace aquadrom
             {
                 if (dataGridView1[0, row_i].Tag.ToString() != "")
                 {
-                   string imie = dataGridView1[0, row_i].Value.ToString();
-                   string nazwisko = dataGridView1[1, row_i].Value.ToString();
+                    string imie = dataGridView1[0, row_i].Value.ToString();
+                    string nazwisko = dataGridView1[1, row_i].Value.ToString();
+                    
                     for (int col_i = 3; col_i < dataGridView1.ColumnCount; col_i+=2)
                     {
                         if (dataGridView1[col_i, row_i].Visible)
@@ -333,9 +334,10 @@ namespace aquadrom
                                 DateTime StopTimeToSave = GetColumnDate(col_i+1, row_i);
 
                                 DBAdapter adapter = new DBAdapter();
-                                adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave);
-
-                                MessageBox.Show("Zapisano");
+                                if (adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
+                                    MessageBox.Show("Zapisano");
+                                else
+                                    MessageBox.Show("Błąd podczas zapisu");
                             }
                         }
                     }

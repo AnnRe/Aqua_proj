@@ -112,5 +112,14 @@ namespace DB
 
             Insert(query);
         }
+
+        public void Update(string query)
+        {
+            Open();
+            string queryText = "UPDATE " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
     }
 }

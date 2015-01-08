@@ -22,16 +22,7 @@ namespace DB
         {
             polaczenie.Close();
         }
-        public void Open()
-        {
-            polaczenie.Open();
-        }
-
-        public void Close()
-        {
-            polaczenie.Close();
-        }
-
+       
         public DataTable GetData(string query)
         {
             polaczenie.Open();
@@ -48,7 +39,6 @@ namespace DB
 
         public bool Insert(string query)
         {
-           
             try {  polaczenie.Insert(query);  }
             catch { return false; }     
             return true;
@@ -74,6 +64,16 @@ namespace DB
             try { polaczenie.Insert(pracownik); }
             catch {
                 return false; 
+            }
+            return true;
+        }
+
+        public bool Update(string query)
+        {
+            try { polaczenie.Update(query); }
+            catch
+            {
+                return false;
             }
             return true;
         }
@@ -116,7 +116,7 @@ namespace DB
             return toRet;
         }
 
-        public void UpdateHour(string imie, string nazwisko, DateTime startTimeToSave, DateTime stopTimeToSave)
+        public bool UpdateHour(string imie, string nazwisko, DateTime startTimeToSave, DateTime stopTimeToSave)
         {
             if (hourExistsForWorkerInDB(imie, nazwisko, startTimeToSave))
             {
@@ -127,6 +127,16 @@ namespace DB
             {
                 string query = "Insert";//TODO
                 throw new NotImplementedException();
+            }
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                return false;
             }
         }
 
