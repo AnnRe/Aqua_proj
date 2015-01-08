@@ -120,6 +120,7 @@ namespace DB
         {
             if (hourExistsForWorkerInDB(imie, nazwisko, startTimeToSave))
             {
+                int iD = GetUserId(imie, nazwisko);
                 string query = "Update ";//TODO
                 throw new NotImplementedException();
             }
@@ -138,6 +139,19 @@ namespace DB
 
                 return false;
             }
+        }
+
+        private int GetUserId(string imie, string nazwisko)
+        {
+            string query = Constants.PracownikID + " from " + Constants.TabPracownik + " where (" + Constants.PracownikImie + "= '" + imie + "' AND " + Constants.PracownikNazwisko + " = '" + nazwisko +"')";
+            DataTable ids = polaczenie.Select(query);
+            if(ids.Rows.Count>0)
+            {
+                string ID=ids.Rows[0][0].ToString();
+                return Convert.ToInt32(ID);
+            }
+            else
+                return 0;
         }
 
         private bool hourExistsForWorkerInDB(string imie, string nazwisko, DateTime time)
