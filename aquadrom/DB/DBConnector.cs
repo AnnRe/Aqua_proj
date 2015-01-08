@@ -29,37 +29,6 @@ namespace DB
             polaczenie.Close();
         }
 
-        public List<Pracownik> SelectPracownicy(string query)
-        {
-            List<Pracownik> pracownicy = new List<Pracownik>();
-            string queryText = "Select " + query;
-            using (SqlCommand cmdsel = new SqlCommand(queryText, polaczenie))
-            {
-                SqlDataReader reader = cmdsel.ExecuteReader();
-                while (reader.Read())
-                {
-                    Pracownik pracownik = new Pracownik();
-                    pracownik.imie = GetString(Constants.PracownikImie, reader);
-                    pracownik.nazwisko = GetString(Constants.PracownikNazwisko, reader);
-                    pracownik.mail = GetString(Constants.PracownikMail, reader);
-                    
-                    pracownik.ulica = GetString(Constants.PracownikUlica,reader);
-                    pracownik.pesel = GetString(Constants.PracownikPesel, reader);
-                    pracownik.dataWażnościKPP = GetDateTime(Constants.PracownikWaznKPP, reader);
-                    pracownik.dataBadan = GetDateTime(Constants.PracownikDataBadan, reader);
-                    
-                   // colIndex=reader.GetOrdinal(Constants.)
-                    //TODO: dokończyć wczytywanie kolumn
-                    pracownicy.Add(pracownik);
-
-                }
-                var columns = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
-                reader.Close();
-            }
-            return pracownicy;
-        }
-
-
         public void Insert(string query)
         {
             Open();
