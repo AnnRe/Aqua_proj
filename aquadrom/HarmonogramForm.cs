@@ -16,20 +16,21 @@ namespace aquadrom
     {
 
         private bool loadingFromDB;
+        private bool settingUp;
         private bool valueChanged;
-        private bool validated;
         private Harmonogram harmonogram;
 
         public HarmonogramForm()
         {
+            settingUp = true;
             InitializeComponent();
+            settingUp = false;
         }
 
         private void HarmonogramForm_Load(object sender, EventArgs e)
         {
             loadingFromDB = true;
             valueChanged = true;
-            validated = false;
             harmonogram = new Harmonogram();
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
@@ -90,7 +91,6 @@ namespace aquadrom
         {
             return (Convert.ToInt32(comboBoxYear.SelectedIndex.ToString()) >= 0) ? Convert.ToInt32(comboBoxYear.SelectedItem.ToString()) : DateTime.Now.Year;
         }
-
         private int GetMonthFromCombo()
         {
             return comboBoxMonths.SelectedIndex + 1 > 0 ? comboBoxMonths.SelectedIndex + 1 : DateTime.Now.Month;
@@ -185,20 +185,23 @@ namespace aquadrom
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            /*if(validated)
-                validated = false;
-            else
-                valueChanged = true;*/
-            if (!loadingFromDB)
+
+            if (!loadingFromDB&& !settingUp && e.ColumnIndex>2&&e.RowIndex>=0)
             {
-                valueChanged = true;
-                if (validated)
-                    valueChanged = false;
-            }
-            else
-            {
-                validated = false;
-                valueChanged = false;
+                if (secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
+                {
+                    bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
+                    if (cancel)
+                    {
+                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";//TODO: wyświetlić błąd
+                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                    }
+                    else
+                    {
+                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
+                        dataGridView1[0, e.RowIndex].Tag = "Gotowe";
+                    }
+                }
             }
         }
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -206,9 +209,8 @@ namespace aquadrom
             if (!loadingFromDB)
                 if (e.ColumnIndex > 2)
                 {
-                    if (valueChanged)
+                    //if (valueChanged)
                     {
-                        validated = true;
                         DateTime dateValue;
                         dataGridView1[0, e.RowIndex].Tag = "";
 
@@ -219,21 +221,8 @@ namespace aquadrom
                             
                             if (dateValue.CompareTo(godz) >= 0 && dateValue.CompareTo(godz.AddHours(14)) <= 0)
                             {
-                                if (secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
-                                {
-                                    e.Cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex, e.FormattedValue.ToString());
-                                    if (e.Cancel)
-                                    {
-                                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";//TODO: wyświetlić błąd
-                                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
-                                    }
-                                    else
-                                    {
-                                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
-                                        dataGridView1[0, e.RowIndex].Tag = "Gotowe";
-                                    }
-                                }
-                                dateValue = GetColumnDate(dateValue, e.ColumnIndex);
+                                dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";//TODO
+
                             }
                             else
                             {
@@ -248,29 +237,27 @@ namespace aquadrom
                                 dataGridView1[ e.ColumnIndex,e.RowIndex].ErrorText = "Zły format!";
                                 e.Cancel = true;
                             }
-                        valueChanged = false;
                     }
 
                 }
         }
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            if(dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString().Length>0)
-                validated = true;
+            
         }
 
-        private bool hoursAreCorrect(int columnIndex, int rowIndex, string currentHour)
+        private bool hoursAreCorrect(int columnIndex, int rowIndex)
         {
              DateTime startTime, stopTime;
              if (columnIndex % 2 == 1)//od
              {
-                 startTime = DateTime.Parse(currentHour);
+                 startTime = DateTime.Parse(dataGridView1[columnIndex,rowIndex].Value.ToString());
                  stopTime = DateTime.Parse(dataGridView1[columnIndex + 1, rowIndex].Value.ToString());
              }
              else//do
              {
                  startTime = DateTime.Parse(dataGridView1[columnIndex - 1, rowIndex].Value.ToString());
-                 stopTime = DateTime.Parse(currentHour);
+                 stopTime = DateTime.Parse(dataGridView1[columnIndex, rowIndex].Value.ToString());
              }
 
              return (stopTime < startTime);
@@ -329,6 +316,7 @@ namespace aquadrom
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            bool saveSucceed = true;
             for (int row_i = 0; row_i < dataGridView1.RowCount;row_i++ )
             {
                 if (dataGridView1[0, row_i].Tag.ToString() != "")
@@ -346,10 +334,8 @@ namespace aquadrom
                                 DateTime StopTimeToSave = GetColumnDate(col_i+1, row_i);
 
                                 DBAdapter adapter = new DBAdapter();
-                                if (adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
-                                    MessageBox.Show("Zapisano");
-                                else
-                                    MessageBox.Show("Błąd podczas zapisu");
+                                if (!adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
+                                    saveSucceed = false;
                             }
                         }
                     }
@@ -358,6 +344,10 @@ namespace aquadrom
                 { //TODO
                 }
             }
+            if (saveSucceed)
+                MessageBox.Show("Zapisano pomyślnie");
+            else
+                MessageBox.Show("Błąd podczas zapisywania");
         }
 
     }
