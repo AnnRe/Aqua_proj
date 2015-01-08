@@ -23,6 +23,10 @@ namespace DB
             polaczenie.Open();
         }
 
+        public void Close()
+        {
+            polaczenie.Close();
+        }
         public List<Pracownik> SelectPracownicy(string query)
         {
             List<Pracownik> pracownicy = new List<Pracownik>();
@@ -92,9 +96,11 @@ namespace DB
 
         public void Insert(string query)
         {
+            Open();
             string queryText = "Insert " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
             cmdsel.BeginExecuteNonQuery();
+            Close();
         }
 
         public void Delete(string query)
@@ -140,21 +146,29 @@ namespace DB
                Constants.PracownikTelKol + "," +
                Constants.PracownikWaznKPPKol + "," +
                Constants.PracownikMailKol + "," +
-               Constants.PracownikDataBadanKol;
-            query += ") VALUES (";
-            query += pracownik.imie +
-                pracownik.nazwisko +
-                pracownik.miasto +
-                pracownik.ulica +
-                pracownik.numerDomu +
-                pracownik.numerMieszkania +
-                pracownik.pesel +
-                pracownik.stanowisko +
-                pracownik.stopien +
-                pracownik.numerTelefonu +
-                pracownik.dataWażnościKPP +
-                pracownik.mail +
-                pracownik.dataBadan + ")";
+               Constants.PracownikDataBadanKol + "," +
+               Constants.PracownikLoginKol + "," +
+               Constants.PracownikHasloKol + "," +
+               Constants.PracownikIDUmowyKol + "," +
+               Constants.PracownikTypKontaKol;
+            query += ") VALUES ('";
+            query += pracownik.imie + "','" +
+                pracownik.nazwisko + "','" +
+                pracownik.miasto + "','" +
+                pracownik.ulica + "','" +
+                pracownik.numerDomu + "','" +
+                pracownik.numerMieszkania + "','" +
+                pracownik.pesel + "','" +
+                pracownik.stanowisko + "','" +
+                pracownik.stopien + "','" +
+                pracownik.numerTelefonu + "','" +
+                pracownik.dataWażnościKPP + "','" +
+                pracownik.mail + "','" +
+                pracownik.dataBadan + "','" +
+                pracownik.login + "','" +
+                pracownik.haslo + "','" +
+                pracownik.idUmowy + "','" +
+                pracownik.typKonta + "')";
 
             Insert(query);
         }

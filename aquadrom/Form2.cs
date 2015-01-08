@@ -17,9 +17,6 @@ namespace aquadrom
     public partial class Form2 : Form
     {
         DBAdapter adapter = new DBAdapter();
-        private string sql_add_employer = "INSERT into Pracownik VALUES";
-        private string sql_add_agreement = "INSERT into Umowa VALUES";
-
         public static bool exist = false;
 
         public Form2()
@@ -28,7 +25,7 @@ namespace aquadrom
 
             foreach (var item in Enum.GetValues(typeof(eStanowisko)))
             {
-                Stanowisko2.Items.Add(item);
+                StanowiskoUzytkownika.Items.Add(item);
             }
 
             foreach (var item in Enum.GetValues(typeof(eStopien)))
@@ -43,29 +40,37 @@ namespace aquadrom
         {
             this.Close();
         }
-        private bool Add_Employer()
+        private void Add_Employer()
         {
             Pracownik pracownik = new Pracownik()
             {
-                imie = Imie2.Text,
-                nazwisko = Nazwisko2.Text,
-                miasto = Miasto2.Text,
-                ulica = Ulica2.Text,
+
+                imie = ImieUzytkownika.Text,
+                nazwisko = NazwiskoUzytkownika.Text,
+                miasto = MiastoUzytkownika.Text,
+                ulica = UlicaUzytkownika.Text,
                 numerDomu = NumerDomu.Text,
-                numerMieszkania = numericUpDown1.Text,
-                pesel = Pesel2.Text,
-                stanowisko = (eStanowisko) Enum.Parse(typeof(eStanowisko), Stanowisko2.SelectedItem.ToString()),
+                numerMieszkania = NumerMieszkania.Text,
+                pesel = PeselUzytkownika.Text,
+                stanowisko = (eStanowisko) Enum.Parse(typeof(eStanowisko), StanowiskoUzytkownika.SelectedItem.ToString()),
                 stopien = (eStopien)Enum.Parse(typeof(eStopien), Stopień.SelectedItem.ToString()),
                 numerTelefonu=NumerTelefonu.Text,
-                dataWażnościKPP=DateTime.Parse(DataKPP.Text),
-                mail=Email2.Text,
-                dataBadan = DateTime.Parse(DataMedycynyPRacy.Text),
-                login= Login2.Text,
-                haslo=Haslo2.Text
+                dataWażnościKPP=DateTime.Parse(KoniecKPP.Text),
+                mail=AdresEmail.Text,
+                dataBadan = DateTime.Parse(DataBadan.Text),
+                login= LoginUzytkownika.Text,
+                haslo=HasloUzytkownika.Text
             };
             adapter.Insert(pracownik);
-            MessageBox.Show("Dane pracownika zostały zapsiane w bazie danych.");
-            return true;
+            if (adapter.Insert(pracownik) == true)
+            {
+                MessageBox.Show("Dane pracownika zostały zapsiane w bazie.");
+            }
+            else if (adapter.Insert(pracownik) == false)
+            {
+                MessageBox.Show("Błąd!.");
+            }
+           // MessageBox.Show(pracownik.imie.ToString());
         }
         private void AddEmployer_Click(object sender, EventArgs e)
         {
@@ -108,6 +113,11 @@ namespace aquadrom
         }
 
         private void TypUmowy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PoczatekUmowy_ValueChanged(object sender, EventArgs e)
         {
 
         }
