@@ -28,11 +28,11 @@ namespace aquadrom
 
         public void AdminPanel_Load(object sender, EventArgs e)
         {
-            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowyKol+"=u."+Constants.UmowaIDu);
+            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtlista.Columns.Remove(Constants.UmowaIDu);
-            dtlista.Columns.Remove(Constants.PracownikIDUmowyKol);
-            dtlista.Columns.Remove(Constants.PracownikHasloKol);
+            dtlista.Columns.Remove(Constants.PracownikIDUmowy);
+            dtlista.Columns.Remove(Constants.PracownikHaslo);
             dataGridView1.DataSource = dtlista.DefaultView;
             dataGridView1.Columns[Constants.PracownikOstrzezenie].Visible = false;
             ColorCheckUser();
@@ -76,21 +76,21 @@ namespace aquadrom
             {
                 changeKPP = false;
                 changemedi = false;
-                DateTime KPPdate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPPKol].Value.ToString());
-                DateTime medicaldate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikDataBadanKol].Value.ToString());
+                DateTime KPPdate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPP].Value.ToString());
+                DateTime medicaldate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikDataBadan].Value.ToString());
 
 
                 if (today >= KPPdate)
                 {
-                    dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Style.BackColor = Color.Red;
-                    dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPPKol].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikID].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPP].Style.BackColor = Color.Red;
                     changeKPP = true;
                 }
 
                 if (today >= medicaldate)
                 {
-                    dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Style.BackColor = Color.Red;
-                    dataGridView1.Rows[i].Cells[Constants.PracownikDataBadanKol].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikID].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikDataBadan].Style.BackColor = Color.Red;
                     changemedi = true;
                 }
 
@@ -99,7 +99,7 @@ namespace aquadrom
                     sendmail(i,KPPdate,medicaldate,changeKPP);
                 }
                 else if (dataGridView1.Rows[i].Cells[Constants.PracownikOstrzezenie].Value.ToString() == "t")
-                    adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenie + "='f' where " + Constants.PracownikIDpKol + "=" + dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Value.ToString());
+                    adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenie + "='f' where " + Constants.PracownikID + "=" + dataGridView1.Rows[i].Cells[Constants.PracownikID].Value.ToString());
             }
         }
 
@@ -116,12 +116,12 @@ namespace aquadrom
                 var fromAdress = new MailAddress("aquadromautomat@gmail.com", "System automatycznej informacji");
                 var toAdress = new MailAddress("aquadromboss@gmail.com", "Administrator Firmy sMMonpar ");
                 const string fromPassword = "aquadrom123";
-                string subject = "Ostrzeżenie " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImieKol].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwiskoKol].Value.ToString();
+                string subject = "Ostrzeżenie " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImie].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwisko].Value.ToString();
 
                 if (changeKPP == true) what = " Data ważności KPP: " + KPPdate.ToString("dd-MM-yyyy");
                 else what = " Data ważności badań lekarskich " + medicaldate.ToString("dd-MM-yyyy");
 
-                string body = "Pracownik: " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImieKol].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwiskoKol].Value.ToString() + "\n" + what;
+                string body = "Pracownik: " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImie].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwisko].Value.ToString() + "\n" + what;
                 var smtp = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
@@ -139,7 +139,7 @@ namespace aquadrom
                 {
                     smtp.Send(message);
                 }
-                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenie + "='t' where " + Constants.PracownikIDpKol + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikIDpKol].Value.ToString());
+                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenie + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
         }
     }
