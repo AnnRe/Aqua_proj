@@ -118,27 +118,26 @@ namespace DB
 
         public bool UpdateHour(string imie, string nazwisko, DateTime startTimeToSave, DateTime stopTimeToSave)
         {
+            int iD = GetUserId(imie, nazwisko);
             if (hourExistsForWorkerInDB(imie, nazwisko, startTimeToSave))
             {
-                int iD = GetUserId(imie, nazwisko);
-                string query = "Update ";//TODO
-                throw new NotImplementedException();
+                string query = Constants.TabGodzinyPracy + " SET " + Constants.GodzinyPracyOd + "= '" + startTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "'," + Constants.GodzinyPracyDo +
+                   "= '" + stopTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE " + Constants.GodzinyPracyIdP + " = " + iD;
+                try { polaczenie.Update(query); }
+                catch (Exception) { return false; }
+
             }
             else
             {
-                string query = "Insert";//TODO
-                throw new NotImplementedException();
+                string query = Constants.TabGodzinyPracy+"("+Constants.GodzinyPracyOd+","+Constants.GodzinyPracyDo+","+Constants.GodzinyPracyIdP+")"
+                    +" VALUES ('"+startTimeToSave.ToString("yyyy-MM-dd HH:mm:ss")+"', '"+stopTimeToSave.ToString("yyyy-MM-dd HH:mm:ss")+"',"+iD+")";
+
+                try { polaczenie.Insert(query); }
+                catch (Exception) { return false; }
             }
 
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
+            return true;
+           
         }
 
         private int GetUserId(string imie, string nazwisko)

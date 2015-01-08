@@ -185,10 +185,21 @@ namespace aquadrom
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(validated)
+            /*if(validated)
                 validated = false;
             else
+                valueChanged = true;*/
+            if (!loadingFromDB)
+            {
                 valueChanged = true;
+                if (validated)
+                    valueChanged = false;
+            }
+            else
+            {
+                validated = false;
+                valueChanged = false;
+            }
         }
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
@@ -244,7 +255,8 @@ namespace aquadrom
         }
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if(dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString().Length>0)
+                validated = true;
         }
 
         private bool hoursAreCorrect(int columnIndex, int rowIndex, string currentHour)
