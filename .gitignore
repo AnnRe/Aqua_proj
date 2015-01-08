@@ -1,1 +1,6 @@
 *.exe
+DBTests/obj/Debug/
+aquadrom/obj/Debug/
+aquadrom/bin/Debug/
+Tests/bin/Debug/
+Tests/onj/Debug/
