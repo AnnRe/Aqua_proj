@@ -34,9 +34,8 @@ namespace aquadrom
             harmonogram = new Harmonogram();
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
-            SetCellTags();
             CreateDayColumns();
-
+            ClearTags();
             comboBoxMonths.SelectedIndex = DateTime.Now.Month - 1;
             comboBoxYear.SelectedItem = DateTime.Now.Year.ToString();
 
@@ -44,14 +43,13 @@ namespace aquadrom
 
         }
 
-        private void SetCellTags()
+        private void ClearTags()
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.Cells[0].Tag = "";
-            }
+            for(int i =0;i<dataGridView1.RowCount;i++)
+                dataGridView1[2,i].Tag = "";
         }
 
+      
         private void FillFromDB()
         {
             loadingFromDB = true;
@@ -186,24 +184,53 @@ namespace aquadrom
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (!loadingFromDB&& !settingUp && e.ColumnIndex>2&&e.RowIndex>=0)
+            if (!loadingFromDB && !settingUp && e.ColumnIndex > 2 && e.RowIndex >= 0)
             {
                 dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Empty;
-                if (dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString()!=""&& secoundTimeIsReady(e.ColumnIndex, e.RowIndex))
-                {
-                    bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
-                    if (cancel)
+
+                if (bothTimesAreReady(e.ColumnIndex, e.RowIndex))
                     {
-                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";//TODO: wyświetlić błąd
-                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
+                        if (cancel)
+                        {
+                            dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";//TODO: wyświetlić błąd
+                            MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        }
+                        else
+                        {
+                            dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
+                        }
                     }
-                    else
-                    {
-                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
-                        dataGridView1[0, e.RowIndex].Tag = "Gotowe";
-                    }
+
+                SetCurrentCellTags(e.ColumnIndex, e.RowIndex);
+            }
+        }
+
+        private void SetCurrentCellTags(int columnIndex, int rowIndex)
+        {
+            int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
+            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
+            {//pierwszy pusty
+                if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+                {//oba puste
+                    dataGridView1[2, rowIndex].Tag = "";
+                    dataGridView1[start + 1, rowIndex].Value = "";
+                    dataGridView1[start , rowIndex].Value = "";
                 }
-                else { dataGridView1[0, e.RowIndex].Tag = "Prawie";  }
+                else
+                {
+                    dataGridView1[2, rowIndex].Tag = "Prawie";
+                    dataGridView1[start, rowIndex].Value = "";
+                }
+            }
+            else if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+            { //drugi pusty, pierwszy nie
+                dataGridView1[2, rowIndex].Tag = "Prawie";
+                dataGridView1[start+1, rowIndex].Value = "";
+            }
+            else
+            { //wypełnione
+                dataGridView1[2, rowIndex].Tag = "Gotowe";
             }
         }
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -211,10 +238,13 @@ namespace aquadrom
             if (!loadingFromDB)
                 if (e.ColumnIndex > 2)
                 {
-                    //if (valueChanged)
+                    if (dataGridView1[e.ColumnIndex, e.RowIndex].Value == null)
+                    {
+                        dataGridView1[e.ColumnIndex, e.RowIndex].Value = "";
+                        return;
+                    }
                     {
                         DateTime dateValue;
-                        dataGridView1[0, e.RowIndex].Tag = "";
 
                         if (DateTime.TryParse(e.FormattedValue.ToString(), out dateValue))
                         {
@@ -280,13 +310,27 @@ namespace aquadrom
             else
                 return false;
         }
-        private bool secoundTimeIsReady(int columnIndex, int rowIndex)
+        private bool bothTimesAreReady(int columnIndex, int rowIndex)
         {
             int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
-            if (columnIndex == start)
-                return dataGridView1[columnIndex + 1, rowIndex].Value.ToString().Length > 2;
-            else
-                return dataGridView1[start, rowIndex].Value.ToString().Length > 2;
+
+            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
+            {//pierwsza pusta
+                if (dataGridView1[start + 1, rowIndex].Value != null && dataGridView1[start + 1, rowIndex].Value.ToString() != "")
+                {//druga nie pusta
+                    return false;
+                }
+                else
+                {//i druga też pusta
+                    return false;
+                }
+            }
+            else if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+            {//druga pusta, ale pierwsza nie
+                return false;
+            }
+            return true;
+            
         }
 
         /// <summary>
@@ -329,7 +373,7 @@ namespace aquadrom
             bool partialDataAppear = false;
             for (int row_i = 0; row_i < dataGridView1.RowCount;row_i++ )
             {
-                if (dataGridView1[0, row_i].Tag.ToString() != "")
+                if (dataGridView1[2, row_i].Tag.ToString() != "")
                 {
                     string imie = dataGridView1[0, row_i].Value.ToString();
                     string nazwisko = dataGridView1[1, row_i].Value.ToString();
@@ -338,7 +382,7 @@ namespace aquadrom
                     {
                         if (dataGridView1[col_i, row_i].Visible)
                         {
-                            if (dataGridView1[col_i, row_i].Value != "" && dataGridView1[col_i+1, row_i].Value != "")
+                            if (dataGridView1[2, row_i].Tag.ToString() == "Gotowe")
                             {
                                 DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
                                 DateTime StopTimeToSave = GetColumnDate(col_i + 1, row_i);
@@ -347,7 +391,7 @@ namespace aquadrom
                                 if (!adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
                                     saveSucceed = false;
                             }
-                            else if (dataGridView1[0, row_i].Tag.ToString()=="Prawie")
+                            else if (dataGridView1[2, row_i].Tag.ToString()=="Prawie")
                             {
                                 HighlightMissingCell(row_i, col_i);
                                 partialDataAppear = true;
