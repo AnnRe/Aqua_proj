@@ -78,11 +78,40 @@ namespace aquadrom.Objects
                 return false;
         }
 
+        private void SetCurrentCellTags(int columnIndex, int rowIndex)
+        {
+            int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
+            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
+            {//pierwszy pusty
+                if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+                {//oba puste
+                    dataGridView1[2, rowIndex].Tag = "";
+                    dataGridView1[start + 1, rowIndex].Value = "";
+                    dataGridView1[start, rowIndex].Value = "";
+                }
+                else
+                {
+                    dataGridView1[2, rowIndex].Tag = "Prawie";
+                    dataGridView1[start, rowIndex].Value = "";
+                }
+            }
+            else if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+            { //drugi pusty, pierwszy nie
+                dataGridView1[2, rowIndex].Tag = "Prawie";
+                dataGridView1[start + 1, rowIndex].Value = "";
+            }
+            else
+            { //wypełnione
+                dataGridView1[2, rowIndex].Tag = "Gotowe";
+            }
+        }
+
         public string Save()
         {
+            SetAllTags();
             bool saveSucceed = true;
             bool partialDataAppear = false;
-            for (int row_i = 0; row_i < dataGridView1.RowCount; row_i++)
+            for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
             {
                 if (dataGridView1[2, row_i].Tag.ToString() != "")
                 {
@@ -93,7 +122,7 @@ namespace aquadrom.Objects
                     {
                         if (dataGridView1[col_i, row_i].Visible)
                         {
-                            if (dataGridView1[2, row_i].Tag.ToString() == "Gotowe")
+                            if (bothTimesAreReady(col_i,row_i))
                             {
                                 DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
                                 DateTime StopTimeToSave = GetColumnDate(col_i + 1, row_i);
@@ -102,27 +131,20 @@ namespace aquadrom.Objects
                                 if (!adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
                                     saveSucceed = false;
                             }
-                            else if (dataGridView1[2, row_i].Tag.ToString() == "Prawie")
+                            else if (onlyOneTimesAreReady(col_i,row_i))
                             {
-                                //HighlightMissingCell(row_i, col_i);
                                 partialDataAppear = true;
                             }
                         }
                     }
                 }
-                else
-                { //TODO
-                }
             }
             if (saveSucceed && !partialDataAppear)
                 return "Zapisano pomyślnie";
-            //MessageBox.Show("Zapisano pomyślnie");
             else if (partialDataAppear)
                 return "Godziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane";
-            //MessageBox.Show("Godziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane");
             else
                 return "Błąd podczas zapisywania";
-                //MessageBox.Show("Błąd podczas zapisywania");
     
         }
 
@@ -150,6 +172,66 @@ namespace aquadrom.Objects
         }
         
 
-    
+        public bool bothTimesAreReady(int columnIndex,int rowIndex)
+        {
+            
+            int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
+
+            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
+            {//pierwsza pusta
+                if(dataGridView1[start + 1, rowIndex].Value != null && dataGridView1[start + 1, rowIndex].Value.ToString() != "")
+                {//druga niepusta
+                    dataGridView1[2, rowIndex].Tag = "Prawie";
+                    return false;
+                }
+                else
+                {//i druga też pusta
+                    dataGridView1[2, rowIndex].Tag = "";
+                    return false;
+                }
+            }
+            else if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
+            {//druga pusta, ale pierwsza nie
+                dataGridView1[2, rowIndex].Tag = "Prawie";
+                return false;
+            }
+            dataGridView1[2, rowIndex].Tag = "Gotowe";
+            return true;
+        }
+
+        public bool onlyOneTimesAreReady(int columnIndex, int rowIndex)
+        {
+            int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
+
+            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
+                return (dataGridView1[start + 1, rowIndex].Value != null && dataGridView1[start + 1, rowIndex].Value.ToString() != "");
+            else
+                return (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "");
+        }
+
+        private void SetAllTags()
+        {
+            for (int row_i = 0; row_i < dataGridView1.RowCount; row_i++)
+                for (int col_i = 3; col_i < dataGridView1.ColumnCount; col_i+=2)
+                {
+                    if (dataGridView1[col_i, row_i].Value == null || dataGridView1[col_i, row_i].Value.ToString() == "")
+                    {//pierwsza pusta
+                        if (dataGridView1[col_i + 1, row_i].Value != null && dataGridView1[col_i + 1, row_i].Value.ToString() != "")
+                        {//druga niepusta
+                            dataGridView1[2, row_i].Tag = "Prawie";
+                        }
+                        else
+                        {//i druga też pusta
+                            dataGridView1[2, row_i].Tag = "";
+                        }
+                    }
+                    else if (dataGridView1[col_i + 1, row_i].Value == null || dataGridView1[col_i + 1, row_i].Value.ToString() == "")
+                    {//druga pusta, ale pierwsza nie
+                        dataGridView1[2, row_i].Tag = "Prawie";
+                    }
+                    dataGridView1[2, row_i].Tag = "Gotowe";
+                }
+            
+        }
     }
 }
