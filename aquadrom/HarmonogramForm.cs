@@ -31,7 +31,7 @@ namespace aquadrom
         {
             loadingFromDB = true;
             valueChanged = true;
-            harmonogram = new Harmonogram();
+            harmonogram = new Harmonogram(dataGridView1);
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
             CreateDayColumns();
@@ -333,29 +333,6 @@ namespace aquadrom
             
         }
 
-        /// <summary>
-        /// Returns the Date and time using date from selected column and hour from given variable
-        /// </summary>
-        /// <param name="oldDate">Used to get info about the hour</param>
-        /// <param name="columnIndex">Column which from get the date</param>
-        /// <returns></returns>
-        private DateTime GetColumnDate(DateTime oldDate,int columnIndex)
-        {
-            string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
-            DateTime columnDate;
-            DateTime.TryParse(columnName, out columnDate);
-            DateTime newDate = new DateTime(columnDate.Year, columnDate.Month, columnDate.Day, oldDate.Hour, oldDate.Minute, oldDate.Second);
-            return newDate;
-        }
-        private DateTime GetColumnDate(int columnIndex, int rowIndex)
-        {
-            string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
-            DateTime cellHour;
-            DateTime.TryParse(dataGridView1[columnIndex, rowIndex].Value.ToString(), out cellHour);
-
-            return GetColumnDate(cellHour, columnIndex);
-        }
-
         private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateColumnsToDate();
@@ -369,55 +346,40 @@ namespace aquadrom
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            bool saveSucceed = true;
-            bool partialDataAppear = false;
-            for (int row_i = 0; row_i < dataGridView1.RowCount;row_i++ )
-            {
-                if (dataGridView1[2, row_i].Tag.ToString() != "")
+            Harmonogram harmonogram = new Harmonogram(dataGridView1);
+            string message=harmonogram.Save();
+            MessageBox.Show(message);
+
+            for(int i=0;i<dataGridView1.RowCount-1;i++)
+                for (int j = 3; j < 65; j++)
                 {
-                    string imie = dataGridView1[0, row_i].Value.ToString();
-                    string nazwisko = dataGridView1[1, row_i].Value.ToString();
-                    
-                    for (int col_i = 3; col_i < dataGridView1.ColumnCount; col_i+=2)
-                    {
-                        if (dataGridView1[col_i, row_i].Visible)
-                        {
-                            if (dataGridView1[2, row_i].Tag.ToString() == "Gotowe")
-                            {
-                                DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
-                                DateTime StopTimeToSave = GetColumnDate(col_i + 1, row_i);
-
-                                DBAdapter adapter = new DBAdapter();
-                                if (!adapter.UpdateHour(imie, nazwisko, StartTimeToSave, StopTimeToSave))
-                                    saveSucceed = false;
-                            }
-                            else if (dataGridView1[2, row_i].Tag.ToString()=="Prawie")
-                            {
-                                HighlightMissingCell(row_i, col_i);
-                                partialDataAppear = true;
-                            }
-                        }
-                    }
+                    HighlightCell(i, j);
                 }
-                else 
-                { //TODO
-                }
-            }
-            if (saveSucceed&&!partialDataAppear)
-                MessageBox.Show("Zapisano pomyślnie");
-            else if(partialDataAppear)
-                MessageBox.Show("Godziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane");
-            else
-                MessageBox.Show("Błąd podczas zapisywania");
         }
 
-        private void HighlightMissingCell(int row_i, int col_i)
+        private void HighlightCell(int row_i, int col_i)
         {
-            if (dataGridView1[col_i, row_i].Value.ToString() == "" && dataGridView1[col_i + 1, row_i].Value.ToString() != "")
-                dataGridView1[col_i,row_i].Style.BackColor=Color.LightGray;
-            if (dataGridView1[col_i + 1, row_i].Value.ToString() == "" && dataGridView1[col_i , row_i].Value.ToString() != "")
-                dataGridView1[col_i+1, row_i].Style.BackColor = Color.LightGray;
+            int start = GetFirstIndexOfPair(col_i);
+            if (dataGridView1[start, row_i].Visible)
+            {
+                if (dataGridView1[start, row_i].Value.ToString() == "" && dataGridView1[start + 1, row_i].Value.ToString() != "")
+                    dataGridView1[start, row_i].Style.BackColor = Color.LightGray;
+                else if (dataGridView1[start + 1, row_i].Value.ToString() == "" && dataGridView1[start, row_i].Value.ToString() != "")
+                    dataGridView1[start + 1, row_i].Style.BackColor = Color.LightGray;
+                else
+                {
+                    dataGridView1[start, row_i].Style.BackColor = Color.Empty;
+                    dataGridView1[start+1, row_i].Style.BackColor = Color.Empty;
+
+                }
+
+            }
         }
 
+        private int GetFirstIndexOfPair(int columnIndex)
+        {
+            int ret = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
+            return ret;
+        }
     }
 }
