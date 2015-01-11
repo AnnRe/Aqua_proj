@@ -195,53 +195,21 @@ namespace aquadrom
                     }
             }
         }
-
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!loadingFromDB)
                 if (e.ColumnIndex > 2)
                 {
-                    UpdateHarmonogramClass();
-                    if (dataGridView1[e.ColumnIndex, e.RowIndex].Value == null)
+                    if (e.FormattedValue == "")
                     {
                         dataGridView1[e.ColumnIndex, e.RowIndex].Value = "";
                         return;
                     }
-                    {
-                        DateTime dateValue;
-
-                        if (DateTime.TryParse(e.FormattedValue.ToString(), out dateValue))
-                        {
-                            DateTime godz = new DateTime(dateValue.Year, dateValue.Month, dateValue.Day, 8, 0, 0);
-                            DateTime godz2 = godz.AddHours(14);
-                            
-                            if (dateValue.CompareTo(godz) >= 0 && dateValue.CompareTo(godz.AddHours(14)) <= 0)
-                            {
-                                if(Convert.ToInt32(dateValue.Minute.ToString())%15 == 0)
-                                    dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
-                                else
-                                {
-                                    MessageBox.Show("Czas podajemy co 15min");
-                                    e.Cancel = true;
-                                    dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Czas odmierzamy co 15min";
-                                }
-
-                            }
-                            else
-                            {
-                                e.Cancel=true;
-                                dataGridView1[e.ColumnIndex,e.RowIndex].ErrorText="Błędna godzina";
-                                MessageBox.Show("Błędna godzina - pracujemy 8-22!");
-                            }
-                        }
-                        else
-                            if (e.FormattedValue.ToString().Length > 0)
-                            {
-                                dataGridView1[ e.ColumnIndex,e.RowIndex].ErrorText = "Zły format!";
-                                e.Cancel = true;
-                            }
-                    }
-
+                    UpdateHarmonogramClass();
+                    String message = harmonogram.ValidateCell(e);
+                    e.Cancel = message.Length > 0;
+                    if (message.Length > 0)
+                        MessageBox.Show(message);
                 }
         }
 
@@ -276,14 +244,23 @@ namespace aquadrom
         private void buttonSave_Click(object sender, EventArgs e)
         {
             UpdateHarmonogramClass();
-            string message=harmonogram.Save();
-            MessageBox.Show(message);
+            DateTime currentTime = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), 1);
+            if (harmonogram.poprawnieRozplanowanyMiesiac(currentTime) == false)
+            {
+                MessageBox.Show("Źle rozplanowany dzień!");
+            }
+            else
+            {
+                string message = harmonogram.Save();
+                MessageBox.Show(message);
 
-            for(int i=0;i<dataGridView1.RowCount-1;i++)
-                for (int j = 3; j < 65; j++)
-                {
-                    HighlightCell(i, j);
-                }
+                for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+                    for (int col_i = 3; col_i < 65; col_i += 2)
+                    {
+                        if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
+                            HighlightCell(row_i, col_i);
+                    }
+            }
         }
 
         private void HighlightCell(int row_i, int col_i)
@@ -312,6 +289,12 @@ namespace aquadrom
         private void UpdateHarmonogramClass()
         {
             harmonogram = new Harmonogram(dataGridView1);
+        }
+
+        private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1[e.ColumnIndex, e.RowIndex].Value == null)
+                dataGridView1[e.ColumnIndex, e.RowIndex].Value = "";
         }
     }
 }

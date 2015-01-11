@@ -40,11 +40,26 @@ namespace aquadrom.Utilities
         public const string UmowaPoczatekUmowy = "Poczatek_umowy";
         public const string UmowaKoniecUmowy = "Koniec_umowy";
 
+        public const string StanowiskoID="ID_s";
+        public const string StanowiskoNazwa="Nazwa";
+        public const string StanowiskoStrefa="Strefa";
+        public const string StanowiskoLiczbaPracownikow="Liczba_pracownikow";
+
+        public const string OtwarcieStanowiskaID="ID_o";
+        public const string OtwarcieStanowiskaOd="Od";
+        public const string OtwarcieStanowiskaDo="Do";
+        public const string OtwarcieStanowiskaTypDnia="Typ_dnia";
+        public const string OtwarcieStanowiskaIDStanowiska="ID_stanowiska";
+
         public const string TabGodzinyPracy = "Godziny_pracy";
         public const string TabNotatka = "Notatka";
         public const string TabOtwarcieStanowiska = "Otwarcie_stanowiska";
         public const string TabPracownik = "Pracownik";
         public const string TabStanowisko = "Stanowisko";
         public const string TabUmowa = "Umowa";
+
+        public const int PoczatekPracy = 8;
+        public const int KoniecPracy = 22;
+    
     }
 }
