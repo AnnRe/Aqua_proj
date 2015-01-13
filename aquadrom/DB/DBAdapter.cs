@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using System.Windows.Forms;
 
 namespace DB
 {
@@ -62,6 +63,7 @@ namespace DB
             return true;
         }
 
+
         public bool Delete(string query)
         {
             try { polaczenie.Delete(query); }
@@ -69,13 +71,31 @@ namespace DB
             return true;
         }
 
+        public bool Update(string query)
+        {
+            try { polaczenie.Update(query); }
+            catch { return false; }
+            return true;
+        }
+
         public bool Insert(Pracownik pracownik)
         {
             try { polaczenie.Insert(pracownik); }
-            catch {
-                return false; 
-            }
+            catch { return false; }
             return true;
+        }
+
+        public bool Update(Pracownik pracownik)
+        {
+            try { polaczenie.UpdatePracownik(pracownik); }
+            catch { return false; }
+            return true;
+        }
+
+        public bool Update(Umowa umowa)
+        {
+            try { polaczenie.UpdateUmowa(umowa); }
+            catch { return false; }         return true;
         }
 
         public DataTable SelectWorkersAtTime(DateTime time)
@@ -114,6 +134,14 @@ namespace DB
             
 
             return toRet;
+        }
+
+        public void LockButton(ComboBox WhatEmpty, Button WhatLock)
+        {
+            if (WhatEmpty.Text == "")
+                WhatLock.Enabled = false;
+            else
+                WhatLock.Enabled = true;
         }
     }
 }

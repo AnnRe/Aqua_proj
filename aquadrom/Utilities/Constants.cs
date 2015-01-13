@@ -21,11 +21,14 @@ namespace aquadrom.Utilities
         public const string PracownikStanowiskoKol = "Stanowisko";
         public const string PracownikWaznKPPKol = "Data_waznosci_KPP";
         public const string PracownikDataBadanKol = "Data_Badan";
-        public const string PracownikStopienBadanKol = "Stopien";
+        public const string PracownikStopienKol = "Stopien";
         public const string PracownikLoginKol = "Login";
         public const string PracownikHasloKol = "Haslo";
         public const string PracownikIDUmowyKol = "ID_umowy";
         public const string PracownikTypKontaKol = "Typ_konta";
+        public const string PracownikOstrzezenieUmowaKol = "Ostrzezenie_umowa";
+        public const string PracownikOstrzezenieBadaniaKol = "Ostrzezenie_badania";
+        public const string PracownikOstrzezenieKPPKol = "Ostrzezenie_KPP";
 
         public const string GodzinyPracyIdG = "ID_g";
         public const string GodzinyPracyOd = "Od";

@@ -114,6 +114,15 @@ namespace DB
             Close();
         }
 
+        public void Update(string query)
+        {
+            Open();
+            string queryText = "update " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
         public DataTable Select(string query)
         {
             Open();
@@ -157,27 +166,68 @@ namespace DB
                Constants.PracownikNrMieszkaniaKol + "," +
                Constants.PracownikPeselKol + "," +
                Constants.PracownikStanowiskoKol + "," +
-               Constants.PracownikStopienBadanKol + "," +
+               Constants.PracownikStopienKol + "," +
                Constants.PracownikTelKol + "," +
                Constants.PracownikWaznKPPKol + "," +
                Constants.PracownikMailKol + "," +
-               Constants.PracownikDataBadanKol;
-            query += ") VALUES (";
-            query += pracownik.imie +
-                pracownik.nazwisko +
-                pracownik.miasto +
-                pracownik.ulica +
-                pracownik.numerDomu +
-                pracownik.numerMieszkania +
-                pracownik.pesel +
-                pracownik.stanowisko +
-                pracownik.stopien +
-                pracownik.numerTelefonu +
-                pracownik.dataWażnościKPP +
-                pracownik.mail +
-                pracownik.dataBadan + ")";
+               Constants.PracownikDataBadanKol + "," +
+               Constants.PracownikLoginKol + "," +
+               Constants.PracownikHasloKol ;
+ //              Constants.PracownikIDUmowyKol + "," +
+ //              Constants.PracownikTypKontaKol;
+            query += ") VALUES ('";
+            query += pracownik.imie + "','" +
+                pracownik.nazwisko + "','" +
+                pracownik.miasto + "','" +
+                pracownik.ulica + "','" +
+                pracownik.numerDomu + "','" +
+                pracownik.numerMieszkania + "','" +
+                pracownik.pesel + "','" +
+                pracownik.stanowisko + "','" +
+                pracownik.stopien + "','" +
+                pracownik.numerTelefonu + "','" +
+                pracownik.dataWażnościKPP + "','" +
+                pracownik.mail + "','" +
+                pracownik.dataBadan + "','" +
+                pracownik.login + "','" +
+                pracownik.haslo + "',')";
+ //               pracownik.idUmowy + "','" +
+ //               pracownik.typKonta + "')";
 
             Insert(query);
+        }
+
+        public void UpdatePracownik(Pracownik pracownik)
+        {
+            string query = "Pracownik set " +
+                Constants.PracownikImieKol + "='" + pracownik.imie + "', "+
+                Constants.PracownikNazwiskoKol + "='" + pracownik.nazwisko + "', " +
+                Constants.PracownikMiastoKol + "='" + pracownik.miasto + "', " +
+                Constants.PracownikUlicaKol + "='" + pracownik.ulica + "', " +
+                Constants.PracownikNrDomKol + "='" + pracownik.numerDomu + "', " +
+                Constants.PracownikNrMieszkaniaKol + "='" + pracownik.numerMieszkania + "', " +
+                Constants.PracownikPeselKol + "='" + pracownik.pesel + "', " +
+                Constants.PracownikStanowiskoKol + "='" + pracownik.stanowisko + "', " +
+                Constants.PracownikStopienKol + "='" + pracownik.stopien + "', " +
+                Constants.PracownikTelKol + "='" + pracownik.numerTelefonu + "', " +
+                Constants.PracownikWaznKPPKol + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikMailKol + "='" + pracownik.mail + "', " +
+                Constants.PracownikDataBadanKol + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.PracownikIDpKol + "='" + pracownik.id_p + "'";
+              System.Windows.Forms.MessageBox.Show(query);
+                Update(query);
+        }
+
+        public void UpdateUmowa(Umowa umowa)
+        {
+            string query = "Umowa set " +
+                Constants.UmowaTyp + "='" + umowa.Typ + "', " +
+                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
+                Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
+                Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
+                          System.Windows.Forms.MessageBox.Show(query);
+            //Update(query);
         }
     }
 }

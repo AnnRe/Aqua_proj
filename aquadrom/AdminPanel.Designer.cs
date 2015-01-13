@@ -47,12 +47,16 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(12, 43);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(956, 386);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // ądzajToolStripMenuItem
             // 
@@ -70,6 +74,7 @@
             this.DodajUżytkownikówToolStripMenuItem.Name = "DodajUżytkownikówToolStripMenuItem";
             this.DodajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.DodajUżytkownikówToolStripMenuItem.Text = "Dodaj użytkownika";
+            this.DodajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.DodajUżytkownikówToolStripMenuItem_Click);
             // 
             // edytujUżytkownikaToolStripMenuItem
             // 
@@ -127,13 +132,13 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem ądzajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DodajUżytkownikówToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem edytujUżytkownikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsuńUżytkownikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PrzeglądajUżytkownikówToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.DataGridView dataGridView1;
 
     }
 }

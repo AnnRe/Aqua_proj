@@ -24,7 +24,7 @@ namespace aquadrom
 
         private string chosen_id = "";
         private string WhichUser = "";
-        private string sql_edituser = "from Pracownik where " + Constants.PracownikIDpKol + "=";
+
         public EditWorkerWhich(Form callingForm)
         {
             _mainform = callingForm as AdminPanel;
@@ -39,6 +39,7 @@ namespace aquadrom
             {
                 EditWorkerComboBox.Items.Add(row[1].ToString());
             }
+            adapter.LockButton(EditWorkerComboBox, ChooseButton);
         }
 
         private void EditWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,28 +50,30 @@ namespace aquadrom
             {
                 if (row[1].ToString() == WhichUser)
                 {
-                    if (chosen_id != "")
-                    {
-                        sql_edituser = sql_edituser.Remove(sql_edituser.Length - chosen_id.Length);
-                    }
                     chosen_id = row[0].ToString();
-                    sql_edituser += chosen_id;
                     break;
                 }
             }
+            adapter.LockButton(EditWorkerComboBox, ChooseButton);
         }
 
         private void ChooseButton_Click(object sender, EventArgs e)
         {
             if (EditWorkerComboBox.Text != "")
             {
-                if ((DeleteWorker.exist == false) && (EditWorkerWhich.exist == false))  // jeśli okno DeleteWorker,WhichWorker zamknięte to je otwórz else nic
+                if ((DeleteWorker.exist == false) && (EditWorker.exist == false))  // jeśli okno DeleteWorker,WhichWorker zamknięte to je otwórz else nic
                 {
-                    DeleteWorker DelWor = new DeleteWorker(this);
-                    DelWor.Show();
+                    EditWorker EditWor = new EditWorker(_mainform, chosen_id);
+                    EditWor.Show();
+                    this.Close();
+                    exist = false;
                 }
             }
-            else this.Close();
+            else
+            {
+                this.Close();
+                exist = false;
+            }
         }
 
         private void EditWorkerWhich_FormClosing(object sender, FormClosingEventArgs e)
@@ -78,7 +81,7 @@ namespace aquadrom
             exist = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

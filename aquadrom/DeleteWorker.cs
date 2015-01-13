@@ -40,7 +40,7 @@ namespace aquadrom
             {
                 DeleteWorkerComboBox.Items.Add(row[1].ToString());
             }
-            IfLocked(DeleteWorkerComboBox, DeleteButton);
+            adapter.LockButton(DeleteWorkerComboBox, DeleteButton);
         }
 
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace aquadrom
                     break;
                 }
             }
-            IfLocked(DeleteWorkerComboBox,DeleteButton);
+            adapter.LockButton(DeleteWorkerComboBox, DeleteButton);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e) // usuwanie użytkownika po kliknięciu 'usuń'
@@ -73,6 +73,7 @@ namespace aquadrom
                     adapter.Delete(sql_deleteuser);
                     MessageBox.Show("Użytkownik został usunięty");
                     _mainform.AdminPanel_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
+                    exist = false;
                     this.Close();
                 }
             }
@@ -86,14 +87,7 @@ namespace aquadrom
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void IfLocked(ComboBox WhatEmpty, Button WhatLock)
-        {
-            if (WhatEmpty.Text == "")
-                WhatLock.Enabled = false;
-            else
-                WhatLock.Enabled = true;
+            exist = false;
         }
     }
 }
