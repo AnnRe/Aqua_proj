@@ -8,10 +8,11 @@ using aquadrom.Utilities;
 
 namespace Objects
 {
-    class Validations
+    public class Validations
     {
         public bool ValidatePesel(string pesel)
         {
+            System.Windows.Forms.MessageBox.Show("test");
             return true; //TODO
         }
 

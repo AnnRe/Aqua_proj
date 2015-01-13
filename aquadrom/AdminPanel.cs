@@ -38,6 +38,11 @@ namespace aquadrom
             dataGridView1.Columns[Constants.PracownikOstrzezenieKPP].Visible = false;
             dataGridView1.Columns[Constants.PracownikOstrzezenieUmowa].Visible = false;
             ColorCheckUser();
+
+            if (CheckInternetConnection() == false)
+                PolczenieStripStatus.Text = "Brak połączenia internetowego";
+            else
+                PolczenieStripStatus.Text = "Połączenie internetowe aktywne";
         }
 
         private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
@@ -76,6 +81,7 @@ namespace aquadrom
 
         private void ColorCheckUser()
         {
+            bool internetcon = CheckInternetConnection();
             bool changeKPP = false;
             bool changemedi = false;
             bool changeconcract = false;
@@ -113,10 +119,10 @@ namespace aquadrom
                     dataGridView1.Rows[i].Cells[Constants.UmowaKoniecUmowy].Style.BackColor = Color.Red;
                     changeconcract = true;
                 }
-
-                if ( (changeKPP == true) || (changeconcract == true) || (changemedi == true) )
+                
+                if ( ((changeKPP == true) || (changeconcract == true) || (changemedi == true)) && (internetcon == true) )
                 {
-                  //  sendmail(i, KPPdate, changeKPP, medicaldate, changemedi, concractdate, changeconcract);
+                    sendmail(i, KPPdate, changeKPP, medicaldate, changemedi, concractdate, changeconcract);
                 }
             }
         }
@@ -161,6 +167,7 @@ namespace aquadrom
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(fromAdress.Address, fromPassword)
                 };
+
                 using (var message = new MailMessage(fromAdress, toAdress)
                 {
                     Subject = subject,
@@ -169,6 +176,22 @@ namespace aquadrom
                 {
                     smtp.Send(message);
                 }
+            }
+        }
+
+        private bool CheckInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
 
