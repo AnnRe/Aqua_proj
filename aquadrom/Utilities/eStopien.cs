@@ -9,16 +9,16 @@ namespace aquadrom.Utilities
     public enum eStopien
     {
         /// <summary>Młodszy Ratownik WOPR</summary>
-        MR=1,
+        MR,
         /// <summary>Ratownik WOPR </summary>
-        RW=2,
+        RW,
         /// <summary>Starszy Ratownik WOPR</summary>
-        SRW=3,
+        SRW,
         /// <summary>Młodszy instruktor </summary>
-        MI=4,
+        MI,
         /// <summary>Instruktor WOPR </summary>
-        I=5,
+        I,
         /// <summary>Instruktor wykładowca </summary>
-        IW=6 
+        IW 
     }
 }

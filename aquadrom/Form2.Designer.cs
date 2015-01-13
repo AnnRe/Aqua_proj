@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Pracownik = new System.Windows.Forms.GroupBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.AddEmployer = new System.Windows.Forms.Button();
             this.Badania = new System.Windows.Forms.GroupBox();
             this.DataBadan = new System.Windows.Forms.DateTimePicker();
             this.KoniecKPP = new System.Windows.Forms.DateTimePicker();
@@ -44,12 +46,14 @@
             this.Email = new System.Windows.Forms.Label();
             this.Numer_telefonu = new System.Windows.Forms.Label();
             this.Konto = new System.Windows.Forms.GroupBox();
+            this.TypKonta2 = new System.Windows.Forms.ComboBox();
+            this.TypKonta = new System.Windows.Forms.Label();
             this.HasloUzytkownika = new System.Windows.Forms.TextBox();
             this.LoginUzytkownika = new System.Windows.Forms.TextBox();
             this.Haslo = new System.Windows.Forms.Label();
             this.Login = new System.Windows.Forms.Label();
             this.Dane_umowy = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.KoniecUmowy = new System.Windows.Forms.DateTimePicker();
             this.PoczatekUmowy = new System.Windows.Forms.DateTimePicker();
             this.WymiarGodzin = new System.Windows.Forms.NumericUpDown();
             this.TypUmowy = new System.Windows.Forms.ComboBox();
@@ -72,8 +76,9 @@
             this.Pesel = new System.Windows.Forms.Label();
             this.Nazwisko = new System.Windows.Forms.Label();
             this.Imie = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.AddEmployer = new System.Windows.Forms.Button();
+            this.StwórzUmowe = new System.Windows.Forms.Button();
+            this.NumerUmowy = new System.Windows.Forms.Label();
+            this.NrUmowy = new System.Windows.Forms.NumericUpDown();
             this.Pracownik.SuspendLayout();
             this.Badania.SuspendLayout();
             this.Dane_kontaktowe.SuspendLayout();
@@ -82,10 +87,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.WymiarGodzin)).BeginInit();
             this.Dane_osobowe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumerMieszkania)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NrUmowy)).BeginInit();
             this.SuspendLayout();
             // 
             // Pracownik
             // 
+            this.Pracownik.Controls.Add(this.CancelButton);
+            this.Pracownik.Controls.Add(this.AddEmployer);
             this.Pracownik.Controls.Add(this.Badania);
             this.Pracownik.Controls.Add(this.Dane_kontaktowe);
             this.Pracownik.Controls.Add(this.Konto);
@@ -93,13 +101,35 @@
             this.Pracownik.Controls.Add(this.Dane_osobowe);
             this.Pracownik.Location = new System.Drawing.Point(3, 3);
             this.Pracownik.Name = "Pracownik";
-            this.Pracownik.Size = new System.Drawing.Size(583, 411);
+            this.Pracownik.Size = new System.Drawing.Size(583, 459);
             this.Pracownik.TabIndex = 0;
             this.Pracownik.TabStop = false;
             this.Pracownik.Text = "Pracownik";
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(488, 427);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Anuluj";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // AddEmployer
+            // 
+            this.AddEmployer.Location = new System.Drawing.Point(354, 427);
+            this.AddEmployer.Name = "AddEmployer";
+            this.AddEmployer.Size = new System.Drawing.Size(128, 23);
+            this.AddEmployer.TabIndex = 2;
+            this.AddEmployer.Text = "Dodaj pracownika";
+            this.AddEmployer.UseVisualStyleBackColor = true;
+            this.AddEmployer.Click += new System.EventHandler(this.AddEmployer_Click);
+            // 
             // Badania
             // 
+            this.Badania.Controls.Add(this.NrUmowy);
+            this.Badania.Controls.Add(this.NumerUmowy);
             this.Badania.Controls.Add(this.DataBadan);
             this.Badania.Controls.Add(this.KoniecKPP);
             this.Badania.Controls.Add(this.StanowiskoUzytkownika);
@@ -108,9 +138,9 @@
             this.Badania.Controls.Add(this.Stanowisko);
             this.Badania.Controls.Add(this.Data_badan);
             this.Badania.Controls.Add(this.Stopien);
-            this.Badania.Location = new System.Drawing.Point(306, 243);
+            this.Badania.Location = new System.Drawing.Point(306, 255);
             this.Badania.Name = "Badania";
-            this.Badania.Size = new System.Drawing.Size(257, 147);
+            this.Badania.Size = new System.Drawing.Size(257, 166);
             this.Badania.TabIndex = 38;
             this.Badania.TabStop = false;
             this.Badania.Text = "Badania i stanowisko";
@@ -144,11 +174,12 @@
             this.Stopień.Name = "Stopień";
             this.Stopień.Size = new System.Drawing.Size(148, 21);
             this.Stopień.TabIndex = 13;
+            this.Stopień.SelectedIndexChanged += new System.EventHandler(this.Stopień_SelectedIndexChanged_1);
             // 
             // Data_KPP
             // 
             this.Data_KPP.AutoSize = true;
-            this.Data_KPP.Location = new System.Drawing.Point(7, 75);
+            this.Data_KPP.Location = new System.Drawing.Point(7, 78);
             this.Data_KPP.Name = "Data_KPP";
             this.Data_KPP.Size = new System.Drawing.Size(79, 13);
             this.Data_KPP.TabIndex = 10;
@@ -157,7 +188,7 @@
             // Stanowisko
             // 
             this.Stanowisko.AutoSize = true;
-            this.Stanowisko.Location = new System.Drawing.Point(7, 49);
+            this.Stanowisko.Location = new System.Drawing.Point(7, 52);
             this.Stanowisko.Name = "Stanowisko";
             this.Stanowisko.Size = new System.Drawing.Size(65, 13);
             this.Stanowisko.TabIndex = 9;
@@ -175,7 +206,7 @@
             // Stopien
             // 
             this.Stopien.AutoSize = true;
-            this.Stopien.Location = new System.Drawing.Point(7, 23);
+            this.Stopien.Location = new System.Drawing.Point(7, 26);
             this.Stopien.Name = "Stopien";
             this.Stopien.Size = new System.Drawing.Size(46, 13);
             this.Stopien.TabIndex = 12;
@@ -187,7 +218,7 @@
             this.Dane_kontaktowe.Controls.Add(this.NumerTelefonu);
             this.Dane_kontaktowe.Controls.Add(this.Email);
             this.Dane_kontaktowe.Controls.Add(this.Numer_telefonu);
-            this.Dane_kontaktowe.Location = new System.Drawing.Point(9, 189);
+            this.Dane_kontaktowe.Location = new System.Drawing.Point(9, 203);
             this.Dane_kontaktowe.Name = "Dane_kontaktowe";
             this.Dane_kontaktowe.Size = new System.Drawing.Size(272, 81);
             this.Dane_kontaktowe.TabIndex = 37;
@@ -199,14 +230,19 @@
             this.AdresEmail.Location = new System.Drawing.Point(106, 49);
             this.AdresEmail.Name = "AdresEmail";
             this.AdresEmail.Size = new System.Drawing.Size(148, 20);
-            this.AdresEmail.TabIndex = 10;
+            this.AdresEmail.TabIndex = 39;
+            this.AdresEmail.Text = "nazwa@domena";
+            this.AdresEmail.TextChanged += new System.EventHandler(this.AdresEmail_TextChanged);
             // 
             // NumerTelefonu
             // 
             this.NumerTelefonu.Location = new System.Drawing.Point(106, 23);
+            this.NumerTelefonu.MaxLength = 12;
             this.NumerTelefonu.Name = "NumerTelefonu";
             this.NumerTelefonu.Size = new System.Drawing.Size(148, 20);
-            this.NumerTelefonu.TabIndex = 9;
+            this.NumerTelefonu.TabIndex = 38;
+            this.NumerTelefonu.Text = "+48500500500";
+            this.NumerTelefonu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumerTelefonu_KeyPress);
             // 
             // Email
             // 
@@ -228,20 +264,40 @@
             // 
             // Konto
             // 
+            this.Konto.Controls.Add(this.TypKonta2);
+            this.Konto.Controls.Add(this.TypKonta);
             this.Konto.Controls.Add(this.HasloUzytkownika);
             this.Konto.Controls.Add(this.LoginUzytkownika);
             this.Konto.Controls.Add(this.Haslo);
             this.Konto.Controls.Add(this.Login);
-            this.Konto.Location = new System.Drawing.Point(9, 309);
+            this.Konto.Location = new System.Drawing.Point(9, 311);
             this.Konto.Name = "Konto";
-            this.Konto.Size = new System.Drawing.Size(272, 81);
+            this.Konto.Size = new System.Drawing.Size(272, 110);
             this.Konto.TabIndex = 36;
             this.Konto.TabStop = false;
             this.Konto.Text = "Konto";
             // 
+            // TypKonta2
+            // 
+            this.TypKonta2.FormattingEnabled = true;
+            this.TypKonta2.Location = new System.Drawing.Point(106, 77);
+            this.TypKonta2.Name = "TypKonta2";
+            this.TypKonta2.Size = new System.Drawing.Size(148, 21);
+            this.TypKonta2.TabIndex = 17;
+            // 
+            // TypKonta
+            // 
+            this.TypKonta.AutoSize = true;
+            this.TypKonta.Location = new System.Drawing.Point(6, 78);
+            this.TypKonta.Name = "TypKonta";
+            this.TypKonta.Size = new System.Drawing.Size(58, 13);
+            this.TypKonta.TabIndex = 15;
+            this.TypKonta.Text = "Typ konta:";
+            // 
             // HasloUzytkownika
             // 
             this.HasloUzytkownika.Location = new System.Drawing.Point(106, 49);
+            this.HasloUzytkownika.MaxLength = 256;
             this.HasloUzytkownika.Name = "HasloUzytkownika";
             this.HasloUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.HasloUzytkownika.TabIndex = 16;
@@ -252,15 +308,16 @@
             this.LoginUzytkownika.Name = "LoginUzytkownika";
             this.LoginUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.LoginUzytkownika.TabIndex = 15;
+            this.LoginUzytkownika.Text = "imię.nazwisko";
             // 
             // Haslo
             // 
             this.Haslo.AutoSize = true;
             this.Haslo.Location = new System.Drawing.Point(6, 52);
             this.Haslo.Name = "Haslo";
-            this.Haslo.Size = new System.Drawing.Size(36, 13);
+            this.Haslo.Size = new System.Drawing.Size(39, 13);
             this.Haslo.TabIndex = 14;
-            this.Haslo.Text = "Hasło";
+            this.Haslo.Text = "Hasło:";
             // 
             // Login
             // 
@@ -273,7 +330,8 @@
             // 
             // Dane_umowy
             // 
-            this.Dane_umowy.Controls.Add(this.dateTimePicker1);
+            this.Dane_umowy.Controls.Add(this.StwórzUmowe);
+            this.Dane_umowy.Controls.Add(this.KoniecUmowy);
             this.Dane_umowy.Controls.Add(this.PoczatekUmowy);
             this.Dane_umowy.Controls.Add(this.WymiarGodzin);
             this.Dane_umowy.Controls.Add(this.TypUmowy);
@@ -283,17 +341,17 @@
             this.Dane_umowy.Controls.Add(this.Typ_umowy);
             this.Dane_umowy.Location = new System.Drawing.Point(9, 21);
             this.Dane_umowy.Name = "Dane_umowy";
-            this.Dane_umowy.Size = new System.Drawing.Size(272, 132);
+            this.Dane_umowy.Size = new System.Drawing.Size(272, 162);
             this.Dane_umowy.TabIndex = 35;
             this.Dane_umowy.TabStop = false;
             this.Dane_umowy.Text = "Dane umowy";
             // 
-            // dateTimePicker1
+            // KoniecUmowy
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(106, 101);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(148, 20);
-            this.dateTimePicker1.TabIndex = 37;
+            this.KoniecUmowy.Location = new System.Drawing.Point(106, 101);
+            this.KoniecUmowy.Name = "KoniecUmowy";
+            this.KoniecUmowy.Size = new System.Drawing.Size(148, 20);
+            this.KoniecUmowy.TabIndex = 37;
             // 
             // PoczatekUmowy
             // 
@@ -306,9 +364,24 @@
             // WymiarGodzin
             // 
             this.WymiarGodzin.Location = new System.Drawing.Point(106, 49);
+            this.WymiarGodzin.Maximum = new decimal(new int[] {
+            320,
+            0,
+            0,
+            0});
+            this.WymiarGodzin.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.WymiarGodzin.Name = "WymiarGodzin";
             this.WymiarGodzin.Size = new System.Drawing.Size(148, 20);
             this.WymiarGodzin.TabIndex = 35;
+            this.WymiarGodzin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // TypUmowy
             // 
@@ -380,51 +453,81 @@
             // NumerMieszkania
             // 
             this.NumerMieszkania.Location = new System.Drawing.Point(97, 179);
+            this.NumerMieszkania.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.NumerMieszkania.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumerMieszkania.Name = "NumerMieszkania";
             this.NumerMieszkania.Size = new System.Drawing.Size(148, 20);
             this.NumerMieszkania.TabIndex = 14;
+            this.NumerMieszkania.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // NumerDomu
             // 
             this.NumerDomu.Location = new System.Drawing.Point(97, 153);
+            this.NumerDomu.MaxLength = 4;
             this.NumerDomu.Name = "NumerDomu";
             this.NumerDomu.Size = new System.Drawing.Size(148, 20);
             this.NumerDomu.TabIndex = 13;
+            this.NumerDomu.TextChanged += new System.EventHandler(this.NumerDomu_TextChanged);
+            this.NumerDomu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumerDomu_KeyPress);
             // 
             // UlicaUzytkownika
             // 
             this.UlicaUzytkownika.Location = new System.Drawing.Point(97, 127);
+            this.UlicaUzytkownika.MaxLength = 20;
             this.UlicaUzytkownika.Name = "UlicaUzytkownika";
             this.UlicaUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.UlicaUzytkownika.TabIndex = 12;
+            this.UlicaUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UlicaUzytkownika_KeyPress);
             // 
             // MiastoUzytkownika
             // 
             this.MiastoUzytkownika.Location = new System.Drawing.Point(97, 101);
+            this.MiastoUzytkownika.MaxLength = 20;
             this.MiastoUzytkownika.Name = "MiastoUzytkownika";
             this.MiastoUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.MiastoUzytkownika.TabIndex = 11;
+            this.MiastoUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MiastoUzytkownika_KeyPress);
             // 
             // PeselUzytkownika
             // 
             this.PeselUzytkownika.Location = new System.Drawing.Point(97, 75);
+            this.PeselUzytkownika.MaxLength = 11;
             this.PeselUzytkownika.Name = "PeselUzytkownika";
             this.PeselUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.PeselUzytkownika.TabIndex = 10;
+            this.PeselUzytkownika.TextChanged += new System.EventHandler(this.PeselUzytkownika_TextChanged);
+            this.PeselUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PeselUzytkownika_KeyPress);
             // 
             // NazwiskoUzytkownika
             // 
             this.NazwiskoUzytkownika.Location = new System.Drawing.Point(97, 49);
+            this.NazwiskoUzytkownika.MaxLength = 50;
             this.NazwiskoUzytkownika.Name = "NazwiskoUzytkownika";
             this.NazwiskoUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.NazwiskoUzytkownika.TabIndex = 9;
+            this.NazwiskoUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NazwiskoUzytkownika_KeyPress);
             // 
             // ImieUzytkownika
             // 
             this.ImieUzytkownika.Location = new System.Drawing.Point(97, 23);
+            this.ImieUzytkownika.MaxLength = 50;
             this.ImieUzytkownika.Name = "ImieUzytkownika";
             this.ImieUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.ImieUzytkownika.TabIndex = 8;
+            this.ImieUzytkownika.TextChanged += new System.EventHandler(this.ImieUzytkownika_TextChanged);
+            this.ImieUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ImieUzytkownika_KeyPress);
             // 
             // Numer_mieszkania
             // 
@@ -489,34 +592,49 @@
             this.Imie.TabIndex = 0;
             this.Imie.Text = "Imię:";
             // 
-            // CancelButton
+            // StwórzUmowe
             // 
-            this.CancelButton.Location = new System.Drawing.Point(511, 420);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Anuluj";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.StwórzUmowe.Location = new System.Drawing.Point(150, 133);
+            this.StwórzUmowe.Name = "StwórzUmowe";
+            this.StwórzUmowe.Size = new System.Drawing.Size(104, 23);
+            this.StwórzUmowe.TabIndex = 38;
+            this.StwórzUmowe.Text = "Stwórz umowę";
+            this.StwórzUmowe.UseVisualStyleBackColor = true;
+            this.StwórzUmowe.Click += new System.EventHandler(this.StwórzUmowe_Click);
             // 
-            // AddEmployer
+            // NumerUmowy
             // 
-            this.AddEmployer.Location = new System.Drawing.Point(377, 420);
-            this.AddEmployer.Name = "AddEmployer";
-            this.AddEmployer.Size = new System.Drawing.Size(128, 23);
-            this.AddEmployer.TabIndex = 2;
-            this.AddEmployer.Text = "Dodaj pracownika";
-            this.AddEmployer.UseVisualStyleBackColor = true;
-            this.AddEmployer.Click += new System.EventHandler(this.AddEmployer_Click);
+            this.NumerUmowy.AutoSize = true;
+            this.NumerUmowy.Location = new System.Drawing.Point(7, 130);
+            this.NumerUmowy.Name = "NumerUmowy";
+            this.NumerUmowy.Size = new System.Drawing.Size(57, 13);
+            this.NumerUmowy.TabIndex = 17;
+            this.NumerUmowy.Text = "Nr umowy:";
+            // 
+            // NrUmowy
+            // 
+            this.NrUmowy.Location = new System.Drawing.Point(97, 127);
+            this.NrUmowy.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.NrUmowy.Name = "NrUmowy";
+            this.NrUmowy.Size = new System.Drawing.Size(148, 20);
+            this.NrUmowy.TabIndex = 18;
+            this.NrUmowy.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NrUmowy.ValueChanged += new System.EventHandler(this.NrUmowy_ValueChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(588, 447);
-            this.Controls.Add(this.AddEmployer);
-            this.Controls.Add(this.CancelButton);
+            this.ClientSize = new System.Drawing.Size(588, 464);
             this.Controls.Add(this.Pracownik);
             this.Name = "Form2";
             this.Text = "Dodaj pracownika";
@@ -534,6 +652,7 @@
             this.Dane_osobowe.ResumeLayout(false);
             this.Dane_osobowe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumerMieszkania)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NrUmowy)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -575,7 +694,7 @@
         private System.Windows.Forms.TextBox NumerTelefonu;
         private System.Windows.Forms.TextBox HasloUzytkownika;
         private System.Windows.Forms.TextBox LoginUzytkownika;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker KoniecUmowy;
         private System.Windows.Forms.DateTimePicker PoczatekUmowy;
         private System.Windows.Forms.NumericUpDown WymiarGodzin;
         private System.Windows.Forms.ComboBox TypUmowy;
@@ -586,5 +705,10 @@
         private System.Windows.Forms.TextBox PeselUzytkownika;
         private System.Windows.Forms.TextBox NazwiskoUzytkownika;
         private System.Windows.Forms.TextBox ImieUzytkownika;
+        private System.Windows.Forms.ComboBox TypKonta2;
+        private System.Windows.Forms.Label TypKonta;
+        private System.Windows.Forms.Button StwórzUmowe;
+        private System.Windows.Forms.NumericUpDown NrUmowy;
+        private System.Windows.Forms.Label NumerUmowy;
     }
 }

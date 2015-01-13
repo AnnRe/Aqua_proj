@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using aquadrom.Objects;
 
 namespace DB
 {
@@ -172,6 +173,23 @@ namespace DB
 
             Insert(query);
         }
+
+        public void Insert(Umowa umowa)
+        {
+            string query = "Umowa (" +
+               Constants.UmowaTypUmowy + "," +
+               Constants.UmowaWymiarGodzin + "," +
+               Constants.UmowaPoczatekUmowy + "," +
+               Constants.UmowaKoniecUmowy;
+            query += ") VALUES ('";
+            query += umowa.typUmowy + "','" +
+                umowa.wymiarGodzin + "','" +
+                umowa.początekUmowy + "','" +
+                umowa.koniecUmowy + "')";
+
+            Insert(query);
+        }
+
 
         public void Select(string query)
         {

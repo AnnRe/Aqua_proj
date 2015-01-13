@@ -39,16 +39,29 @@ namespace aquadrom
             exist = false;
         }
 
+
+
+
         private void Generuj_Click(object sender, EventArgs e)
         {
+            double x = 50, y = 100;
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
-            gfx.DrawString("Hello, World!", font, XBrushes.Black,
-            new XRect(0, 0, page.Width, page.Height), XStringFormat.Center);
-            string filename = "HelloWorld.pdf";
+            XFont font = new XFont("Verdana", 10, XFontStyle.Bold);
+            string trescNotatki = TekstNotatki.Text.ToString();
+            gfx.DrawString(trescNotatki, font, XBrushes.Black, x, y);
+            string filename = "test.pdf";
+            XPen pen = new XPen(Color.Black, 1);
+            gfx.DrawLine(pen, 45, 250, 45, 1000);
             document.Save(filename);
+            MessageBox.Show("Wygenerowano notatkę.");
+            //MessageBox.Show(TekstNotatki.Text.ToString());
         }
+
+        private void TekstNotatki_TextChanged(object sender, EventArgs e)
+        {
+        }
+
     }
 }

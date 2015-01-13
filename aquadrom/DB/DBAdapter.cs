@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using aquadrom.Objects;
 
 namespace DB
 {
@@ -44,6 +45,12 @@ namespace DB
         public bool Insert(Pracownik pracownik)
         {
             try { polaczenie.Insert(pracownik); }
+            catch { return false; }
+            return true;
+        }
+        public bool Insert(Umowa umowa)
+        {
+            try { polaczenie.Insert(umowa); }
             catch { return false; }
             return true;
         }

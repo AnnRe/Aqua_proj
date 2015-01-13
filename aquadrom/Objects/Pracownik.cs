@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Objects
 {
     public class Pracownik
     {
-        public eStanowisko stanowisko { get; set; } 
+        public eStanowisko stanowisko { get; set; }
+        public eTypKonta typKonta {get;set;}
+        public string idUmowy { get; set; }
         public string imie { get; set; } 
         public string nazwisko { get; set; } 
         public string pesel { get; set; } 
@@ -23,8 +28,14 @@ namespace Objects
         public DateTime dataWażnościKPP{ get; set; } 
         public DateTime dataBadan{ get; set; } 
         public eStopien stopien{ get; set; } 
-        public string login{ private get; set; } 
-        public string haslo{ private get; set; } 
+        public string login{ get; set; } 
+        public string haslo{ get; set; }
+
+        bool dobryEmail = false;
+        bool dobryPesel = false;
+        bool poprawny = false;
+        private static readonly int[] mnozniki = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
+        
 
         public Pracownik()
         {
@@ -35,13 +46,18 @@ namespace Objects
             this.mail = "";
             this.miasto = "";
             this.ulica = "";
-            this.numerDomu = null;
+            this.numerDomu = "";
+            this.numerMieszkania = null;
             this.numerTelefonu = "";
+            this.stanowisko = eStanowisko.RW;
             this.dataWażnościKPP = new DateTime();
             this.dataBadan = new DateTime();
             this.stopien = eStopien.MR;
             this.login = "";
             this.haslo = "";
+            this.idUmowy = "12";
+            this.typKonta = eTypKonta.U;
+
         }
 
         public Pracownik(string imie,string nazwisko,eStanowisko stanowisko)
@@ -53,7 +69,8 @@ namespace Objects
 
         public Pracownik(string imie, string nazwisko, eStanowisko stanowisko,
         string pesel, string mail, string miasto, string ulica, string numerDomu, string numerTelefonu, DateTime dataWażnościKPP,
-            DateTime dataBadan, eStopien stopien, string login, string haslo)
+            DateTime dataBadan, eStopien stopien, string login, string haslo, string idUmowy, eTypKonta 
+            typKonta)
         {
             this.stanowisko=stanowisko;
             this.imie=imie;
@@ -69,17 +86,92 @@ namespace Objects
             this.stopien= stopien;
             this.login= login;
             this.haslo= haslo;
+            this.idUmowy = idUmowy;
+            this.typKonta = typKonta;
+ 
  
         }
 
-        private bool ValidatePesel(string pesel)
+        public bool ValidatePesel(string pesel)
         {
-            return true; //TODO
+            bool dobryPesel = false;
+            try
+            {
+                if (pesel.Length == 11)
+                {
+                    dobryPesel = ObliczSumeKontrolna(pesel).Equals(pesel[10].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                dobryPesel = false;
+            }
+            return dobryPesel;
+        }
+        private static string ObliczSumeKontrolna(string pesel)
+        {
+            int sum = 0;
+            for (int i = 0; i < mnozniki.Length; i++)
+            {
+                sum += mnozniki[i] * int.Parse(pesel[i].ToString());
+            }
+
+            int reszta = sum % 10;
+            return reszta == 0 ? reszta.ToString() : (10 - reszta).ToString();
         }
 
-        private bool ValidateMail(string mail)
+        public bool ValidateMail(string mail)
         {
-            return true; //TODO
+            dobryEmail = false;
+            if (String.IsNullOrEmpty(mail))
+                return false;
+            try
+            {
+                mail = Regex.Replace(mail, @"(@)(.+)$", this.OdwzorujDomene,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+
+            if (dobryEmail)
+                return false;
+            try
+            {
+                return Regex.IsMatch(mail,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        private string OdwzorujDomene(Match match)
+        {
+            IdnMapping idn = new IdnMapping();
+
+            string nazwaDomeny = match.Groups[2].Value;
+            try
+            {
+                nazwaDomeny = idn.GetAscii(nazwaDomeny);
+            }
+            catch (ArgumentException)
+            {
+                dobryEmail = true;
+            }
+            return match.Groups[1].Value + nazwaDomeny;
+        }
+
+        public bool ValidateNumber(string numer)
+        {
+            string poprawnyFormat = @"^(\+48)?[0-9]\d{8}$";
+            if (numer != null) 
+                return Regex.IsMatch(numer, poprawnyFormat);
+            else 
+                return false;
         }
 
         private bool CanWork()

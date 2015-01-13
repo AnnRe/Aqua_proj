@@ -26,5 +26,12 @@ namespace aquadrom.Utilities
         public const string PracownikHasloKol = "Haslo";
         public const string PracownikIDUmowyKol = "ID_umowy";
         public const string PracownikTypKontaKol = "Typ_konta";
+        public const string UmowaIDuKol = "ID_u";
+        public const string UmowaTypUmowy = "Typ";
+        public const string UmowaWymiarGodzin = "Wymiar_godzin";
+        public const string UmowaPoczatekUmowy = "Poczatek_umowy";
+        public const string UmowaKoniecUmowy = "Koniec_umowy";
+     
+      
     }
 }

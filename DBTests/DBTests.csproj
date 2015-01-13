@@ -74,12 +74,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\aquadrom\aquadrom.csproj">
-      <Project>{d69b68e7-c076-4fc7-8b68-d27e63bd0113}</Project>
-      <Name>aquadrom</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
