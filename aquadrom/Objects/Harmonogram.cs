@@ -101,7 +101,7 @@ namespace aquadrom.Objects
         {
             DBAdapter adapter = new DBAdapter();
             int val=adapter.GetPositionNumberAtStates(time);
-            return 2;//TODO
+            return val;
         }
         /// <summary>
         /// Sprawdza, czy stanowiska są obsadzone danego dnia

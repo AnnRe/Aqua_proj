@@ -187,7 +187,7 @@
             // 
             // btn_check
             // 
-            this.btn_check.Location = new System.Drawing.Point(386, 10);
+            this.btn_check.Location = new System.Drawing.Point(386, 12);
             this.btn_check.Name = "btn_check";
             this.btn_check.Size = new System.Drawing.Size(112, 23);
             this.btn_check.TabIndex = 5;
