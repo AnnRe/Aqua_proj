@@ -15,6 +15,8 @@ namespace Objects
         public eStanowisko stanowisko { get; set; }
         public eTypKonta typKonta {get;set;}
         public string idUmowy { get; set; }
+        public int id_p { get; set; }
+        public eStanowisko stanowisko { get; set; } 
         public string imie { get; set; } 
         public string nazwisko { get; set; } 
         public string pesel { get; set; } 
@@ -28,6 +30,8 @@ namespace Objects
         public DateTime dataWażnościKPP{ get; set; } 
         public DateTime dataBadan{ get; set; } 
         public eStopien stopien{ get; set; } 
+        //public string login{ private get; set; } 
+        //public string haslo{ private get; set; } 
         public string login{ get; set; } 
         public string haslo{ get; set; }
 
@@ -46,8 +50,9 @@ namespace Objects
             this.mail = "";
             this.miasto = "";
             this.ulica = "";
-            this.numerDomu = "";
+            //this.numerDomu = "";
             this.numerMieszkania = null;
+            //this.numerMieszkania = null;
             this.numerTelefonu = "";
             this.stanowisko = eStanowisko.RW;
             this.dataWażnościKPP = new DateTime();
@@ -71,17 +76,21 @@ namespace Objects
         string pesel, string mail, string miasto, string ulica, string numerDomu, string numerTelefonu, DateTime dataWażnościKPP,
             DateTime dataBadan, eStopien stopien, string login, string haslo, string idUmowy, eTypKonta 
             typKonta)
+        
         {
-            this.stanowisko=stanowisko;
+            this.id_p = id_p;
             this.imie=imie;
             this.nazwisko=nazwisko;
             this.pesel=pesel;
+            this.miasto = miasto;
+            this.ulica = ulica;
+            this.numerDomu = numerDomu;
+            this.numerMieszkania = numerMieszkania;
+            this.numerTelefonu = numerTelefonu;
             this.mail=mail;
-            this.miasto=miasto;
-            this.ulica=ulica;
-            this.numerDomu=numerDomu;
-            this.numerTelefonu= numerTelefonu;
-            this.dataWażnościKPP= dataWażnościKPP;
+            this.stopien = stopien;
+            this.stanowisko = stanowisko;
+            this.dataWażnościKPP = dataWażnościKPP;
             this.dataBadan= dataBadan;
             this.stopien= stopien;
             this.login= login;

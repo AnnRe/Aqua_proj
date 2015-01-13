@@ -19,52 +19,62 @@ namespace aquadrom
     public partial class DeleteWorker : Form
     {
         DBAdapter adapter = new DBAdapter();
+        DBConnector connector = new DBConnector();
         public static bool exist = false;
+        private AdminPanel _mainform = null;
+
+        private string chosen_id = "";
         private string WhichUser = "";
-        private string sql_deleteuser = "from Pracownik where ID_p=";
-        public DeleteWorker()
+        private string sql_deleteuser = "from Pracownik where "+Constants.PracownikID+"=";
+        public DeleteWorker(Form callingForm)
         {
+            _mainform = callingForm as AdminPanel;
             InitializeComponent();
             exist = true;
         }
 
-        private void DeleteWorker_Load(object sender, EventArgs e)
+        public void DeleteWorker_Load(object sender, EventArgs e)   // dodawanie imion i nazwisk wszystkich pracownikow do DeleteWorkerComboBox
         {
-            string sql_workers = "select ID_p, concat(Nazwisko,' ',Imie) from Pracownik order by 2 asc;";
-            DataTable dtWorkers = adapter.GetData(sql_workers);
-
+            DataTable dtWorkers = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers.Rows)
             {
                 DeleteWorkerComboBox.Items.Add(row[1].ToString());
             }
+            adapter.LockButton(DeleteWorkerComboBox, DeleteButton);
         }
 
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {                                                       // którego użytkownika usunąć
             WhichUser = this.DeleteWorkerComboBox.Text;
-            string sql_workers = "select ID_p, concat(Nazwisko,' ',Imie) from Pracownik order by 2 asc;";
-            DataTable dtWorkers = adapter.GetData(sql_workers);
-
-            foreach (DataRow row in dtWorkers.Rows)
+            DataTable dtWorkers2 = connector.Select(Constants.PracownikID+", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
+            foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)
                 {
-                    sql_deleteuser += row[0].ToString();
-                    MessageBox.Show(row[0].ToString());
+                    if (chosen_id != "")    // jeśli wcześniej był wybrany user,usuń dodany wcześniej id z sql_deleteuser
+                    {
+                        sql_deleteuser = sql_deleteuser.Remove(sql_deleteuser.Length - chosen_id.Length);
+                    }
+                    chosen_id = row[0].ToString();  // wybierz aktualne id wybranego usera i dodaj do sql_deleteuser
+                    sql_deleteuser += chosen_id;
                     break;
                 }
             }
+            adapter.LockButton(DeleteWorkerComboBox, DeleteButton);
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e) // usuwanie użytkownika po kliknięciu 'usuń'
         {
-            if (WhichUser != "")
+            if (WhichUser != "")    // gdy ktoś wybrany
             {
                 DialogResult dialogResult = MessageBox.Show("Na pewno chcesz usunąć tego użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     adapter.Delete(sql_deleteuser);
                     MessageBox.Show("Użytkownik został usunięty");
+                    _mainform.AdminPanel_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
+                    exist = false;
+                    this.Close();
                 }
             }
         }
@@ -77,6 +87,7 @@ namespace aquadrom
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            exist = false;
         }
     }
 }

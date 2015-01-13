@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
 using aquadrom.Objects;
+using System.Data;
 
 namespace DB
 {
@@ -30,85 +31,45 @@ namespace DB
         }
         public List<Pracownik> SelectPracownicy(string query)
         {
-            List<Pracownik> pracownicy = new List<Pracownik>();
-            string queryText = "Select " + query;
-            using (SqlCommand cmdsel = new SqlCommand(queryText, polaczenie))
-            {
-                SqlDataReader reader = cmdsel.ExecuteReader();
-                while (reader.Read())
-                {
-                    Pracownik pracownik = new Pracownik();
-                    
-                    //int colIndex = reader.GetOrdinal(Constants.PracownikImieKol);
-                    //pracownik.imie = reader.IsDBNull(colIndex) ?
-                    //               string.Empty :
-                    //               reader.GetString(colIndex);
-                    pracownik.imie = GetString(Constants.PracownikImieKol, reader);
-                    //colIndex = reader.GetOrdinal(Constants.PracownikNazwiskoKol);
-                    //pracownik.nazwisko = reader.IsDBNull(colIndex) ?
-                    //               string.Empty :
-                    //               reader.GetString(colIndex);
-                    pracownik.nazwisko = GetString(Constants.PracownikNazwiskoKol, reader);
-                    //colIndex = reader.GetOrdinal(Constants.PracownikMailKol);
-                    //pracownik.mail = reader.IsDBNull(colIndex) ?
-                    //               string.Empty :
-                    //               reader.GetString(colIndex);
-                    pracownik.mail = GetString(Constants.PracownikMailKol, reader);
-                    //colIndex = reader.GetOrdinal(Constants.PracownikMiastoKol);
-                    //pracownik.miasto = reader.IsDBNull(colIndex) ?
-                    //               string.Empty :
-                    //               reader.GetString(colIndex);
-
-                    //colIndex = reader.GetOrdinal(Constants.PracownikUlicaKol);
-                    pracownik.ulica = GetString(Constants.PracownikUlicaKol,reader);
-                        //reader.IsDBNull(colIndex) ?
-                        //           string.Empty :
-                        //           reader.GetString(colIndex);
-
-                    //colIndex = reader.GetOrdinal(Constants.PracownikPeselKol);
-                    //pracownik.pesel = reader.IsDBNull(colIndex) ?
-                    //               string.Empty :
-                    //               reader.GetString(colIndex);
-                    pracownik.pesel = GetString(Constants.PracownikPeselKol, reader);
-
-                    //colIndex = reader.GetOrdinal(Constants.PracownikWaznKPPKol);
-                    //pracownik.dataWażnościKPP = reader.IsDBNull(colIndex) ?
-                    //               DateTime.Now :
-                    //               reader.GetDateTime(colIndex);
-                    pracownik.dataWażnościKPP = GetDateTime(Constants.PracownikWaznKPPKol, reader);
-
-                    //colIndex = reader.GetOrdinal(Constants.PracownikDataBadanKol);
-                    //pracownik.dataBadan = reader.IsDBNull(colIndex) ?
-                    //               DateTime.Now :
-                    //               reader.GetDateTime(colIndex);
-                    pracownik.dataBadan = GetDateTime(Constants.PracownikDataBadanKol, reader);
-                    
-                   // colIndex=reader.GetOrdinal(Constants.)
-                    //TODO: dokończyć wczytywanie kolumn
-                    pracownicy.Add(pracownik);
-
-                }
-                var columns = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
-                reader.Close();
-            }
-            return pracownicy;
+            polaczenie.Close();
         }
-
 
         public void Insert(string query)
         {
             Open();
             string queryText = "Insert " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
+            cmdsel.ExecuteNonQuery();
             Close();
         }
 
         public void Delete(string query)
         {
+            Open();
             string queryText = "delete " + query;
             SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.BeginExecuteNonQuery();
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
+        public void Update(string query)
+        {
+            Open();
+            string queryText = "update " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
+        public DataTable Select(string query)
+        {
+            Open();
+            string queryText = "SELECT " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            DBAdapter adapter = new DBAdapter();
+            DataTable dtWorkers = adapter.GetData(queryText);
+            Close();
+            return dtWorkers;
         }
 
         public SqlDataAdapter getAdapter(string query)
@@ -135,9 +96,7 @@ namespace DB
         public void Insert(Pracownik pracownik)
         {
             string query = "Pracownik (" +
-               Constants.PracownikImieKol + "," +
-               Constants.PracownikNazwiskoKol + "," +
-               Constants.PracownikMiastoKol + "," +
+
                Constants.PracownikUlicaKol + "," +
                Constants.PracownikNrDomKol + "," +
                Constants.PracownikNrMieszkaniaKol + "," +
@@ -156,7 +115,6 @@ namespace DB
             query += pracownik.imie + "','" +
                 pracownik.nazwisko + "','" +
                 pracownik.miasto + "','" +
-                pracownik.ulica + "','" +
                 pracownik.numerDomu + "','" +
                 pracownik.numerMieszkania + "','" +
                 pracownik.pesel + "','" +
@@ -170,6 +128,33 @@ namespace DB
                 pracownik.haslo + "','" +
                 pracownik.idUmowy + "','" +
                 pracownik.typKonta + "')";
+               Constants.PracownikImie + "," +
+               Constants.PracownikNazwisko + "," +
+               Constants.PracownikMiasto + "," +
+               Constants.PracownikUlica + "," +
+               Constants.PracownikNrDom + "," +
+               Constants.PracownikNrMieszkania + "," +
+               Constants.PracownikPesel + "," +
+               Constants.PracownikStanowisko + "," +
+               Constants.PracownikStopien + "," +
+               Constants.PracownikTel + "," +
+               Constants.PracownikWaznKPP + "," +
+               Constants.PracownikMail + "," +
+               Constants.PracownikDataBadan;
+            query += ") VALUES (";
+            query += pracownik.imie +
+                pracownik.nazwisko +
+                pracownik.miasto +
+                pracownik.ulica +
+                pracownik.numerDomu +
+                pracownik.numerMieszkania +
+                pracownik.pesel +
+                pracownik.stanowisko +
+                pracownik.stopien +
+                pracownik.numerTelefonu +
+                pracownik.dataWażnościKPP +
+                pracownik.mail +
+                pracownik.dataBadan + ")";
 
             Insert(query);
         }
@@ -192,9 +177,35 @@ namespace DB
 
 
         public void Select(string query)
+        public void UpdatePracownik(Pracownik pracownik)
         {
-            string queryText = "SELECT " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            string query = "Pracownik set " +
+                Constants.PracownikImie + "='" + pracownik.imie + "', " +
+                Constants.PracownikNazwisko + "='" + pracownik.nazwisko + "', " +
+                Constants.PracownikMiasto + "='" + pracownik.miasto + "', " +
+                Constants.PracownikUlica + "='" + pracownik.ulica + "', " +
+                Constants.PracownikNrDom + "='" + pracownik.numerDomu + "', " +
+                Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
+                Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
+                Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
+                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
+                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikMail + "='" + pracownik.mail + "', " +
+                Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";
+            Update(query);
+        }
+
+        public void UpdateUmowa(Umowa umowa)
+        {
+            string query = "Umowa set " +
+                Constants.UmowaTyp + "='" + umowa.Typ + "', " +
+                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
+                Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
+                Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
+            Update(query);
         }
     }
 }

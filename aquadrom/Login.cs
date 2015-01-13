@@ -21,7 +21,7 @@ namespace aquadrom
         //public static string login, haslo;
         private static bool ZgodaNaLogowanie = false;
        // SqlConnection connection;
-        AdminPanel TestPanel = new AdminPanel();
+        AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
         
         public Login()
@@ -50,15 +50,17 @@ namespace aquadrom
             DataTable dtUserLogin = adapter.GetData(sql_testLogin);
             foreach (DataRow row in dtUserLogin.Rows)
             {
-                if(true) //(row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text && row[Constants.PracownikHasloKol].ToString() == this.UserPasswordBox.Text)
+                if (true) /*row[Constants.PracownikLogin].ToString() == this.UserNameBox.Text )&& row[Constants.PracownikHaslo].ToString() ==/* sha256_hash(this.UserPasswordBox.Text))*/
                 {
                     ZgodaNaLogowanie = true;
-                    if (row[Constants.PracownikTypKontaKol].ToString()=="A")
+                    if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="A")
                     {
-                        AdminPanel AdminPanel = new AdminPanel();
-                        AdminPanel.Show();
+                        //AdminPanel AdminPanel = new AdminPanel();
+                        //AdminPanel.Show();
+                        UserPanel UserPanel = new UserPanel();
+                        UserPanel.Show();
                     }
-                    if (row[Constants.PracownikTypKontaKol].ToString()=="u")
+                    if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="U")
                     {
                         UserPanel UserPanel = new UserPanel();
                         UserPanel.Show();
@@ -73,6 +75,7 @@ namespace aquadrom
             else
             {
                 MessageBox.Show("Nieprawidłowy login lub hasło.");
+                MessageBox.Show(sha256_hash(this.UserPasswordBox.Text));
             }
         }
 

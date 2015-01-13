@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aquadrom", "aquadrom\aquadrom.csproj", "{D69B68E7-C076-4FC7-8B68-D27E63BD0113}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBTests", "DBTests\DBTests.csproj", "{B9354AEF-014F-412F-90B7-32290E479F76}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{90B35EA4-CBF2-4038-88ED-8CB1657491C2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7B0548F1-FF6F-431E-9BAD-5F525A30F63B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +22,10 @@ Global
 		{D69B68E7-C076-4FC7-8B68-D27E63BD0113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D69B68E7-C076-4FC7-8B68-D27E63BD0113}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D69B68E7-C076-4FC7-8B68-D27E63BD0113}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9354AEF-014F-412F-90B7-32290E479F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9354AEF-014F-412F-90B7-32290E479F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9354AEF-014F-412F-90B7-32290E479F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9354AEF-014F-412F-90B7-32290E479F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0548F1-FF6F-431E-9BAD-5F525A30F63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0548F1-FF6F-431E-9BAD-5F525A30F63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0548F1-FF6F-431E-9BAD-5F525A30F63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0548F1-FF6F-431E-9BAD-5F525A30F63B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

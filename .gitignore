@@ -1,6 +1,8 @@
+*.exe
 DBTests/obj/Debug/
 aquadrom/obj/Debug/
 aquadrom/bin/Debug/
-aquadrom/App.config
-aquadrom.sql.orig
-aquadrom.v12.suo
+Tests/bin/Debug/
+Tests/onj/Debug/
+aquadrom/xc3nr253.ikq
+aquadrom/zejfv2tk.5t3
