@@ -16,7 +16,6 @@ namespace Objects
         public eTypKonta typKonta {get;set;}
         public string idUmowy { get; set; }
         public int id_p { get; set; }
-        public eStanowisko stanowisko { get; set; } 
         public string imie { get; set; } 
         public string nazwisko { get; set; } 
         public string pesel { get; set; } 
@@ -65,20 +64,11 @@ namespace Objects
 
         }
 
-        public Pracownik(string imie,string nazwisko,eStanowisko stanowisko)
-        {
-            this.imie = imie;
-            this.nazwisko = nazwisko;
-            this.stanowisko = stanowisko;
-        }
-
         public Pracownik(string imie, string nazwisko, eStanowisko stanowisko,
         string pesel, string mail, string miasto, string ulica, string numerDomu, string numerTelefonu, DateTime dataWażnościKPP,
             DateTime dataBadan, eStopien stopien, string login, string haslo, string idUmowy, eTypKonta 
             typKonta)
-        
         {
-            this.id_p = id_p;
             this.imie=imie;
             this.nazwisko=nazwisko;
             this.pesel=pesel;
@@ -98,7 +88,27 @@ namespace Objects
             this.idUmowy = idUmowy;
             this.typKonta = typKonta;
  
- 
+        }
+
+        public Pracownik(int id_p, string imie, string nazwisko, string pesel,
+           string miasto, string ulica, string numerDomu, string numerMieszkania,
+           string numerTelefonu, string mail, eStopien stopien, eStanowisko stanowisko,
+           DateTime dataWażnościKPP, DateTime dataBadan)
+        {
+            this.id_p = id_p;
+            this.imie = imie;
+            this.nazwisko = nazwisko;
+            this.pesel = pesel;
+            this.miasto = miasto;
+            this.ulica = ulica;
+            this.numerDomu = numerDomu;
+            this.numerMieszkania = numerMieszkania;
+            this.numerTelefonu = numerTelefonu;
+            this.mail = mail;
+            this.stopien = stopien;
+            this.stanowisko = stanowisko;
+            this.dataWażnościKPP = dataWażnościKPP;
+            this.dataBadan = dataBadan;
         }
 
         public bool ValidatePesel(string pesel)

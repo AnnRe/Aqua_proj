@@ -86,6 +86,9 @@
     <Compile Include="GeneratorNotatek.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GeneratorNotatek.Designer.cs">
+      <DependentUpon>GeneratorNotatek.cs</DependentUpon>
+    </Compile>
     <Compile Include="HarmonogramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,7 +127,6 @@
     <Compile Include="Utilities\eStrefa.cs" />
     <Compile Include="Utilities\eTypKonta.cs" />
     <Compile Include="Utilities\eUmowa.cs" />
-
     <EmbeddedResource Include="EditWorker.resx">
       <DependentUpon>EditWorker.cs</DependentUpon>
     </EmbeddedResource>

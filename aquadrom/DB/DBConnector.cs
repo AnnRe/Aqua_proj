@@ -29,11 +29,7 @@ namespace DB
         {
             polaczenie.Close();
         }
-        public List<Pracownik> SelectPracownicy(string query)
-        {
-            polaczenie.Close();
-        }
-
+       
         public void Insert(string query)
         {
             Open();
@@ -97,20 +93,20 @@ namespace DB
         {
             string query = "Pracownik (" +
 
-               Constants.PracownikUlicaKol + "," +
-               Constants.PracownikNrDomKol + "," +
-               Constants.PracownikNrMieszkaniaKol + "," +
-               Constants.PracownikPeselKol + "," +
-               Constants.PracownikStanowiskoKol + "," +
-               Constants.PracownikStopienBadanKol + "," +
-               Constants.PracownikTelKol + "," +
-               Constants.PracownikWaznKPPKol + "," +
-               Constants.PracownikMailKol + "," +
-               Constants.PracownikDataBadanKol + "," +
-               Constants.PracownikLoginKol + "," +
-               Constants.PracownikHasloKol + "," +
-               Constants.PracownikIDUmowyKol + "," +
-               Constants.PracownikTypKontaKol;
+               Constants.PracownikUlica + "," +
+               Constants.PracownikNrDom + "," +
+               Constants.PracownikNrMieszkania + "," +
+               Constants.PracownikPesel + "," +
+               Constants.PracownikStanowisko + "," +
+               Constants.PracownikStopien + "," +
+               Constants.PracownikTel + "," +
+               Constants.PracownikWaznKPP + "," +
+               Constants.PracownikMail + "," +
+               Constants.PracownikDataBadan + "," +
+               Constants.PracownikLogin + "," +
+               Constants.PracownikHaslo + "," +
+               Constants.PracownikIDUmowy + "," +
+               Constants.PracownikTypKonta;
             query += ") VALUES ('";
             query += pracownik.imie + "','" +
                 pracownik.nazwisko + "','" +
@@ -127,34 +123,7 @@ namespace DB
                 pracownik.login + "','" +
                 pracownik.haslo + "','" +
                 pracownik.idUmowy + "','" +
-                pracownik.typKonta + "')";
-               Constants.PracownikImie + "," +
-               Constants.PracownikNazwisko + "," +
-               Constants.PracownikMiasto + "," +
-               Constants.PracownikUlica + "," +
-               Constants.PracownikNrDom + "," +
-               Constants.PracownikNrMieszkania + "," +
-               Constants.PracownikPesel + "," +
-               Constants.PracownikStanowisko + "," +
-               Constants.PracownikStopien + "," +
-               Constants.PracownikTel + "," +
-               Constants.PracownikWaznKPP + "," +
-               Constants.PracownikMail + "," +
-               Constants.PracownikDataBadan;
-            query += ") VALUES (";
-            query += pracownik.imie +
-                pracownik.nazwisko +
-                pracownik.miasto +
-                pracownik.ulica +
-                pracownik.numerDomu +
-                pracownik.numerMieszkania +
-                pracownik.pesel +
-                pracownik.stanowisko +
-                pracownik.stopien +
-                pracownik.numerTelefonu +
-                pracownik.dataWażnościKPP +
-                pracownik.mail +
-                pracownik.dataBadan + ")";
+                pracownik.typKonta + "')";            
 
             Insert(query);
         }
@@ -169,14 +138,13 @@ namespace DB
             query += ") VALUES ('";
             query += umowa.typUmowy + "','" +
                 umowa.wymiarGodzin + "','" +
-                umowa.początekUmowy + "','" +
+                umowa.poczatekUmowy + "','" +
                 umowa.koniecUmowy + "')";
 
             Insert(query);
         }
 
 
-        public void Select(string query)
         public void UpdatePracownik(Pracownik pracownik)
         {
             string query = "Pracownik set " +
@@ -200,10 +168,10 @@ namespace DB
         public void UpdateUmowa(Umowa umowa)
         {
             string query = "Umowa set " +
-                Constants.UmowaTyp + "='" + umowa.Typ + "', " +
-                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
-                Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
-                Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
+                Constants.UmowaTypUmowy + "='" + umowa.typUmowy + "', " +
+                Constants.UmowaWymiarGodzin + "='" + umowa.wymiarGodzin + "', " +
+                Constants.UmowaPoczatekUmowy + "='" + umowa.poczatekUmowy.ToString("yyyy-MM-dd") + "', " +
+                Constants.UmowaKoniecUmowy + "='" + umowa.koniecUmowy.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
             Update(query);
         }

@@ -8,3 +8,15 @@ E:\Studia\Informatyka\Semestr V\IO\Tests\bin\Debug\nunit.framework.xml
 E:\Studia\Informatyka\Semestr V\IO\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 E:\Studia\Informatyka\Semestr V\IO\Tests\obj\Debug\Tests.dll
 E:\Studia\Informatyka\Semestr V\IO\Tests\obj\Debug\Tests.pdb
+D:\projektio\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+D:\projektio\Tests\bin\Debug\Tests.dll
+D:\projektio\Tests\bin\Debug\Tests.pdb
+D:\projektio\Tests\bin\Debug\aquadrom.exe
+D:\projektio\Tests\bin\Debug\nunit.framework.dll
+D:\projektio\Tests\bin\Debug\PdfSharp.dll
+D:\projektio\Tests\bin\Debug\aquadrom.pdb
+D:\projektio\Tests\bin\Debug\nunit.framework.xml
+D:\projektio\Tests\bin\Debug\PdfSharp.xml
+D:\projektio\Tests\bin\Debug\de\PdfSharp.resources.dll
+D:\projektio\Tests\obj\Debug\Tests.dll
+D:\projektio\Tests\obj\Debug\Tests.pdb

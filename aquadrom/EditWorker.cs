@@ -43,7 +43,7 @@ namespace aquadrom
             dtlista = connector.Select(sql_edituser);
 
             IDUmowyTextBox.Text = TakeValue(dtlista, Constants.UmowaIDu);
-            TypUmowyComboBox.Text = TakeValue(dtlista,Constants.UmowaTyp);
+            TypUmowyComboBox.Text = TakeValue(dtlista,Constants.UmowaTypUmowy);
             foreach (var item in Enum.GetValues(typeof(eUmowa)))    
             {
                 TypUmowyComboBox.Items.Add(item);
