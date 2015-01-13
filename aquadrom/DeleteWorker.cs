@@ -25,7 +25,7 @@ namespace aquadrom
 
         private string chosen_id = "";
         private string WhichUser = "";
-        private string sql_deleteuser = "from Pracownik where "+Constants.PracownikIDpKol+"=";
+        private string sql_deleteuser = "from Pracownik where "+Constants.PracownikID+"=";
         public DeleteWorker(Form callingForm)
         {
             _mainform = callingForm as AdminPanel;
@@ -35,7 +35,7 @@ namespace aquadrom
 
         public void DeleteWorker_Load(object sender, EventArgs e)   // dodawanie imion i nazwisk wszystkich pracownikow do DeleteWorkerComboBox
         {
-            DataTable dtWorkers = connector.Select(Constants.PracownikIDpKol + ", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
+            DataTable dtWorkers = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers.Rows)
             {
                 DeleteWorkerComboBox.Items.Add(row[1].ToString());
@@ -46,7 +46,7 @@ namespace aquadrom
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {                                                       // którego użytkownika usunąć
             WhichUser = this.DeleteWorkerComboBox.Text;
-            DataTable dtWorkers2 = connector.Select(Constants.PracownikIDpKol+", concat(" + Constants.PracownikNazwiskoKol + ",' '," + Constants.PracownikImieKol + ") from Pracownik order by 2 asc;");
+            DataTable dtWorkers2 = connector.Select(Constants.PracownikID+", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)

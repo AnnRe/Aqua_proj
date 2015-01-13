@@ -1,0 +1,3 @@
+Na basenie musi byæ (1 ratownik/jedno stanowisko)+1
+Praca odbywa siê od 8:00 do 22:00
+Jednostka czasu - godziny i kwadranse

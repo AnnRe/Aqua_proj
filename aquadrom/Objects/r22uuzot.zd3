@@ -35,33 +35,28 @@ namespace aquadrom.Objects
         /// <returns></returns>
         private bool PoprawnieRozplanowanyDzien(DateTime day)
         {
-            if (pracownicyMajaOdpowiednieGodziny(day) && stanowiskaObsadzone(day))
-                return true;
-            else
-                return false;
+            DateTime t = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
+            DateTime endOfDay = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
+            for (; t < endOfDay; t.AddMinutes(15))
+            {
+                if (!StanowiskaObsadzone(t) || !PracownicyMajaOdpowiednieGodziny(t))
+                    return false;
+            
+            }
                 //TODO: sprawdzenie po godzinie, 
                 //TODO: sprawdzenie KZ,KSR
+                return true;
         }
 
         /// <summary>
         /// Sprawdza czy pracownicy mają wypełnioną pulę godzin
         /// </summary>
         /// <returns></returns>
-        private bool pracownicyMajaOdpowiednieGodziny(DateTime time)
+        private bool PracownicyMajaOdpowiednieGodziny(DateTime time)
         {
             DBAdapter polaczenie = new DBAdapter();
           //  string query="SELECT * from pracownik where "+const
             //var pracownicyDataTable=polaczenie.GetData()
-            return true;
-        }
-        public bool poprawnieRozplanowanyMiesiac(DateTime time)
-        {
-            DateTime time_i=new DateTime(time.Year,time.Month,1,0,0,0);
-            while (time_i.CompareTo(new DateTime(time.Year, time.Month, DateTime.DaysInMonth(time.Year, time.Month), 0, 0, 0))<=0)
-            {
-                if (PoprawnieRozplanowanyDzien(time_i) == false)
-                    return false;
-            }
             return true;
         }
 
@@ -69,53 +64,32 @@ namespace aquadrom.Objects
         /// Ilość miejsc na basenie do obsadzenia
         /// </summary>
         /// <returns></returns>
-        private int GetNeededWorkersAmount(DateTime time)
+        private int GetNeededWorkersAmount()
         {
-            DBAdapter adapter = new DBAdapter();
-            int val=adapter.GetPositionNumberAtStates(time);
-            return 21;//TODO
+            return 21;
         }
         /// <summary>
-        /// Sprawdza, czy stanowiska są obsadzone danego dnia
+        /// Sprawdza, czy stanowiska są obsadzone
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        private bool stanowiskaObsadzone(DateTime time)
+        private bool postsFilledAtDay(DateTime time)
         {
+            int neededWorkers = GetNeededWorkersAmount();
             DateTime time_i = new DateTime(time.Year, time.Month, time.Day, Constants.PoczatekPracy, 0, 0);
-            int neededWorkers = GetNeededWorkersAmount(time_i);
+            DBAdapter adapter=new DBAdapter();
             while (time_i.Hour < 22)
             {
-                for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
-                    if (GetNumberOfWorkersAtTime(time_i) < neededWorkers && KZPresentAtTime(time_i))
-                        return false;
+                for (int row_i = 0; row_i < dataGridView1.RowCount; row_i++)
+                {
+                    int workersAtTime=adapter.SelectWorkersAtTime(time_i).Rows.Count;
+                    if(workersAtTime>neededWorkers)
+                }
                 time_i = time_i.AddMinutes(15);
-                neededWorkers = GetNeededWorkersAmount(time_i);
             }
             return true;
         }
-        private int GetNumberOfWorkersAtTime(DateTime time)
-        {
-            int numberOfWorkers = 0;
-            int col_i=2*Convert.ToInt32( time.Month.ToString())+1;
-            for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
-            {
-                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) <= 0)
-                    numberOfWorkers++;
-            }
-            return numberOfWorkers;
-        }
-        private bool KZPresentAtTime(DateTime time)
-        {
-            int col_i=2*Convert.ToInt32( time.Month.ToString())+1;
-            for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
-            {
-                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) <= 0)
-                    if (dataGridView1[2, row_i].Value.ToString() =="KZ" )
-                        return true;
-            }
-            return false;
-        }
+       
 
         public bool CorrectCellFormat(string value)
         {
@@ -204,7 +178,7 @@ namespace aquadrom.Objects
             DateTime cellHour;
             DateTime.TryParse(dataGridView1[columnIndex, rowIndex].Value.ToString(), out cellHour);
 
-            return GetCellHourAtDate(cellHour, columnIndex);
+            return GetColumnDate(cellHour, columnIndex);
         }
         /// <summary>
         /// Returns the Date and time using date from selected column and hour from given variable
@@ -212,19 +186,13 @@ namespace aquadrom.Objects
         /// <param name="oldDate">Used to get info about the hour</param>
         /// <param name="columnIndex">Column which from get the date</param>
         /// <returns></returns>
-        private DateTime GetCellHourAtDate(DateTime oldDate, int columnIndex)
+        private DateTime GetColumnDate(DateTime oldDate, int columnIndex)
         {
             string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
             DateTime columnDate;
             DateTime.TryParse(columnName, out columnDate);
             DateTime newDate = new DateTime(columnDate.Year, columnDate.Month, columnDate.Day, oldDate.Hour, oldDate.Minute, oldDate.Second);
             return newDate;
-        }
-        private DateTime GetCellDateTime(int columnIndex, int rowIndex)
-        {
-            DateTime toReturn = GetColumnDate(columnIndex, rowIndex);
-            toReturn = GetCellHourAtDate(toReturn, columnIndex);
-            return toReturn;
         }
 
         public bool bothTimesAreReady(int columnIndex,int rowIndex)
@@ -314,6 +282,9 @@ namespace aquadrom.Objects
                 }
             return "";
         }
-        
+        public MessageBox ValidateDay()
+        {
+
+        }
     }
 }
