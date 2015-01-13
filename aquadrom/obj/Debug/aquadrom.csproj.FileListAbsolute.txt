@@ -23,3 +23,4 @@ C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.UserPanel.resources
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.csprojResolveAssemblyReference.cache

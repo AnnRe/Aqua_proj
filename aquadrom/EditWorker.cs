@@ -20,7 +20,7 @@ namespace aquadrom
 
         private AdminPanel _mainform = null;
         public static bool exist = false;
-        private string sql_edituser = "* from " + Constants.TabPracownik + " p, " + Constants.TabUmowa + " u where p." + Constants.PracownikIDUmowyKol + "=u." + Constants.UmowaIDu + " and " + Constants.PracownikIDpKol + "=";
+        private string sql_edituser = "* from " + Constants.TabPracownik + " p, " + Constants.TabUmowa + " u where p." + Constants.PracownikIDUmowy + "=u." + Constants.UmowaIDu + " and " + Constants.PracownikID + "=";
         private string id_user = "";
         public EditWorker(Form callingForm, string id_user)
         {
@@ -62,21 +62,21 @@ namespace aquadrom
             IDUseraTextBox.Text = id_user;
             PoczatekUmowyDateTimePicker.Text = TakeValue(dtlista, Constants.UmowaPoczatekUmowy);
             KoniecUmowyDateTimePicker.Text = TakeValue(dtlista, Constants.UmowaKoniecUmowy);
-            NumerTelefonuTextBox.Text = TakeValue(dtlista, Constants.PracownikTelKol);
-            AdresEmailTextBox.Text = TakeValue(dtlista, Constants.PracownikMailKol);
-            LoginUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikLoginKol);
+            NumerTelefonuTextBox.Text = TakeValue(dtlista, Constants.PracownikTel);
+            AdresEmailTextBox.Text = TakeValue(dtlista, Constants.PracownikMail);
+            LoginUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikLogin);
             HasloUzytkownikaTextBox.Text = "to delete?";
-            ImieUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikImieKol);
-            NazwiskoUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikNazwiskoKol);
-            PeselUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikPeselKol);;
-            MiastoUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikMiastoKol);
-            UlicaUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikUlicaKol);
-            NumerDomuTextBox.Text = TakeValue(dtlista, Constants.PracownikNrDomKol);
+            ImieUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikImie);
+            NazwiskoUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikNazwisko);
+            PeselUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikPesel);;
+            MiastoUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikMiasto);
+            UlicaUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikUlica);
+            NumerDomuTextBox.Text = TakeValue(dtlista, Constants.PracownikNrDom);
 
-            if(TakeValue(dtlista, Constants.PracownikNrMieszkaniaKol)!="")  // jesli jest numer mieszkania pobierz wartosc
-                NumerMieszkaniaNumericUpDown.Value = Convert.ToDecimal(TakeValue(dtlista, Constants.PracownikNrMieszkaniaKol));
+            if(TakeValue(dtlista, Constants.PracownikNrMieszkania)!="")  // jesli jest numer mieszkania pobierz wartosc
+                NumerMieszkaniaNumericUpDown.Value = Convert.ToDecimal(TakeValue(dtlista, Constants.PracownikNrMieszkania));
 
-            StopienComboBox.Text = TakeValue(dtlista, Constants.PracownikStopienKol);
+            StopienComboBox.Text = TakeValue(dtlista, Constants.PracownikStopien);
             foreach (var item in Enum.GetValues(typeof(eStopien)))
             {
                 StopienComboBox.Items.Add(item);
@@ -84,7 +84,7 @@ namespace aquadrom
                     StopienComboBox.SelectedItem = item;
             }
 
-            StanowiskoUseraComboBox.Text = TakeValue(dtlista, Constants.PracownikStanowiskoKol);
+            StanowiskoUseraComboBox.Text = TakeValue(dtlista, Constants.PracownikStanowisko);
             foreach (var item in Enum.GetValues(typeof(eStanowisko)))
             {
                 StanowiskoUseraComboBox.Items.Add(item);
@@ -96,10 +96,10 @@ namespace aquadrom
             {
                 KoniecKPPDateTimePicker.Enabled = false;
             }
-            else if (TakeValue(dtlista, Constants.PracownikWaznKPPKol) != "")   // else jesli nie jest pusta wartosc w bazie to pobierz
-                KoniecKPPDateTimePicker.Text = TakeValue(dtlista, Constants.PracownikWaznKPPKol);
+            else if (TakeValue(dtlista, Constants.PracownikWaznKPP) != "")   // else jesli nie jest pusta wartosc w bazie to pobierz
+                KoniecKPPDateTimePicker.Text = TakeValue(dtlista, Constants.PracownikWaznKPP);
 
-            DataBadanDateTimePicker.Text = TakeValue(dtlista, Constants.PracownikDataBadanKol);
+            DataBadanDateTimePicker.Text = TakeValue(dtlista, Constants.PracownikDataBadan);
         }
 
         private void EditWorker_FormClosing(object sender, FormClosingEventArgs e)

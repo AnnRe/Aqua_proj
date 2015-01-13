@@ -28,15 +28,15 @@ namespace aquadrom
 
         public void AdminPanel_Load(object sender, EventArgs e)
         {
-            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowyKol+"=u."+Constants.UmowaIDu);
+            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtlista.Columns.Remove(Constants.UmowaIDu);
-            dtlista.Columns.Remove(Constants.PracownikIDUmowyKol);
-            dtlista.Columns.Remove(Constants.PracownikHasloKol);
+            dtlista.Columns.Remove(Constants.PracownikIDUmowy);
+            dtlista.Columns.Remove(Constants.PracownikHaslo);
             dataGridView1.DataSource = dtlista.DefaultView;
-            dataGridView1.Columns[Constants.PracownikOstrzezenieBadaniaKol].Visible = false;
-            dataGridView1.Columns[Constants.PracownikOstrzezenieKPPKol].Visible = false;
-            dataGridView1.Columns[Constants.PracownikOstrzezenieUmowaKol].Visible = false;
+            dataGridView1.Columns[Constants.PracownikOstrzezenieBadania].Visible = false;
+            dataGridView1.Columns[Constants.PracownikOstrzezenieKPP].Visible = false;
+            dataGridView1.Columns[Constants.PracownikOstrzezenieUmowa].Visible = false;
             ColorCheckUser();
         }
 
@@ -88,28 +88,28 @@ namespace aquadrom
                 changeconcract = false;
 
                 DateTime KPPdate;   // if user to KZ (brak KPPdate) to ustala odległą w przyszłość
-                if(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPPKol].Value.ToString() == "")
+                if(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPP].Value.ToString() == "")
                     KPPdate = DateTime.Now.AddYears(99);
 
-                else KPPdate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPPKol].Value.ToString());
-                DateTime medicaldate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikDataBadanKol].Value.ToString());
+                else KPPdate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPP].Value.ToString());
+                DateTime medicaldate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.PracownikDataBadan].Value.ToString());
                 DateTime concractdate = DateTime.Parse(dataGridView1.Rows[i].Cells[Constants.UmowaKoniecUmowy].Value.ToString());
 
                 if (today >= KPPdate)
                 {
-                    dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Style.BackColor = Color.Red;
-                    dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPPKol].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikID].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikWaznKPP].Style.BackColor = Color.Red;
                     changeKPP = true;
                 }
                 if (today >= medicaldate)
                 {
-                    dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Style.BackColor = Color.Red;
-                    dataGridView1.Rows[i].Cells[Constants.PracownikDataBadanKol].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikID].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikDataBadan].Style.BackColor = Color.Red;
                     changemedi = true;
                 }
                 if (today >= concractdate)
                 {
-                    dataGridView1.Rows[i].Cells[Constants.PracownikIDpKol].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[i].Cells[Constants.PracownikID].Style.BackColor = Color.Red;
                     dataGridView1.Rows[i].Cells[Constants.UmowaKoniecUmowy].Style.BackColor = Color.Red;
                     changeconcract = true;
                 }
@@ -130,28 +130,28 @@ namespace aquadrom
         {
             string what = "";
 
-            if ((changeKPP == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieKPPKol].Value.ToString() == "f"))
+            if ((changeKPP == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieKPP].Value.ToString() == "f"))
             {
                 what += "Data ważności KPP: " + KPPdate.ToString("dd-MM-yyyy") + "\n";
-                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieKPPKol + "='t' where " + Constants.PracownikIDpKol + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikIDpKol].Value.ToString());
+                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieKPP + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
-            else if ((changemedi == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieBadaniaKol].Value.ToString() == "f"))
+            else if ((changemedi == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieBadania].Value.ToString() == "f"))
             {
                 what += "Data ważności badań: " + medicaldate.ToString("dd-MM-yyyy") + "\n";
-                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieBadaniaKol + "='t' where " + Constants.PracownikIDpKol + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikIDpKol].Value.ToString());
+                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieBadania + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
-            else if ((changeconcract == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieUmowaKol].Value.ToString() == "f"))
+            else if ((changeconcract == true) && (dataGridView1.Rows[iterator].Cells[Constants.PracownikOstrzezenieUmowa].Value.ToString() == "f"))
             {
                 what += "Data ważności umowy: " + medicaldate.ToString("dd-MM-yyyy") + "\n";
-                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieUmowaKol + "='t' where " + Constants.PracownikIDpKol + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikIDpKol].Value.ToString());
+                adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieUmowa + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
             if (what.Length != 0)
             {
                 var fromAdress = new MailAddress("aquadromautomat@gmail.com", "System automatycznej informacji");
                 var toAdress = new MailAddress("aquadromboss@gmail.com", "Administrator Firmy sMMonpar ");
                 const string fromPassword = "aquadrom123";
-                string subject = "Ostrzeżenie " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImieKol].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwiskoKol].Value.ToString();
-                string body = "Pracownik: " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImieKol].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwiskoKol].Value.ToString() + "\n" + what;
+                string subject = "Ostrzeżenie " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImie].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwisko].Value.ToString();
+                string body = "Pracownik: " + dataGridView1.Rows[iterator].Cells[Constants.PracownikImie].Value.ToString() + " " + dataGridView1.Rows[iterator].Cells[Constants.PracownikNazwisko].Value.ToString() + "\n" + what;
                 var smtp = new SmtpClient
                 {
                     Host = "smtp.gmail.com",

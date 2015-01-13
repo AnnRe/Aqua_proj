@@ -50,7 +50,7 @@ namespace aquadrom
             DataTable dtUserLogin = adapter.GetData(sql_testLogin);
             foreach (DataRow row in dtUserLogin.Rows)
             {
-                if (true) /*row[Constants.PracownikLoginKol].ToString() == this.UserNameBox.Text )&& row[Constants.PracownikHasloKol].ToString() ==/* sha256_hash(this.UserPasswordBox.Text))*/
+                if (true) /*row[Constants.PracownikLogin].ToString() == this.UserNameBox.Text )&& row[Constants.PracownikHaslo].ToString() ==/* sha256_hash(this.UserPasswordBox.Text))*/
                 {
                     ZgodaNaLogowanie = true;
                     if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="A")

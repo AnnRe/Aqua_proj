@@ -35,6 +35,17 @@ namespace aquadrom.Utilities
         public const string GodzinyPracyDo = "Do";
         public const string GodzinyPracyIdP = "ID_pracownika";
 
+        public const string OtwarcieStanowiskaID = "ID_o";
+        public const string OtwarcieStanowiskaOd = "Od";
+        public const string OtwarcieStanowiskaDo = "Do";
+        public const string OtwarcieStanowiskaTypDnia = "Typ_dnia";
+        public const string OtwarcieStanowiskaIDStanowiska = "ID_stanowiska";
+
+        public const string StanowiskoID = "ID_s";
+        public const string StanowiskoNazwa = "Nazwa";
+        public const string StanowiskoStrefa = "Strefa";
+        public const string StanowiskoLiczbaPracownikow = "Liczba_pracownikow";
+
         public const string UmowaIDu = "ID_u";
         public const string UmowaTyp = "Typ";
         public const string UmowaWymiarGodzin = "Wymiar_godzin";
