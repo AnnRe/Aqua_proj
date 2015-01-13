@@ -45,6 +45,7 @@
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.btn_check = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -184,11 +185,22 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // btn_check
+            // 
+            this.btn_check.Location = new System.Drawing.Point(386, 10);
+            this.btn_check.Name = "btn_check";
+            this.btn_check.Size = new System.Drawing.Size(112, 23);
+            this.btn_check.TabIndex = 5;
+            this.btn_check.Text = "Sprawdź";
+            this.btn_check.UseVisualStyleBackColor = true;
+            this.btn_check.Click += new System.EventHandler(this.btn_check_Click);
+            // 
             // HarmonogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 262);
+            this.Controls.Add(this.btn_check);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxYear);
             this.Controls.Add(this.comboBoxMonths);
@@ -223,5 +235,6 @@
         private System.Windows.Forms.ComboBox comboBoxMonths;
         private System.Windows.Forms.ComboBox comboBoxYear;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button btn_check;
     }
 }

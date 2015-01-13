@@ -33,12 +33,16 @@ namespace aquadrom.Objects
         /// Sprawdza, czy w każdym momencie jest wystarczająca ilość pracowników oraz czy są KZ/KSR
         /// </summary>
         /// <returns></returns>
-        private bool PoprawnieRozplanowanyDzien(DateTime day)
+        private string PoprawnieRozplanowanyDzien(DateTime day)
         {
-            if (pracownicyMajaOdpowiednieGodziny(day) && stanowiskaObsadzone(day))
-                return true;
+            string messageStanowiska = stanowiskaObsadzone(day);
+            if (pracownicyMajaOdpowiednieGodziny(day))
+                if (messageStanowiska.Length == 0)
+                    return "";
+                else
+                    return messageStanowiska;
             else
-                return false;
+                return "Pracownicy nie mają odpowiedniej ilości godzin";
                 //TODO: sprawdzenie po godzinie, 
                 //TODO: sprawdzenie KZ,KSR
         }
@@ -54,15 +58,16 @@ namespace aquadrom.Objects
             //var pracownicyDataTable=polaczenie.GetData()
             return true;
         }
-        public bool poprawnieRozplanowanyMiesiac(DateTime time)
+        public string poprawnieRozplanowanyMiesiac(DateTime time)
         {
             DateTime time_i=new DateTime(time.Year,time.Month,1,0,0,0);
             while (time_i.CompareTo(new DateTime(time.Year, time.Month, DateTime.DaysInMonth(time.Year, time.Month), 0, 0, 0))<=0)
             {
-                if (PoprawnieRozplanowanyDzien(time_i) == false)
-                    return false;
+                string message = PoprawnieRozplanowanyDzien(time_i);
+                if (message.Length > 0)
+                    return message;
             }
-            return true;
+            return "";
         }
 
         /// <summary>
@@ -80,19 +85,28 @@ namespace aquadrom.Objects
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        private bool stanowiskaObsadzone(DateTime time)
+        private string stanowiskaObsadzone(DateTime time)
         {
             DateTime time_i = new DateTime(time.Year, time.Month, time.Day, Constants.PoczatekPracy, 0, 0);
             int neededWorkers = GetNeededWorkersAmount(time_i);
             while (time_i.Hour < 22)
             {
-                for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
-                    if (GetNumberOfWorkersAtTime(time_i) < neededWorkers && KZPresentAtTime(time_i))
-                        return false;
+                //for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+                int numberOfWorkersAtTime=GetNumberOfWorkersAtTime(time_i);
+                    if (numberOfWorkersAtTime < neededWorkers)
+                    {
+                        int dif=neededWorkers-numberOfWorkersAtTime;
+                        return "\n Za mało pracowników (o "+dif+") o godzinie "+ time_i.ToString("HH:mm");
+                    }
+                    else
+                        if (!KZPresentAtTime(time_i))
+                            return "Brak KZ";
+
+                        //return false;
                 time_i = time_i.AddMinutes(15);
                 neededWorkers = GetNeededWorkersAmount(time_i);
             }
-            return true;
+            return "";
         }
         private int GetNumberOfWorkersAtTime(DateTime time)
         {
