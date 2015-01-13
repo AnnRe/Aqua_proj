@@ -56,6 +56,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(956, 386);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // ądzajToolStripMenuItem
             // 
@@ -73,6 +74,7 @@
             this.DodajUżytkownikówToolStripMenuItem.Name = "DodajUżytkownikówToolStripMenuItem";
             this.DodajUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.DodajUżytkownikówToolStripMenuItem.Text = "Dodaj użytkownika";
+            this.DodajUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.DodajUżytkownikówToolStripMenuItem_Click);
             // 
             // edytujUżytkownikaToolStripMenuItem
             // 

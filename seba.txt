@@ -4,7 +4,19 @@ update pracownik
 set Haslo=SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256', Haslo)), 3, 64);
 
 ----
+alter table pracownik drop constraint "CK__Pracownik__Ostrz__48CFD27E"
+alter table pracownik drop column ostrzezenie
 
+
+// DODAWANIE KOLUMNY OSTRZENIE
+
+alter table Pracownik add Ostrzezenie_umowa VARCHAR(1) NOT NULL CHECK(Ostrzezenie_umowa IN('t', 'f')) default 'f';
+alter table Pracownik add Ostrzezenie_KPP VARCHAR(1) NOT NULL CHECK(Ostrzezenie_KPP IN('t', 'f')) default 'f';
+alter table Pracownik add Ostrzezenie_badania VARCHAR(1) NOT NULL CHECK(Ostrzezenie_badania IN('t', 'f')) default 'f';
+
+
+
+----
 
 USE [aquadrom]
 GO

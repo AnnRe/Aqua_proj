@@ -21,13 +21,14 @@ namespace aquadrom.Utilities
         public const string PracownikStanowisko = "Stanowisko";
         public const string PracownikWaznKPP = "Data_waznosci_KPP";
         public const string PracownikDataBadan = "Data_Badan";
-        public const string PracownikStopienBadan = "Stopien";
+        public const string PracownikStopien = "Stopien";
         public const string PracownikLogin = "Login";
         public const string PracownikHaslo = "Haslo";
         public const string PracownikIDUmowy = "ID_umowy";
         public const string PracownikTypKonta = "Typ_konta";
-
-        public const string PracownikOstrzezenie = "Ostrzezenie";
+        public const string PracownikOstrzezenieUmowa = "Ostrzezenie_umowa";
+        public const string PracownikOstrzezenieBadania = "Ostrzezenie_badania";
+        public const string PracownikOstrzezenieKPP = "Ostrzezenie_KPP";
 
         public const string GodzinyPracyIdG = "ID_g";
         public const string GodzinyPracyOd = "Od";
@@ -40,26 +41,14 @@ namespace aquadrom.Utilities
         public const string UmowaPoczatekUmowy = "Poczatek_umowy";
         public const string UmowaKoniecUmowy = "Koniec_umowy";
 
-        public const string StanowiskoID="ID_s";
-        public const string StanowiskoNazwa="Nazwa";
-        public const string StanowiskoStrefa="Strefa";
-        public const string StanowiskoLiczbaPracownikow="Liczba_pracownikow";
-
-        public const string OtwarcieStanowiskaID="ID_o";
-        public const string OtwarcieStanowiskaOd="Od";
-        public const string OtwarcieStanowiskaDo="Do";
-        public const string OtwarcieStanowiskaTypDnia="Typ_dnia";
-        public const string OtwarcieStanowiskaIDStanowiska="ID_stanowiska";
-
         public const string TabGodzinyPracy = "Godziny_pracy";
         public const string TabNotatka = "Notatka";
         public const string TabOtwarcieStanowiska = "Otwarcie_stanowiska";
         public const string TabPracownik = "Pracownik";
         public const string TabStanowisko = "Stanowisko";
         public const string TabUmowa = "Umowa";
-
         public const int PoczatekPracy = 8;
         public const int KoniecPracy = 22;
-    
+
     }
 }

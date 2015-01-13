@@ -47,6 +47,15 @@ namespace DB
             Close();
         }
 
+        public void Update(string query)
+        {
+            Open();
+            string queryText = "update " + query;
+            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
+            cmdsel.ExecuteNonQuery();
+            Close();
+        }
+
         public DataTable Select(string query)
         {
             Open();
@@ -90,7 +99,7 @@ namespace DB
                Constants.PracownikNrMieszkania + "," +
                Constants.PracownikPesel + "," +
                Constants.PracownikStanowisko + "," +
-               Constants.PracownikStopienBadan + "," +
+               Constants.PracownikStopien + "," +
                Constants.PracownikTel + "," +
                Constants.PracownikWaznKPP + "," +
                Constants.PracownikMail + "," +
@@ -111,15 +120,6 @@ namespace DB
                 pracownik.dataBadan + ")";
 
             Insert(query);
-        }
-
-        public void Update(string query)
-        {
-            Open();
-            string queryText = "UPDATE " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.ExecuteNonQuery();
-            Close();
         }
     }
 }

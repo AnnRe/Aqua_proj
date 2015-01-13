@@ -30,7 +30,7 @@
         {
             this.EditWorkerComboBox = new System.Windows.Forms.ComboBox();
             this.ChooseButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EditWorkerComboBox
@@ -54,15 +54,15 @@
             this.ChooseButton.UseVisualStyleBackColor = true;
             this.ChooseButton.Click += new System.EventHandler(this.ChooseButton_Click);
             // 
-            // button1
+            // CancelButton
             // 
-            this.button1.Location = new System.Drawing.Point(183, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Anuluj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CancelButton.Location = new System.Drawing.Point(183, 77);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(110, 23);
+            this.CancelButton.TabIndex = 9;
+            this.CancelButton.Text = "Anuluj";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // EditWorkerWhich
             // 
@@ -70,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(348, 112);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChooseButton);
             this.Controls.Add(this.EditWorkerComboBox);
             this.MaximizeBox = false;
@@ -88,6 +88,6 @@
 
         private System.Windows.Forms.ComboBox EditWorkerComboBox;
         private System.Windows.Forms.Button ChooseButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CancelButton;
     }
 }
