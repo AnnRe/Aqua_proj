@@ -171,7 +171,7 @@ namespace DB
                 " WHERE " + Constants.StanowiskoID + "=" + Constants.OtwarcieStanowiskaIDStanowiska + " AND ('" + time.ToString("yyyy-MM-dd HH:mm:ss") + "' BETWEEN '" + Constants.OtwarcieStanowiskaOd + "' AND '" +
                 Constants.OtwarcieStanowiskaDo + "')";
             DataTable result = polaczenie.Select(query);
-            
+            //TODO: porównanie tylko godzin (nie dat)
             string il=result.Rows[0].ItemArray[0].ToString();
             return il==""?0:Convert.ToInt32(il);
         }
