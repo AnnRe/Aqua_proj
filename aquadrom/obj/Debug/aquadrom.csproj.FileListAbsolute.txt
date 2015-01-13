@@ -13,3 +13,13 @@ E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.csproj.GenerateRe
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.exe
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.pdb
 E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.pdb
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.EditWorker.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Form2.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.HarmonogramForm.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Login.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.UserPanel.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
