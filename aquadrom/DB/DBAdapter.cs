@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using System.Windows.Forms;
 
 namespace DB
 {
@@ -76,6 +77,19 @@ namespace DB
                 return false;
             }
             return true;
+        }
+
+        public bool Update(Pracownik pracownik)
+        {
+            try { polaczenie.UpdatePracownik(pracownik); }
+            catch { return false; }
+            return true;
+        }
+
+        public bool Update(Umowa umowa)
+        {
+            try { polaczenie.UpdateUmowa(umowa); }
+            catch { return false; } return true;
         }
 
         public DataTable SelectWorkersAtTime(DateTime time)
@@ -174,6 +188,14 @@ namespace DB
             //TODO: porównanie tylko godzin (nie dat)
             string il=result.Rows[0].ItemArray[0].ToString();
             return il==""?0:Convert.ToInt32(il);
+        }
+
+        public void LockButton(ComboBox WhatEmpty, Button WhatLock)
+        {
+            if (WhatEmpty.Text == "")
+                WhatLock.Enabled = false;
+            else
+                WhatLock.Enabled = true;
         }
     }
 }

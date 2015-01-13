@@ -121,5 +121,36 @@ namespace DB
 
             Insert(query);
         }
+
+        public void UpdatePracownik(Pracownik pracownik)
+        {
+            string query = "Pracownik set " +
+                Constants.PracownikImie + "='" + pracownik.imie + "', " +
+                Constants.PracownikNazwisko + "='" + pracownik.nazwisko + "', " +
+                Constants.PracownikMiasto + "='" + pracownik.miasto + "', " +
+                Constants.PracownikUlica + "='" + pracownik.ulica + "', " +
+                Constants.PracownikNrDom + "='" + pracownik.numerDomu + "', " +
+                Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
+                Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
+                Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
+                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
+                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikMail + "='" + pracownik.mail + "', " +
+                Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";
+            Update(query);
+        }
+
+        public void UpdateUmowa(Umowa umowa)
+        {
+            string query = "Umowa set " +
+                Constants.UmowaTyp + "='" + umowa.Typ + "', " +
+                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
+                Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
+                Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
+            Update(query);
+        }
     }
 }

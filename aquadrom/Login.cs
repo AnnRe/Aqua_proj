@@ -55,8 +55,10 @@ namespace aquadrom
                     ZgodaNaLogowanie = true;
                     if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="A")
                     {
-                        AdminPanel AdminPanel = new AdminPanel();
-                        AdminPanel.Show();
+                        //AdminPanel AdminPanel = new AdminPanel();
+                        //AdminPanel.Show();
+                        UserPanel UserPanel = new UserPanel();
+                        UserPanel.Show();
                     }
                     if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="U")
                     {
