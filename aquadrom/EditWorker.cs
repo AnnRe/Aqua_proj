@@ -17,7 +17,7 @@ namespace aquadrom
     {
         DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
-
+        
         private AdminPanel _mainform = null;
         public static bool exist = false;
         private string sql_edituser = "* from " + Constants.TabPracownik + " p, " + Constants.TabUmowa + " u where p." + Constants.PracownikIDUmowy + "=u." + Constants.UmowaIDu + " and " + Constants.PracownikID + "=";
@@ -31,13 +31,11 @@ namespace aquadrom
             _mainform = callingForm as AdminPanel;
         }
 
-        public void UZCheck()
-        {
-            if (TypUmowyComboBox.Text == Convert.ToString(eUmowa.UZ));
-
-        }
         private void EditWorker_Load(object sender, EventArgs e)
         {
+//            Validations pesel = new Validations();
+//            pesel.ValidatePesel("t");
+
 //            MessageBox.Show(sql_edituser);
             DataTable dtlista;
             dtlista = connector.Select(sql_edituser);
@@ -50,7 +48,6 @@ namespace aquadrom
                 if (TypUmowyComboBox.Text == item.ToString())
                     TypUmowyComboBox.SelectedItem = item;
             }
-
             if (TypUmowyComboBox.Text == eUmowa.UZ.ToString())  // jesli umowa zlecenie to wymiar godzin = 0, ComboBox off
             {
                 WymiarGodzinNumericUpDown.ReadOnly = true;

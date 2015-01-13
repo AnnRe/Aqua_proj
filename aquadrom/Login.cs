@@ -20,6 +20,7 @@ namespace aquadrom
     {
         //public static string login, haslo;
         private static bool ZgodaNaLogowanie = false;
+        private static bool FindBase = false;
        // SqlConnection connection;
         AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
@@ -27,6 +28,8 @@ namespace aquadrom
         public Login()
         {
             InitializeComponent();
+
+
         }
 
         public static String sha256_hash(String value)
@@ -44,8 +47,21 @@ namespace aquadrom
             return Sb.ToString();
         }
 
+        private bool CheckBase()
+        {
+            DBConnector con = new DBConnector();
+            try{ con.Open(); }
+            catch{ return false;}
+            con.Close();
+            return true;
+        }
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            if (CheckBase() == false)
+            {
+                MessageBox.Show("Baza danych nie odnaleziona. \nSkontaktuj się z administratorem.");
+                this.Close();
+            }
             string sql_testLogin = "SELECT Login, Haslo, Typ_konta FROM Pracownik";            
             DataTable dtUserLogin = adapter.GetData(sql_testLogin);
             foreach (DataRow row in dtUserLogin.Rows)
@@ -55,10 +71,9 @@ namespace aquadrom
                     ZgodaNaLogowanie = true;
                     if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="A")
                     {
-                        //AdminPanel AdminPanel = new AdminPanel();
-                        //AdminPanel.Show();
-                        UserPanel UserPanel = new UserPanel();
-                        UserPanel.Show();
+                        AdminPanel AdminPanel = new AdminPanel();
+                        AdminPanel.Show();
+
                     }
                     if (row[Constants.PracownikTypKonta].ToString().ToUpper()=="U")
                     {
