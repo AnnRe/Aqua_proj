@@ -307,16 +307,24 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
+                MessageBox.Show("Źle rozplanowany dzień! " +  " " + messageMiesiac);
             }
             else
             {
+                string message = "";
                 for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
                     for (int col_i = 3; col_i < 65; col_i += 2)
                     {
                         if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
+                        {
+                            message+="Brakuje drugiej godziny ";
                             HighlightCell(row_i, col_i);
+                        }
                     }
+                if (message.Length == 0)
+                    MessageBox.Show("Poprawnie rozplanowany miesiąc");
+                else
+                    MessageBox.Show(message);
             }
 
         }
