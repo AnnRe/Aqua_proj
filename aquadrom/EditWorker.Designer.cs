@@ -51,6 +51,8 @@
             this.Haslo = new System.Windows.Forms.Label();
             this.Login = new System.Windows.Forms.Label();
             this.DaneUmowyGroupBox = new System.Windows.Forms.GroupBox();
+            this.IDUmowyLabel = new System.Windows.Forms.Label();
+            this.IDUmowyTextBox = new System.Windows.Forms.TextBox();
             this.KoniecUmowyDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.PoczatekUmowyDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.WymiarGodzinNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -76,8 +78,6 @@
             this.Imie = new System.Windows.Forms.Label();
             this.AnulujButton = new System.Windows.Forms.Button();
             this.EdytujUseraButton = new System.Windows.Forms.Button();
-            this.IDUmowyTextBox = new System.Windows.Forms.TextBox();
-            this.IDUmowyLabel = new System.Windows.Forms.Label();
             this.PracownikGroupBox.SuspendLayout();
             this.BadaniaGroupBox.SuspendLayout();
             this.DaneKontaktoweGroupBox.SuspendLayout();
@@ -132,7 +132,6 @@
             this.KoniecKPPDateTimePicker.Name = "KoniecKPPDateTimePicker";
             this.KoniecKPPDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.KoniecKPPDateTimePicker.TabIndex = 15;
-            this.KoniecKPPDateTimePicker.ValueChanged += new System.EventHandler(this.KoniecKPPDateTimePicker_ValueChanged);
             // 
             // StanowiskoUseraComboBox
             // 
@@ -316,6 +315,23 @@
             this.DaneUmowyGroupBox.TabStop = false;
             this.DaneUmowyGroupBox.Text = "Dane umowy";
             // 
+            // IDUmowyLabel
+            // 
+            this.IDUmowyLabel.AutoSize = true;
+            this.IDUmowyLabel.Location = new System.Drawing.Point(6, 26);
+            this.IDUmowyLabel.Name = "IDUmowyLabel";
+            this.IDUmowyLabel.Size = new System.Drawing.Size(54, 13);
+            this.IDUmowyLabel.TabIndex = 39;
+            this.IDUmowyLabel.Text = "ID umowy";
+            // 
+            // IDUmowyTextBox
+            // 
+            this.IDUmowyTextBox.Location = new System.Drawing.Point(106, 20);
+            this.IDUmowyTextBox.Name = "IDUmowyTextBox";
+            this.IDUmowyTextBox.ReadOnly = true;
+            this.IDUmowyTextBox.Size = new System.Drawing.Size(148, 20);
+            this.IDUmowyTextBox.TabIndex = 38;
+            // 
             // KoniecUmowyDateTimePicker
             // 
             this.KoniecUmowyDateTimePicker.Location = new System.Drawing.Point(106, 127);
@@ -341,6 +357,7 @@
             this.WymiarGodzinNumericUpDown.Name = "WymiarGodzinNumericUpDown";
             this.WymiarGodzinNumericUpDown.Size = new System.Drawing.Size(148, 20);
             this.WymiarGodzinNumericUpDown.TabIndex = 35;
+            this.WymiarGodzinNumericUpDown.ValueChanged += new System.EventHandler(this.WymiarGodzinNumericUpDown_ValueChanged);
             // 
             // TypUmowyComboBox
             // 
@@ -541,23 +558,6 @@
             this.EdytujUseraButton.Text = "Edytuj";
             this.EdytujUseraButton.UseVisualStyleBackColor = true;
             this.EdytujUseraButton.Click += new System.EventHandler(this.EdytujUseraButton_Click);
-            // 
-            // IDUmowyTextBox
-            // 
-            this.IDUmowyTextBox.Location = new System.Drawing.Point(106, 20);
-            this.IDUmowyTextBox.Name = "IDUmowyTextBox";
-            this.IDUmowyTextBox.ReadOnly = true;
-            this.IDUmowyTextBox.Size = new System.Drawing.Size(148, 20);
-            this.IDUmowyTextBox.TabIndex = 38;
-            // 
-            // IDUmowyLabel
-            // 
-            this.IDUmowyLabel.AutoSize = true;
-            this.IDUmowyLabel.Location = new System.Drawing.Point(6, 26);
-            this.IDUmowyLabel.Name = "IDUmowyLabel";
-            this.IDUmowyLabel.Size = new System.Drawing.Size(54, 13);
-            this.IDUmowyLabel.TabIndex = 39;
-            this.IDUmowyLabel.Text = "ID umowy";
             // 
             // EditWorker
             // 

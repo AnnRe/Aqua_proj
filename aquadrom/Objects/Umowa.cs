@@ -18,7 +18,7 @@ namespace Objects
         public Umowa(int ID_u, eUmowa Typ, string Wymiar_godzin, DateTime Poczatek_umowy, DateTime Koniec_umowy)
         {
             this.ID_u = ID_u;
-            this.Typ = eUmowa.UZ;
+            this.Typ = Typ;
             this.Wymiar_godzin = Wymiar_godzin;
             this.Poczatek_umowy = Poczatek_umowy;
             this.Koniec_umowy = Koniec_umowy;

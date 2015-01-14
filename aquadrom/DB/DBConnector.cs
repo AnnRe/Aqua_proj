@@ -124,6 +124,11 @@ namespace DB
 
         public void UpdatePracownik(Pracownik pracownik)
         {
+            string test;
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                test = "null";
+            else test = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+
             string query = "Pracownik set " +
                 Constants.PracownikImie + "='" + pracownik.imie + "', " +
                 Constants.PracownikNazwisko + "='" + pracownik.nazwisko + "', " +
@@ -135,7 +140,7 @@ namespace DB
                 Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
                 Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
                 Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
-                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikWaznKPP + "=" + test + ", " + // T
                 Constants.PracownikMail + "='" + pracownik.mail + "', " +
                 Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";
@@ -144,9 +149,12 @@ namespace DB
 
         public void UpdateUmowa(Umowa umowa)
         {
+            if (umowa.Wymiar_godzin == "0")
+                umowa.Wymiar_godzin = "null";
+
             string query = "Umowa set " +
                 Constants.UmowaTyp + "='" + umowa.Typ + "', " +
-                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
+                Constants.UmowaWymiarGodzin + "=" + umowa.Wymiar_godzin + ", " +
                 Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
                 Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
