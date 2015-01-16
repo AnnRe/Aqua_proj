@@ -52,3 +52,13 @@ D:\projektio\aquadrom\bin\Debug\PdfSharp.xml
 D:\projektio\aquadrom\bin\Debug\PdfSharp.Charting.xml
 D:\projektio\aquadrom\bin\Debug\de\PdfSharp.resources.dll
 D:\projektio\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+D:\projektio\aquadrom\obj\Debug\aquadrom.csprojResolveAssemblyReference.cache
+D:\projektio\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+D:\projektio\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+D:\projektio\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll

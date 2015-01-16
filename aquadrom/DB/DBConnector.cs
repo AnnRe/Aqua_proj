@@ -92,7 +92,9 @@ namespace DB
         public void Insert(Pracownik pracownik)
         {
             string query = "Pracownik (" +
-
+               Constants.PracownikImie + "," +
+               Constants.PracownikNazwisko + "," +
+               Constants.PracownikMiasto + "," +
                Constants.PracownikUlica + "," +
                Constants.PracownikNrDom + "," +
                Constants.PracownikNrMieszkania + "," +
@@ -106,11 +108,15 @@ namespace DB
                Constants.PracownikLogin + "," +
                Constants.PracownikHaslo + "," +
                Constants.PracownikIDUmowy + "," +
-               Constants.PracownikTypKonta;
+               Constants.PracownikTypKonta + "," +
+               Constants.PracownikOstrzezenieUmowa + "," +
+               Constants.PracownikOstrzezenieBadania + "," +
+               Constants.PracownikOstrzezenieKPP;
             query += ") VALUES ('";
             query += pracownik.imie + "','" +
                 pracownik.nazwisko + "','" +
                 pracownik.miasto + "','" +
+                pracownik.ulica + "','" +
                 pracownik.numerDomu + "','" +
                 pracownik.numerMieszkania + "','" +
                 pracownik.pesel + "','" +
@@ -123,7 +129,10 @@ namespace DB
                 pracownik.login + "','" +
                 pracownik.haslo + "','" +
                 pracownik.idUmowy + "','" +
-                pracownik.typKonta + "')";            
+                pracownik.typKonta + "','" +
+                pracownik.oUmowa + "','" +
+                pracownik.oBadania + "','" +
+                pracownik.oKPP + "')";
 
             Insert(query);
         }

@@ -18,6 +18,8 @@ using PdfSharp.SharpZipLib;
 
 
 
+
+
 namespace aquadrom
 {
     public partial class GeneratorNotatek : Form
@@ -48,7 +50,7 @@ namespace aquadrom
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Verdana", 10, XFontStyle.Bold);
+            XFont font = new XFont("Times New Roman", 10, XFontStyle.Regular);
             string trescNotatki = TekstNotatki.Text.ToString();
             gfx.DrawString(trescNotatki, font, XBrushes.Black, x, y);
             string filename = "test.pdf";

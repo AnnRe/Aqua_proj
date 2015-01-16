@@ -54,9 +54,9 @@
             // 
             // TekstNotatki
             // 
-            this.TekstNotatki.Location = new System.Drawing.Point(66, 45);
+            this.TekstNotatki.Location = new System.Drawing.Point(38, 72);
             this.TekstNotatki.Name = "TekstNotatki";
-            this.TekstNotatki.Size = new System.Drawing.Size(315, 197);
+            this.TekstNotatki.Size = new System.Drawing.Size(510, 122);
             this.TekstNotatki.TabIndex = 2;
             this.TekstNotatki.Text = "";
             this.TekstNotatki.TextChanged += new System.EventHandler(this.TekstNotatki_TextChanged);

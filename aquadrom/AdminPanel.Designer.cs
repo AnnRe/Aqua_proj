@@ -35,6 +35,8 @@
             this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -100,12 +102,28 @@
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ądzajToolStripMenuItem});
+            this.ądzajToolStripMenuItem,
+            this.notatkiToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(980, 24);
             this.menuStrip2.TabIndex = 3;
             this.menuStrip2.Text = "menuStrip2";
+            // 
+            // notatkiToolStripMenuItem
+            // 
+            this.notatkiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.napiszNotatkęToolStripMenuItem});
+            this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
+            this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.notatkiToolStripMenuItem.Text = "Notatki";
+            // 
+            // napiszNotatkęToolStripMenuItem
+            // 
+            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
+            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
+            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click);
             // 
             // AdminPanel
             // 
@@ -139,6 +157,8 @@
         private System.Windows.Forms.ToolStripMenuItem PrzeglądajUżytkownikówToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem napiszNotatkęToolStripMenuItem;
 
     }
 }

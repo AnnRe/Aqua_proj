@@ -176,5 +176,11 @@ namespace aquadrom
         {
             ColorCheckUser();
         }
+
+        private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GeneratorNotatek notatka = new GeneratorNotatek();
+            notatka.Show();
+        }
     }
 }

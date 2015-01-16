@@ -14,7 +14,6 @@ D:\projektio\Tests\bin\Debug\Tests.pdb
 D:\projektio\Tests\bin\Debug\aquadrom.exe
 D:\projektio\Tests\bin\Debug\nunit.framework.dll
 D:\projektio\Tests\bin\Debug\PdfSharp.dll
-D:\projektio\Tests\bin\Debug\aquadrom.pdb
 D:\projektio\Tests\bin\Debug\nunit.framework.xml
 D:\projektio\Tests\bin\Debug\PdfSharp.xml
 D:\projektio\Tests\bin\Debug\de\PdfSharp.resources.dll

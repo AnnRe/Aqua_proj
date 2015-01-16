@@ -34,11 +34,12 @@ namespace Objects
         public string login{ get; set; } 
         public string haslo{ get; set; }
 
-        bool dobryEmail = false;
-        bool dobryPesel = false;
-        bool poprawny = false;
-        private static readonly int[] mnozniki = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
-        
+        public string oUmowa { get; set; }
+        public string oKPP { get; set; }
+        public string oBadania { get; set; } 
+
+        //bool dobryPesel = false;
+        //bool poprawny = false; 
 
         public Pracownik()
         {
@@ -61,6 +62,9 @@ namespace Objects
             this.haslo = "";
             this.idUmowy = "12";
             this.typKonta = eTypKonta.U;
+            this.oUmowa = "f";
+            this.oKPP = "f";
+            this.oBadania = "f";
 
         }
 
@@ -109,88 +113,6 @@ namespace Objects
             this.stanowisko = stanowisko;
             this.dataWażnościKPP = dataWażnościKPP;
             this.dataBadan = dataBadan;
-        }
-
-        public bool ValidatePesel(string pesel)
-        {
-            bool dobryPesel = false;
-            try
-            {
-                if (pesel.Length == 11)
-                {
-                    dobryPesel = ObliczSumeKontrolna(pesel).Equals(pesel[10].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                dobryPesel = false;
-            }
-            return dobryPesel;
-        }
-        private static string ObliczSumeKontrolna(string pesel)
-        {
-            int sum = 0;
-            for (int i = 0; i < mnozniki.Length; i++)
-            {
-                sum += mnozniki[i] * int.Parse(pesel[i].ToString());
-            }
-
-            int reszta = sum % 10;
-            return reszta == 0 ? reszta.ToString() : (10 - reszta).ToString();
-        }
-
-        public bool ValidateMail(string mail)
-        {
-            dobryEmail = false;
-            if (String.IsNullOrEmpty(mail))
-                return false;
-            try
-            {
-                mail = Regex.Replace(mail, @"(@)(.+)$", this.OdwzorujDomene,
-                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
-            }
-            catch (RegexMatchTimeoutException)
-            {
-                return false;
-            }
-
-            if (dobryEmail)
-                return false;
-            try
-            {
-                return Regex.IsMatch(mail,
-                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
-                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
-            }
-            catch (RegexMatchTimeoutException)
-            {
-                return false;
-            }
-        }
-        private string OdwzorujDomene(Match match)
-        {
-            IdnMapping idn = new IdnMapping();
-
-            string nazwaDomeny = match.Groups[2].Value;
-            try
-            {
-                nazwaDomeny = idn.GetAscii(nazwaDomeny);
-            }
-            catch (ArgumentException)
-            {
-                dobryEmail = true;
-            }
-            return match.Groups[1].Value + nazwaDomeny;
-        }
-
-        public bool ValidateNumber(string numer)
-        {
-            string poprawnyFormat = @"^(\+48)?[0-9]\d{8}$";
-            if (numer != null) 
-                return Regex.IsMatch(numer, poprawnyFormat);
-            else 
-                return false;
         }
 
         private bool CanWork()
