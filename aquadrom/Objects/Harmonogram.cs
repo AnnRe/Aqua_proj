@@ -51,7 +51,8 @@ namespace aquadrom.Objects
         /// </summary>
         /// <returns></returns>
         private string pracownicyMajaOdpowiednieGodziny(DateTime time)
-        { 
+        {
+            return "";//Todo:usunąć 
             DBAdapter polaczenie = new DBAdapter();
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)//po pracownikach
             {
@@ -101,7 +102,8 @@ namespace aquadrom.Objects
         {
             DBAdapter adapter = new DBAdapter();
             int val=adapter.GetPositionNumberAtStates(time);
-            return val;
+            //return val;//Todo:odkomentować
+            return 3;
         }
         /// <summary>
         /// Sprawdza, czy stanowiska są obsadzone danego dnia
@@ -114,8 +116,7 @@ namespace aquadrom.Objects
             int neededWorkers = GetNeededWorkersAmount(time_i);
             while (time_i.Hour < Constants.KoniecPracy)
             {
-                //for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
-                int numberOfWorkersAtTime=GetNumberOfWorkersAtTime(time_i);
+                int numberOfWorkersAtTime=GetNumberOfRescuresAtTime(time_i);
                     if (numberOfWorkersAtTime < neededWorkers)
                     {
                         int dif=neededWorkers-numberOfWorkersAtTime;
@@ -123,7 +124,7 @@ namespace aquadrom.Objects
                     }
                     else
                         if (!KZPresentAtTime(time_i))
-                            return "Brak KZ";
+                            return "Brak KZ "+time.ToShortDateString()+" o godzinie "+time_i.ToString("HH:mm");
 
                         //return false;
                 time_i = time_i.AddMinutes(15);
@@ -131,14 +132,15 @@ namespace aquadrom.Objects
             }
             return "";
         }
-        private int GetNumberOfWorkersAtTime(DateTime time)
+        private int GetNumberOfRescuresAtTime(DateTime time)
         {
             int numberOfWorkers = 0;
             int col_i=2*Convert.ToInt32( time.Month.ToString())+1;
             for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
             {
-                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) <= 0)
-                    numberOfWorkers++;
+                if(dataGridView1[2,row_i].Value.ToString()!="KZ")
+                    if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) < 0)
+                        numberOfWorkers++;
             }
             return numberOfWorkers;
         }
