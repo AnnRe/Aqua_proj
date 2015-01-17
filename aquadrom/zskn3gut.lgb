@@ -48,23 +48,23 @@ namespace aquadrom
         {
             loadingFromDB = true;
             DBAdapter adapter = new DBAdapter();
-            DateTime iDate = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), 1);
+            DateTime iDate = new DateTime(GetYearFromCombo(),GetMonthFromCombo() , 1);
             ClearHours();
 
-            for (int nrDnia = 1; nrDnia <= DateTime.DaysInMonth(GetYearFromCombo(), GetMonthFromCombo()); nrDnia++)
+            for (int nrDnia = 1; nrDnia <= DateTime.DaysInMonth(GetYearFromCombo(),GetMonthFromCombo()); nrDnia++)
             {
                 DataTable godziny = adapter.SelectWorkersAtDate(iDate);
 
                 for (int j = 0; j < godziny.Rows.Count; j++)
                 {
-                    for (int nrWierszaGrid = 0; nrWierszaGrid < dataGridView1.RowCount - 1; nrWierszaGrid++)
+                    for (int nrWierszaGrid = 0; nrWierszaGrid < dataGridView1.RowCount-1; nrWierszaGrid++)
                     {
                         string[] val = new string[4];
                         val[0] = godziny.Rows[j][0].ToString();
                         val[1] = godziny.Rows[j][1].ToString();
                         val[2] = dataGridView1.Rows[nrWierszaGrid].Cells[0].Value.ToString();
                         val[3] = dataGridView1.Rows[nrWierszaGrid].Cells[1].Value.ToString();
-                        if (godziny.Rows[j][0].ToString() == dataGridView1.Rows[nrWierszaGrid].Cells[0].Value.ToString()
+                        if (godziny.Rows[j][0].ToString() == dataGridView1.Rows[nrWierszaGrid].Cells[0].Value.ToString() 
                             && godziny.Rows[j][1].ToString() == dataGridView1.Rows[nrWierszaGrid].Cells[1].Value.ToString())
                         {
                             dataGridView1.Rows[nrWierszaGrid].Cells[nrDnia.ToString() + "od"].Value = godziny.Rows[j][2].ToString();
@@ -76,7 +76,7 @@ namespace aquadrom
                 iDate = iDate.AddDays(1);
             }
             loadingFromDB = false;
-
+                                   
         }
 
         private int GetYearFromCombo()
@@ -93,18 +93,18 @@ namespace aquadrom
             for (int j = 0; j < dataGridView1.RowCount - 1; j++)
                 for (int i = 3; i < dataGridView1.ColumnCount; i++)
                     dataGridView1.Rows[j].Cells[i].Value = "";
-
+                
         }
         private void CreateDayColumns()
         {
             //int iloscDni = DateTime.DaysInMonth(DateTime.Now.Year,month);
             DateTime day = new DateTime(DateTime.Now.Year, GetMonthFromCombo(), 1);
 
-            for (int i = 1; i <= 31; i++)
+            for (int i = 1; i <=  31; i++)
             {
                 string xyz = i.ToString() + "od" + "  ,  " + i.ToString() + "do";
-                dataGridView1.Columns.Add(i.ToString() + "od", day.ToShortDateString());
-                dataGridView1.Columns.Add(i.ToString() + "do", "");
+                dataGridView1.Columns.Add(i.ToString()+"od", day.ToShortDateString());
+                dataGridView1.Columns.Add(i.ToString()+"do", "");
                 day = day.AddDays(1);
                 DataGridViewColumn column1 = dataGridView1.Columns[i.ToString() + "od"];
                 DataGridViewColumn column2 = dataGridView1.Columns[i.ToString() + "do"];
@@ -112,8 +112,8 @@ namespace aquadrom
                 column2.Width = 70;
                 column2.DividerWidth = 1;
                 dataGridView1.Columns[i.ToString() + "od"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+                dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; 
+                
             }
 
             UpdateColumnsToDate();
@@ -183,18 +183,18 @@ namespace aquadrom
                 dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Empty;
                 saved = false;
                 if (harmonogram.bothTimesAreReady(e.ColumnIndex, e.RowIndex))
-                {
-                    bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
-                    if (cancel)
                     {
-                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";
-                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
+                        if (cancel)
+                        {
+                            dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";
+                            MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        }
+                        else
+                        {
+                            dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
+                        }
                     }
-                    else
-                    {
-                        dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "";
-                    }
-                }
             }
         }
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -217,21 +217,21 @@ namespace aquadrom
 
         private bool hoursAreCorrect(int columnIndex, int rowIndex)
         {
-            DateTime startTime, stopTime;
-            if (columnIndex % 2 == 1)//od
-            {
-                startTime = DateTime.Parse(dataGridView1[columnIndex, rowIndex].Value.ToString());
-                stopTime = DateTime.Parse(dataGridView1[columnIndex + 1, rowIndex].Value.ToString());
-            }
-            else//do
-            {
-                startTime = DateTime.Parse(dataGridView1[columnIndex - 1, rowIndex].Value.ToString());
-                stopTime = DateTime.Parse(dataGridView1[columnIndex, rowIndex].Value.ToString());
-            }
+             DateTime startTime, stopTime;
+             if (columnIndex % 2 == 1)//od
+             {
+                 startTime = DateTime.Parse(dataGridView1[columnIndex,rowIndex].Value.ToString());
+                 stopTime = DateTime.Parse(dataGridView1[columnIndex + 1, rowIndex].Value.ToString());
+             }
+             else//do
+             {
+                 startTime = DateTime.Parse(dataGridView1[columnIndex - 1, rowIndex].Value.ToString());
+                 stopTime = DateTime.Parse(dataGridView1[columnIndex, rowIndex].Value.ToString());
+             }
 
-            return (stopTime < startTime);
+             return (stopTime < startTime);
         }
-
+        
         private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateColumnsToDate();
@@ -248,9 +248,9 @@ namespace aquadrom
             UpdateHarmonogramClass();
             DateTime currentTime = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), 1);
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
-            if (messageMiesiac.Length != 0)
+            if (messageMiesiac.Length !=0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
+                MessageBox.Show("Źle rozplanowany dzień! "+currentTime.ToShortDateString()+" "+messageMiesiac);
                 string message = harmonogram.Save();
                 MessageBox.Show(message);
                 saved = true;
@@ -281,7 +281,7 @@ namespace aquadrom
                 else
                 {
                     dataGridView1[start, row_i].Style.BackColor = Color.Empty;
-                    dataGridView1[start + 1, row_i].Style.BackColor = Color.Empty;
+                    dataGridView1[start+1, row_i].Style.BackColor = Color.Empty;
                 }
             }
         }
@@ -310,7 +310,7 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + " " + messageMiesiac);
+                MessageBox.Show("Źle rozplanowany dzień! " +  " " + messageMiesiac);
             }
             else
             {
@@ -320,7 +320,7 @@ namespace aquadrom
                     {
                         if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
                         {
-                            message += "Brakuje drugiej godziny ";
+                            message+="Brakuje drugiej godziny ";
                             HighlightCell(row_i, col_i);
                         }
                     }
@@ -334,12 +334,23 @@ namespace aquadrom
 
         private void HarmonogramForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!saved)
+            if(!saved)
             {
+                //MessageBoxButtons btns=new MessageBoxButtons(3){"Zapisz zmiany","Zakończ","Anuluj"};
+
                 var result = MessageBox.Show("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
+                    case DialogResult.Abort:
+                        e.Cancel = true;
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
                     case DialogResult.No:
+                        break;
+                    case DialogResult.None:
+                        e.Cancel = true;
                         break;
                     case DialogResult.Yes:
                         UpdateHarmonogramClass();
@@ -347,44 +358,9 @@ namespace aquadrom
                         MessageBox.Show(message);
                         break;
                     default:
-                        e.Cancel = true;
                         break;
                 }
             }
-        }
-
-        private void comboBoxMonths_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (!saved)
-            {
-                if (comboBoxMonths.Enabled)
-                {
-                    var result = MessageBox.Show("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    switch (result)
-                    {
-                        case DialogResult.Yes:
-                            UpdateHarmonogramClass();
-                            string message = harmonogram.Save();
-                            MessageBox.Show(message);
-                            break;
-                        case DialogResult.Cancel:
-                            //comboBoxMonths.Enabled = false;
-                            break;
-                        default:
-                            saved = true;
-                            break;
-                    }
-                }
-                else
-                {
-                    comboBoxMonths.Enabled = true;
-                }
-            }
-            else
-            {
-                comboBoxMonths.Enabled = true;
-            }
-
         }
     }
 }

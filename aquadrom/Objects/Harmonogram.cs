@@ -52,7 +52,6 @@ namespace aquadrom.Objects
         /// <returns></returns>
         private string pracownicyMajaOdpowiednieGodziny(DateTime time)
         {
-            return "";//Todo:usunąć 
             DBAdapter polaczenie = new DBAdapter();
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)//po pracownikach
             {
@@ -156,7 +155,7 @@ namespace aquadrom.Objects
             return false;
         }
 
-        public bool CorrectCellFormat(string value)
+        public bool correctCellFormat(string value)
         {
             DateTime dateValue;
             if (DateTime.TryParse(value, out dateValue))
@@ -203,12 +202,16 @@ namespace aquadrom.Objects
             if (saveSucceed && !partialDataAppear)
                 return "Zapisano pomyślnie";
             else if (partialDataAppear)
-                return "Godziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane";
+                return "Zapisano tylko pełne godziny.\nGodziny pracy, które nie posiadają rozpoczęcia lub zakończenia nie zostaną zapisane";
             else
                 return "Błąd podczas zapisywania";
     
         }
 
+        public int GetColumnIndexForDate(DateTime date)
+        {
+            return (2 * date.Day) + 1;
+        }
         private DateTime GetColumnDate(int columnIndex, int rowIndex)
         {
             string columnName = dataGridView1.Columns[columnIndex + (columnIndex % 2 - 1)].HeaderText;
@@ -333,10 +336,6 @@ namespace aquadrom.Objects
             return "";
         }
 
-        public int GetColumnIndexForDate(DateTime date)
-        {
-            return (2 * date.Day) + 1;
-        }
         private string GetNazwisko(int rowIndex)
         {
             return dataGridView1[1,rowIndex].Value.ToString();

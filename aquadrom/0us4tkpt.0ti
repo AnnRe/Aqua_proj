@@ -353,36 +353,42 @@ namespace aquadrom
             }
         }
 
+        private void comboBoxMonths_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (!saved)
+            {
+                var result = MessageBox.Show("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                switch (result)
+                {
+                    case DialogResult.No:
+                        break;
+                    case DialogResult.Yes:
+                        UpdateHarmonogramClass();
+                        string message = harmonogram.Save();
+                        MessageBox.Show(message);
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+        }
+
         private void comboBoxMonths_MouseClick(object sender, MouseEventArgs e)
         {
             if (!saved)
             {
-                if (comboBoxMonths.Enabled)
+                var result = MessageBox.Show("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                switch (result)
                 {
-                    var result = MessageBox.Show("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    switch (result)
-                    {
-                        case DialogResult.Yes:
-                            UpdateHarmonogramClass();
-                            string message = harmonogram.Save();
-                            MessageBox.Show(message);
-                            break;
-                        case DialogResult.Cancel:
-                            //comboBoxMonths.Enabled = false;
-                            break;
-                        default:
-                            saved = true;
-                            break;
-                    }
+                    case DialogResult.Yes:
+                        UpdateHarmonogramClass();
+                        string message = harmonogram.Save();
+                        MessageBox.Show(message);
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    comboBoxMonths.Enabled = true;
-                }
-            }
-            else
-            {
-                comboBoxMonths.Enabled = true;
             }
 
         }
