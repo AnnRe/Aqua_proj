@@ -13,10 +13,14 @@ namespace aquadrom.Objects
     public class Harmonogram
     {
         private DataGridView dataGridView1;
+        private bool KZpresent;
+        private bool KSRpresent;
 
         public Harmonogram(DataGridView dataGridView)
         {
             dataGridView1 = dataGridView;
+            KZpresent = false;
+            KSRpresent = false;
         }
 
         public void Add(Pracownik pracownik, DateTime pocz, DateTime koniec)
@@ -101,8 +105,7 @@ namespace aquadrom.Objects
         {
             DBAdapter adapter = new DBAdapter();
             int val=adapter.GetPositionNumberAtStates(time);
-            //return val;//Todo:odkomentować
-            return 3;
+            return val;
         }
         /// <summary>
         /// Sprawdza, czy stanowiska są obsadzone danego dnia
@@ -122,8 +125,13 @@ namespace aquadrom.Objects
                         return "\n Za mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
                     }
                     else
-                        if (!KZPresentAtTime(time_i))
-                            return "Brak KZ "+time.ToShortDateString()+" o godzinie "+time_i.ToString("HH:mm");
+                        if (!KSRandKZPresenceAtTime(time))
+                        {
+                            if (!KZpresent)
+                                return "Brak KZ " + time.ToShortDateString() + " o godzinie " + time_i.ToString("HH:mm");
+                            else
+                                return "Brak KSR " + time.ToShortDateString() + " o godzinie " + time_i.ToString("HH:mm");
+                        }
 
                         //return false;
                 time_i = time_i.AddMinutes(15);
@@ -152,6 +160,23 @@ namespace aquadrom.Objects
                     if (dataGridView1[2, row_i].Value.ToString() =="KZ" )
                         return true;
             }
+            return false;
+        }
+        private bool KSRandKZPresenceAtTime(DateTime time)
+        {
+            KSRpresent = false;
+            KZpresent = false;
+            int col_i = 2 * Convert.ToInt32(time.Month.ToString()) + 1;
+            for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+            {
+                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) <= 0)
+                    if (dataGridView1[2, row_i].Value.ToString() == "KZ")
+                        KZpresent = true;
+                    else if(dataGridView1[2, row_i].Value.ToString() == "KSR")
+                        KSRpresent = true;
+            }
+            if (KSRpresent && KZpresent)
+                return true;
             return false;
         }
 
