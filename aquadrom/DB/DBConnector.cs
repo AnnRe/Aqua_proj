@@ -124,10 +124,14 @@ namespace DB
 
         public void UpdatePracownik(Pracownik pracownik)
         {
-            string test;
+            string KPP, stopien;
             if (pracownik.dataWażnościKPP == DateTime.MinValue)
-                test = "null";
-            else test = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+                KPP = "null";
+            else KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                stopien = "null";
+            else stopien = "'" + pracownik.stopien + "'";
 
             string query = "Pracownik set " +
                 Constants.PracownikImie + "='" + pracownik.imie + "', " +
@@ -138,9 +142,9 @@ namespace DB
                 Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
                 Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
                 Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
-                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikStopien + "=" + stopien + ", " +
                 Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
-                Constants.PracownikWaznKPP + "=" + test + ", " + // T
+                Constants.PracownikWaznKPP + "=" + KPP + ", " + // T
                 Constants.PracownikMail + "='" + pracownik.mail + "', " +
                 Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";

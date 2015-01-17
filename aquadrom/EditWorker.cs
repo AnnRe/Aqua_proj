@@ -60,7 +60,6 @@ namespace aquadrom
             NumerTelefonuTextBox.Text = TakeValue(dtlista, Constants.PracownikTel);
             AdresEmailTextBox.Text = TakeValue(dtlista, Constants.PracownikMail);
             LoginUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikLogin);
-            HasloUzytkownikaTextBox.Text = "to delete?";
             ImieUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikImie);
             NazwiskoUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikNazwisko);
             PeselUseraTextBox.Text = TakeValue(dtlista, Constants.PracownikPesel);;
@@ -90,6 +89,7 @@ namespace aquadrom
             if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())  // jesli jest KZ'tem to data KPP nie obowiązuje, koniecKPP off
             {
                 KoniecKPPDateTimePicker.Enabled = false;
+                StopienComboBox.Enabled = false;
             }
             else if (TakeValue(dtlista, Constants.PracownikWaznKPP) != "")   // else jeśli nie jest pusta wartość w bazie to pobierz
                 KoniecKPPDateTimePicker.Text = TakeValue(dtlista, Constants.PracownikWaznKPP);
@@ -127,9 +127,15 @@ namespace aquadrom
         private void StanowiskoUseraComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())
+            {
                 KoniecKPPDateTimePicker.Enabled = false;
+                StopienComboBox.Enabled = false;
+            }
             else
+            {
                 KoniecKPPDateTimePicker.Enabled = true;
+                StopienComboBox.Enabled = true;
+            }
         }
 
         private string TakeValue(DataTable dtlist, string what)
@@ -175,8 +181,10 @@ namespace aquadrom
                 DateTime.Parse(KoniecKPPDateTimePicker.Text),
                 DateTime.Parse(DataBadanDateTimePicker.Text)
                 );
-            if (KoniecKPPDateTimePicker.Enabled == false)   // jeśli KPP nie wymagane to minvalue (NULL to base)
+            if (KoniecKPPDateTimePicker.Enabled == false) // jeśli KPP nie wymagane to minvalue (NULL to base)
+            {
                 pracownik.dataWażnościKPP = DateTime.MinValue;
+            }
 
             if (adapter.Update(pracownik) == false)
             {
@@ -206,9 +214,15 @@ namespace aquadrom
 
         private void StopienComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
 
         private void WymiarGodzinNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KoniecKPPDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
 
         }
