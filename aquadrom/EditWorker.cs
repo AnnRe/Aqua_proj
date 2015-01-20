@@ -70,7 +70,6 @@ namespace aquadrom
             if(TakeValue(dtlista, Constants.PracownikNrMieszkania).Length > 0)  // jesli jest numer mieszkania pobierz wartosc
                 NumerMieszkaniaNumericUpDown.Value = Convert.ToDecimal(TakeValue(dtlista, Constants.PracownikNrMieszkania));
 
-            StopienComboBox.Text = TakeValue(dtlista, Constants.PracownikStopien);
             foreach (var item in Enum.GetValues(typeof(eStopien)))
             {
                 StopienComboBox.Items.Add(item);
@@ -78,13 +77,22 @@ namespace aquadrom
                     StopienComboBox.SelectedItem = item;
             }
 
-            StanowiskoUseraComboBox.Text = TakeValue(dtlista, Constants.PracownikStanowisko);
+            StopienComboBox.Text = TakeValue(dtlista, Constants.PracownikStopien);
+
+            if (StopienComboBox.Text == "")
+            {
+                StopienComboBox.Text = eStopien.RW.ToString();
+            }
+
+
             foreach (var item in Enum.GetValues(typeof(eStanowisko)))
             {
                 StanowiskoUseraComboBox.Items.Add(item);
                 if (StanowiskoUseraComboBox.Text == item.ToString())
                     StanowiskoUseraComboBox.SelectedItem = item;
             }
+
+            StanowiskoUseraComboBox.Text = TakeValue(dtlista, Constants.PracownikStanowisko);
 
             if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())  // jesli jest KZ'tem to data KPP nie obowiązuje, koniecKPP off
             {
@@ -210,6 +218,11 @@ namespace aquadrom
                 return false;
             }
             else return true;
+        }
+
+        private void StopienComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -211,7 +211,7 @@ namespace DB
         {
             string godziny;
             if (umowa.typUmowy == eUmowa.UZ)
-                godziny == "null";
+                godziny = "null";
             else
                 godziny = "'" + umowa.wymiarGodzin + "'";
 

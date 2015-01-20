@@ -196,7 +196,7 @@ namespace DB
         public string GetUserContractType(string imie, string nazwisko)
         {
             int Id = GetUserId(imie, nazwisko);
-            string query = "select "+Constants.UmowaTyp+" from "+Constants.TabPracownik+", "+Constants.TabUmowa+" where ("+Constants.PracownikID+" = "+Id+" AND "+Constants.PracownikIDUmowy
+            string query = "select "+Constants.UmowaTypUmowy+" from "+Constants.TabPracownik+", "+Constants.TabUmowa+" where ("+Constants.PracownikID+" = "+Id+" AND "+Constants.PracownikIDUmowy
                 +"="+Constants.UmowaIDu+")";
             DataTable tab = GetData(query);
             if (tab.Rows.Count > 0)

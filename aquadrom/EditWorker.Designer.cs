@@ -133,6 +133,7 @@
             // 
             // StanowiskoUseraComboBox
             // 
+            this.StanowiskoUseraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StanowiskoUseraComboBox.FormattingEnabled = true;
             this.StanowiskoUseraComboBox.Location = new System.Drawing.Point(97, 49);
             this.StanowiskoUseraComboBox.Name = "StanowiskoUseraComboBox";
@@ -142,11 +143,13 @@
             // 
             // StopienComboBox
             // 
+            this.StopienComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StopienComboBox.FormattingEnabled = true;
             this.StopienComboBox.Location = new System.Drawing.Point(97, 23);
             this.StopienComboBox.Name = "StopienComboBox";
             this.StopienComboBox.Size = new System.Drawing.Size(148, 21);
             this.StopienComboBox.TabIndex = 13;
+            this.StopienComboBox.SelectedIndexChanged += new System.EventHandler(this.StopienComboBox_SelectedIndexChanged);
             // 
             // Data_KPP
             // 
