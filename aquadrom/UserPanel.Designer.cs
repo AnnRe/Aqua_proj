@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,13 @@
             this.menuStrip1.Size = new System.Drawing.Size(488, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // harmonogramToolStripMenuItem
+            // 
+            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
+            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
             // 
             // notatkiToolStripMenuItem
             // 
@@ -74,13 +81,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // harmonogramToolStripMenuItem
-            // 
-            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
-            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
-            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            // 
             // UserPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +90,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserPanel";
             this.Text = "UserPanel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserPanel_FormClosing);
             this.Load += new System.EventHandler(this.UserPanel_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

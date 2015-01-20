@@ -27,7 +27,7 @@ namespace aquadrom
             InitializeComponent();
             settingUp = false;
         }
-
+        
         private void HarmonogramForm_Load(object sender, EventArgs e)
         {
             loadingFromDB = true;

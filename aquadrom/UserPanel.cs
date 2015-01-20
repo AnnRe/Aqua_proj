@@ -38,5 +38,10 @@ namespace aquadrom
         {
             
         }
+
+        private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
