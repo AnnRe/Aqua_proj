@@ -40,7 +40,6 @@ namespace DB
        
         public bool Select(string query)
         {
-
             try { polaczenie.Select(query); }
             catch { return false; }
             return true;

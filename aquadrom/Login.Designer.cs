@@ -42,7 +42,6 @@
             this.UserPasswordBox.PasswordChar = '*';
             this.UserPasswordBox.Size = new System.Drawing.Size(182, 20);
             this.UserPasswordBox.TabIndex = 10;
-            this.UserPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserPasswordBox_KeyDown);
             // 
             // UserPassword
             // 
@@ -68,7 +67,6 @@
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(182, 20);
             this.UserNameBox.TabIndex = 7;
-            this.UserNameBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameBox_KeyDown);
             // 
             // LoginButton
             // 

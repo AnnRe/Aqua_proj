@@ -211,20 +211,5 @@ namespace aquadrom
             }
             else return true;
         }
-
-        private void StopienComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WymiarGodzinNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void KoniecKPPDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

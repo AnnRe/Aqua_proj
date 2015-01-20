@@ -130,7 +130,6 @@
             this.KoniecKPPDateTimePicker.Name = "KoniecKPPDateTimePicker";
             this.KoniecKPPDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.KoniecKPPDateTimePicker.TabIndex = 15;
-            this.KoniecKPPDateTimePicker.ValueChanged += new System.EventHandler(this.KoniecKPPDateTimePicker_ValueChanged);
             // 
             // StanowiskoUseraComboBox
             // 
@@ -148,7 +147,6 @@
             this.StopienComboBox.Name = "StopienComboBox";
             this.StopienComboBox.Size = new System.Drawing.Size(148, 21);
             this.StopienComboBox.TabIndex = 13;
-            this.StopienComboBox.SelectedIndexChanged += new System.EventHandler(this.StopienComboBox_SelectedIndexChanged);
             // 
             // Data_KPP
             // 
@@ -265,6 +263,7 @@
             // 
             this.LoginUseraTextBox.Location = new System.Drawing.Point(106, 68);
             this.LoginUseraTextBox.Name = "LoginUseraTextBox";
+            this.LoginUseraTextBox.ReadOnly = true;
             this.LoginUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.LoginUseraTextBox.TabIndex = 15;
             // 
@@ -338,7 +337,6 @@
             this.WymiarGodzinNumericUpDown.Name = "WymiarGodzinNumericUpDown";
             this.WymiarGodzinNumericUpDown.Size = new System.Drawing.Size(148, 20);
             this.WymiarGodzinNumericUpDown.TabIndex = 35;
-            this.WymiarGodzinNumericUpDown.ValueChanged += new System.EventHandler(this.WymiarGodzinNumericUpDown_ValueChanged);
             // 
             // TypUmowyComboBox
             // 

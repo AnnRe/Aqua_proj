@@ -28,7 +28,7 @@ namespace aquadrom
 
         public void AdminPanel_Load(object sender, EventArgs e)
         {
-            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu);
+            DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu+" order by "+Constants.PracownikNazwisko+" asc");
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtlista.Columns.Remove(Constants.UmowaIDu);
             dtlista.Columns.Remove(Constants.PracownikIDUmowy);
