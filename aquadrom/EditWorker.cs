@@ -35,10 +35,6 @@ namespace aquadrom
 
         private void EditWorker_Load(object sender, EventArgs e)
         {
-//            Validations pesel = new Validations(); HOWTO
-//            pesel.ValidatePesel("t");
-//            MessageBox.Show(sql_edituser);
-
             DataTable dtlista = connector.Select(sql_edituser); // uzupełnienie danych
             IDUmowyTextBox.Text = TakeValue(dtlista, Constants.UmowaIDu);
             
@@ -98,7 +94,7 @@ namespace aquadrom
 
             StanowiskoUseraComboBox.Text = TakeValue(dtlista, Constants.PracownikStanowisko);
 
-            if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())  // jesli jest KZ'tem to data KPP nie obowiązuje, koniecKPP off
+            if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())  // jesli jest KZ'tem to data KPP i stopień nie obowiązuje - OFF
             {
                 KoniecKPPDateTimePicker.Enabled = false;
                 StopienComboBox.Enabled = false;
@@ -138,7 +134,7 @@ namespace aquadrom
 
         private void StanowiskoUseraComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())
+            if (StanowiskoUseraComboBox.Text == eStanowisko.KZ.ToString())  // wyłączenie obowiązywania KPP i Stopnia gdy KZ
             {
                 KoniecKPPDateTimePicker.Enabled = false;
                 StopienComboBox.Enabled = false;
@@ -163,25 +159,26 @@ namespace aquadrom
         private void EdytujUseraButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Na pewno chcesz edytować dane użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+
+            if (dialogResult == DialogResult.Yes && // jeśli wybrano tak oraz jest poprawny pesel, mail i numer
+                valid.ValidatePesel(PeselUseraTextBox.Text) && 
+                valid.ValidateMail(AdresEmailTextBox.Text) && 
+                valid.ValidateNumber(NumerTelefonuTextBox.Text))
             {
-                if (valid.ValidatePesel(PeselUseraTextBox.Text) && valid.ValidateMail(AdresEmailTextBox.Text) && valid.ValidateNumber(NumerTelefonuTextBox.Text))
+                if ((EditEmployee() == true) && (EditContract() == true))   // edytuj użytkownika i jego umowę
                 {
-                    if ((EditEmployee() == true) && (EditContract() == true))
-                    {
-                        _mainform.AdminPanel_Load(_mainform, e); // odswiezanie tabeli glownej
-                        MessageBox.Show("Edycja zakończona!");
-                        exist = false;
-                        this.Close();
-                    }
+                    _mainform.AdminPanel_Load(_mainform, e); // odswiezanie tabeli glownej
+                    MessageBox.Show("Edycja zakończona!");
+                    exist = false;
+                    this.Close();
                 }
-                else if (valid.ValidateMail(AdresEmailTextBox.Text) == false)
-                    MessageBox.Show("Zły format adresu e-mail!");
-                else if (valid.ValidatePesel(PeselUseraTextBox.Text) == false)
-                    MessageBox.Show("Zły format numeru PESEL!");
-                else if (valid.ValidateNumber(NumerTelefonuTextBox.Text) == false)
-                    MessageBox.Show("Zły format numeru telefonu!");
             }
+            else if (valid.ValidateMail(AdresEmailTextBox.Text) == false)
+                MessageBox.Show("Zły format adresu e-mail!");
+            else if (valid.ValidatePesel(PeselUseraTextBox.Text) == false)
+                MessageBox.Show("Zły format numeru PESEL!");
+            else if (valid.ValidateNumber(NumerTelefonuTextBox.Text) == false)
+                MessageBox.Show("Zły format numeru telefonu!");
         }
 
         private bool EditEmployee()
