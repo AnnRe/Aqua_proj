@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wyświetlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edytujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,26 +53,10 @@
             // 
             // harmonogramToolStripMenuItem
             // 
-            this.harmonogramToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wyświetlToolStripMenuItem,
-            this.edytujToolStripMenuItem});
             this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
             this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.harmonogramToolStripMenuItem.Text = "Harmonogram";
             this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            // 
-            // wyświetlToolStripMenuItem
-            // 
-            this.wyświetlToolStripMenuItem.Name = "wyświetlToolStripMenuItem";
-            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.wyświetlToolStripMenuItem.Text = "Wyświetl";
-            this.wyświetlToolStripMenuItem.Click += new System.EventHandler(this.wyświetlToolStripMenuItem_Click);
-            // 
-            // edytujToolStripMenuItem
-            // 
-            this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
-            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.edytujToolStripMenuItem.Text = "Edytuj";
             // 
             // notatkiToolStripMenuItem
             // 
@@ -108,6 +90,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserPanel";
             this.Text = "UserPanel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserPanel_FormClosing);
             this.Load += new System.EventHandler(this.UserPanel_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -119,12 +102,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem umowaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem daneToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem wyświetlToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem edytujToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
     }
 }

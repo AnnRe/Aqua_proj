@@ -35,16 +35,16 @@ namespace aquadrom
         public void EditWorkerWhich_Load(object sender, EventArgs e)
         {
             DataTable dtWorkers = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
-            foreach (DataRow row in dtWorkers.Rows)
+            foreach (DataRow row in dtWorkers.Rows) // uzupelnianie listy wyboru
             {
                 EditWorkerComboBox.Items.Add(row[1].ToString());
             }
-            adapter.LockButton(EditWorkerComboBox, ChooseButton);
+            adapter.LockButton(EditWorkerComboBox, ChooseButton);   // if nic z listy nie wybrane, zablokuj przycisk wyboru
         }
 
         private void EditWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {                                                    
-            WhichUser = this.EditWorkerComboBox.Text;
+            WhichUser = this.EditWorkerComboBox.Text;   // który użytkownik został wybrany
             DataTable dtWorkers2 = connector.Select(Constants.PracownikID + ", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
             {
@@ -59,15 +59,12 @@ namespace aquadrom
 
         private void ChooseButton_Click(object sender, EventArgs e)
         {
-            if (EditWorkerComboBox.Text != "")
+            if ( (EditWorkerComboBox.Text != "") && (DeleteWorker.exist == false) && (EditWorker.exist == false) )
             {
-                if ((DeleteWorker.exist == false) && (EditWorker.exist == false))  // jeśli okno DeleteWorker,WhichWorker zamknięte to je otwórz else nic
-                {
-                    EditWorker EditWor = new EditWorker(_mainform, chosen_id);
-                    EditWor.Show();
-                    this.Close();
-                    exist = false;
-                }
+                EditWorker EditWor = new EditWorker(_mainform, chosen_id);  // otwieranie okna do edycji odpowiedniego użytkownika (ID)
+                EditWor.Show();
+                this.Close();
+                exist = false;
             }
             else
             {
