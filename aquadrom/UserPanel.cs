@@ -38,5 +38,10 @@ namespace aquadrom
             HarmonogramForm harmonogramF = new HarmonogramForm();
             harmonogramF.Show();
         }
+
+        private void edytujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

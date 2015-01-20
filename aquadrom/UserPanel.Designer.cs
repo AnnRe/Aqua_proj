@@ -75,6 +75,7 @@
             this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
             this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.edytujToolStripMenuItem.Text = "Edytuj";
+            this.edytujToolStripMenuItem.Click += new System.EventHandler(this.edytujToolStripMenuItem_Click);
             // 
             // notatkiToolStripMenuItem
             // 

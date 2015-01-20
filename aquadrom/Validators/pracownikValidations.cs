@@ -16,6 +16,7 @@ using System.Globalization;
 
 namespace Objects
 {
+    //created by ogi
     class Validations
     {
 
@@ -114,7 +115,7 @@ namespace Objects
         }
         public string PierwszyZnakNaDuzaLitere(string nazwa)
         {
-            if (String.IsNullOrEmpty(nazwa))
+           if (String.IsNullOrEmpty(nazwa))
                 throw new ArgumentException("Błąd!");
             return nazwa.First().ToString().ToUpper() + nazwa.Substring(1);
         }
@@ -166,6 +167,45 @@ namespace Objects
             return rezultat.ToString();
             // wywołać dla : nazwisko z argumentem znaki= "-", miasto z argumentem znaki= "- "
             // argument culture =  CultureInfo.InvariantCulture
+        }
+
+        public bool isNullOrNot(TextBox tekst, string nazwaPola)
+        {
+            if (String.IsNullOrEmpty(tekst.Text))
+            {
+                MessageBox.Show("Wypełnij pole: " + nazwaPola + "!");
+                return true;
+            }
+            else
+            {
+                return false;
+            } // wywołać na textboxach
+        }
+
+        public bool isNullOrNot(NumericUpDown tekst, string nazwaPola)
+        {
+            if (String.IsNullOrEmpty(tekst.Text))
+            {
+                MessageBox.Show("Wypełnij pole: " + nazwaPola + "!");
+                return true;
+            }
+            else
+            {
+                return false;
+            } // wywołać na numericupdownach oprocz nr mieszkania
+        }
+
+        public string deleteNumbers(TextBox tekst)
+        {
+            string withNumbers = tekst.Text;
+            string withoutNumbers = Regex.Replace(withNumbers, "[0-9]", "");
+            return withoutNumbers;
+            //jak ktos wklei cyferke to problem
+            //wpisywanie z klawiatury jest blokowane, ale wklejanie nie
+            // funckja usunie cyfry
+            // w przypadku numerów nie trzeba tego robić, jak pesel dostanie wklejone litery lub znaki
+            //zadziała funkcja validatepesel , podobnie w numerze telefonu, numericupdowny domyslnie
+            //przyjmuja tylko cyfry
         }
 
         public void tylkoLitery(KeyPressEventArgs e)

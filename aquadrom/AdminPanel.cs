@@ -182,5 +182,10 @@ namespace aquadrom
             GeneratorNotatek notatka = new GeneratorNotatek();
             notatka.Show();
         }
+
+        private void ądzajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,19 +13,28 @@ using aquadrom.Utilities;
 using aquadrom.Objects;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Net;
+using System.Net.Mail;
 
 
 namespace aquadrom
 {
+    //created by ogi
     public partial class Form2 : Form
     {
         DBAdapter adapter = new DBAdapter();
-        public static bool exist = false;
+        DBConnector polaczenie = new DBConnector();
         Validations blokady = new Validations();
+        Validations walidacja = new Validations();
+        public static bool exist = false;
 
         public Form2()
         {
             InitializeComponent();
+            NrUmowy.Enabled = false;
+            LoginUzytkownika.Enabled = false;
+            HasloUzytkownika.Enabled = false;
+            PowtorzHasloUżytkownika.Enabled = false;
 
             foreach (var item in Enum.GetValues(typeof(eStanowisko)))
             {
@@ -54,6 +63,7 @@ namespace aquadrom
             TypUmowy.SelectedIndex = 1;
             TypKonta2.SelectedIndex = 0;
 
+            //MessageBox.Show("pass: " + CreatePassword(10));
             exist = true;
         }
 
@@ -71,27 +81,28 @@ namespace aquadrom
                 koniecUmowy = DateTime.Parse(KoniecUmowy.Text)
 
             };
-            adapter.Insert(umowa);
-            if (adapter.Insert(umowa) == false)
+            if (adapter.Insert(umowa) == true)
             {
                 MessageBox.Show("Umowa została zapisana w bazie.");
             }
-            else if (adapter.Insert(umowa) == true)
+            else if (adapter.Insert(umowa) == false)
             {
                 MessageBox.Show("Błąd!");
             }
         }
         private void Add_Employer()
         {
-            Validations walidacja = new Validations();
+             LoginUzytkownika.Text = walidacja.CaloscNaMale(ImieUzytkownika.Text + "." + NazwiskoUzytkownika.Text);
+             HasloUzytkownika.Text = createPassword(10);
+             PowtorzHasloUżytkownika.Text = HasloUzytkownika.Text;
 
-            Pracownik pracownik = new Pracownik()
-            {
+             Pracownik pracownik = new Pracownik()
+             {
 
                 imie = walidacja.ResztaZnakowNaMale(ImieUzytkownika.Text),
                 nazwisko = walidacja.PoMyslnikuLubSpacji(NazwiskoUzytkownika.Text,"-", CultureInfo.InvariantCulture),
                 miasto = walidacja.PoMyslnikuLubSpacji(MiastoUzytkownika.Text, "- ", CultureInfo.InvariantCulture),
-                ulica = walidacja.ResztaZnakowNaMale(UlicaUzytkownika.Text),
+                ulica = walidacja.PoMyslnikuLubSpacji(UlicaUzytkownika.Text, "- ", CultureInfo.InvariantCulture),
                 numerDomu = NumerDomu.Text,
                 numerMieszkania = NumerMieszkania.Text,
                 pesel = PeselUzytkownika.Text,
@@ -101,15 +112,23 @@ namespace aquadrom
                 dataWażnościKPP = DateTime.Parse(KoniecKPP.Text),
                 mail = AdresEmail.Text,
                 dataBadan = DateTime.Parse(DataBadan.Text),
-                login = walidacja.CaloscNaMale(LoginUzytkownika.Text),
+                login = LoginUzytkownika.Text,
                 haslo = HasloUzytkownika.Text,
                 idUmowy = NrUmowy.Text,
                 typKonta = (eTypKonta)Enum.Parse(typeof(eTypKonta), TypKonta2.SelectedItem.ToString()),
-            }; 
+            };
+
+            sendMail(LoginUzytkownika.Text, HasloUzytkownika.Text, AdresEmail.Text, ImieUzytkownika.Text, NazwiskoUzytkownika.Text );
+
+            if (KoniecKPP.Enabled == false)   // jeśli KPP nie wymagane to minvalue (NULL to base)
+                pracownik.dataWażnościKPP = DateTime.MinValue;
+                 //DateTime? MyNullDateValue = null;
+                // (pracownik.stopien(DBNull.Value);
+
 
             if (walidacja.ValidatePesel(PeselUzytkownika.Text) && walidacja.ValidateMail(AdresEmail.Text) && walidacja.ValidateNumber(NumerTelefonu.Text))
             {
-                //adapter.Insert(pracownik);
+                //adapter.Insert(pracownik); 
                 if (adapter.Insert(pracownik) == true)
                 {
                     MessageBox.Show("Dane pracownika zostały zapsiane w bazie.");
@@ -129,9 +148,42 @@ namespace aquadrom
 
             // MessageBox.Show(pracownik.imie.ToString());
         }
+
         private void AddEmployer_Click(object sender, EventArgs e)
         {
-            Add_Employer();
+            
+            walidacja.deleteNumbers(ImieUzytkownika);
+            walidacja.deleteNumbers(NazwiskoUzytkownika);
+            walidacja.deleteNumbers(MiastoUzytkownika);
+            walidacja.deleteNumbers(UlicaUzytkownika);
+
+            if (walidacja.isNullOrNot(ImieUzytkownika, "Imię") || walidacja.isNullOrNot(NazwiskoUzytkownika, "Nazwisko")
+                || walidacja.isNullOrNot(PeselUzytkownika, "Pesel") || walidacja.isNullOrNot(MiastoUzytkownika, "Miasto")
+                || walidacja.isNullOrNot(UlicaUzytkownika, "Ulica") || walidacja.isNullOrNot(NumerDomu, "Nr domu")
+                || walidacja.isNullOrNot(NumerTelefonu, "Numer telefonu") || walidacja.isNullOrNot(AdresEmail, "E-mail")
+                || walidacja.isNullOrNot(LoginUzytkownika, "Login"))
+                
+            {
+            }
+            else if (NrUmowy.Text == "brak")
+            {
+                MessageBox.Show("Przed dodaniem pracownika do bazy, należy stworzyć jego umowę!");
+            }
+            else if (HasloUzytkownika.Text != PowtorzHasloUżytkownika.Text)
+            {
+                MessageBox.Show("Podane hasła są różne!");
+            }
+            else if ( CheckInternetConnection()==false)
+            {
+                MessageBox.Show("Błąd połączenia internetowego!");
+            }
+            else
+            {
+                Add_Employer();
+                this.Close();
+            }
+
+
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -181,12 +233,28 @@ namespace aquadrom
 
         private void Stopień_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+           
         }
 
         private void StwórzUmowe_Click(object sender, EventArgs e)
         {
-            Add_Contract();
+            if (walidacja.isNullOrNot(WymiarGodzin, "Wymiar godzin"))
+            {
+            }
+            else
+            {
+                Add_Contract();
+                string query = " MAX(" + Constants.UmowaIDu + ")" + " from " + Constants.TabUmowa;
+                DataTable ids = polaczenie.Select(query);
+                string ID = ids.Rows[0][0].ToString();
+                MessageBox.Show("Numer umowy to: " +ID + ".");
+                NrUmowy.Text = ID;
+                TypUmowy.Enabled = false;
+                WymiarGodzin.Enabled = false;
+                PoczatekUmowy.Enabled = false;
+                KoniecUmowy.Enabled = false;
+                StwórzUmowe.Enabled = false;
+            }
         }
 
         private void NrUmowy_ValueChanged(object sender, EventArgs e)
@@ -257,15 +325,114 @@ namespace aquadrom
             {
                     KoniecKPP.Enabled = false;
                     Stopień.Enabled = false;
+                    TypKonta2.SelectedIndex = 1;
             }
-                    
-            else
+            else if (StanowiskoUzytkownika.Text == eStanowisko.KSR.ToString())
             {
                     KoniecKPP.Enabled = true;
                     Stopień.Enabled = true;
+                    TypKonta2.SelectedIndex = 1;
+                    Stopień.SelectedIndex = 1;
+            }
+
+            else if (StanowiskoUzytkownika.Text == eStanowisko.RW.ToString())
+            {
+                KoniecKPP.Enabled = true;
+                Stopień.Enabled = true;
+                TypKonta2.SelectedIndex = 0;
+                Stopień.SelectedIndex = 1;
+            }
+            else
+            {
+                KoniecKPP.Enabled = true;
+                Stopień.Enabled = true;
+                Stopień.SelectedIndex = 1;
+            }
+
+
+        }
+
+        private void TypUmowy_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (TypUmowy.Text == eUmowa.UZ.ToString())
+            {
+                WymiarGodzin.Enabled = false;
+                WymiarGodzin.Maximum = 0;
+                WymiarGodzin.Value = 0;
+            }
+
+            else
+            {
+                WymiarGodzin.Enabled = true;
+                WymiarGodzin.Maximum = 320;
+                WymiarGodzin.Minimum = 1;
             }
         }
 
+        private void LoginUzytkownika_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumerMieszkania_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private string createPassword(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
+        }
+
+        public void sendMail(string login, string haslo, string mail, string imie, string nazwisko)
+        {
+                var fromAdress = new MailAddress("aquadromautomat@gmail.com", "System automatycznej informacji");
+                var toAdress = new MailAddress(mail, imie + " " + nazwisko);
+                const string fromPassword = "aquadrom123";
+                string subject = "Dane dostępowe";
+                string body = "Witaj " + imie + nazwisko + " !" + "\n" + "Login: " + login + "\n" +"Hasło: " + haslo;
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAdress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAdress, toAdress)
+                {
+                    Subject = subject,
+                    Body = body
+ 
+                })
+                {
+                    smtp.Send(message);
+                }
+        }
+
+        private bool CheckInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
     }
 }

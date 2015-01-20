@@ -70,6 +70,7 @@
             this.ądzajToolStripMenuItem.Name = "ądzajToolStripMenuItem";
             this.ądzajToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.ądzajToolStripMenuItem.Text = "Zarządzaj";
+            this.ądzajToolStripMenuItem.Click += new System.EventHandler(this.ądzajToolStripMenuItem_Click);
             // 
             // DodajUżytkownikówToolStripMenuItem
             // 

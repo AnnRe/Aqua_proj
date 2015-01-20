@@ -91,6 +91,20 @@ namespace DB
 
         public void Insert(Pracownik pracownik)
         {
+            string KPP, stopien, mieszkania;
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                KPP = "null";
+            else KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                stopien = "null";
+            else stopien = "'" + pracownik.stopien + "'";
+            if (pracownik.numerMieszkania == "")
+                mieszkania = "null";
+            else
+                mieszkania = "'" + pracownik.numerMieszkania + "'";
+
+
+
             string query = "Pracownik (" +
                Constants.PracownikImie + "," +
                Constants.PracownikNazwisko + "," +
@@ -117,13 +131,13 @@ namespace DB
                 pracownik.nazwisko + "','" +
                 pracownik.miasto + "','" +
                 pracownik.ulica + "','" +
-                pracownik.numerDomu + "','" +
-                pracownik.numerMieszkania + "','" +
+                pracownik.numerDomu + "'," +
+                mieszkania + ",'" +
                 pracownik.pesel + "','" +
-                pracownik.stanowisko + "','" +
-                pracownik.stopien + "','" +
-                pracownik.numerTelefonu + "','" +
-                pracownik.dataWażnościKPP + "','" +
+                pracownik.stanowisko + "'," +
+                stopien + ",'" +
+                pracownik.numerTelefonu + "'," +
+                KPP + ",'" +
                 pracownik.mail + "','" +
                 pracownik.dataBadan + "','" +
                 pracownik.login + "','" +
@@ -139,14 +153,20 @@ namespace DB
 
         public void Insert(Umowa umowa)
         {
+            string godziny;
+            if (umowa.wymiarGodzin == "0")
+                godziny = "null";
+            else
+                godziny = "'" + umowa.wymiarGodzin + "'";
+
             string query = "Umowa (" +
                Constants.UmowaTypUmowy + "," +
                Constants.UmowaWymiarGodzin + "," +
                Constants.UmowaPoczatekUmowy + "," +
                Constants.UmowaKoniecUmowy;
             query += ") VALUES ('";
-            query += umowa.typUmowy + "','" +
-                umowa.wymiarGodzin + "','" +
+            query += umowa.typUmowy + "'," +
+                godziny + ",'" +
                 umowa.poczatekUmowy + "','" +
                 umowa.koniecUmowy + "')";
 

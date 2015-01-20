@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace aquadrom.Utilities
 {
+    //created by ogi
     public enum eTypKonta
     {
         /// <summary>Użytkownik </summary>
