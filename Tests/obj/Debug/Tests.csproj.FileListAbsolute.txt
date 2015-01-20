@@ -19,3 +19,4 @@ D:\projektio\Tests\bin\Debug\PdfSharp.xml
 D:\projektio\Tests\bin\Debug\de\PdfSharp.resources.dll
 D:\projektio\Tests\obj\Debug\Tests.dll
 D:\projektio\Tests\obj\Debug\Tests.pdb
+D:\projektio\Tests\bin\Debug\aquadrom.pdb
