@@ -198,9 +198,9 @@ namespace DB
                 Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
                 Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
                 Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
-                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikStopien + "=" + stopien + ", " +
                 Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
-                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikWaznKPP + "=" + KPP + ", " +
                 Constants.PracownikMail + "='" + pracownik.mail + "', " +
                 Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";

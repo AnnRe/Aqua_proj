@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 using aquadrom.Utilities;
 using DB;
 using Objects;
@@ -17,7 +18,8 @@ namespace aquadrom
     {
         DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
-        
+        Validations valid = new Validations();
+
         private AdminPanel _mainform = null;
         public static bool exist = false;
         private string sql_edituser = "* from " + Constants.TabPracownik + " p, " + Constants.TabUmowa + " u where p." + Constants.PracownikIDUmowy + "=u." + Constants.UmowaIDu + " and " + Constants.PracownikID + "=";
@@ -39,13 +41,15 @@ namespace aquadrom
 
             DataTable dtlista = connector.Select(sql_edituser); // uzupełnienie danych
             IDUmowyTextBox.Text = TakeValue(dtlista, Constants.UmowaIDu);
-            TypUmowyComboBox.Text = TakeValue(dtlista,Constants.UmowaTypUmowy);
-            foreach (var item in Enum.GetValues(typeof(eUmowa)))    
+            
+            foreach (var item in Enum.GetValues(typeof(eUmowa)))
             {
                 TypUmowyComboBox.Items.Add(item);
                 if (TypUmowyComboBox.Text == item.ToString())   // przypisanie domyślnego elementu (if brak zmiany to był null)
                     TypUmowyComboBox.SelectedItem = item;
             }
+            TypUmowyComboBox.Text = TakeValue(dtlista,Constants.UmowaTypUmowy);
+
             if (TypUmowyComboBox.Text == eUmowa.UZ.ToString())  // jesli umowa zlecenie to wymiar godzin = 0, ComboBox off
             {
                 WymiarGodzinNumericUpDown.ReadOnly = true;
@@ -161,13 +165,22 @@ namespace aquadrom
             DialogResult dialogResult = MessageBox.Show("Na pewno chcesz edytować dane użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if ((EditEmployee() == true) && (EditContract() == true))
+                if (valid.ValidatePesel(PeselUseraTextBox.Text) && valid.ValidateMail(AdresEmailTextBox.Text) && valid.ValidateNumber(NumerTelefonuTextBox.Text))
                 {
-                    _mainform.AdminPanel_Load(_mainform, e); // odswiezanie tabeli glownej
-                    MessageBox.Show("Edycja zakończona!");
-                    exist = false;
-                    this.Close();
+                    if ((EditEmployee() == true) && (EditContract() == true))
+                    {
+                        _mainform.AdminPanel_Load(_mainform, e); // odswiezanie tabeli glownej
+                        MessageBox.Show("Edycja zakończona!");
+                        exist = false;
+                        this.Close();
+                    }
                 }
+                else if (valid.ValidateMail(AdresEmailTextBox.Text) == false)
+                    MessageBox.Show("Zły format adresu e-mail!");
+                else if (valid.ValidatePesel(PeselUseraTextBox.Text) == false)
+                    MessageBox.Show("Zły format numeru PESEL!");
+                else if (valid.ValidateNumber(NumerTelefonuTextBox.Text) == false)
+                    MessageBox.Show("Zły format numeru telefonu!");
             }
         }
 
@@ -175,11 +188,11 @@ namespace aquadrom
         {
             Pracownik pracownik = new Pracownik(
                 Convert.ToInt32(IDUseraTextBox.Text),
-                ImieUseraTextBox.Text,
-                NazwiskoUseraTextBox.Text,
+                valid.ResztaZnakowNaMale(ImieUseraTextBox.Text),
+                valid.PoMyslnikuLubSpacji(NazwiskoUseraTextBox.Text,"-", CultureInfo.InvariantCulture),
                 PeselUseraTextBox.Text,
-                MiastoUseraTextBox.Text,
-                UlicaUseraTextBox.Text,
+                valid.PoMyslnikuLubSpacji(MiastoUseraTextBox.Text, "- ", CultureInfo.InvariantCulture),
+                valid.PoMyslnikuLubSpacji(UlicaUseraTextBox.Text, "- ", CultureInfo.InvariantCulture),
                 NumerDomuTextBox.Text,
                 NumerMieszkaniaNumericUpDown.Text,
                 NumerTelefonuTextBox.Text,
@@ -189,6 +202,7 @@ namespace aquadrom
                 DateTime.Parse(KoniecKPPDateTimePicker.Text),
                 DateTime.Parse(DataBadanDateTimePicker.Text)
                 );
+
             if (KoniecKPPDateTimePicker.Enabled == false) // jeśli KPP nie wymagane to minvalue (NULL to base)
             {
                 pracownik.dataWażnościKPP = DateTime.MinValue;
@@ -220,9 +234,61 @@ namespace aquadrom
             else return true;
         }
 
-        private void StopienComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ImieUseraTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoLitery(e);
+        }
+
+        private void NazwiskoUseraTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoLiteryMyslnik(e);
+        }
+
+        private void PeselUseraTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoCyfry(e);
+        }
+
+        private void MiastoUseraTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoLiteryMyslnikSpacja(e);
+        }
+
+        private void UlicaUseraTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoLiteryMyslnikSpacja(e);
+        }
+
+        private void NumerDomuTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoCyfryLitery(e);
+        }
+
+        private void NumerTelefonuTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.tylkoCyfryPlus(e);
+        }
+
+        private void AdresEmailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void NumerDomuTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PoczatekUmowyDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (PoczatekUmowyDateTimePicker.Value>KoniecUmowyDateTimePicker.Value)
+                KoniecUmowyDateTimePicker.Value =PoczatekUmowyDateTimePicker.Value;
+        }
+
+        private void KoniecUmowyDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (PoczatekUmowyDateTimePicker.Value > KoniecUmowyDateTimePicker.Value)
+                KoniecUmowyDateTimePicker.Value = PoczatekUmowyDateTimePicker.Value;
         }
     }
 }
