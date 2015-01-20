@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.aquadromDataSet = new aquadrom.aquadromDataSet();
             this.godzinypracyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.godziny_pracyTableAdapter = new aquadrom.aquadromDataSetTableAdapters.Godziny_pracyTableAdapter();
@@ -70,15 +70,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.imieDataGridViewTextBoxColumn,
@@ -159,6 +162,7 @@
             this.comboBoxMonths.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMonths.TabIndex = 2;
             this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
+            this.comboBoxMonths.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxMonths_MouseClick);
             // 
             // comboBoxYear
             // 
@@ -174,6 +178,7 @@
             this.comboBoxYear.Size = new System.Drawing.Size(58, 21);
             this.comboBoxYear.TabIndex = 3;
             this.comboBoxYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear_SelectedIndexChanged);
+            this.comboBoxYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBoxMonths_MouseClick);
             // 
             // buttonSave
             // 
@@ -187,7 +192,7 @@
             // 
             // btn_check
             // 
-            this.btn_check.Location = new System.Drawing.Point(386, 10);
+            this.btn_check.Location = new System.Drawing.Point(386, 12);
             this.btn_check.Name = "btn_check";
             this.btn_check.Size = new System.Drawing.Size(112, 23);
             this.btn_check.TabIndex = 5;
@@ -197,8 +202,7 @@
             // 
             // HarmonogramForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(697, 262);
             this.Controls.Add(this.btn_check);
             this.Controls.Add(this.buttonSave);
@@ -207,6 +211,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HarmonogramForm_FormClosing);
             this.Load += new System.EventHandler(this.HarmonogramForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).EndInit();

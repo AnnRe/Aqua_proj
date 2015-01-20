@@ -30,13 +30,18 @@ namespace aquadrom
 
         private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            HarmonogramForm harmonogramF = new HarmonogramForm();
+            harmonogramF.Show();
         }
 
         private void wyświetlToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HarmonogramForm harmonogramF = new HarmonogramForm();
-            harmonogramF.Show();
+            
+        }
+
+        private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void edytujToolStripMenuItem_Click(object sender, EventArgs e)

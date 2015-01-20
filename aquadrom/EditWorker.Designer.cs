@@ -46,11 +46,11 @@
             this.KontoGroupBox = new System.Windows.Forms.GroupBox();
             this.IDUseraLabel = new System.Windows.Forms.Label();
             this.IDUseraTextBox = new System.Windows.Forms.TextBox();
-            this.HasloUzytkownikaTextBox = new System.Windows.Forms.TextBox();
             this.LoginUseraTextBox = new System.Windows.Forms.TextBox();
-            this.Haslo = new System.Windows.Forms.Label();
             this.Login = new System.Windows.Forms.Label();
             this.DaneUmowyGroupBox = new System.Windows.Forms.GroupBox();
+            this.IDUmowyLabel = new System.Windows.Forms.Label();
+            this.IDUmowyTextBox = new System.Windows.Forms.TextBox();
             this.KoniecUmowyDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.PoczatekUmowyDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.WymiarGodzinNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -76,8 +76,6 @@
             this.Imie = new System.Windows.Forms.Label();
             this.AnulujButton = new System.Windows.Forms.Button();
             this.EdytujUseraButton = new System.Windows.Forms.Button();
-            this.IDUmowyTextBox = new System.Windows.Forms.TextBox();
-            this.IDUmowyLabel = new System.Windows.Forms.Label();
             this.PracownikGroupBox.SuspendLayout();
             this.BadaniaGroupBox.SuspendLayout();
             this.DaneKontaktoweGroupBox.SuspendLayout();
@@ -237,9 +235,7 @@
             // 
             this.KontoGroupBox.Controls.Add(this.IDUseraLabel);
             this.KontoGroupBox.Controls.Add(this.IDUseraTextBox);
-            this.KontoGroupBox.Controls.Add(this.HasloUzytkownikaTextBox);
             this.KontoGroupBox.Controls.Add(this.LoginUseraTextBox);
-            this.KontoGroupBox.Controls.Add(this.Haslo);
             this.KontoGroupBox.Controls.Add(this.Login);
             this.KontoGroupBox.Location = new System.Drawing.Point(9, 276);
             this.KontoGroupBox.Name = "KontoGroupBox";
@@ -251,7 +247,7 @@
             // IDUseraLabel
             // 
             this.IDUseraLabel.AutoSize = true;
-            this.IDUseraLabel.Location = new System.Drawing.Point(6, 32);
+            this.IDUseraLabel.Location = new System.Drawing.Point(6, 45);
             this.IDUseraLabel.Name = "IDUseraLabel";
             this.IDUseraLabel.Size = new System.Drawing.Size(18, 13);
             this.IDUseraLabel.TabIndex = 18;
@@ -259,39 +255,23 @@
             // 
             // IDUseraTextBox
             // 
-            this.IDUseraTextBox.Location = new System.Drawing.Point(106, 29);
+            this.IDUseraTextBox.Location = new System.Drawing.Point(106, 42);
             this.IDUseraTextBox.Name = "IDUseraTextBox";
             this.IDUseraTextBox.ReadOnly = true;
             this.IDUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.IDUseraTextBox.TabIndex = 17;
             // 
-            // HasloUzytkownikaTextBox
-            // 
-            this.HasloUzytkownikaTextBox.Location = new System.Drawing.Point(106, 81);
-            this.HasloUzytkownikaTextBox.Name = "HasloUzytkownikaTextBox";
-            this.HasloUzytkownikaTextBox.Size = new System.Drawing.Size(148, 20);
-            this.HasloUzytkownikaTextBox.TabIndex = 16;
-            // 
             // LoginUseraTextBox
             // 
-            this.LoginUseraTextBox.Location = new System.Drawing.Point(106, 55);
+            this.LoginUseraTextBox.Location = new System.Drawing.Point(106, 68);
             this.LoginUseraTextBox.Name = "LoginUseraTextBox";
             this.LoginUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.LoginUseraTextBox.TabIndex = 15;
             // 
-            // Haslo
-            // 
-            this.Haslo.AutoSize = true;
-            this.Haslo.Location = new System.Drawing.Point(6, 84);
-            this.Haslo.Name = "Haslo";
-            this.Haslo.Size = new System.Drawing.Size(36, 13);
-            this.Haslo.TabIndex = 14;
-            this.Haslo.Text = "Hasło";
-            // 
             // Login
             // 
             this.Login.AutoSize = true;
-            this.Login.Location = new System.Drawing.Point(6, 58);
+            this.Login.Location = new System.Drawing.Point(6, 71);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(36, 13);
             this.Login.TabIndex = 13;
@@ -315,6 +295,23 @@
             this.DaneUmowyGroupBox.TabIndex = 35;
             this.DaneUmowyGroupBox.TabStop = false;
             this.DaneUmowyGroupBox.Text = "Dane umowy";
+            // 
+            // IDUmowyLabel
+            // 
+            this.IDUmowyLabel.AutoSize = true;
+            this.IDUmowyLabel.Location = new System.Drawing.Point(6, 26);
+            this.IDUmowyLabel.Name = "IDUmowyLabel";
+            this.IDUmowyLabel.Size = new System.Drawing.Size(54, 13);
+            this.IDUmowyLabel.TabIndex = 39;
+            this.IDUmowyLabel.Text = "ID umowy";
+            // 
+            // IDUmowyTextBox
+            // 
+            this.IDUmowyTextBox.Location = new System.Drawing.Point(106, 20);
+            this.IDUmowyTextBox.Name = "IDUmowyTextBox";
+            this.IDUmowyTextBox.ReadOnly = true;
+            this.IDUmowyTextBox.Size = new System.Drawing.Size(148, 20);
+            this.IDUmowyTextBox.TabIndex = 38;
             // 
             // KoniecUmowyDateTimePicker
             // 
@@ -341,6 +338,7 @@
             this.WymiarGodzinNumericUpDown.Name = "WymiarGodzinNumericUpDown";
             this.WymiarGodzinNumericUpDown.Size = new System.Drawing.Size(148, 20);
             this.WymiarGodzinNumericUpDown.TabIndex = 35;
+            this.WymiarGodzinNumericUpDown.ValueChanged += new System.EventHandler(this.WymiarGodzinNumericUpDown_ValueChanged);
             // 
             // TypUmowyComboBox
             // 
@@ -542,23 +540,6 @@
             this.EdytujUseraButton.UseVisualStyleBackColor = true;
             this.EdytujUseraButton.Click += new System.EventHandler(this.EdytujUseraButton_Click);
             // 
-            // IDUmowyTextBox
-            // 
-            this.IDUmowyTextBox.Location = new System.Drawing.Point(106, 20);
-            this.IDUmowyTextBox.Name = "IDUmowyTextBox";
-            this.IDUmowyTextBox.ReadOnly = true;
-            this.IDUmowyTextBox.Size = new System.Drawing.Size(148, 20);
-            this.IDUmowyTextBox.TabIndex = 38;
-            // 
-            // IDUmowyLabel
-            // 
-            this.IDUmowyLabel.AutoSize = true;
-            this.IDUmowyLabel.Location = new System.Drawing.Point(6, 26);
-            this.IDUmowyLabel.Name = "IDUmowyLabel";
-            this.IDUmowyLabel.Size = new System.Drawing.Size(54, 13);
-            this.IDUmowyLabel.TabIndex = 39;
-            this.IDUmowyLabel.Text = "ID umowy";
-            // 
             // EditWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,7 +579,6 @@
         private System.Windows.Forms.GroupBox PracownikGroupBox;
         private System.Windows.Forms.Button AnulujButton;
         private System.Windows.Forms.Button EdytujUseraButton;
-        private System.Windows.Forms.Label Haslo;
         private System.Windows.Forms.Label Login;
         private System.Windows.Forms.Label Stopien;
         private System.Windows.Forms.Label Data_badan;
@@ -628,7 +608,6 @@
         private System.Windows.Forms.ComboBox StopienComboBox;
         private System.Windows.Forms.TextBox AdresEmailTextBox;
         private System.Windows.Forms.TextBox NumerTelefonuTextBox;
-        private System.Windows.Forms.TextBox HasloUzytkownikaTextBox;
         private System.Windows.Forms.TextBox LoginUseraTextBox;
         private System.Windows.Forms.DateTimePicker KoniecUmowyDateTimePicker;
         private System.Windows.Forms.DateTimePicker PoczatekUmowyDateTimePicker;
