@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wyświetlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edytujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +52,30 @@
             this.menuStrip1.Size = new System.Drawing.Size(488, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // harmonogramToolStripMenuItem
+            // 
+            this.harmonogramToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wyświetlToolStripMenuItem,
+            this.edytujToolStripMenuItem});
+            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
+            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
+            // 
+            // wyświetlToolStripMenuItem
+            // 
+            this.wyświetlToolStripMenuItem.Name = "wyświetlToolStripMenuItem";
+            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wyświetlToolStripMenuItem.Text = "Wyświetl";
+            this.wyświetlToolStripMenuItem.Click += new System.EventHandler(this.wyświetlToolStripMenuItem_Click);
+            // 
+            // edytujToolStripMenuItem
+            // 
+            this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
+            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.edytujToolStripMenuItem.Text = "Edytuj";
+            this.edytujToolStripMenuItem.Click += new System.EventHandler(this.edytujToolStripMenuItem_Click);
             // 
             // notatkiToolStripMenuItem
             // 
@@ -74,13 +100,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // harmonogramToolStripMenuItem
-            // 
-            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
-            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
-            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            // 
             // UserPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,10 +120,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem umowaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem daneToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wyświetlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem edytujToolStripMenuItem;
     }
 }

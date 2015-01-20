@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using aquadrom.Objects;
 using System.Windows.Forms;
 
 namespace DB
@@ -118,6 +119,13 @@ namespace DB
             catch { return false; }
             return true;
         }
+        public bool Insert(Umowa umowa)
+        {
+            try { polaczenie.Insert(umowa); }
+            catch { return false; }
+            return true;
+        }
+
         public bool Update(Umowa umowa)
         {
             try { polaczenie.UpdateUmowa(umowa); }
@@ -136,6 +144,7 @@ namespace DB
             }
             else
             {
+
                 string query = Constants.TabGodzinyPracy + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," + Constants.GodzinyPracyIdP + ")"
                     + " VALUES ('" + startTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + stopTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "'," + iD + ")";
 
@@ -175,6 +184,7 @@ namespace DB
         public int GetPositionNumberAtStates(DateTime time)
         {
             string query = " sum(" + Constants.StanowiskoLiczbaPracownikow + ") FROM " + Constants.TabStanowisko + ", " + Constants.TabOtwarcieStanowiska +
+                
                 " WHERE " + Constants.StanowiskoID + "=" + Constants.OtwarcieStanowiskaIDStanowiska + " AND ('" + time.ToString("HH:mm:ss") + "' BETWEEN " + Constants.OtwarcieStanowiskaOd + " AND " +
                 Constants.OtwarcieStanowiskaDo + ")";
             DataTable result = polaczenie.Select(query);

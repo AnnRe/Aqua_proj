@@ -47,7 +47,7 @@ namespace aquadrom.Utilities
         public const string StanowiskoLiczbaPracownikow = "Liczba_pracownikow";
 
         public const string UmowaIDu = "ID_u";
-        public const string UmowaTyp = "Typ";
+        public const string UmowaTypUmowy = "Typ";
         public const string UmowaWymiarGodzin = "Wymiar_godzin";
         public const string UmowaPoczatekUmowy = "Poczatek_umowy";
         public const string UmowaKoniecUmowy = "Koniec_umowy";
@@ -61,5 +61,8 @@ namespace aquadrom.Utilities
         public const int PoczatekPracy = 8;
         public const int KoniecPracy = 22;
 
+        
+     
+      
     }
 }

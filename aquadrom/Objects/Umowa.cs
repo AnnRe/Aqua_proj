@@ -9,19 +9,34 @@ namespace Objects
 {
     public class Umowa
     {
+        public DateTime poczatekUmowy { get; set; }
+        public DateTime koniecUmowy { get; set; }
+        public string wymiarGodzin { get; set; }
+        public eUmowa typUmowy { get; set; }
         public int ID_u { get; set; }
-        public eUmowa Typ { get; set; }
-        public string Wymiar_godzin { get; set; }
-        public DateTime Poczatek_umowy { get; set; }
-        public DateTime Koniec_umowy { get; set; }
+
+        public Umowa()
+        {
+            this.typUmowy = eUmowa.UZ;
+            this.wymiarGodzin= "";
+            this.poczatekUmowy = new DateTime();
+            this.koniecUmowy = new DateTime();
+        }
+        public Umowa(eUmowa typUmowy, string wymiarGodzin, DateTime początekUmowy, DateTime koniecUmowy)
+        {
+            this.typUmowy = typUmowy;
+            this.wymiarGodzin = wymiarGodzin;
+            this.poczatekUmowy = początekUmowy;
+            this.koniecUmowy = koniecUmowy;
+        }
 
         public Umowa(int ID_u, eUmowa Typ, string Wymiar_godzin, DateTime Poczatek_umowy, DateTime Koniec_umowy)
         {
             this.ID_u = ID_u;
-            this.Typ = Typ;
-            this.Wymiar_godzin = Wymiar_godzin;
-            this.Poczatek_umowy = Poczatek_umowy;
-            this.Koniec_umowy = Koniec_umowy;
+            this.typUmowy = eUmowa.UZ;
+            this.wymiarGodzin = Wymiar_godzin;
+            this.poczatekUmowy = Poczatek_umowy;
+            this.koniecUmowy = Koniec_umowy;
         }
     }
 

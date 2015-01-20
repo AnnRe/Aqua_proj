@@ -38,5 +38,15 @@ namespace aquadrom
         {
             
         }
+
+        private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void edytujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

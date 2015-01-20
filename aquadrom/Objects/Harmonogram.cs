@@ -79,8 +79,7 @@ namespace aquadrom.Objects
                     
                 }
             }
-          //  string query="SELECT * from pracownik where "+const
-            //var pracownicyDataTable=polaczenie.GetData()
+         
             return "";
         }
         public string poprawnieRozplanowanyMiesiac(DateTime time)

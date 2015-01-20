@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using aquadrom.Objects;
 using System.Data;
 
 namespace DB
@@ -28,7 +29,7 @@ namespace DB
         {
             polaczenie.Close();
         }
-
+       
         public void Insert(string query)
         {
             Open();
@@ -90,44 +91,21 @@ namespace DB
 
         public void Insert(Pracownik pracownik)
         {
+            string KPP, stopien, mieszkania;
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                KPP = "null";
+            else KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+                stopien = "null";
+            else stopien = "'" + pracownik.stopien + "'";
+            if (pracownik.numerMieszkania == "")
+                mieszkania = "null";
+            else
+                mieszkania = "'" + pracownik.numerMieszkania + "'";
+
+
+
             string query = "Pracownik (" +
-<<<<<<< HEAD
-               Constants.PracownikImieKol + "," +
-               Constants.PracownikNazwiskoKol + "," +
-               Constants.PracownikMiastoKol + "," +
-               Constants.PracownikUlicaKol + "," +
-               Constants.PracownikNrDomKol + "," +
-               Constants.PracownikNrMieszkaniaKol + "," +
-               Constants.PracownikPeselKol + "," +
-               Constants.PracownikStanowiskoKol + "," +
-               Constants.PracownikStopienKol + "," +
-               Constants.PracownikTelKol + "," +
-               Constants.PracownikWaznKPPKol + "," +
-               Constants.PracownikMailKol + "," +
-               Constants.PracownikDataBadanKol + "," +
-               Constants.PracownikLoginKol + "," +
-               Constants.PracownikHasloKol ;
- //              Constants.PracownikIDUmowyKol + "," +
- //              Constants.PracownikTypKontaKol;
-            query += ") VALUES ('";
-            query += pracownik.imie + "','" +
-                pracownik.nazwisko + "','" +
-                pracownik.miasto + "','" +
-                pracownik.ulica + "','" +
-                pracownik.numerDomu + "','" +
-                pracownik.numerMieszkania + "','" +
-                pracownik.pesel + "','" +
-                pracownik.stanowisko + "','" +
-                pracownik.stopien + "','" +
-                pracownik.numerTelefonu + "','" +
-                pracownik.dataWażnościKPP + "','" +
-                pracownik.mail + "','" +
-                pracownik.dataBadan + "','" +
-                pracownik.login + "','" +
-                pracownik.haslo + "',')";
- //               pracownik.idUmowy + "','" +
- //               pracownik.typKonta + "')";
-=======
                Constants.PracownikImie + "," +
                Constants.PracownikNazwisko + "," +
                Constants.PracownikMiasto + "," +
@@ -136,71 +114,109 @@ namespace DB
                Constants.PracownikNrMieszkania + "," +
                Constants.PracownikPesel + "," +
                Constants.PracownikStanowisko + "," +
-               Constants.PracownikStopienBadan + "," +
+               Constants.PracownikStopien + "," +
                Constants.PracownikTel + "," +
                Constants.PracownikWaznKPP + "," +
                Constants.PracownikMail + "," +
-               Constants.PracownikDataBadan;
-            query += ") VALUES (";
-            query += pracownik.imie +
-                pracownik.nazwisko +
-                pracownik.miasto +
-                pracownik.ulica +
-                pracownik.numerDomu +
-                pracownik.numerMieszkania +
-                pracownik.pesel +
-                pracownik.stanowisko +
-                pracownik.stopien +
-                pracownik.numerTelefonu +
-                pracownik.dataWażnościKPP +
-                pracownik.mail +
-                pracownik.dataBadan + ")";
->>>>>>> f532a02178ddbcf191380f224c84c2d0ac2e05a4
+               Constants.PracownikDataBadan + "," +
+               Constants.PracownikLogin + "," +
+               Constants.PracownikHaslo + "," +
+               Constants.PracownikIDUmowy + "," +
+               Constants.PracownikTypKonta + "," +
+               Constants.PracownikOstrzezenieUmowa + "," +
+               Constants.PracownikOstrzezenieBadania + "," +
+               Constants.PracownikOstrzezenieKPP;
+            query += ") VALUES ('";
+            query += pracownik.imie + "','" +
+                pracownik.nazwisko + "','" +
+                pracownik.miasto + "','" +
+                pracownik.ulica + "','" +
+                pracownik.numerDomu + "'," +
+                mieszkania + ",'" +
+                pracownik.pesel + "','" +
+                pracownik.stanowisko + "'," +
+                stopien + ",'" +
+                pracownik.numerTelefonu + "'," +
+                KPP + ",'" +
+                pracownik.mail + "','" +
+                pracownik.dataBadan + "','" +
+                pracownik.login + "','" +
+                pracownik.haslo + "','" +
+                pracownik.idUmowy + "','" +
+                pracownik.typKonta + "','" +
+                pracownik.oUmowa + "','" +
+                pracownik.oBadania + "','" +
+                pracownik.oKPP + "')";
 
             Insert(query);
         }
 
+        public void Insert(Umowa umowa)
+        {
 <<<<<<< HEAD
+            string KPP, stopien;
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+            {
+                KPP = "null";
+                stopien = "null";
+            }
+            else 
+            {
+                KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+                stopien = "'" + pracownik.stopien + "'";
+            }
+=======
+            string godziny;
+            if (umowa.wymiarGodzin == "0")
+                godziny = "null";
+            else
+                godziny = "'" + umowa.wymiarGodzin + "'";
+
+            string query = "Umowa (" +
+               Constants.UmowaTypUmowy + "," +
+               Constants.UmowaWymiarGodzin + "," +
+               Constants.UmowaPoczatekUmowy + "," +
+               Constants.UmowaKoniecUmowy;
+            query += ") VALUES ('";
+            query += umowa.typUmowy + "'," +
+                godziny + ",'" +
+                umowa.poczatekUmowy + "','" +
+                umowa.koniecUmowy + "')";
+
+            Insert(query);
+        }
+
+>>>>>>> 529ba8f4f00d5abb05fe0c4553e79136d9ce7afe
+
         public void UpdatePracownik(Pracownik pracownik)
         {
             string query = "Pracownik set " +
-                Constants.PracownikImieKol + "='" + pracownik.imie + "', "+
-                Constants.PracownikNazwiskoKol + "='" + pracownik.nazwisko + "', " +
-                Constants.PracownikMiastoKol + "='" + pracownik.miasto + "', " +
-                Constants.PracownikUlicaKol + "='" + pracownik.ulica + "', " +
-                Constants.PracownikNrDomKol + "='" + pracownik.numerDomu + "', " +
-                Constants.PracownikNrMieszkaniaKol + "='" + pracownik.numerMieszkania + "', " +
-                Constants.PracownikPeselKol + "='" + pracownik.pesel + "', " +
-                Constants.PracownikStanowiskoKol + "='" + pracownik.stanowisko + "', " +
-                Constants.PracownikStopienKol + "='" + pracownik.stopien + "', " +
-                Constants.PracownikTelKol + "='" + pracownik.numerTelefonu + "', " +
-                Constants.PracownikWaznKPPKol + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
-                Constants.PracownikMailKol + "='" + pracownik.mail + "', " +
-                Constants.PracownikDataBadanKol + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
-                "where " + Constants.PracownikIDpKol + "='" + pracownik.id_p + "'";
-              System.Windows.Forms.MessageBox.Show(query);
-                Update(query);
+                Constants.PracownikImie + "='" + pracownik.imie + "', " +
+                Constants.PracownikNazwisko + "='" + pracownik.nazwisko + "', " +
+                Constants.PracownikMiasto + "='" + pracownik.miasto + "', " +
+                Constants.PracownikUlica + "='" + pracownik.ulica + "', " +
+                Constants.PracownikNrDom + "='" + pracownik.numerDomu + "', " +
+                Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
+                Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
+                Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
+                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
+                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikMail + "='" + pracownik.mail + "', " +
+                Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
+                "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";
+            Update(query);
         }
 
         public void UpdateUmowa(Umowa umowa)
         {
             string query = "Umowa set " +
-                Constants.UmowaTyp + "='" + umowa.Typ + "', " +
-                Constants.UmowaWymiarGodzin + "='" + umowa.Wymiar_godzin + "', " +
-                Constants.UmowaPoczatekUmowy + "='" + umowa.Poczatek_umowy.ToString("yyyy-MM-dd") + "', " +
-                Constants.UmowaKoniecUmowy + "='" + umowa.Koniec_umowy.ToString("yyyy-MM-dd") + "' " +
+                Constants.UmowaTypUmowy + "='" + umowa.typUmowy + "', " +
+                Constants.UmowaWymiarGodzin + "='" + umowa.wymiarGodzin + "', " +
+                Constants.UmowaPoczatekUmowy + "='" + umowa.poczatekUmowy.ToString("yyyy-MM-dd") + "', " +
+                Constants.UmowaKoniecUmowy + "='" + umowa.koniecUmowy.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
-                          System.Windows.Forms.MessageBox.Show(query);
-            //Update(query);
-=======
-        public void Update(string query)
-        {
-            Open();
-            string queryText = "UPDATE " + query;
-            SqlCommand cmdsel = new SqlCommand(queryText, polaczenie);
-            cmdsel.ExecuteNonQuery();
-            Close();
->>>>>>> f532a02178ddbcf191380f224c84c2d0ac2e05a4
+            Update(query);
         }
     }
 }

@@ -1,0 +1,6 @@
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\bin\Debug\sharpPDF.dll
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\bin\Debug\sharpPDF.pdb
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\bin\Debug\sharpPDF.xml
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\obj\Debug\sharpPDF.csprojResolveAssemblyReference.cache
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\obj\Debug\sharpPDF.dll
+D:\projektio\aquadrom\sharpPDF_2_0_Beta2_src\obj\Debug\sharpPDF.pdb
