@@ -208,6 +208,7 @@ namespace aquadrom
                         return;
                     }
                     UpdateHarmonogramClass();
+                    
                     String message = harmonogram.ValidateCell(e);
                     e.Cancel = message.Length > 0;
                     if (message.Length > 0)
@@ -385,6 +386,18 @@ namespace aquadrom
                 comboBoxMonths.Enabled = true;
             }
 
+        }
+
+        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DateTime time;
+            bool parsed = DateTime.TryParse(dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString(), out time);
         }
     }
 }
