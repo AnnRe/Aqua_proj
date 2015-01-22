@@ -20,3 +20,14 @@ D:\projektio\Tests\bin\Debug\de\PdfSharp.resources.dll
 D:\projektio\Tests\obj\Debug\Tests.dll
 D:\projektio\Tests\obj\Debug\Tests.pdb
 D:\projektio\Tests\bin\Debug\aquadrom.pdb
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\Tests.dll
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\Tests.pdb
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\aquadrom.exe
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\nunit.framework.dll
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\PdfSharp.dll
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\aquadrom.pdb
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\nunit.framework.xml
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\PdfSharp.xml
+C:\Users\HP\Documents\aquaproj\Tests\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\HP\Documents\aquaproj\Tests\obj\Debug\Tests.dll
+C:\Users\HP\Documents\aquaproj\Tests\obj\Debug\Tests.pdb

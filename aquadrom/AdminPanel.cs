@@ -26,7 +26,7 @@ namespace aquadrom
             InitializeComponent();
         }
 
-        public void AdminPanel_Load(object sender, EventArgs e)
+        public void AdminPanel_Load(object sender, EventArgs e) // wypelnienie głównego DataTable
         {
             DataTable dtlista = connector.Select("* from "+Constants.TabPracownik+" p,"+Constants.TabUmowa+" u where p."+Constants.PracownikIDUmowy+"=u."+Constants.UmowaIDu+" order by "+Constants.PracownikNazwisko+" asc");
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -39,7 +39,7 @@ namespace aquadrom
             dataGridView1.Columns[Constants.PracownikOstrzezenieUmowa].Visible = false;
             ColorCheckUser();
 
-            if (CheckInternetConnection() == false)
+            if (CheckInternetConnection() == false)     // sprawdzanie połączenia internetowego
                 PolczenieStripStatus.Text = "Brak połączenia internetowego";
             else
                 PolczenieStripStatus.Text = "Połączenie internetowe aktywne";
@@ -79,7 +79,7 @@ namespace aquadrom
             AddWor.Show();
         }
 
-        private void ColorCheckUser()
+        private void ColorCheckUser()       //zaznaczanie na czerwowo użytkowników którym kończą się badania,kpp,umowa
         {
             bool internetcon = CheckInternetConnection();
             bool changeKPP = false;
@@ -119,7 +119,7 @@ namespace aquadrom
                     dataGridView1.Rows[i].Cells[Constants.UmowaKoniecUmowy].Style.BackColor = Color.Red;
                     changeconcract = true;
                 }
-                
+                        // jeśli jest połączenie internetowe oraz jakieś ostrzeżenie to sendmail
                 if ( ((changeKPP == true) || (changeconcract == true) || (changemedi == true)) && (internetcon == true) )
                 {
                     sendmail(i, KPPdate, changeKPP, medicaldate, changemedi, concractdate, changeconcract);
@@ -151,7 +151,7 @@ namespace aquadrom
                 what += "Data ważności umowy: " + medicaldate.ToString("dd-MM-yyyy") + "\n";
                 adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieUmowa + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
-            if (what.Length != 0)
+            if (what.Length != 0)   // jeśli jest ostrzeżenie i mail nie był jeszcze wysłany to wyślij
             {
                 var fromAdress = new MailAddress("aquadromautomat@gmail.com", "System automatycznej informacji");
                 var toAdress = new MailAddress("aquadromboss@gmail.com", "Administrator Firmy sMMonpar ");
