@@ -123,6 +123,9 @@
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\Harmonogram.cs" />
+    <Compile Include="Objects\myMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Objects\Notatka.cs" />
     <Compile Include="Objects\Pracownik.cs" />
     <Compile Include="Objects\Umowa.cs" />
@@ -177,6 +180,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserPanel.resx">
       <DependentUpon>UserPanel.cs</DependentUpon>
@@ -209,6 +213,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_page.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneratorNotatek));
             this.Generuj = new System.Windows.Forms.Button();
             this.AnulujNotatke = new System.Windows.Forms.Button();
             this.TekstNotatki = new System.Windows.Forms.RichTextBox();
@@ -54,6 +55,7 @@
             // 
             // TekstNotatki
             // 
+            this.TekstNotatki.BackColor = System.Drawing.Color.Azure;
             this.TekstNotatki.Location = new System.Drawing.Point(38, 72);
             this.TekstNotatki.Name = "TekstNotatki";
             this.TekstNotatki.Size = new System.Drawing.Size(510, 122);
@@ -65,10 +67,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(583, 442);
             this.Controls.Add(this.TekstNotatki);
             this.Controls.Add(this.AnulujNotatke);
             this.Controls.Add(this.Generuj);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GeneratorNotatek";
             this.Text = "GeneratorNotatek";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneratorNotatek_FormClosing);

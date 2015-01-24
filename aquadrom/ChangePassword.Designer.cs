@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.HasloZmienG = new System.Windows.Forms.GroupBox();
-            this.StareHaslo = new System.Windows.Forms.Label();
-            this.NoweHaslo = new System.Windows.Forms.Label();
-            this.PowtorzHaslo = new System.Windows.Forms.Label();
-            this.StareHaslo2 = new System.Windows.Forms.TextBox();
-            this.NoweHaslo2 = new System.Windows.Forms.TextBox();
             this.PowtorzHaslo2 = new System.Windows.Forms.TextBox();
+            this.NoweHaslo2 = new System.Windows.Forms.TextBox();
+            this.StareHaslo2 = new System.Windows.Forms.TextBox();
+            this.PowtorzHaslo = new System.Windows.Forms.Label();
+            this.NoweHaslo = new System.Windows.Forms.Label();
+            this.StareHaslo = new System.Windows.Forms.Label();
             this.ZmianaHasla = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.HasloZmienG.SuspendLayout();
@@ -42,7 +42,7 @@
             // 
             // HasloZmienG
             // 
-            this.HasloZmienG.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.HasloZmienG.BackColor = System.Drawing.Color.LightCyan;
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo2);
             this.HasloZmienG.Controls.Add(this.NoweHaslo2);
             this.HasloZmienG.Controls.Add(this.StareHaslo2);
@@ -55,24 +55,31 @@
             this.HasloZmienG.TabIndex = 0;
             this.HasloZmienG.TabStop = false;
             this.HasloZmienG.Text = "Formularz";
+            this.HasloZmienG.Enter += new System.EventHandler(this.HasloZmienG_Enter);
             // 
-            // StareHaslo
+            // PowtorzHaslo2
             // 
-            this.StareHaslo.AutoSize = true;
-            this.StareHaslo.Location = new System.Drawing.Point(7, 26);
-            this.StareHaslo.Name = "StareHaslo";
-            this.StareHaslo.Size = new System.Drawing.Size(65, 13);
-            this.StareHaslo.TabIndex = 0;
-            this.StareHaslo.Text = "Stare hasło:";
+            this.PowtorzHaslo2.Location = new System.Drawing.Point(110, 75);
+            this.PowtorzHaslo2.Name = "PowtorzHaslo2";
+            this.PowtorzHaslo2.Size = new System.Drawing.Size(166, 20);
+            this.PowtorzHaslo2.TabIndex = 5;
+            this.PowtorzHaslo2.UseSystemPasswordChar = true;
             // 
-            // NoweHaslo
+            // NoweHaslo2
             // 
-            this.NoweHaslo.AutoSize = true;
-            this.NoweHaslo.Location = new System.Drawing.Point(7, 52);
-            this.NoweHaslo.Name = "NoweHaslo";
-            this.NoweHaslo.Size = new System.Drawing.Size(68, 13);
-            this.NoweHaslo.TabIndex = 1;
-            this.NoweHaslo.Text = "Nowe hasło:";
+            this.NoweHaslo2.Location = new System.Drawing.Point(110, 49);
+            this.NoweHaslo2.Name = "NoweHaslo2";
+            this.NoweHaslo2.Size = new System.Drawing.Size(166, 20);
+            this.NoweHaslo2.TabIndex = 4;
+            this.NoweHaslo2.UseSystemPasswordChar = true;
+            // 
+            // StareHaslo2
+            // 
+            this.StareHaslo2.Location = new System.Drawing.Point(110, 23);
+            this.StareHaslo2.Name = "StareHaslo2";
+            this.StareHaslo2.Size = new System.Drawing.Size(166, 20);
+            this.StareHaslo2.TabIndex = 3;
+            this.StareHaslo2.UseSystemPasswordChar = true;
             // 
             // PowtorzHaslo
             // 
@@ -83,29 +90,23 @@
             this.PowtorzHaslo.TabIndex = 2;
             this.PowtorzHaslo.Text = "Powtórz hasło:";
             // 
-            // StareHaslo2
+            // NoweHaslo
             // 
-            this.StareHaslo2.Location = new System.Drawing.Point(110, 23);
-            this.StareHaslo2.Name = "StareHaslo2";
-            this.StareHaslo2.Size = new System.Drawing.Size(166, 20);
-            this.StareHaslo2.TabIndex = 3;
-            this.StareHaslo2.UseSystemPasswordChar = true;
+            this.NoweHaslo.AutoSize = true;
+            this.NoweHaslo.Location = new System.Drawing.Point(7, 52);
+            this.NoweHaslo.Name = "NoweHaslo";
+            this.NoweHaslo.Size = new System.Drawing.Size(68, 13);
+            this.NoweHaslo.TabIndex = 1;
+            this.NoweHaslo.Text = "Nowe hasło:";
             // 
-            // NoweHaslo2
+            // StareHaslo
             // 
-            this.NoweHaslo2.Location = new System.Drawing.Point(110, 49);
-            this.NoweHaslo2.Name = "NoweHaslo2";
-            this.NoweHaslo2.Size = new System.Drawing.Size(166, 20);
-            this.NoweHaslo2.TabIndex = 4;
-            this.NoweHaslo2.UseSystemPasswordChar = true;
-            // 
-            // PowtorzHaslo2
-            // 
-            this.PowtorzHaslo2.Location = new System.Drawing.Point(110, 75);
-            this.PowtorzHaslo2.Name = "PowtorzHaslo2";
-            this.PowtorzHaslo2.Size = new System.Drawing.Size(166, 20);
-            this.PowtorzHaslo2.TabIndex = 5;
-            this.PowtorzHaslo2.UseSystemPasswordChar = true;
+            this.StareHaslo.AutoSize = true;
+            this.StareHaslo.Location = new System.Drawing.Point(7, 26);
+            this.StareHaslo.Name = "StareHaslo";
+            this.StareHaslo.Size = new System.Drawing.Size(65, 13);
+            this.StareHaslo.TabIndex = 0;
+            this.StareHaslo.Text = "Stare hasło:";
             // 
             // ZmianaHasla
             // 
@@ -129,10 +130,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(294, 146);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.ZmianaHasla);
             this.Controls.Add(this.HasloZmienG);
+            this.DoubleBuffered = true;
             this.Name = "ChangePassword";
             this.Text = "Zmień hasło";
             this.HasloZmienG.ResumeLayout(false);

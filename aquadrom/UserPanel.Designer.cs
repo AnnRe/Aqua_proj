@@ -66,14 +66,14 @@
             // wyświetlToolStripMenuItem
             // 
             this.wyświetlToolStripMenuItem.Name = "wyświetlToolStripMenuItem";
-            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.wyświetlToolStripMenuItem.Text = "Wyświetl";
             this.wyświetlToolStripMenuItem.Click += new System.EventHandler(this.wyświetlToolStripMenuItem_Click);
             // 
             // edytujToolStripMenuItem
             // 
             this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
-            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.edytujToolStripMenuItem.Text = "Edytuj";
             this.edytujToolStripMenuItem.Click += new System.EventHandler(this.edytujToolStripMenuItem_Click);
             // 
@@ -104,6 +104,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(488, 343);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

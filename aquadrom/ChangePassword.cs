@@ -16,5 +16,10 @@ namespace aquadrom
         {
             InitializeComponent();
         }
+
+        private void HasloZmienG_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

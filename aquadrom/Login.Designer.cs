@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.UserPasswordBox = new System.Windows.Forms.TextBox();
             this.UserPassword = new System.Windows.Forms.Label();
             this.UserName = new System.Windows.Forms.Label();
@@ -82,12 +83,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(384, 162);
             this.Controls.Add(this.UserPasswordBox);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.UserName);
             this.Controls.Add(this.UserNameBox);
             this.Controls.Add(this.LoginButton);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";

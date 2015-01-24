@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWorker));
             this.PracownikGroupBox = new System.Windows.Forms.GroupBox();
             this.BadaniaGroupBox = new System.Windows.Forms.GroupBox();
             this.DataBadanDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -88,6 +89,8 @@
             // 
             // PracownikGroupBox
             // 
+            this.PracownikGroupBox.BackColor = System.Drawing.Color.Azure;
+            this.PracownikGroupBox.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.PracownikGroupBox.Controls.Add(this.BadaniaGroupBox);
             this.PracownikGroupBox.Controls.Add(this.DaneKontaktoweGroupBox);
             this.PracownikGroupBox.Controls.Add(this.KontoGroupBox);
@@ -102,6 +105,7 @@
             // 
             // BadaniaGroupBox
             // 
+            this.BadaniaGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.BadaniaGroupBox.Controls.Add(this.DataBadanDateTimePicker);
             this.BadaniaGroupBox.Controls.Add(this.KoniecKPPDateTimePicker);
             this.BadaniaGroupBox.Controls.Add(this.StanowiskoUseraComboBox);
@@ -192,6 +196,7 @@
             // 
             // DaneKontaktoweGroupBox
             // 
+            this.DaneKontaktoweGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneKontaktoweGroupBox.Controls.Add(this.AdresEmailTextBox);
             this.DaneKontaktoweGroupBox.Controls.Add(this.NumerTelefonuTextBox);
             this.DaneKontaktoweGroupBox.Controls.Add(this.Email);
@@ -241,6 +246,7 @@
             // 
             // KontoGroupBox
             // 
+            this.KontoGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.KontoGroupBox.Controls.Add(this.IDUseraLabel);
             this.KontoGroupBox.Controls.Add(this.IDUseraTextBox);
             this.KontoGroupBox.Controls.Add(this.LoginUseraTextBox);
@@ -290,6 +296,7 @@
             // 
             // DaneUmowyGroupBox
             // 
+            this.DaneUmowyGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneUmowyGroupBox.Controls.Add(this.IDUmowyLabel);
             this.DaneUmowyGroupBox.Controls.Add(this.IDUmowyTextBox);
             this.DaneUmowyGroupBox.Controls.Add(this.KoniecUmowyDateTimePicker);
@@ -404,6 +411,7 @@
             // 
             // DaneOsoboweGroupBox
             // 
+            this.DaneOsoboweGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneOsoboweGroupBox.Controls.Add(this.NumerMieszkaniaNumericUpDown);
             this.DaneOsoboweGroupBox.Controls.Add(this.NumerDomuTextBox);
             this.DaneOsoboweGroupBox.Controls.Add(this.UlicaUseraTextBox);
@@ -579,12 +587,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(588, 447);
             this.Controls.Add(this.EdytujUseraButton);
             this.Controls.Add(this.AnulujButton);
             this.Controls.Add(this.PracownikGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditWorker";

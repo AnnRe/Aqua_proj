@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.Pracownik = new System.Windows.Forms.GroupBox();
             this.Anuluj = new System.Windows.Forms.Button();
             this.AddEmployer = new System.Windows.Forms.Button();
             this.Badania = new System.Windows.Forms.GroupBox();
+            this.NrUmowy = new System.Windows.Forms.TextBox();
             this.NumerUmowy = new System.Windows.Forms.Label();
             this.DataBadan = new System.Windows.Forms.DateTimePicker();
             this.KoniecKPP = new System.Windows.Forms.DateTimePicker();
@@ -47,6 +49,8 @@
             this.Email = new System.Windows.Forms.Label();
             this.Numer_telefonu = new System.Windows.Forms.Label();
             this.Konto = new System.Windows.Forms.GroupBox();
+            this.PowtorzHasloUżytkownika = new System.Windows.Forms.TextBox();
+            this.PowtórzHasło = new System.Windows.Forms.Label();
             this.TypKonta2 = new System.Windows.Forms.ComboBox();
             this.TypKonta = new System.Windows.Forms.Label();
             this.HasloUzytkownika = new System.Windows.Forms.TextBox();
@@ -78,9 +82,6 @@
             this.Pesel = new System.Windows.Forms.Label();
             this.Nazwisko = new System.Windows.Forms.Label();
             this.Imie = new System.Windows.Forms.Label();
-            this.NrUmowy = new System.Windows.Forms.TextBox();
-            this.PowtórzHasło = new System.Windows.Forms.Label();
-            this.PowtorzHasloUżytkownika = new System.Windows.Forms.TextBox();
             this.Pracownik.SuspendLayout();
             this.Badania.SuspendLayout();
             this.Dane_kontaktowe.SuspendLayout();
@@ -93,6 +94,8 @@
             // 
             // Pracownik
             // 
+            this.Pracownik.BackColor = System.Drawing.Color.Azure;
+            this.Pracownik.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.Pracownik.Controls.Add(this.Anuluj);
             this.Pracownik.Controls.Add(this.AddEmployer);
             this.Pracownik.Controls.Add(this.Badania);
@@ -129,6 +132,7 @@
             // 
             // Badania
             // 
+            this.Badania.BackColor = System.Drawing.Color.LightCyan;
             this.Badania.Controls.Add(this.NrUmowy);
             this.Badania.Controls.Add(this.NumerUmowy);
             this.Badania.Controls.Add(this.DataBadan);
@@ -145,6 +149,14 @@
             this.Badania.TabIndex = 38;
             this.Badania.TabStop = false;
             this.Badania.Text = "Badania i stanowisko";
+            // 
+            // NrUmowy
+            // 
+            this.NrUmowy.Location = new System.Drawing.Point(97, 127);
+            this.NrUmowy.Name = "NrUmowy";
+            this.NrUmowy.Size = new System.Drawing.Size(148, 20);
+            this.NrUmowy.TabIndex = 19;
+            this.NrUmowy.Text = "brak";
             // 
             // NumerUmowy
             // 
@@ -227,6 +239,7 @@
             // 
             // Dane_kontaktowe
             // 
+            this.Dane_kontaktowe.BackColor = System.Drawing.Color.LightCyan;
             this.Dane_kontaktowe.Controls.Add(this.AdresEmail);
             this.Dane_kontaktowe.Controls.Add(this.NumerTelefonu);
             this.Dane_kontaktowe.Controls.Add(this.Email);
@@ -277,6 +290,7 @@
             // 
             // Konto
             // 
+            this.Konto.BackColor = System.Drawing.Color.LightCyan;
             this.Konto.Controls.Add(this.PowtorzHasloUżytkownika);
             this.Konto.Controls.Add(this.PowtórzHasło);
             this.Konto.Controls.Add(this.TypKonta2);
@@ -291,6 +305,23 @@
             this.Konto.TabIndex = 36;
             this.Konto.TabStop = false;
             this.Konto.Text = "Konto";
+            // 
+            // PowtorzHasloUżytkownika
+            // 
+            this.PowtorzHasloUżytkownika.Location = new System.Drawing.Point(106, 75);
+            this.PowtorzHasloUżytkownika.Name = "PowtorzHasloUżytkownika";
+            this.PowtorzHasloUżytkownika.Size = new System.Drawing.Size(148, 20);
+            this.PowtorzHasloUżytkownika.TabIndex = 22;
+            this.PowtorzHasloUżytkownika.UseSystemPasswordChar = true;
+            // 
+            // PowtórzHasło
+            // 
+            this.PowtórzHasło.AutoSize = true;
+            this.PowtórzHasło.Location = new System.Drawing.Point(6, 78);
+            this.PowtórzHasło.Name = "PowtórzHasło";
+            this.PowtórzHasło.Size = new System.Drawing.Size(78, 13);
+            this.PowtórzHasło.TabIndex = 18;
+            this.PowtórzHasło.Text = "Powtórz hasło:";
             // 
             // TypKonta2
             // 
@@ -348,6 +379,7 @@
             // 
             // Dane_umowy
             // 
+            this.Dane_umowy.BackColor = System.Drawing.Color.LightCyan;
             this.Dane_umowy.Controls.Add(this.StwórzUmowe);
             this.Dane_umowy.Controls.Add(this.KoniecUmowy);
             this.Dane_umowy.Controls.Add(this.PoczatekUmowy);
@@ -459,6 +491,7 @@
             // 
             // Dane_osobowe
             // 
+            this.Dane_osobowe.BackColor = System.Drawing.Color.LightCyan;
             this.Dane_osobowe.Controls.Add(this.NumerMieszkania);
             this.Dane_osobowe.Controls.Add(this.NumerDomu);
             this.Dane_osobowe.Controls.Add(this.UlicaUzytkownika);
@@ -623,38 +656,14 @@
             this.Imie.TabIndex = 0;
             this.Imie.Text = "Imię:";
             // 
-            // NrUmowy
-            // 
-            this.NrUmowy.Location = new System.Drawing.Point(97, 127);
-            this.NrUmowy.Name = "NrUmowy";
-            this.NrUmowy.Size = new System.Drawing.Size(148, 20);
-            this.NrUmowy.TabIndex = 19;
-            this.NrUmowy.Text = "brak";
-            // 
-            // PowtórzHasło
-            // 
-            this.PowtórzHasło.AutoSize = true;
-            this.PowtórzHasło.Location = new System.Drawing.Point(6, 78);
-            this.PowtórzHasło.Name = "PowtórzHasło";
-            this.PowtórzHasło.Size = new System.Drawing.Size(78, 13);
-            this.PowtórzHasło.TabIndex = 18;
-            this.PowtórzHasło.Text = "Powtórz hasło:";
-            // 
-            // PowtorzHasloUżytkownika
-            // 
-            this.PowtorzHasloUżytkownika.Location = new System.Drawing.Point(106, 75);
-            this.PowtorzHasloUżytkownika.Name = "PowtorzHasloUżytkownika";
-            this.PowtorzHasloUżytkownika.Size = new System.Drawing.Size(148, 20);
-            this.PowtorzHasloUżytkownika.TabIndex = 22;
-            this.PowtorzHasloUżytkownika.UseSystemPasswordChar = true;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(591, 468);
             this.Controls.Add(this.Pracownik);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Dodaj pracownika";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
