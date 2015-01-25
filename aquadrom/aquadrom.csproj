@@ -123,6 +123,12 @@
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\Harmonogram.cs" />
+    <Compile Include="Objects\MyMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Objects\MyMessageBox.Designer.cs">
+      <DependentUpon>MyMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Notatka.cs" />
     <Compile Include="Objects\Pracownik.cs" />
     <Compile Include="Objects\Umowa.cs" />
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Objects\MyMessageBox.resx">
+      <DependentUpon>MyMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

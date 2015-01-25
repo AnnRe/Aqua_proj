@@ -23,16 +23,7 @@ namespace aquadrom.Objects
             KSRpresent = false;
         }
 
-        public void Add(Pracownik pracownik, DateTime pocz, DateTime koniec)
-        {
-            DBAdapter polaczenie = new DBAdapter();
-            string query = "into " + Constants.TabGodzinyPracy + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," +
-                Constants.GodzinyPracyIdP+") values ("+
-                pocz.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+koniec.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+pracownik.id_p+")";
-            polaczenie.Insert(query);
-           
-        }
-
+        
         /// <summary>
         /// Sprawdza, czy w każdym momencie jest wystarczająca ilość pracowników oraz czy są KZ/KSR
         /// </summary>

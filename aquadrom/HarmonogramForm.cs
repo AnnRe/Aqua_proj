@@ -25,6 +25,7 @@ namespace aquadrom
         {
             settingUp = true;
             InitializeComponent();
+            MyMessageBox.ShowBox("elo");
             settingUp = false;
         }
         
@@ -311,7 +312,7 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + " " + messageMiesiac);
+                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + " " + messageMiesiac);
             }
             else
             {
@@ -326,9 +327,9 @@ namespace aquadrom
                         }
                     }
                 if (message.Length == 0)
-                    MessageBox.Show("Poprawnie rozplanowany miesiąc");
+                    MyMessageBox.ShowBox("Poprawnie rozplanowany miesiąc");
                 else
-                    MessageBox.Show(message);
+                    MyMessageBox.ShowBox(message);
             }
 
         }
