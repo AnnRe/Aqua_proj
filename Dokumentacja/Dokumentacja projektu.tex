@@ -5,8 +5,21 @@
 \usepackage{amsfonts}
 \usepackage{gensymb}
 \usepackage{indentfirst}
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{listings}
+\lstdefinestyle{sharpc}{language=[Sharp]C,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{green},
+keywordstyle=\color{blue}\bfseries,
+stringstyle=\color{red},
+basicstyle=\ttfamily
+}
 \usepackage{enumerate}
 \usepackage{url}
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm, headsep=1.2cm]{geometry}
@@ -26,7 +39,7 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 
-\begin{document}
+\begin{document}\lstset{style=sharpc}
 %strona tytu³owa%
 \begin{titlepage}
 \begin{center}
@@ -202,6 +215,105 @@ W chwili zmiany (wyboru) pracownika zapamiêtywany jest jego numer ID oraz ID jeg
 private void DeleteButton_Click(object sender, EventArgs e)
 \end{lstlisting}
 W chwili klikniêcia Wybierz nastêpuje wywo³anie stosownego komunikatu (potwierdzenia dokonania wyboru). W chwili ponownej akceptacji ze strony u¿ytkownika, wybrany przez niego pracownik jest usuwany z bazy danych (w kolejnoœci usuñ umowê, usuñ pracownika) i okno zostaje automatycznie zamkniête.
+
+\subsubsection{Okno Harmonogramu (Harmonogram)}
+Okno odpowiedzialne za wyœwietlanie harmonogramu wybranego miesi¹ca i roku na podstawie danych przechowywanych w bazie. Daje mo¿liwoœæ modyfikacji danych oraz walidacji czasu pracy w zale¿noœci od typu umowy. Sprawdza poprawnoœæ wprowadzanych danych i obecnoœæ odpowiednich pracowników na stanowiskach.
+
+\begin{lstlisting}
+private string PoprawnieRozplanowanyDzien(DateTime day)
+\end{lstlisting}
+Sprawdza, czy w ka¿dym momencie jest wystarczaj¹ca iloœæ pracowników oraz czy s¹ KZ/KSR
+\begin{lstlisting}
+private string pracownicyMajaOdpowiednieGodziny(DateTime time)
+\end{lstlisting}
+Kontroluje, czy w zale¿noœci od typu umowy pracownicy maj¹ wype³nion¹ odpowiedni¹ iloœæ godzin w harmonogramie.
+
+\begin{lstlisting}
+public string poprawnieRozplanowanyMiesiac(DateTime time)
+\end{lstlisting}
+Sprawdza kolejne dni miesi¹ca pod k¹tem odpowiedniego rozplanowania.
+
+\begin{lstlisting}
+private int GetNeededWorkersAmount(DateTime time)
+\end{lstlisting}
+Sprawdza ilu w danym czasie potrzebnych jest ratowników w pracy.
+
+\begin{lstlisting}
+private string stanowiskaObsadzone(DateTime time)
+\end{lstlisting}
+Sprawdza czy w danym czasie na stanowiskach jest odpowiednia liczba ratowników, kierowników zmiany oraz .
+\begin{lstlisting}
+private int GetNumberOfRescuresAtTime(DateTime time)
+\end{lstlisting}
+Zwraca liczbê ratowników na stanowistach w danym czasie.
+\begin{lstlisting}
+private bool KZPresentAtTime(DateTime time)
+\end{lstlisting}
+Sprawdza czy w danym czasie obecny jest Kierownik Zmiany na p³ywalni.
+\begin{lstlisting}
+private bool KSRandKZPresenceAtTime(DateTime time)
+\end{lstlisting}
+Sprawdza czy Kierownik Zmiany (KZ) i (KSR) obecni na stanowiskach w danym czasie.
+
+\begin{lstlisting}
+public string Save()
+\end{lstlisting}
+Sprawdza, czy wszystkie godziny maj¹ wprowadzone pocz¹tek i koniec pracy i zapisuje zmiany do bazy.
+
+\begin{lstlisting}
+public int GetColumnIndexForDate(DateTime date)
+\end{lstlisting}
+Zwraca numer kolumny, której tytu³ zawiera zadan¹ datê. 
+\begin{lstlisting}
+private DateTime GetColumnDate(int columnIndex, int rowIndex)
+\end{lstlisting}
+Zwraca datê, umieszczon¹ w tytule tabeli dla komórki o danych wspó³rzêdnych.
+
+\begin{lstlisting}
+private DateTime GetCellHourAtDate(DateTime oldDate, int columnIndex)
+\end{lstlisting}
+Uzupe³nia wczytan¹ datê o dzieñ w zale¿noœci od kolumny dla której zosta³a wywo³ana metoda.
+
+        
+\begin{lstlisting}
+private DateTime GetCellDateTime(int columnIndex, int rowIndex)
+\end{lstlisting}
+        Zwraca datê i godzinê dla danej komórki na podstawie nag³ówka i wprowadzonej godziny rozpoczêcia/zakoñczenia pracy.
+\begin{lstlisting}
+private TimeSpan GetUserHoursAtDate(int rowIndex, DateTime date)
+\end{lstlisting}
+Zwraca  liczbê godzin pracy danego pracownika w danym dniu. 
+\begin{lstlisting}
+public bool bothTimesAreReady(int columnIndex,int rowIndex)
+\end{lstlisting}
+        
+		Zwraca true je¿eli wype³nione s¹ zarówno godzina rozpoczêcia i zakoñczenia pracy.
+\begin{lstlisting}
+public bool onlyOneTimesAreReady(int columnIndex, int rowIndex)
+\end{lstlisting}
+        Zwraca true, je¿eli wype³niona jest tylko jedna z dwóch godzin pracy (rozpoczêcia lub zakoñczenia).
+
+       
+\begin{lstlisting}
+public string ValidateCell(DataGridViewCellValidatingEventArgs e)
+\end{lstlisting}
+        Sprawdza czy:
+\begin{itemize}		
+\item dane zapisane s¹ w formacie GG:mm
+\item godziny s¹ z przedzia³u 8:00-22:00
+\item minuty podane s¹ z dok³adnoœci¹ 15min
+
+\end{itemize}
+\begin{lstlisting}
+private string GetNazwisko(int rowIndex)
+\end{lstlisting}
+Pobiera nazwisko z tabeli harmonogramu w danym wierszu
+\begin{lstlisting}
+private string GetImie(int rowIndex)
+\end{lstlisting}
+Pobiera imie z tabeli harmonogramu w danym wierszu
+        
+
 \subsection{Minimalne wymagania sprzêtowe}
 
 
