@@ -143,9 +143,9 @@
             this.Badania.Controls.Add(this.Stanowisko);
             this.Badania.Controls.Add(this.Data_badan);
             this.Badania.Controls.Add(this.Stopien);
-            this.Badania.Location = new System.Drawing.Point(306, 255);
+            this.Badania.Location = new System.Drawing.Point(9, 247);
             this.Badania.Name = "Badania";
-            this.Badania.Size = new System.Drawing.Size(257, 166);
+            this.Badania.Size = new System.Drawing.Size(257, 174);
             this.Badania.TabIndex = 38;
             this.Badania.TabStop = false;
             this.Badania.Text = "Badania i stanowisko";
@@ -244,9 +244,9 @@
             this.Dane_kontaktowe.Controls.Add(this.NumerTelefonu);
             this.Dane_kontaktowe.Controls.Add(this.Email);
             this.Dane_kontaktowe.Controls.Add(this.Numer_telefonu);
-            this.Dane_kontaktowe.Location = new System.Drawing.Point(9, 203);
+            this.Dane_kontaktowe.Location = new System.Drawing.Point(291, 19);
             this.Dane_kontaktowe.Name = "Dane_kontaktowe";
-            this.Dane_kontaktowe.Size = new System.Drawing.Size(272, 81);
+            this.Dane_kontaktowe.Size = new System.Drawing.Size(272, 89);
             this.Dane_kontaktowe.TabIndex = 37;
             this.Dane_kontaktowe.TabStop = false;
             this.Dane_kontaktowe.Text = "Dane kontaktowe";
@@ -299,7 +299,7 @@
             this.Konto.Controls.Add(this.LoginUzytkownika);
             this.Konto.Controls.Add(this.Haslo);
             this.Konto.Controls.Add(this.Login);
-            this.Konto.Location = new System.Drawing.Point(9, 311);
+            this.Konto.Location = new System.Drawing.Point(291, 283);
             this.Konto.Name = "Konto";
             this.Konto.Size = new System.Drawing.Size(272, 138);
             this.Konto.TabIndex = 36;
@@ -389,9 +389,9 @@
             this.Dane_umowy.Controls.Add(this.Poczatek_umowy);
             this.Dane_umowy.Controls.Add(this.Wymiar_godzin);
             this.Dane_umowy.Controls.Add(this.Typ_umowy);
-            this.Dane_umowy.Location = new System.Drawing.Point(9, 21);
+            this.Dane_umowy.Location = new System.Drawing.Point(291, 114);
             this.Dane_umowy.Name = "Dane_umowy";
-            this.Dane_umowy.Size = new System.Drawing.Size(272, 162);
+            this.Dane_umowy.Size = new System.Drawing.Size(272, 163);
             this.Dane_umowy.TabIndex = 35;
             this.Dane_umowy.TabStop = false;
             this.Dane_umowy.Text = "Dane umowy";
@@ -506,9 +506,9 @@
             this.Dane_osobowe.Controls.Add(this.Pesel);
             this.Dane_osobowe.Controls.Add(this.Nazwisko);
             this.Dane_osobowe.Controls.Add(this.Imie);
-            this.Dane_osobowe.Location = new System.Drawing.Point(306, 21);
+            this.Dane_osobowe.Location = new System.Drawing.Point(9, 19);
             this.Dane_osobowe.Name = "Dane_osobowe";
-            this.Dane_osobowe.Size = new System.Drawing.Size(257, 209);
+            this.Dane_osobowe.Size = new System.Drawing.Size(257, 222);
             this.Dane_osobowe.TabIndex = 34;
             this.Dane_osobowe.TabStop = false;
             this.Dane_osobowe.Text = "Dane osobowe";

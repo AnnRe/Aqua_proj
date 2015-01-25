@@ -114,7 +114,7 @@
             this.BadaniaGroupBox.Controls.Add(this.Stanowisko);
             this.BadaniaGroupBox.Controls.Add(this.Data_badan);
             this.BadaniaGroupBox.Controls.Add(this.Stopien);
-            this.BadaniaGroupBox.Location = new System.Drawing.Point(306, 243);
+            this.BadaniaGroupBox.Location = new System.Drawing.Point(9, 239);
             this.BadaniaGroupBox.Name = "BadaniaGroupBox";
             this.BadaniaGroupBox.Size = new System.Drawing.Size(257, 147);
             this.BadaniaGroupBox.TabIndex = 38;
@@ -201,7 +201,7 @@
             this.DaneKontaktoweGroupBox.Controls.Add(this.NumerTelefonuTextBox);
             this.DaneKontaktoweGroupBox.Controls.Add(this.Email);
             this.DaneKontaktoweGroupBox.Controls.Add(this.Numer_telefonu);
-            this.DaneKontaktoweGroupBox.Location = new System.Drawing.Point(9, 189);
+            this.DaneKontaktoweGroupBox.Location = new System.Drawing.Point(291, 19);
             this.DaneKontaktoweGroupBox.Name = "DaneKontaktoweGroupBox";
             this.DaneKontaktoweGroupBox.Size = new System.Drawing.Size(272, 81);
             this.DaneKontaktoweGroupBox.TabIndex = 37;
@@ -251,7 +251,7 @@
             this.KontoGroupBox.Controls.Add(this.IDUseraTextBox);
             this.KontoGroupBox.Controls.Add(this.LoginUseraTextBox);
             this.KontoGroupBox.Controls.Add(this.Login);
-            this.KontoGroupBox.Location = new System.Drawing.Point(9, 276);
+            this.KontoGroupBox.Location = new System.Drawing.Point(291, 274);
             this.KontoGroupBox.Name = "KontoGroupBox";
             this.KontoGroupBox.Size = new System.Drawing.Size(272, 114);
             this.KontoGroupBox.TabIndex = 36;
@@ -307,7 +307,7 @@
             this.DaneUmowyGroupBox.Controls.Add(this.Poczatek_umowy);
             this.DaneUmowyGroupBox.Controls.Add(this.Wymiar_godzin);
             this.DaneUmowyGroupBox.Controls.Add(this.Typ_umowy);
-            this.DaneUmowyGroupBox.Location = new System.Drawing.Point(9, 21);
+            this.DaneUmowyGroupBox.Location = new System.Drawing.Point(291, 106);
             this.DaneUmowyGroupBox.Name = "DaneUmowyGroupBox";
             this.DaneUmowyGroupBox.Size = new System.Drawing.Size(272, 162);
             this.DaneUmowyGroupBox.TabIndex = 35;
@@ -426,9 +426,9 @@
             this.DaneOsoboweGroupBox.Controls.Add(this.Pesel);
             this.DaneOsoboweGroupBox.Controls.Add(this.Nazwisko);
             this.DaneOsoboweGroupBox.Controls.Add(this.Imie);
-            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(306, 21);
+            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(9, 19);
             this.DaneOsoboweGroupBox.Name = "DaneOsoboweGroupBox";
-            this.DaneOsoboweGroupBox.Size = new System.Drawing.Size(257, 209);
+            this.DaneOsoboweGroupBox.Size = new System.Drawing.Size(257, 214);
             this.DaneOsoboweGroupBox.TabIndex = 34;
             this.DaneOsoboweGroupBox.TabStop = false;
             this.DaneOsoboweGroupBox.Text = "Dane osobowe";
