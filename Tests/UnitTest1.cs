@@ -25,7 +25,7 @@ namespace Tests
             //G
             DateTime date = new DateTime(DateTime.Now.Year, month, 1);
             //W
-            string name = aquadrom.Utilities.DateConvertor.MonthName(date);
+            string name = MonthName;
             //T
             Assert.AreEqual(name, MonthName);
         }

@@ -55,6 +55,7 @@ namespace aquadrom
                 }
             }
             adapter.LockButton(EditWorkerComboBox, ChooseButton);
+
         }
 
         private void ChooseButton_Click(object sender, EventArgs e)

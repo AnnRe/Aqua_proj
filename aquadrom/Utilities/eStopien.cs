@@ -19,6 +19,6 @@ namespace aquadrom.Utilities
         /// <summary>Instruktor WOPR </summary>
         I,
         /// <summary>Instruktor wykładowca </summary>
-        IW 
+        IW
     }
 }

@@ -85,12 +85,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(488, 343);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserPanel";
             this.Text = "UserPanel";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserPanel_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserPanel_FormClosed);
             this.Load += new System.EventHandler(this.UserPanel_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -102,10 +104,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem umowaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem daneToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wyświetlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem edytujToolStripMenuItem;
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using aquadrom.Utilities;
 using Objects;
+using aquadrom.Objects;
 using System.Windows.Forms;
 
 namespace DB
@@ -38,12 +39,11 @@ namespace DB
             return dataTable;
         }
        
-        public DataTable Select(string query)
+        public bool Select(string query)
         {
-            DataTable tab;
-            try { tab=polaczenie.Select(query); }
-            catch { return new DataTable(); }
-            return tab;
+            try { polaczenie.Select(query); }
+            catch { return false; }
+            return true;
         }
         public DataTable SelectWorkersAtTime(DateTime time)
         {
@@ -119,6 +119,13 @@ namespace DB
             catch { return false; }
             return true;
         }
+        public bool Insert(Umowa umowa)
+        {
+            try { polaczenie.Insert(umowa); }
+            catch { return false; }
+            return true;
+        }
+
         public bool Update(Umowa umowa)
         {
             try { polaczenie.UpdateUmowa(umowa); }
@@ -137,6 +144,7 @@ namespace DB
             }
             else
             {
+
                 string query = Constants.TabGodzinyPracy + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," + Constants.GodzinyPracyIdP + ")"
                     + " VALUES ('" + startTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + stopTimeToSave.ToString("yyyy-MM-dd HH:mm:ss") + "'," + iD + ")";
 
@@ -176,6 +184,7 @@ namespace DB
         public int GetPositionNumberAtStates(DateTime time)
         {
             string query = " sum(" + Constants.StanowiskoLiczbaPracownikow + ") FROM " + Constants.TabStanowisko + ", " + Constants.TabOtwarcieStanowiska +
+                
                 " WHERE " + Constants.StanowiskoID + "=" + Constants.OtwarcieStanowiskaIDStanowiska + " AND ('" + time.ToString("HH:mm:ss") + "' BETWEEN " + Constants.OtwarcieStanowiskaOd + " AND " +
                 Constants.OtwarcieStanowiskaDo + ")";
             DataTable result = polaczenie.Select(query);
@@ -187,26 +196,13 @@ namespace DB
         public string GetUserContractType(string imie, string nazwisko)
         {
             int Id = GetUserId(imie, nazwisko);
-            string query = "select "+Constants.UmowaTyp+" from "+Constants.TabPracownik+", "+Constants.TabUmowa+" where ("+Constants.PracownikID+" = "+Id+" AND "+Constants.PracownikIDUmowy
+            string query = "select "+Constants.UmowaTypUmowy+" from "+Constants.TabPracownik+", "+Constants.TabUmowa+" where ("+Constants.PracownikID+" = "+Id+" AND "+Constants.PracownikIDUmowy
                 +"="+Constants.UmowaIDu+")";
             DataTable tab = GetData(query);
             if (tab.Rows.Count > 0)
                 return tab.Rows[0].ItemArray[0].ToString();
             return "";
         }
-        public int GetWorkerNeededHoursPerMonth(string imie, string nazwisko, DateTime time)
-        {
-            string query = "count("+Constants.UmowaWymiarGodzin + ") From " + Constants.TabPracownik + ", " + Constants.TabUmowa + " WHERE " + Constants.PracownikID +
-                   "=" + GetUserId(imie, nazwisko) + " and " + Constants.PracownikIDUmowy + "=" + Constants.UmowaIDu;
-            DataTable tab = Select(query);
-            if (tab.Rows.Count > 0)
-            {
-                return Convert.ToInt32(tab.Rows[0].ItemArray[0].ToString());
-            }
-            return 0;
- 
-        }
-
         public void LockButton(ComboBox WhatEmpty, Button WhatLock)
         {
             if (WhatEmpty.Text == "")

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace aquadrom.Utilities
 {
     public enum eUmowa
-    {
-        /// <summary>Umowa o pracę </summary>
+    { //created by ogi
+        /// <summary>Umowa o prace </summary>
         UOP,
         /// <summary>Umowa zlecenie </summary>
-        UZ
+        UZ,
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWorker));
             this.PracownikGroupBox = new System.Windows.Forms.GroupBox();
             this.BadaniaGroupBox = new System.Windows.Forms.GroupBox();
             this.DataBadanDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -88,6 +89,8 @@
             // 
             // PracownikGroupBox
             // 
+            this.PracownikGroupBox.BackColor = System.Drawing.Color.Azure;
+            this.PracownikGroupBox.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.PracownikGroupBox.Controls.Add(this.BadaniaGroupBox);
             this.PracownikGroupBox.Controls.Add(this.DaneKontaktoweGroupBox);
             this.PracownikGroupBox.Controls.Add(this.KontoGroupBox);
@@ -102,6 +105,7 @@
             // 
             // BadaniaGroupBox
             // 
+            this.BadaniaGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.BadaniaGroupBox.Controls.Add(this.DataBadanDateTimePicker);
             this.BadaniaGroupBox.Controls.Add(this.KoniecKPPDateTimePicker);
             this.BadaniaGroupBox.Controls.Add(this.StanowiskoUseraComboBox);
@@ -110,7 +114,7 @@
             this.BadaniaGroupBox.Controls.Add(this.Stanowisko);
             this.BadaniaGroupBox.Controls.Add(this.Data_badan);
             this.BadaniaGroupBox.Controls.Add(this.Stopien);
-            this.BadaniaGroupBox.Location = new System.Drawing.Point(306, 243);
+            this.BadaniaGroupBox.Location = new System.Drawing.Point(9, 239);
             this.BadaniaGroupBox.Name = "BadaniaGroupBox";
             this.BadaniaGroupBox.Size = new System.Drawing.Size(257, 147);
             this.BadaniaGroupBox.TabIndex = 38;
@@ -120,6 +124,8 @@
             // DataBadanDateTimePicker
             // 
             this.DataBadanDateTimePicker.Location = new System.Drawing.Point(97, 101);
+            this.DataBadanDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.DataBadanDateTimePicker.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
             this.DataBadanDateTimePicker.Name = "DataBadanDateTimePicker";
             this.DataBadanDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.DataBadanDateTimePicker.TabIndex = 16;
@@ -127,13 +133,15 @@
             // KoniecKPPDateTimePicker
             // 
             this.KoniecKPPDateTimePicker.Location = new System.Drawing.Point(97, 75);
+            this.KoniecKPPDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.KoniecKPPDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.KoniecKPPDateTimePicker.Name = "KoniecKPPDateTimePicker";
             this.KoniecKPPDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.KoniecKPPDateTimePicker.TabIndex = 15;
-            this.KoniecKPPDateTimePicker.ValueChanged += new System.EventHandler(this.KoniecKPPDateTimePicker_ValueChanged);
             // 
             // StanowiskoUseraComboBox
             // 
+            this.StanowiskoUseraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StanowiskoUseraComboBox.FormattingEnabled = true;
             this.StanowiskoUseraComboBox.Location = new System.Drawing.Point(97, 49);
             this.StanowiskoUseraComboBox.Name = "StanowiskoUseraComboBox";
@@ -143,12 +151,12 @@
             // 
             // StopienComboBox
             // 
+            this.StopienComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StopienComboBox.FormattingEnabled = true;
             this.StopienComboBox.Location = new System.Drawing.Point(97, 23);
             this.StopienComboBox.Name = "StopienComboBox";
             this.StopienComboBox.Size = new System.Drawing.Size(148, 21);
             this.StopienComboBox.TabIndex = 13;
-            this.StopienComboBox.SelectedIndexChanged += new System.EventHandler(this.StopienComboBox_SelectedIndexChanged);
             // 
             // Data_KPP
             // 
@@ -188,11 +196,12 @@
             // 
             // DaneKontaktoweGroupBox
             // 
+            this.DaneKontaktoweGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneKontaktoweGroupBox.Controls.Add(this.AdresEmailTextBox);
             this.DaneKontaktoweGroupBox.Controls.Add(this.NumerTelefonuTextBox);
             this.DaneKontaktoweGroupBox.Controls.Add(this.Email);
             this.DaneKontaktoweGroupBox.Controls.Add(this.Numer_telefonu);
-            this.DaneKontaktoweGroupBox.Location = new System.Drawing.Point(9, 189);
+            this.DaneKontaktoweGroupBox.Location = new System.Drawing.Point(291, 19);
             this.DaneKontaktoweGroupBox.Name = "DaneKontaktoweGroupBox";
             this.DaneKontaktoweGroupBox.Size = new System.Drawing.Size(272, 81);
             this.DaneKontaktoweGroupBox.TabIndex = 37;
@@ -202,16 +211,20 @@
             // AdresEmailTextBox
             // 
             this.AdresEmailTextBox.Location = new System.Drawing.Point(106, 49);
+            this.AdresEmailTextBox.MaxLength = 35;
             this.AdresEmailTextBox.Name = "AdresEmailTextBox";
             this.AdresEmailTextBox.Size = new System.Drawing.Size(148, 20);
             this.AdresEmailTextBox.TabIndex = 10;
+            this.AdresEmailTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AdresEmailTextBox_KeyPress);
             // 
             // NumerTelefonuTextBox
             // 
             this.NumerTelefonuTextBox.Location = new System.Drawing.Point(106, 23);
+            this.NumerTelefonuTextBox.MaxLength = 12;
             this.NumerTelefonuTextBox.Name = "NumerTelefonuTextBox";
             this.NumerTelefonuTextBox.Size = new System.Drawing.Size(148, 20);
             this.NumerTelefonuTextBox.TabIndex = 9;
+            this.NumerTelefonuTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumerTelefonuTextBox_KeyPress);
             // 
             // Email
             // 
@@ -233,11 +246,12 @@
             // 
             // KontoGroupBox
             // 
+            this.KontoGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.KontoGroupBox.Controls.Add(this.IDUseraLabel);
             this.KontoGroupBox.Controls.Add(this.IDUseraTextBox);
             this.KontoGroupBox.Controls.Add(this.LoginUseraTextBox);
             this.KontoGroupBox.Controls.Add(this.Login);
-            this.KontoGroupBox.Location = new System.Drawing.Point(9, 276);
+            this.KontoGroupBox.Location = new System.Drawing.Point(291, 274);
             this.KontoGroupBox.Name = "KontoGroupBox";
             this.KontoGroupBox.Size = new System.Drawing.Size(272, 114);
             this.KontoGroupBox.TabIndex = 36;
@@ -256,6 +270,7 @@
             // IDUseraTextBox
             // 
             this.IDUseraTextBox.Location = new System.Drawing.Point(106, 42);
+            this.IDUseraTextBox.MaxLength = 3;
             this.IDUseraTextBox.Name = "IDUseraTextBox";
             this.IDUseraTextBox.ReadOnly = true;
             this.IDUseraTextBox.Size = new System.Drawing.Size(148, 20);
@@ -264,7 +279,9 @@
             // LoginUseraTextBox
             // 
             this.LoginUseraTextBox.Location = new System.Drawing.Point(106, 68);
+            this.LoginUseraTextBox.MaxLength = 50;
             this.LoginUseraTextBox.Name = "LoginUseraTextBox";
+            this.LoginUseraTextBox.ReadOnly = true;
             this.LoginUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.LoginUseraTextBox.TabIndex = 15;
             // 
@@ -279,6 +296,7 @@
             // 
             // DaneUmowyGroupBox
             // 
+            this.DaneUmowyGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneUmowyGroupBox.Controls.Add(this.IDUmowyLabel);
             this.DaneUmowyGroupBox.Controls.Add(this.IDUmowyTextBox);
             this.DaneUmowyGroupBox.Controls.Add(this.KoniecUmowyDateTimePicker);
@@ -289,7 +307,7 @@
             this.DaneUmowyGroupBox.Controls.Add(this.Poczatek_umowy);
             this.DaneUmowyGroupBox.Controls.Add(this.Wymiar_godzin);
             this.DaneUmowyGroupBox.Controls.Add(this.Typ_umowy);
-            this.DaneUmowyGroupBox.Location = new System.Drawing.Point(9, 21);
+            this.DaneUmowyGroupBox.Location = new System.Drawing.Point(291, 106);
             this.DaneUmowyGroupBox.Name = "DaneUmowyGroupBox";
             this.DaneUmowyGroupBox.Size = new System.Drawing.Size(272, 162);
             this.DaneUmowyGroupBox.TabIndex = 35;
@@ -316,16 +334,22 @@
             // KoniecUmowyDateTimePicker
             // 
             this.KoniecUmowyDateTimePicker.Location = new System.Drawing.Point(106, 127);
+            this.KoniecUmowyDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.KoniecUmowyDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.KoniecUmowyDateTimePicker.Name = "KoniecUmowyDateTimePicker";
             this.KoniecUmowyDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.KoniecUmowyDateTimePicker.TabIndex = 37;
+            this.KoniecUmowyDateTimePicker.ValueChanged += new System.EventHandler(this.KoniecUmowyDateTimePicker_ValueChanged);
             // 
             // PoczatekUmowyDateTimePicker
             // 
             this.PoczatekUmowyDateTimePicker.Location = new System.Drawing.Point(106, 101);
+            this.PoczatekUmowyDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.PoczatekUmowyDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.PoczatekUmowyDateTimePicker.Name = "PoczatekUmowyDateTimePicker";
             this.PoczatekUmowyDateTimePicker.Size = new System.Drawing.Size(148, 20);
             this.PoczatekUmowyDateTimePicker.TabIndex = 36;
+            this.PoczatekUmowyDateTimePicker.ValueChanged += new System.EventHandler(this.PoczatekUmowyDateTimePicker_ValueChanged);
             // 
             // WymiarGodzinNumericUpDown
             // 
@@ -338,10 +362,10 @@
             this.WymiarGodzinNumericUpDown.Name = "WymiarGodzinNumericUpDown";
             this.WymiarGodzinNumericUpDown.Size = new System.Drawing.Size(148, 20);
             this.WymiarGodzinNumericUpDown.TabIndex = 35;
-            this.WymiarGodzinNumericUpDown.ValueChanged += new System.EventHandler(this.WymiarGodzinNumericUpDown_ValueChanged);
             // 
             // TypUmowyComboBox
             // 
+            this.TypUmowyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypUmowyComboBox.FormattingEnabled = true;
             this.TypUmowyComboBox.Location = new System.Drawing.Point(106, 46);
             this.TypUmowyComboBox.Name = "TypUmowyComboBox";
@@ -387,6 +411,7 @@
             // 
             // DaneOsoboweGroupBox
             // 
+            this.DaneOsoboweGroupBox.BackColor = System.Drawing.Color.LightCyan;
             this.DaneOsoboweGroupBox.Controls.Add(this.NumerMieszkaniaNumericUpDown);
             this.DaneOsoboweGroupBox.Controls.Add(this.NumerDomuTextBox);
             this.DaneOsoboweGroupBox.Controls.Add(this.UlicaUseraTextBox);
@@ -401,9 +426,9 @@
             this.DaneOsoboweGroupBox.Controls.Add(this.Pesel);
             this.DaneOsoboweGroupBox.Controls.Add(this.Nazwisko);
             this.DaneOsoboweGroupBox.Controls.Add(this.Imie);
-            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(306, 21);
+            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(9, 19);
             this.DaneOsoboweGroupBox.Name = "DaneOsoboweGroupBox";
-            this.DaneOsoboweGroupBox.Size = new System.Drawing.Size(257, 209);
+            this.DaneOsoboweGroupBox.Size = new System.Drawing.Size(257, 214);
             this.DaneOsoboweGroupBox.TabIndex = 34;
             this.DaneOsoboweGroupBox.TabStop = false;
             this.DaneOsoboweGroupBox.Text = "Dane osobowe";
@@ -411,6 +436,11 @@
             // NumerMieszkaniaNumericUpDown
             // 
             this.NumerMieszkaniaNumericUpDown.Location = new System.Drawing.Point(97, 179);
+            this.NumerMieszkaniaNumericUpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.NumerMieszkaniaNumericUpDown.Name = "NumerMieszkaniaNumericUpDown";
             this.NumerMieszkaniaNumericUpDown.Size = new System.Drawing.Size(148, 20);
             this.NumerMieszkaniaNumericUpDown.TabIndex = 14;
@@ -418,44 +448,57 @@
             // NumerDomuTextBox
             // 
             this.NumerDomuTextBox.Location = new System.Drawing.Point(97, 153);
+            this.NumerDomuTextBox.MaxLength = 4;
             this.NumerDomuTextBox.Name = "NumerDomuTextBox";
             this.NumerDomuTextBox.Size = new System.Drawing.Size(148, 20);
             this.NumerDomuTextBox.TabIndex = 13;
+            this.NumerDomuTextBox.TextChanged += new System.EventHandler(this.NumerDomuTextBox_TextChanged);
+            this.NumerDomuTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumerDomuTextBox_KeyPress);
             // 
             // UlicaUseraTextBox
             // 
             this.UlicaUseraTextBox.Location = new System.Drawing.Point(97, 127);
+            this.UlicaUseraTextBox.MaxLength = 20;
             this.UlicaUseraTextBox.Name = "UlicaUseraTextBox";
             this.UlicaUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.UlicaUseraTextBox.TabIndex = 12;
+            this.UlicaUseraTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UlicaUseraTextBox_KeyPress);
             // 
             // MiastoUseraTextBox
             // 
             this.MiastoUseraTextBox.Location = new System.Drawing.Point(97, 101);
+            this.MiastoUseraTextBox.MaxLength = 20;
             this.MiastoUseraTextBox.Name = "MiastoUseraTextBox";
             this.MiastoUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.MiastoUseraTextBox.TabIndex = 11;
+            this.MiastoUseraTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MiastoUseraTextBox_KeyPress);
             // 
             // PeselUseraTextBox
             // 
             this.PeselUseraTextBox.Location = new System.Drawing.Point(97, 75);
+            this.PeselUseraTextBox.MaxLength = 11;
             this.PeselUseraTextBox.Name = "PeselUseraTextBox";
             this.PeselUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.PeselUseraTextBox.TabIndex = 10;
+            this.PeselUseraTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PeselUseraTextBox_KeyPress);
             // 
             // NazwiskoUseraTextBox
             // 
             this.NazwiskoUseraTextBox.Location = new System.Drawing.Point(97, 49);
+            this.NazwiskoUseraTextBox.MaxLength = 50;
             this.NazwiskoUseraTextBox.Name = "NazwiskoUseraTextBox";
             this.NazwiskoUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.NazwiskoUseraTextBox.TabIndex = 9;
+            this.NazwiskoUseraTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NazwiskoUseraTextBox_KeyPress);
             // 
             // ImieUseraTextBox
             // 
             this.ImieUseraTextBox.Location = new System.Drawing.Point(97, 23);
+            this.ImieUseraTextBox.MaxLength = 50;
             this.ImieUseraTextBox.Name = "ImieUseraTextBox";
             this.ImieUseraTextBox.Size = new System.Drawing.Size(148, 20);
             this.ImieUseraTextBox.TabIndex = 8;
+            this.ImieUseraTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ImieUseraTextBox_KeyPress);
             // 
             // Numer_mieszkania
             // 
@@ -544,12 +587,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(588, 447);
             this.Controls.Add(this.EdytujUseraButton);
             this.Controls.Add(this.AnulujButton);
             this.Controls.Add(this.PracownikGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditWorker";

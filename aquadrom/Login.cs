@@ -53,7 +53,7 @@ namespace aquadrom
         {
             if (CheckBase() == false)   // if brak bazy, pokaż info i zamknij
             {
-                MessageBox.Show("Baza danych nie odnaleziona. \nSkontaktuj się z administratorem.");
+                MessageBox.Show("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
                 this.Close();
 
             }
@@ -68,14 +68,18 @@ namespace aquadrom
                         AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
-                            AdminPanel AdminPanel = new AdminPanel();
-                            AdminPanel.Show();
+                            UserPanel UserPanel = new UserPanel();
+                            UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel();
+                            //AdminPanel.Show();
 
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
                         {
-                            UserPanel UserPanel = new UserPanel();
-                            UserPanel.Show();
+                           UserPanel UserPanel = new UserPanel();
+                           UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel();
+                            //AdminPanel.Show();
                         }
                         break;
                     }
@@ -112,6 +116,11 @@ namespace aquadrom
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LoginButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
