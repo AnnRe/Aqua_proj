@@ -71,7 +71,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(150, 120);
+            this.LoginButton.Location = new System.Drawing.Point(150, 115);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -85,7 +85,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
-            this.ClientSize = new System.Drawing.Size(384, 162);
+            this.ClientSize = new System.Drawing.Size(384, 150);
             this.Controls.Add(this.UserPasswordBox);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.UserName);
