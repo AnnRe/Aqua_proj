@@ -20,6 +20,7 @@ keywordstyle=\color{blue}\bfseries,
 stringstyle=\color{red},
 basicstyle=\ttfamily
 }
+\usepackage{titlesec}%do subsubsubsection
 \usepackage{enumerate}
 \usepackage{url}
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm, headsep=1.2cm]{geometry}
@@ -37,6 +38,14 @@ basicstyle=\ttfamily
 \rfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
+
+
+\setcounter{secnumdepth}{4} % do  subsubsubsection=paragraph
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}% -||-
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 
 \begin{document}\lstset{style=sharpc}
@@ -83,7 +92,21 @@ Politechnika Œl¹ska
 \section{Czêœæ I -- dla u¿ytkowników} %%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ I
 
 \subsection{Opis programu} % OPIS PROGRAMU %
-\subsubsection{Okno administratora (Admin Panel)}
+
+\subsection{Minimalne wymagania sprzêtowe}
+
+
+
+\subsection{Instrukcja obs³ugi} % INSTRUKCJA OBS£UGI %
+
+
+\newpage
+\section{Czêœæ II -- dla specjalistów} %%%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ II
+\subsection{Program} %---------------------%
+\subsubsection{Podzia³ na pliki}
+\subsubsection{Klasy}
+\subsubsection{Okna}
+\paragraph{Okno administratora (Admin Panel)}
 \begin{enumerate}[a)]
 \item G³ówna tabela danych
 \item Sprawdzenie wa¿noœci badañ lekarskich, KPP oraz daty zakoñczenia umowy (podœwietlanie)
@@ -125,7 +148,7 @@ private void napiszNotatkêToolStripMenuItem_Click(object sender, EventArgs e)
 \end{lstlisting}
 CZÊŒÆ OGIEGO
 
-\subsubsection{Logowanie (Login)}
+\paragraph{Logowanie (Login)}
 a. Haszowanie has³a oraz sprawdzenia pary login:haslo z baz¹ danych
 b. Sprawdzanie dostêpnoœci bazy oraz wystosowanie odpowiedniego komunikatu w chwili braku po³¹czenia
 \begin{lstlisting}
@@ -145,7 +168,7 @@ Klikniêcie przycisku zaloguj powoduje sprawdzenie dostêpnoœci bazy i w chwili je
 W przypadku, gdy para nie zosta³a odnaleziona wystosowywana jest odpowiednia informacja o nieprawid³owym loginie lub haœle.
 
 
-\subsubsection{Edycja u¿ytkownika (EditWorker)}
+\paragraph{Edycja u¿ytkownika (EditWorker)}
 a. Wczytanie danych odpowiedniego pracownika oraz odpowiednia walidacja komórek
 b. Sprawdzanie poprawnoœci zmienionych edytowanych danych
 c. Wprowadzenie edytowanej umowy i danych pracownika do bazy danych
@@ -216,7 +239,7 @@ private void DeleteButton_Click(object sender, EventArgs e)
 \end{lstlisting}
 W chwili klikniêcia Wybierz nastêpuje wywo³anie stosownego komunikatu (potwierdzenia dokonania wyboru). W chwili ponownej akceptacji ze strony u¿ytkownika, wybrany przez niego pracownik jest usuwany z bazy danych (w kolejnoœci usuñ umowê, usuñ pracownika) i okno zostaje automatycznie zamkniête.
 
-\subsubsection{Okno Harmonogramu (Harmonogram)}
+\paragraph{Okno Harmonogramu (Harmonogram)}
 Okno odpowiedzialne za wyœwietlanie harmonogramu wybranego miesi¹ca i roku na podstawie danych przechowywanych w bazie. Daje mo¿liwoœæ modyfikacji danych oraz walidacji czasu pracy w zale¿noœci od typu umowy. Sprawdza poprawnoœæ wprowadzanych danych i obecnoœæ odpowiednich pracowników na stanowiskach.
 
 \begin{lstlisting}
@@ -313,19 +336,6 @@ private string GetImie(int rowIndex)
 \end{lstlisting}
 Pobiera imie z tabeli harmonogramu w danym wierszu
         
-
-\subsection{Minimalne wymagania sprzêtowe}
-
-
-
-\subsection{Instrukcja obs³ugi} % INSTRUKCJA OBS£UGI %
-
-
-\newpage
-\section{Czêœæ II -- dla specjalistów} %%%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ II
-\subsection{Program} %---------------------%
-\subsubsection{Podzia³ na pliki}
-\subsubsection{Klasy}
 
 \newpage
 \subsection{Baza danych} %---------------------%
