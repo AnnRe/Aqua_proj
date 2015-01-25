@@ -123,9 +123,6 @@
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\Harmonogram.cs" />
-    <Compile Include="Objects\myMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Objects\Notatka.cs" />
     <Compile Include="Objects\Pracownik.cs" />
     <Compile Include="Objects\Umowa.cs" />
