@@ -39,11 +39,12 @@ namespace DB
             return dataTable;
         }
        
-        public bool Select(string query)
+        public DataTable Select(string query)
         {
-            try { polaczenie.Select(query); }
-            catch { return false; }
-            return true;
+            DataTable tab;
+            try { tab = polaczenie.Select(query); }
+            catch { return new DataTable(); }
+            return tab;
         }
         public DataTable SelectWorkersAtTime(DateTime time)
         {
@@ -202,6 +203,18 @@ namespace DB
             if (tab.Rows.Count > 0)
                 return tab.Rows[0].ItemArray[0].ToString();
             return "";
+        }
+        public int GetWorkerNeededHoursPerMonth(string imie, string nazwisko, DateTime time)
+        {
+            string query = "count(" + Constants.UmowaWymiarGodzin + ") From " + Constants.TabPracownik + ", " + Constants.TabUmowa + " WHERE " + Constants.PracownikID +
+                   "=" + GetUserId(imie, nazwisko) + " and " + Constants.PracownikIDUmowy + "=" + Constants.UmowaIDu;
+            DataTable tab = Select(query);
+            if (tab.Rows.Count > 0)
+            {
+                return Convert.ToInt32(tab.Rows[0].ItemArray[0].ToString());
+            }
+            return 0;
+
         }
         public void LockButton(ComboBox WhatEmpty, Button WhatLock)
         {
