@@ -49,9 +49,9 @@
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo);
             this.HasloZmienG.Controls.Add(this.NoweHaslo);
             this.HasloZmienG.Controls.Add(this.StareHaslo);
-            this.HasloZmienG.Location = new System.Drawing.Point(3, 3);
+            this.HasloZmienG.Location = new System.Drawing.Point(2, 3);
             this.HasloZmienG.Name = "HasloZmienG";
-            this.HasloZmienG.Size = new System.Drawing.Size(282, 111);
+            this.HasloZmienG.Size = new System.Drawing.Size(283, 111);
             this.HasloZmienG.TabIndex = 0;
             this.HasloZmienG.TabStop = false;
             this.HasloZmienG.Text = "Formularz";
@@ -133,7 +133,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(294, 146);
+            this.ClientSize = new System.Drawing.Size(289, 146);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.ZmianaHasla);
             this.Controls.Add(this.HasloZmienG);
