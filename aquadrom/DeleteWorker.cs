@@ -13,6 +13,7 @@ using System.Data.SqlTypes;
 using DB;
 using aquadrom.Utilities;
 using System.Security.Cryptography;
+using aquadrom.Objects;
 
 namespace aquadrom
 {
@@ -66,14 +67,14 @@ namespace aquadrom
         {
             if (WhichUser != "")    // gdy ktoś wybrany
             {
-                DialogResult dialogResult = MessageBox.Show("Na pewno chcesz usunąć tego użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MyMessageBox.ShowBox("Na pewno chcesz usunąć tego użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     sql_deleteuser += chosen_id;
                     sql_deletecontract += chosen_concid;
                     adapter.Delete(sql_deleteuser);
                     adapter.Delete(sql_deletecontract);
-                    MessageBox.Show("Użytkownik oraz jego umowa została usunięta");
+                    MyMessageBox.ShowBox("Użytkownik oraz jego umowa została usunięta");
                     _mainform.AdminPanel_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
                     exist = false;
                     this.Close();

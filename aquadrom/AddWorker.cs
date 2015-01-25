@@ -63,7 +63,7 @@ namespace aquadrom
             TypUmowy.SelectedIndex = 1;
             TypKonta2.SelectedIndex = 0;
 
-            //MessageBox.Show("pass: " + CreatePassword(10));
+            //MyMessageBox.ShowBox("pass: " + CreatePassword(10));
             exist = true;
         }
 
@@ -83,11 +83,11 @@ namespace aquadrom
             };
             if (adapter.Insert(umowa) == true)
             {
-                MessageBox.Show("Umowa została zapisana w bazie.");
+                MyMessageBox.ShowBox("Umowa została zapisana w bazie.");
             }
             else if (adapter.Insert(umowa) == false)
             {
-                MessageBox.Show("Błąd!");
+                MyMessageBox.ShowBox("Błąd!");
             }
         }
         private void Add_Employer()
@@ -131,22 +131,22 @@ namespace aquadrom
                 //adapter.Insert(pracownik); 
                 if (adapter.Insert(pracownik) == true)
                 {
-                    MessageBox.Show("Dane pracownika zostały zapsiane w bazie.");
+                    MyMessageBox.ShowBox("Dane pracownika zostały zapsiane w bazie.");
                 }
                 else if (adapter.Insert(pracownik) == false)
                 {
-                    MessageBox.Show("Błąd!");
+                    MyMessageBox.ShowBox("Błąd!");
                 }
             }
             else if (walidacja.ValidateMail(AdresEmail.Text) == false)
-                MessageBox.Show("Zły format adresu e-mail!");
+                MyMessageBox.ShowBox("Zły format adresu e-mail!");
             else if (walidacja.ValidatePesel(PeselUzytkownika.Text) == false)
-                MessageBox.Show("Zły format numeru PESEL!");
+                MyMessageBox.ShowBox("Zły format numeru PESEL!");
             else if (walidacja.ValidateNumber(NumerTelefonu.Text) == false)
-                MessageBox.Show("Zły format numeru telefonu!");
+                MyMessageBox.ShowBox("Zły format numeru telefonu!");
 
 
-            // MessageBox.Show(pracownik.imie.ToString());
+            // MyMessageBox.ShowBox(pracownik.imie.ToString());
         }
 
         private void AddEmployer_Click(object sender, EventArgs e)
@@ -167,15 +167,15 @@ namespace aquadrom
             }
             else if (NrUmowy.Text == "brak")
             {
-                MessageBox.Show("Przed dodaniem pracownika do bazy, należy stworzyć jego umowę!");
+                MyMessageBox.ShowBox("Przed dodaniem pracownika do bazy, należy stworzyć jego umowę!");
             }
             else if (HasloUzytkownika.Text != PowtorzHasloUżytkownika.Text)
             {
-                MessageBox.Show("Podane hasła są różne!");
+                MyMessageBox.ShowBox("Podane hasła są różne!");
             }
             else if ( CheckInternetConnection()==false)
             {
-                MessageBox.Show("Błąd połączenia internetowego!");
+                MyMessageBox.ShowBox("Błąd połączenia internetowego!");
             }
             else
             {
@@ -247,7 +247,7 @@ namespace aquadrom
                 string query = " MAX(" + Constants.UmowaIDu + ")" + " from " + Constants.TabUmowa;
                 DataTable ids = polaczenie.Select(query);
                 string ID = ids.Rows[0][0].ToString();
-                MessageBox.Show("Numer umowy to: " +ID + ".");
+                MyMessageBox.ShowBox("Numer umowy to: " +ID + ".");
                 NrUmowy.Text = ID;
                 TypUmowy.Enabled = false;
                 WymiarGodzin.Enabled = false;

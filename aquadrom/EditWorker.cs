@@ -11,6 +11,7 @@ using System.Globalization;
 using aquadrom.Utilities;
 using DB;
 using Objects;
+using aquadrom.Objects;
 
 namespace aquadrom
 {
@@ -158,7 +159,7 @@ namespace aquadrom
 
         private void EdytujUseraButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Na pewno chcesz edytować dane użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MyMessageBox.ShowBox("Na pewno chcesz edytować dane użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
 
             if (dialogResult == DialogResult.Yes && // jeśli wybrano tak oraz jest poprawny pesel, mail i numer
                 valid.ValidatePesel(PeselUseraTextBox.Text) && 
@@ -168,17 +169,17 @@ namespace aquadrom
                 if ((EditEmployee() == true) && (EditContract() == true))   // edytuj użytkownika i jego umowę
                 {
                     _mainform.AdminPanel_Load(_mainform, e); // odswiezanie tabeli glownej
-                    MessageBox.Show("Edycja zakończona!");
+                    MyMessageBox.ShowBox("Edycja zakończona!");
                     exist = false;
                     this.Close();
                 }
             }
             else if (valid.ValidateMail(AdresEmailTextBox.Text) == false)
-                MessageBox.Show("Zły format adresu e-mail!");
+                MyMessageBox.ShowBox("Zły format adresu e-mail!");
             else if (valid.ValidatePesel(PeselUseraTextBox.Text) == false)
-                MessageBox.Show("Zły format numeru PESEL!");
+                MyMessageBox.ShowBox("Zły format numeru PESEL!");
             else if (valid.ValidateNumber(NumerTelefonuTextBox.Text) == false)
-                MessageBox.Show("Zły format numeru telefonu!");
+                MyMessageBox.ShowBox("Zły format numeru telefonu!");
         }
 
         private bool EditEmployee()
@@ -207,7 +208,7 @@ namespace aquadrom
 
             if (adapter.Update(pracownik) == false)
             {
-                MessageBox.Show("Błąd edycji pracownika!.");
+                MyMessageBox.ShowBox("Błąd edycji pracownika!.");
                 return false;
             }
             else return true;
@@ -225,7 +226,7 @@ namespace aquadrom
 
             if (adapter.Update(umowa) == false)
             {
-                MessageBox.Show("Błąd edycji umowy!.");
+                MyMessageBox.ShowBox("Błąd edycji umowy!.");
                 return false;
             }
             else return true;

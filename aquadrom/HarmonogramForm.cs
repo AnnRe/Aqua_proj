@@ -25,7 +25,6 @@ namespace aquadrom
         {
             settingUp = true;
             InitializeComponent();
-            MyMessageBox.ShowBox("elo");
             settingUp = false;
         }
         
@@ -252,15 +251,15 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
+                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
                 string message = harmonogram.Save();
-                MessageBox.Show(message);
+                MyMessageBox.ShowBox(message);
                 saved = true;
             }
             else
             {
                 string message = harmonogram.Save();
-                MessageBox.Show(message);
+                MyMessageBox.ShowBox(message);
                 saved = true;
                 for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
                     for (int col_i = 3; col_i < 65; col_i += 2)

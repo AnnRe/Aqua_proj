@@ -13,6 +13,7 @@ using System.Data.SqlTypes;
 using DB;
 using aquadrom.Utilities;
 using System.Security.Cryptography;
+using aquadrom.Objects;
 
 namespace aquadrom
 {
@@ -53,7 +54,7 @@ namespace aquadrom
         {
             if (CheckBase() == false)   // if brak bazy, pokaż info i zamknij
             {
-                MessageBox.Show("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
+                MyMessageBox.ShowBox("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
                 this.Close();
 
             }
@@ -91,7 +92,7 @@ namespace aquadrom
             }
             else
             {
-                MessageBox.Show("Nieprawidłowy login lub hasło.");
+                MyMessageBox.ShowBox("Nieprawidłowy login lub hasło.");
             }
         }
 

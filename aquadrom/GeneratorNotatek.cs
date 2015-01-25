@@ -15,6 +15,7 @@ using PdfSharp.Internal;
 using PdfSharp.Drawing;
 using PdfSharp.Forms;
 using PdfSharp.SharpZipLib;
+using aquadrom.Objects;
 
 
 
@@ -57,8 +58,8 @@ namespace aquadrom
             XPen pen = new XPen(Color.Black, 1);
             gfx.DrawLine(pen, 45, 250, 45, 1000);
             document.Save(filename);
-            MessageBox.Show("Wygenerowano notatkę.");
-            //MessageBox.Show(TekstNotatki.Text.ToString());
+            MyMessageBox.ShowBox("Wygenerowano notatkę.");
+            //MyMessageBox.ShowBox(TekstNotatki.Text.ToString());
         }
 
         private void TekstNotatki_TextChanged(object sender, EventArgs e)
