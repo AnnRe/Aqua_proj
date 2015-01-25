@@ -189,7 +189,7 @@ namespace aquadrom
                     if (cancel)
                     {
                         dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";
-                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        MyMessageBox.ShowBox("Błędna godzina - Konflikt między godziną początku i końca pracy!");
                     }
                     else
                     {
@@ -213,7 +213,7 @@ namespace aquadrom
                     String message = harmonogram.ValidateCell(e);
                     e.Cancel = message.Length > 0;
                     if (message.Length > 0)
-                        MessageBox.Show(message);
+                        MyMessageBox.ShowBox(message);
                 }
         }
 
@@ -338,15 +338,16 @@ namespace aquadrom
         {
             if (!saved)
             {
-                var result = MessageBox.Show("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                var result = MyMessageBox.ShowBox("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel);
                 switch (result)
                 {
                     case DialogResult.No:
+                        this.Close();
                         break;
                     case DialogResult.Yes:
                         UpdateHarmonogramClass();
                         string message = harmonogram.Save();
-                        MessageBox.Show(message);
+                        MyMessageBox.ShowBox(message);
                         break;
                     default:
                         e.Cancel = true;
@@ -361,19 +362,21 @@ namespace aquadrom
             {
                 if (comboBoxMonths.Enabled)
                 {
-                    var result = MessageBox.Show("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    var result = MyMessageBox.ShowBox("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel);
                     switch (result)
                     {
                         case DialogResult.Yes:
                             UpdateHarmonogramClass();
                             string message = harmonogram.Save();
-                            MessageBox.Show(message);
+                            MyMessageBox.ShowBox(message);
+                            this.Close();
                             break;
                         case DialogResult.Cancel:
                             //comboBoxMonths.Enabled = false;
                             break;
                         default:
                             saved = true;
+                            this.Close();
                             break;
                     }
                 }

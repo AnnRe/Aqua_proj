@@ -61,9 +61,10 @@ namespace aquadrom.Objects
         public static DialogResult ShowBox(string txtMessage, string txtTitle,MessageBoxButtons messageBoxButtons)
         {
             newMessageBox = new MyMessageBox();
+            newMessageBox.buttons = messageBoxButtons;
+
             if (messageBoxButtons == MessageBoxButtons.OK)
             {
-                newMessageBox.buttons = MessageBoxButtons.OK;
                 newMessageBox.button1.Text = "OK";
                 newMessageBox.button1.Visible = true;
                 newMessageBox.button2.Visible = false;
@@ -71,16 +72,14 @@ namespace aquadrom.Objects
             }
             else if(messageBoxButtons==MessageBoxButtons.YesNo)
             {
-                newMessageBox.buttons = MessageBoxButtons.YesNo;
                 newMessageBox.button1.Text = "Tak";
                 newMessageBox.button1.Visible = true;
                 newMessageBox.button2.Text = "Nie";
                 newMessageBox.button2.Visible = true;
                 newMessageBox.button3.Visible = false;
             }
-            else if (messageBoxButtons == MessageBoxButtons.YesNo)
+            else if (messageBoxButtons == MessageBoxButtons.YesNoCancel)
             {
-                newMessageBox.buttons = MessageBoxButtons.YesNo;
                 newMessageBox.button1.Text = "Tak";
                 newMessageBox.button1.Visible = true;
                 newMessageBox.button2.Text = "Nie";
@@ -124,7 +123,6 @@ namespace aquadrom.Objects
 
         private void MyMessageBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            dialogResult = DialogResult.Cancel;
         }
         
     }
