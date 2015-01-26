@@ -39,10 +39,10 @@
             // 
             // UserPasswordBox
             // 
-            this.UserPasswordBox.Location = new System.Drawing.Point(150, 71);
+            this.UserPasswordBox.Location = new System.Drawing.Point(138, 67);
             this.UserPasswordBox.Name = "UserPasswordBox";
             this.UserPasswordBox.PasswordChar = '*';
-            this.UserPasswordBox.Size = new System.Drawing.Size(182, 20);
+            this.UserPasswordBox.Size = new System.Drawing.Size(207, 20);
             this.UserPasswordBox.TabIndex = 10;
             // 
             // UserPassword
@@ -65,9 +65,9 @@
             // 
             // UserNameBox
             // 
-            this.UserNameBox.Location = new System.Drawing.Point(150, 39);
+            this.UserNameBox.Location = new System.Drawing.Point(138, 39);
             this.UserNameBox.Name = "UserNameBox";
-            this.UserNameBox.Size = new System.Drawing.Size(182, 20);
+            this.UserNameBox.Size = new System.Drawing.Size(207, 20);
             this.UserNameBox.TabIndex = 7;
             this.UserNameBox.TextChanged += new System.EventHandler(this.UserNameBox_TextChanged);
             this.UserNameBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameBox_KeyDown);
@@ -75,7 +75,7 @@
             // LoginButton
             // 
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.LoginButton.Location = new System.Drawing.Point(204, 97);
+            this.LoginButton.Location = new System.Drawing.Point(138, 97);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -85,9 +85,10 @@
             // 
             // noweHaslo
             // 
-            this.noweHaslo.Location = new System.Drawing.Point(12, 115);
+            this.noweHaslo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.noweHaslo.Location = new System.Drawing.Point(219, 97);
             this.noweHaslo.Name = "noweHaslo";
-            this.noweHaslo.Size = new System.Drawing.Size(131, 23);
+            this.noweHaslo.Size = new System.Drawing.Size(126, 23);
             this.noweHaslo.TabIndex = 11;
             this.noweHaslo.Text = "Zapomniałem hasła";
             this.noweHaslo.UseVisualStyleBackColor = true;
@@ -95,6 +96,7 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.LoginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecoverPassword));
             this.wyslijNowe = new System.Windows.Forms.GroupBox();
             this.mailZapomniany1 = new System.Windows.Forms.Label();
             this.mailZapomniany = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             // 
             // wyslijNowe
             // 
+            this.wyslijNowe.BackColor = System.Drawing.Color.Azure;
             this.wyslijNowe.Controls.Add(this.mailZapomniany1);
             this.wyslijNowe.Controls.Add(this.mailZapomniany);
             this.wyslijNowe.Controls.Add(this.loginZapomniany);
@@ -89,6 +91,7 @@
             // 
             // Anulujprzy
             // 
+            this.Anulujprzy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Anulujprzy.Location = new System.Drawing.Point(201, 75);
             this.Anulujprzy.Name = "Anulujprzy";
             this.Anulujprzy.Size = new System.Drawing.Size(75, 23);
@@ -99,6 +102,7 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(120, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -111,8 +115,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 113);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(288, 110);
             this.Controls.Add(this.wyslijNowe);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RecoverPassword";
             this.Text = "Zapomniałem hasła";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecoverPassword_FormClosing);

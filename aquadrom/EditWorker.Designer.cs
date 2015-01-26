@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWorker));
             this.PracownikGroupBox = new System.Windows.Forms.GroupBox();
+            this.AnulujButton = new System.Windows.Forms.Button();
+            this.EdytujUseraButton = new System.Windows.Forms.Button();
             this.BadaniaGroupBox = new System.Windows.Forms.GroupBox();
             this.DataBadanDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.KoniecKPPDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -75,8 +77,6 @@
             this.Pesel = new System.Windows.Forms.Label();
             this.Nazwisko = new System.Windows.Forms.Label();
             this.Imie = new System.Windows.Forms.Label();
-            this.AnulujButton = new System.Windows.Forms.Button();
-            this.EdytujUseraButton = new System.Windows.Forms.Button();
             this.PracownikGroupBox.SuspendLayout();
             this.BadaniaGroupBox.SuspendLayout();
             this.DaneKontaktoweGroupBox.SuspendLayout();
@@ -91,6 +91,8 @@
             // 
             this.PracownikGroupBox.BackColor = System.Drawing.Color.Azure;
             this.PracownikGroupBox.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
+            this.PracownikGroupBox.Controls.Add(this.AnulujButton);
+            this.PracownikGroupBox.Controls.Add(this.EdytujUseraButton);
             this.PracownikGroupBox.Controls.Add(this.BadaniaGroupBox);
             this.PracownikGroupBox.Controls.Add(this.DaneKontaktoweGroupBox);
             this.PracownikGroupBox.Controls.Add(this.KontoGroupBox);
@@ -98,10 +100,32 @@
             this.PracownikGroupBox.Controls.Add(this.DaneOsoboweGroupBox);
             this.PracownikGroupBox.Location = new System.Drawing.Point(3, 3);
             this.PracownikGroupBox.Name = "PracownikGroupBox";
-            this.PracownikGroupBox.Size = new System.Drawing.Size(583, 411);
+            this.PracownikGroupBox.Size = new System.Drawing.Size(582, 440);
             this.PracownikGroupBox.TabIndex = 0;
             this.PracownikGroupBox.TabStop = false;
             this.PracownikGroupBox.Text = "Pracownik";
+            // 
+            // AnulujButton
+            // 
+            this.AnulujButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AnulujButton.Location = new System.Drawing.Point(488, 394);
+            this.AnulujButton.Name = "AnulujButton";
+            this.AnulujButton.Size = new System.Drawing.Size(75, 23);
+            this.AnulujButton.TabIndex = 1;
+            this.AnulujButton.Text = "Anuluj";
+            this.AnulujButton.UseVisualStyleBackColor = true;
+            this.AnulujButton.Click += new System.EventHandler(this.AnulujButton_Click);
+            // 
+            // EdytujUseraButton
+            // 
+            this.EdytujUseraButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EdytujUseraButton.Location = new System.Drawing.Point(354, 394);
+            this.EdytujUseraButton.Name = "EdytujUseraButton";
+            this.EdytujUseraButton.Size = new System.Drawing.Size(128, 23);
+            this.EdytujUseraButton.TabIndex = 2;
+            this.EdytujUseraButton.Text = "Edytuj";
+            this.EdytujUseraButton.UseVisualStyleBackColor = true;
+            this.EdytujUseraButton.Click += new System.EventHandler(this.EdytujUseraButton_Click);
             // 
             // BadaniaGroupBox
             // 
@@ -114,7 +138,7 @@
             this.BadaniaGroupBox.Controls.Add(this.Stanowisko);
             this.BadaniaGroupBox.Controls.Add(this.Data_badan);
             this.BadaniaGroupBox.Controls.Add(this.Stopien);
-            this.BadaniaGroupBox.Location = new System.Drawing.Point(9, 239);
+            this.BadaniaGroupBox.Location = new System.Drawing.Point(19, 239);
             this.BadaniaGroupBox.Name = "BadaniaGroupBox";
             this.BadaniaGroupBox.Size = new System.Drawing.Size(257, 147);
             this.BadaniaGroupBox.TabIndex = 38;
@@ -154,7 +178,7 @@
             // StopienComboBox
             // 
             this.StopienComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.StopienComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StopienComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.StopienComboBox.FormattingEnabled = true;
             this.StopienComboBox.Location = new System.Drawing.Point(97, 23);
             this.StopienComboBox.Name = "StopienComboBox";
@@ -432,7 +456,7 @@
             this.DaneOsoboweGroupBox.Controls.Add(this.Pesel);
             this.DaneOsoboweGroupBox.Controls.Add(this.Nazwisko);
             this.DaneOsoboweGroupBox.Controls.Add(this.Imie);
-            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(9, 19);
+            this.DaneOsoboweGroupBox.Location = new System.Drawing.Point(19, 19);
             this.DaneOsoboweGroupBox.Name = "DaneOsoboweGroupBox";
             this.DaneOsoboweGroupBox.Size = new System.Drawing.Size(257, 214);
             this.DaneOsoboweGroupBox.TabIndex = 34;
@@ -569,36 +593,12 @@
             this.Imie.TabIndex = 0;
             this.Imie.Text = "Imię:";
             // 
-            // AnulujButton
-            // 
-            this.AnulujButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AnulujButton.Location = new System.Drawing.Point(511, 420);
-            this.AnulujButton.Name = "AnulujButton";
-            this.AnulujButton.Size = new System.Drawing.Size(75, 23);
-            this.AnulujButton.TabIndex = 1;
-            this.AnulujButton.Text = "Anuluj";
-            this.AnulujButton.UseVisualStyleBackColor = true;
-            this.AnulujButton.Click += new System.EventHandler(this.AnulujButton_Click);
-            // 
-            // EdytujUseraButton
-            // 
-            this.EdytujUseraButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EdytujUseraButton.Location = new System.Drawing.Point(377, 420);
-            this.EdytujUseraButton.Name = "EdytujUseraButton";
-            this.EdytujUseraButton.Size = new System.Drawing.Size(128, 23);
-            this.EdytujUseraButton.TabIndex = 2;
-            this.EdytujUseraButton.Text = "Edytuj";
-            this.EdytujUseraButton.UseVisualStyleBackColor = true;
-            this.EdytujUseraButton.Click += new System.EventHandler(this.EdytujUseraButton_Click);
-            // 
             // EditWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(588, 447);
-            this.Controls.Add(this.EdytujUseraButton);
-            this.Controls.Add(this.AnulujButton);
+            this.ClientSize = new System.Drawing.Size(587, 447);
             this.Controls.Add(this.PracownikGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
