@@ -41,6 +41,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.LightCyan;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.harmonogramToolStripMenuItem,
             this.notatkiToolStripMenuItem,

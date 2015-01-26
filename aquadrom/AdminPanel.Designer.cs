@@ -36,11 +36,11 @@
             this.UsuńUżytkownikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrzeglądajUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.PolczenieStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -107,6 +107,7 @@
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.LightCyan;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ądzajToolStripMenuItem,
             this.harmonogramToolStripMenuItem,
@@ -116,6 +117,20 @@
             this.menuStrip2.Size = new System.Drawing.Size(980, 24);
             this.menuStrip2.TabIndex = 3;
             this.menuStrip2.Text = "menuStrip2";
+            // 
+            // harmonogramToolStripMenuItem
+            // 
+            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
+            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
+            // 
+            // napiszNotatkęToolStripMenuItem
+            // 
+            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
+            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
+            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click_1);
             // 
             // statusStrip1
             // 
@@ -132,20 +147,6 @@
             this.PolczenieStripStatus.Name = "PolczenieStripStatus";
             this.PolczenieStripStatus.Size = new System.Drawing.Size(63, 17);
             this.PolczenieStripStatus.Text = "Polaczenie";
-            // 
-            // harmonogramToolStripMenuItem
-            // 
-            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
-            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
-            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            // 
-            // napiszNotatkęToolStripMenuItem
-            // 
-            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
-            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
-            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click_1);
             // 
             // AdminPanel
             // 
