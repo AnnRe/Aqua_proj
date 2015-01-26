@@ -71,6 +71,7 @@
             // 
             // LoginButton
             // 
+            this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.LoginButton.Location = new System.Drawing.Point(150, 115);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
