@@ -20,9 +20,5 @@ This is PDFsharp based on GDI+. See Project Information for details.</summary>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
     </frameworkAssemblies>
-    <references>
-      <reference file="PdfSharp.Charting.dll" />
-      <reference file="PdfSharp.dll" />
-    </references>
   </metadata>
 </package>

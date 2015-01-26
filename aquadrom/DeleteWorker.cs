@@ -13,6 +13,7 @@ using System.Data.SqlTypes;
 using DB;
 using aquadrom.Utilities;
 using System.Security.Cryptography;
+using aquadrom.Objects;
 
 namespace aquadrom
 {
@@ -24,8 +25,11 @@ namespace aquadrom
         private AdminPanel _mainform = null;
 
         private string chosen_id = "";
+        private string chosen_concid = "";
         private string WhichUser = "";
-        private string sql_deleteuser = "from Pracownik where "+Constants.PracownikID+"=";
+        private string sql_deleteuser = "from "+Constants.TabPracownik+" where "+Constants.PracownikID+"=";
+        private string sql_deletecontract = "from " + Constants.TabUmowa + " where " + Constants.UmowaIDu + "=";
+
         public DeleteWorker(Form callingForm)
         {
             _mainform = callingForm as AdminPanel;
@@ -46,17 +50,13 @@ namespace aquadrom
         private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {                                                       // którego użytkownika usunąć
             WhichUser = this.DeleteWorkerComboBox.Text;
-            DataTable dtWorkers2 = connector.Select(Constants.PracownikID+", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + ") from Pracownik order by 2 asc;");
+            DataTable dtWorkers2 = connector.Select(Constants.PracownikID+", concat(" + Constants.PracownikNazwisko + ",' '," + Constants.PracownikImie + "),"+Constants.PracownikIDUmowy+" from Pracownik order by 2 asc;");
             foreach (DataRow row in dtWorkers2.Rows)
             {
                 if (row[1].ToString() == WhichUser)
                 {
-                    if (chosen_id != "")    // jeśli wcześniej był wybrany user,usuń dodany wcześniej id z sql_deleteuser
-                    {
-                        sql_deleteuser = sql_deleteuser.Remove(sql_deleteuser.Length - chosen_id.Length);
-                    }
                     chosen_id = row[0].ToString();  // wybierz aktualne id wybranego usera i dodaj do sql_deleteuser
-                    sql_deleteuser += chosen_id;
+                    chosen_concid = row[2].ToString(); 
                     break;
                 }
             }
@@ -67,11 +67,14 @@ namespace aquadrom
         {
             if (WhichUser != "")    // gdy ktoś wybrany
             {
-                DialogResult dialogResult = MessageBox.Show("Na pewno chcesz usunąć tego użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MyMessageBox.ShowBox("Na pewno chcesz usunąć tego użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    sql_deleteuser += chosen_id;
+                    sql_deletecontract += chosen_concid;
                     adapter.Delete(sql_deleteuser);
-                    MessageBox.Show("Użytkownik został usunięty");
+                    adapter.Delete(sql_deletecontract);
+                    MyMessageBox.ShowBox("Użytkownik oraz jego umowa została usunięta");
                     _mainform.AdminPanel_Load(_mainform,e);   // odświeżanie listy z głównego okna admina.
                     exist = false;
                     this.Close();
@@ -88,6 +91,15 @@ namespace aquadrom
         {
             this.Close();
             exist = false;
+        }
+
+        private void DeleteWorkerComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(DeleteWorkerComboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
         }
     }
 }

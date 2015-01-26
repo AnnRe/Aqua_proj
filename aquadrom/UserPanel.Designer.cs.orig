@@ -61,7 +61,24 @@
             this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.harmonogramToolStripMenuItem.Text = "Harmonogram";
             this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
-            //  
+            // 
+<<<<<<< HEAD
+            // wyświetlToolStripMenuItem
+            // 
+            this.wyświetlToolStripMenuItem.Name = "wyświetlToolStripMenuItem";
+            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.wyświetlToolStripMenuItem.Text = "Wyświetl";
+            this.wyświetlToolStripMenuItem.Click += new System.EventHandler(this.wyświetlToolStripMenuItem_Click);
+            // 
+            // edytujToolStripMenuItem
+            // 
+            this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
+            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.edytujToolStripMenuItem.Text = "Edytuj";
+            this.edytujToolStripMenuItem.Click += new System.EventHandler(this.edytujToolStripMenuItem_Click);
+            // 
+=======
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
             // notatkiToolStripMenuItem
             // 
             this.notatkiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {

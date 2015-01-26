@@ -69,13 +69,20 @@
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(182, 20);
             this.UserNameBox.TabIndex = 7;
+<<<<<<< HEAD
             this.UserNameBox.TextChanged += new System.EventHandler(this.UserNameBox_TextChanged);
             this.UserNameBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameBox_KeyDown);
             // 
             // LoginButton
             // 
+            this.LoginButton.Location = new System.Drawing.Point(257, 106);
+=======
+            // 
+            // LoginButton
+            // 
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.LoginButton.Location = new System.Drawing.Point(150, 115);
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -97,10 +104,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(384, 162);
+            this.Controls.Add(this.noweHaslo);
+=======
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(384, 150);
-            this.Controls.Add(this.noweHaslo);
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
             this.Controls.Add(this.UserPasswordBox);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.UserName);

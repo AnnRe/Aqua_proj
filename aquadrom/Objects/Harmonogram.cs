@@ -23,16 +23,7 @@ namespace aquadrom.Objects
             KSRpresent = false;
         }
 
-        public void Add(Pracownik pracownik, DateTime pocz, DateTime koniec)
-        {
-            DBAdapter polaczenie = new DBAdapter();
-            string query = "into " + Constants.TabGodzinyPracy + "(" + Constants.GodzinyPracyOd + "," + Constants.GodzinyPracyDo + "," +
-                Constants.GodzinyPracyIdP+") values ("+
-                pocz.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+koniec.Date.ToString("yyyy-MM-dd HH:mm:ss")+","+pracownik.id_p+")";
-            polaczenie.Insert(query);
-           
-        }
-
+        
         /// <summary>
         /// Sprawdza, czy w każdym momencie jest wystarczająca ilość pracowników oraz czy są KZ/KSR
         /// </summary>
@@ -40,52 +31,55 @@ namespace aquadrom.Objects
         private string PoprawnieRozplanowanyDzien(DateTime day)
         {
             string messageStanowiska = stanowiskaObsadzone(day);
-            string messageGodziny=pracownicyMajaOdpowiednieGodziny(day);
-            if (messageGodziny.Length==0)
-                if (messageStanowiska.Length == 0)
-                    return "";
-                else
-                    return messageStanowiska;
+            if (messageStanowiska.Length == 0)
+                return "";
             else
-                return messageGodziny+" ("+day.ToShortDateString()+")";
+                return messageStanowiska;
         }
 
         /// <summary>
         /// Sprawdza czy pracownicy mają wypełnioną pulę godzin
         /// </summary>
         /// <returns></returns>
-        private string pracownicyMajaOdpowiednieGodziny(DateTime time)
+        private string pracownicyMajaOdpowiednieGodziny(DateTime time)//TODO
         {
             DBAdapter polaczenie = new DBAdapter();
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)//po pracownikach
             {
-                string imie=GetImie(i),nazwisko=GetNazwisko(i);
+                string imie = GetImie(i), nazwisko = GetNazwisko(i);
                 string contractType = polaczenie.GetUserContractType(GetImie(i), GetNazwisko(i));
+                DBAdapter adapter=new DBAdapter();
+                int userMonthHours = adapter.GetWorkerNeededHoursPerMonth(imie, nazwisko, time);
                 if (contractType == eUmowa.UOP.ToString())
                 {
-
-                    TimeSpan timeAtDay = GetUserHoursAtDate(i, time);
-                    if (timeAtDay.TotalHours > 8.0)
+                    int countPlannedMinutes = 0;
+                    for (int kol = 3; kol < dataGridView1.ColumnCount; kol += 2)
+                    {
+                        TimeSpan timeAtDay = GetUserHoursAtDate(i, time);
+                        countPlannedMinutes += Convert.ToInt32(timeAtDay.TotalMinutes);
+                    }
+                    if (countPlannedMinutes > 60*userMonthHours)
                     {
                         return "Za dużo godzin " + "(" + GetImie(i) + " " + GetNazwisko(i) + ")";
                     }
-                    else if (timeAtDay.TotalHours < 8.0)
+                    else if (countPlannedMinutes < 60 * userMonthHours)
                     {
                         return "Za mało godzin " + "(" + GetImie(i) + " " + GetNazwisko(i) + ")";
                     }
                 }
                 else
                 {
-                    
+
                 }
             }
-         
+
             return "";
         }
+
         public string poprawnieRozplanowanyMiesiac(DateTime time)
         {
             DateTime day_i = new DateTime(time.Year, time.Month, 1, 0, 0, 0);
-
+            string messageGodziny = pracownicyMajaOdpowiednieGodziny(time);
             for (int i = 1; i <= DateTime.DaysInMonth(time.Year, time.Month);i++ )
             {
                 string message = PoprawnieRozplanowanyDzien(day_i);
@@ -121,7 +115,7 @@ namespace aquadrom.Objects
                     if (numberOfWorkersAtTime < neededWorkers)
                     {
                         int dif=neededWorkers-numberOfWorkersAtTime;
-                        return "\n Za mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
+                        return "\nZa mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
                     }
                     else
                         if (!KSRandKZPresenceAtTime(time))

@@ -20,12 +20,5 @@ This is PDFsharp and MigraDoc based on GDI+. See Project Information for details
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
     </frameworkAssemblies>
-    <references>
-      <reference file="MigraDoc.DocumentObjectModel.dll" />
-      <reference file="MigraDoc.Rendering.dll" />
-      <reference file="MigraDoc.RtfRendering.dll" />
-      <reference file="PdfSharp.Charting.dll" />
-      <reference file="PdfSharp.dll" />
-    </references>
   </metadata>
 </package>

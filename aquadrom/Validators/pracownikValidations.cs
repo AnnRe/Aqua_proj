@@ -173,7 +173,7 @@ namespace Objects
         {
             if (String.IsNullOrEmpty(tekst.Text))
             {
-                MessageBox.Show("Wypełnij pole: " + nazwaPola + "!");
+                MyMessageBox.ShowBox("Wypełnij pole: " + nazwaPola + "!");
                 return true;
             }
             else
@@ -198,7 +198,7 @@ namespace Objects
         {
             if (String.IsNullOrEmpty(tekst.Text))
             {
-                MessageBox.Show("Wypełnij pole: " + nazwaPola + "!");
+                MyMessageBox.ShowBox("Wypełnij pole: " + nazwaPola + "!");
                 return true;
             }
             else

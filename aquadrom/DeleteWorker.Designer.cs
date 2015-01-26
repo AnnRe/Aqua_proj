@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteWorker));
             this.DeleteWorkerComboBox = new System.Windows.Forms.ComboBox();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -36,16 +37,19 @@
             // DeleteWorkerComboBox
             // 
             this.DeleteWorkerComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DeleteWorkerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.DeleteWorkerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DeleteWorkerComboBox.FormattingEnabled = true;
             this.DeleteWorkerComboBox.Location = new System.Drawing.Point(62, 31);
             this.DeleteWorkerComboBox.Name = "DeleteWorkerComboBox";
             this.DeleteWorkerComboBox.Size = new System.Drawing.Size(231, 21);
             this.DeleteWorkerComboBox.TabIndex = 8;
+            this.DeleteWorkerComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.DeleteWorkerComboBox_DrawItem);
             this.DeleteWorkerComboBox.SelectedIndexChanged += new System.EventHandler(this.DeleteWorkerComboBox_SelectedIndexChanged);
             // 
             // DeleteButton
             // 
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DeleteButton.Location = new System.Drawing.Point(62, 77);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(110, 23);
@@ -56,6 +60,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CancelButton.Location = new System.Drawing.Point(183, 77);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(110, 23);
@@ -68,12 +73,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(348, 112);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DeleteWorkerComboBox);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DeleteWorker";

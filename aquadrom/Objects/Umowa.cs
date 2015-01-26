@@ -33,7 +33,7 @@ namespace Objects
         public Umowa(int ID_u, eUmowa Typ, string Wymiar_godzin, DateTime Poczatek_umowy, DateTime Koniec_umowy)
         {
             this.ID_u = ID_u;
-            this.typUmowy = eUmowa.UZ;
+            this.typUmowy = Typ;
             this.wymiarGodzin = Wymiar_godzin;
             this.poczatekUmowy = Poczatek_umowy;
             this.koniecUmowy = Koniec_umowy;

@@ -20,9 +20,12 @@ namespace aquadrom
         private bool valueChanged;
         private bool saved;
         private Harmonogram harmonogram;
+        public static bool exists;
+        public bool editable;
 
-        public HarmonogramForm()
+        public HarmonogramForm(bool editable)
         {
+            this.editable = editable;
             settingUp = true;
             InitializeComponent();
             settingUp = false;
@@ -33,6 +36,7 @@ namespace aquadrom
             loadingFromDB = true;
             valueChanged = true;
             saved = true;
+            exists = true;
             harmonogram = new Harmonogram(dataGridView1);
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
@@ -113,7 +117,6 @@ namespace aquadrom
                 column2.DividerWidth = 1;
                 dataGridView1.Columns[i.ToString() + "od"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             }
 
             UpdateColumnsToDate();
@@ -124,6 +127,17 @@ namespace aquadrom
                 column.DividerWidth = 1;
                 dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            SetCellsMode();
+
+        }
+
+        private void SetCellsMode()
+        {
+            for(int i=0;i<dataGridView1.RowCount;i++)
+                for (int j = 3; j < dataGridView1.Columns.Count; j++)
+                {
+                    dataGridView1[j, i].ReadOnly = !editable;    
+                }
 
         }
 
@@ -188,7 +202,7 @@ namespace aquadrom
                     if (cancel)
                     {
                         dataGridView1[e.ColumnIndex, e.RowIndex].ErrorText = "Błędna godzina!";
-                        MessageBox.Show("Błędna godzina - Konflikt między godziną początku i końca pracy!");
+                        MyMessageBox.ShowBox("Błędna godzina - Konflikt między godziną początku i końca pracy!");
                     }
                     else
                     {
@@ -208,10 +222,11 @@ namespace aquadrom
                         return;
                     }
                     UpdateHarmonogramClass();
+                    
                     String message = harmonogram.ValidateCell(e);
                     e.Cancel = message.Length > 0;
                     if (message.Length > 0)
-                        MessageBox.Show(message);
+                        MyMessageBox.ShowBox(message);
                 }
         }
 
@@ -250,15 +265,15 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
+                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
                 string message = harmonogram.Save();
-                MessageBox.Show(message);
+                MyMessageBox.ShowBox(message);
                 saved = true;
             }
             else
             {
                 string message = harmonogram.Save();
-                MessageBox.Show(message);
+                MyMessageBox.ShowBox(message);
                 saved = true;
                 for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
                     for (int col_i = 3; col_i < 65; col_i += 2)
@@ -310,7 +325,7 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MessageBox.Show("Źle rozplanowany dzień! " + " " + messageMiesiac);
+                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + " " + messageMiesiac);
             }
             else
             {
@@ -325,9 +340,9 @@ namespace aquadrom
                         }
                     }
                 if (message.Length == 0)
-                    MessageBox.Show("Poprawnie rozplanowany miesiąc");
+                    MyMessageBox.ShowBox("Poprawnie rozplanowany miesiąc");
                 else
-                    MessageBox.Show(message);
+                    MyMessageBox.ShowBox(message);
             }
 
         }
@@ -336,15 +351,16 @@ namespace aquadrom
         {
             if (!saved)
             {
-                var result = MessageBox.Show("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                var result = MyMessageBox.ShowBox("Czy chcesz przed wyjściem zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel);
                 switch (result)
                 {
                     case DialogResult.No:
+                        this.Close();
                         break;
                     case DialogResult.Yes:
                         UpdateHarmonogramClass();
                         string message = harmonogram.Save();
-                        MessageBox.Show(message);
+                        MyMessageBox.ShowBox(message);
                         break;
                     default:
                         e.Cancel = true;
@@ -359,19 +375,21 @@ namespace aquadrom
             {
                 if (comboBoxMonths.Enabled)
                 {
-                    var result = MessageBox.Show("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    var result = MyMessageBox.ShowBox("Czy chcesz zapisać zmiany?", "Zmiany nie zostały zapisane!", MessageBoxButtons.YesNoCancel);
                     switch (result)
                     {
                         case DialogResult.Yes:
                             UpdateHarmonogramClass();
                             string message = harmonogram.Save();
-                            MessageBox.Show(message);
+                            MyMessageBox.ShowBox(message);
+                            this.Close();
                             break;
                         case DialogResult.Cancel:
                             //comboBoxMonths.Enabled = false;
                             break;
                         default:
                             saved = true;
+                            this.Close();
                             break;
                     }
                 }
@@ -386,5 +404,23 @@ namespace aquadrom
             }
 
         }
+
+        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DateTime time;
+            bool parsed = DateTime.TryParse(dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString(), out time);
+        }
+
+        private void HarmonogramForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            exists = false;
+        }
+
     }
 }

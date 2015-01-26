@@ -33,13 +33,9 @@ namespace aquadrom
 
         private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HarmonogramForm harmonogramF = new HarmonogramForm();
-            harmonogramF.Show();
-        }
-
-        private void wyświetlToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+            HarmonogramForm harmonogramF = new HarmonogramForm(false);
+            if (!HarmonogramForm.exists)
+                harmonogramF.Show();
         }
 
         private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,9 +43,9 @@ namespace aquadrom
             Application.Exit();
         }
 
-        private void edytujToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UserPanel_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void daneToolStripMenuItem_Click(object sender, EventArgs e)

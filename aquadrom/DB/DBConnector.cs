@@ -125,17 +125,19 @@ namespace DB
         {
             string KPP, stopien, mieszkania;
             if (pracownik.dataWażnościKPP == DateTime.MinValue)
+            {
                 KPP = "null";
-            else KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
-            if (pracownik.dataWażnościKPP == DateTime.MinValue)
                 stopien = "null";
-            else stopien = "'" + pracownik.stopien + "'";
+            }
+            else 
+            {
+                KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+                stopien = "'" + pracownik.stopien.ToString() + "'";
+            }
             if (pracownik.numerMieszkania == "")
                 mieszkania = "null";
             else
                 mieszkania = "'" + pracownik.numerMieszkania + "'";
-
-
 
             string query = "Pracownik (" +
                Constants.PracownikImie + "," +
@@ -185,6 +187,7 @@ namespace DB
 
         public void Insert(Umowa umowa)
         {
+
             string godziny;
             if (umowa.wymiarGodzin == "0")
                 godziny = "null";
@@ -208,6 +211,18 @@ namespace DB
 
         public void UpdatePracownik(Pracownik pracownik)
         {
+            string KPP, stopien;
+            if (pracownik.dataWażnościKPP == DateTime.MinValue)
+            {
+                KPP = "null";
+                stopien = "null";
+            }
+            else 
+            {
+                KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+                stopien = "'" + pracownik.stopien + "'";
+            }
+
             string query = "Pracownik set " +
                 Constants.PracownikImie + "='" + pracownik.imie + "', " +
                 Constants.PracownikNazwisko + "='" + pracownik.nazwisko + "', " +
@@ -217,9 +232,9 @@ namespace DB
                 Constants.PracownikNrMieszkania + "='" + pracownik.numerMieszkania + "', " +
                 Constants.PracownikPesel + "='" + pracownik.pesel + "', " +
                 Constants.PracownikStanowisko + "='" + pracownik.stanowisko + "', " +
-                Constants.PracownikStopien + "='" + pracownik.stopien + "', " +
+                Constants.PracownikStopien + "=" + stopien + ", " +
                 Constants.PracownikTel + "='" + pracownik.numerTelefonu + "', " +
-                Constants.PracownikWaznKPP + "='" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "', " +
+                Constants.PracownikWaznKPP + "=" + KPP + ", " +
                 Constants.PracownikMail + "='" + pracownik.mail + "', " +
                 Constants.PracownikDataBadan + "='" + pracownik.dataBadan.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.PracownikID + "='" + pracownik.id_p + "'";
@@ -228,9 +243,15 @@ namespace DB
 
         public void UpdateUmowa(Umowa umowa)
         {
+            string godziny;
+            if (umowa.typUmowy == eUmowa.UZ)
+                godziny = "null";
+            else
+                godziny = "'" + umowa.wymiarGodzin + "'";
+
             string query = "Umowa set " +
                 Constants.UmowaTypUmowy + "='" + umowa.typUmowy + "', " +
-                Constants.UmowaWymiarGodzin + "='" + umowa.wymiarGodzin + "', " +
+                Constants.UmowaWymiarGodzin + "="+ godziny +", " +
                 Constants.UmowaPoczatekUmowy + "='" + umowa.poczatekUmowy.ToString("yyyy-MM-dd") + "', " +
                 Constants.UmowaKoniecUmowy + "='" + umowa.koniecUmowy.ToString("yyyy-MM-dd") + "' " +
                 "where " + Constants.UmowaIDu + "='" + umowa.ID_u + "'";
