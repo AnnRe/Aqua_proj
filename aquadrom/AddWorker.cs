@@ -434,5 +434,43 @@ namespace aquadrom
             }
         }
 
+        private void TypUmowy_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Black;
+            e.DrawBackground();
+            e.Graphics.DrawString(TypUmowy.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void TypKonta2_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(TypKonta2.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void Stopień_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(Stopień.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void StanowiskoUzytkownika_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(StanowiskoUzytkownika.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+
+
     }
 }

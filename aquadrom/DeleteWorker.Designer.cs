@@ -37,12 +37,14 @@
             // DeleteWorkerComboBox
             // 
             this.DeleteWorkerComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DeleteWorkerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.DeleteWorkerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DeleteWorkerComboBox.FormattingEnabled = true;
             this.DeleteWorkerComboBox.Location = new System.Drawing.Point(62, 31);
             this.DeleteWorkerComboBox.Name = "DeleteWorkerComboBox";
             this.DeleteWorkerComboBox.Size = new System.Drawing.Size(231, 21);
             this.DeleteWorkerComboBox.TabIndex = 8;
+            this.DeleteWorkerComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.DeleteWorkerComboBox_DrawItem);
             this.DeleteWorkerComboBox.SelectedIndexChanged += new System.EventHandler(this.DeleteWorkerComboBox_SelectedIndexChanged);
             // 
             // DeleteButton

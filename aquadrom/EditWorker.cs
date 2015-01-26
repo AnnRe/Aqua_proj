@@ -288,5 +288,32 @@ namespace aquadrom
             if (PoczatekUmowyDateTimePicker.Value > KoniecUmowyDateTimePicker.Value)
                 KoniecUmowyDateTimePicker.Value = PoczatekUmowyDateTimePicker.Value;
         }
+
+        private void TypUmowyComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(TypUmowyComboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void StopienComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(StopienComboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void StanowiskoUseraComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(StanowiskoUseraComboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
     }
 }

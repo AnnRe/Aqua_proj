@@ -187,16 +187,19 @@
             // 
             // StanowiskoUzytkownika
             // 
+            this.StanowiskoUzytkownika.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.StanowiskoUzytkownika.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StanowiskoUzytkownika.FormattingEnabled = true;
             this.StanowiskoUzytkownika.Location = new System.Drawing.Point(97, 49);
             this.StanowiskoUzytkownika.Name = "StanowiskoUzytkownika";
             this.StanowiskoUzytkownika.Size = new System.Drawing.Size(148, 21);
             this.StanowiskoUzytkownika.TabIndex = 16;
+            this.StanowiskoUzytkownika.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.StanowiskoUzytkownika_DrawItem);
             this.StanowiskoUzytkownika.SelectedIndexChanged += new System.EventHandler(this.StanowiskoUzytkownika_SelectedIndexChanged);
             // 
             // Stopień
             // 
+            this.Stopień.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Stopień.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Stopień.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Stopień.FormattingEnabled = true;
@@ -204,6 +207,7 @@
             this.Stopień.Name = "Stopień";
             this.Stopień.Size = new System.Drawing.Size(148, 21);
             this.Stopień.TabIndex = 15;
+            this.Stopień.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Stopień_DrawItem);
             this.Stopień.SelectedIndexChanged += new System.EventHandler(this.Stopień_SelectedIndexChanged_1);
             // 
             // Data_KPP
@@ -330,12 +334,14 @@
             // 
             // TypKonta2
             // 
+            this.TypKonta2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TypKonta2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypKonta2.FormattingEnabled = true;
             this.TypKonta2.Location = new System.Drawing.Point(106, 101);
             this.TypKonta2.Name = "TypKonta2";
             this.TypKonta2.Size = new System.Drawing.Size(148, 21);
             this.TypKonta2.TabIndex = 23;
+            this.TypKonta2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.TypKonta2_DrawItem);
             // 
             // TypKonta
             // 
@@ -452,12 +458,14 @@
             // 
             // TypUmowy
             // 
+            this.TypUmowy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TypUmowy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypUmowy.FormattingEnabled = true;
             this.TypUmowy.Location = new System.Drawing.Point(106, 23);
             this.TypUmowy.Name = "TypUmowy";
             this.TypUmowy.Size = new System.Drawing.Size(148, 21);
             this.TypUmowy.TabIndex = 1;
+            this.TypUmowy.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.TypUmowy_DrawItem);
             this.TypUmowy.SelectedIndexChanged += new System.EventHandler(this.TypUmowy_SelectedIndexChanged_1);
             // 
             // Koniec_umowy
