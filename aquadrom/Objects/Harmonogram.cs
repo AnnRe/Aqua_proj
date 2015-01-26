@@ -67,11 +67,11 @@ namespace aquadrom.Objects
                     }
                     if (countPlannedMinutes > 60*userMonthHours)
                     {
-                        return "\nZa dużo godzin " +  GetImie(row_i) + " " + GetNazwisko(row_i) +"("+(userMonthHours-countPlannedMinutes)+")";
+                        return "\nZa dużo godzin " + GetImie(row_i) + " " + GetNazwisko(row_i) + " (" + (countPlannedMinutes / 60 - userMonthHours) + ")";
                     }
                     else if (countPlannedMinutes < 60 * userMonthHours)
                     {
-                        return "\nZa mało godzin " + GetImie(row_i) + " " + GetNazwisko(row_i) +"(" + (countPlannedMinutes-userMonthHours ) + ")";
+                        return "\nZa mało godzin " + GetImie(row_i) + " " + GetNazwisko(row_i) +" ("+(userMonthHours-countPlannedMinutes/60)+")";
                     }
                 }
                 else
