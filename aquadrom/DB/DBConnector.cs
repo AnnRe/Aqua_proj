@@ -93,17 +93,19 @@ namespace DB
         {
             string KPP, stopien, mieszkania;
             if (pracownik.dataWażnościKPP == DateTime.MinValue)
+            {
                 KPP = "null";
-            else KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
-            if (pracownik.dataWażnościKPP == DateTime.MinValue)
                 stopien = "null";
-            else stopien = "'" + pracownik.stopien + "'";
+            }
+            else 
+            {
+                KPP = "'" + pracownik.dataWażnościKPP.ToString("yyyy-MM-dd") + "'";
+                stopien = "'" + pracownik.stopien.ToString() + "'";
+            }
             if (pracownik.numerMieszkania == "")
                 mieszkania = "null";
             else
                 mieszkania = "'" + pracownik.numerMieszkania + "'";
-
-
 
             string query = "Pracownik (" +
                Constants.PracownikImie + "," +
