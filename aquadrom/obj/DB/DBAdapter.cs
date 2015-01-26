@@ -212,7 +212,7 @@ namespace DB
         }
         public int GetWorkerNeededHoursPerMonth(string imie, string nazwisko, DateTime time)
         {
-            string query = "sum(" + Constants.UmowaWymiarGodzin + ") From " + Constants.TabPracownik + ", " + Constants.TabUmowa + " WHERE " + Constants.PracownikID +
+            string query = "count(" + Constants.UmowaWymiarGodzin + ") From " + Constants.TabPracownik + ", " + Constants.TabUmowa + " WHERE " + Constants.PracownikID +
                    "=" + GetUserId(imie, nazwisko) + " and " + Constants.PracownikIDUmowy + "=" + Constants.UmowaIDu;
             DataTable tab = Select(query);
             if (tab.Rows.Count > 0)

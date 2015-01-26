@@ -1,4 +1,5 @@
 ﻿using aquadrom.Objects;
+using aquadrom.Validators;
 using DB;
 using System;
 using System.Collections.Generic;
@@ -196,7 +197,7 @@ namespace aquadrom
             {
                 dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Empty;
                 saved = false;
-                if (harmonogram.bothTimesAreReady(e.ColumnIndex, e.RowIndex))
+                if (harmonogramValidations.bothTimesAreReady(e.ColumnIndex, e.RowIndex,dataGridView1))
                 {
                     bool cancel = hoursAreCorrect(e.ColumnIndex, e.RowIndex);
                     if (cancel)
@@ -223,7 +224,7 @@ namespace aquadrom
                     }
                     UpdateHarmonogramClass();
                     
-                    String message = harmonogram.ValidateCell(e);
+                    String message = harmonogramValidations.ValidateCell(e);
                     e.Cancel = message.Length > 0;
                     if (message.Length > 0)
                         MyMessageBox.ShowBox(message);
@@ -325,7 +326,7 @@ namespace aquadrom
             string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
             if (messageMiesiac.Length != 0)
             {
-                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + " " + messageMiesiac);
+                MyMessageBox.ShowBox("Źle rozplanowany miesiąc! " + " " + messageMiesiac);
             }
             else
             {
@@ -355,6 +356,7 @@ namespace aquadrom
                 switch (result)
                 {
                     case DialogResult.No:
+                        saved = true;
                         this.Close();
                         break;
                     case DialogResult.Yes:
@@ -382,14 +384,12 @@ namespace aquadrom
                             UpdateHarmonogramClass();
                             string message = harmonogram.Save();
                             MyMessageBox.ShowBox(message);
-                            this.Close();
                             break;
                         case DialogResult.Cancel:
-                            //comboBoxMonths.Enabled = false;
+                            comboBoxMonths.Enabled = false;
                             break;
                         default:
                             saved = true;
-                            this.Close();
                             break;
                     }
                 }

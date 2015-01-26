@@ -17,6 +17,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Forms;
 using PdfSharp.SharpZipLib;
 using DB;
+using System.IO;
 using Objects;
 using aquadrom.Utilities;
 using aquadrom.Objects;
@@ -151,8 +152,8 @@ namespace aquadrom
 
 
             format.Alignment = XStringAlignment.Center;
-//            XImage image = XImage.FromFile("logo.png");
- //           gfx.DrawImage(image, 410, 30, 171, 34);
+            XImage image = XImage.FromFile("logo.png");
+            gfx.DrawImage(image, 410, 30, 171, 34);
             gfx.DrawString("AQUADROM Ruda Śląska", font2, XBrushes.Black, new XRect(100, 60, page.Width - 200, 5), XStringFormats.Center);
             gfx.DrawString("Notatka - Zdarzenie", font3, XBrushes.Black, new XRect(100, 75, page.Width - 200, 20), XStringFormats.Center);
             gfx.DrawLine(pen,50,100,540,100); //poziome
@@ -198,17 +199,27 @@ namespace aquadrom
                 gfx.DrawLine(pen, 50, 800, 540, 800); //ppozioma
                 gfx.DrawString("Podpis kierownika zmiany: ", font4, XBrushes.Black, Convert.ToDouble(54), Convert.ToDouble(765));
                 gfx.DrawString("Podpis koordynatora ratowników: ", font4, XBrushes.Black, Convert.ToDouble(54), Convert.ToDouble(790));
+                CreateIfMissing("Notatki");
                 string filename = "Notatki/"+ kiedyZdarzenie.Value.ToString("dd-MM-yyyy") +name + "" + surname+strefaMiejsce.Text+  ".pdf";
                 document.Save(filename);
-                MessageBox.Show("Wygenerowano notatkę.");
+                MyMessageBox.ShowBox("Wygenerowano notatkę.");
             }
             else if (adapter.Insert(notatka) == false)
             {
-                MessageBox.Show("Błąd!");
+                MyMessageBox.ShowBox("Błąd!");
             }
             //MessageBox.Show(TekstNotatki.Text.ToString());
         }
-
+        private void CreateIfMissing(string path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+           /* else
+                MyMessageBox.ShowBox("Folder notatki istnieje."); */
+        }
         private void Generuj_Click(object sender, EventArgs e)
         {
             walidacja.deleteNumbers(imieWzywajacego);

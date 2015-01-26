@@ -7,6 +7,7 @@ using Objects;
 using DB;
 using aquadrom.Utilities;
 using System.Windows.Forms;
+using aquadrom.Validators;
 
 namespace aquadrom.Objects
 {
@@ -41,30 +42,36 @@ namespace aquadrom.Objects
         /// Sprawdza czy pracownicy mają wypełnioną pulę godzin
         /// </summary>
         /// <returns></returns>
-        private string pracownicyMajaOdpowiednieGodziny(DateTime time)//TODO
+        private string pracownicyMajaOdpowiednieGodziny(DateTime time)
         {
             DBAdapter polaczenie = new DBAdapter();
-            for (int i = 0; i < dataGridView1.RowCount - 1; i++)//po pracownikach
+            for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)//po pracownikach
             {
-                string imie = GetImie(i), nazwisko = GetNazwisko(i);
-                string contractType = polaczenie.GetUserContractType(GetImie(i), GetNazwisko(i));
-                DBAdapter adapter=new DBAdapter();
-                int userMonthHours = adapter.GetWorkerNeededHoursPerMonth(imie, nazwisko, time);
+                DateTime time_i = time;
+
+                string imie = GetImie(row_i), nazwisko = GetNazwisko(row_i);
+                string contractType = polaczenie.GetUserContractType(GetImie(row_i), GetNazwisko(row_i));
                 if (contractType == eUmowa.UOP.ToString())
                 {
+                    int userMonthHours = polaczenie.GetWorkerNeededHoursPerMonth(imie, nazwisko, time);
                     int countPlannedMinutes = 0;
-                    for (int kol = 3; kol < dataGridView1.ColumnCount; kol += 2)
+                    while (countPlannedMinutes <= 60 * userMonthHours )
                     {
-                        TimeSpan timeAtDay = GetUserHoursAtDate(i, time);
-                        countPlannedMinutes += Convert.ToInt32(timeAtDay.TotalMinutes);
+                        for (int kol = 3; kol < dataGridView1.ColumnCount; kol += 2)
+                        {
+                            TimeSpan timeAtDay = GetUserHoursAtDate(row_i, time_i);
+                            countPlannedMinutes += Convert.ToInt32(timeAtDay.TotalMinutes);
+                            time_i = time_i.AddDays(1);
+                        }
+                        break;
                     }
                     if (countPlannedMinutes > 60*userMonthHours)
                     {
-                        return "Za dużo godzin " + "(" + GetImie(i) + " " + GetNazwisko(i) + ")";
+                        return "Za dużo godzin " + "(" + GetImie(row_i) + " " + GetNazwisko(row_i) + ")";
                     }
                     else if (countPlannedMinutes < 60 * userMonthHours)
                     {
-                        return "Za mało godzin " + "(" + GetImie(i) + " " + GetNazwisko(i) + ")";
+                        return "Za mało godzin " + "(" + GetImie(row_i) + " " + GetNazwisko(row_i) + ")";
                     }
                 }
                 else
@@ -80,7 +87,9 @@ namespace aquadrom.Objects
         {
             DateTime day_i = new DateTime(time.Year, time.Month, 1, 0, 0, 0);
             string messageGodziny = pracownicyMajaOdpowiednieGodziny(time);
-            for (int i = 1; i <= DateTime.DaysInMonth(time.Year, time.Month);i++ )
+            if (messageGodziny.Length > 0)
+                return messageGodziny;
+            for (int i = 1; i <= 10/*DateTime.DaysInMonth(time.Year, time.Month)*/;i++ )//Odkomentować
             {
                 string message = PoprawnieRozplanowanyDzien(day_i);
                 if (message.Length > 0)
@@ -118,7 +127,7 @@ namespace aquadrom.Objects
                         return "\nZa mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
                     }
                     else
-                        if (!KSRandKZPresenceAtTime(time))
+                        if (!KSRandKZPresenceAtTime(time_i))
                         {
                             if (!KZpresent)
                                 return "Brak KZ " + time.ToShortDateString() + " o godzinie " + time_i.ToString("HH:mm");
@@ -135,7 +144,7 @@ namespace aquadrom.Objects
         private int GetNumberOfRescuresAtTime(DateTime time)
         {
             int numberOfWorkers = 0;
-            int col_i=2*Convert.ToInt32( time.Month.ToString())+1;
+            int col_i=2*Convert.ToInt32( time.Day.ToString())+1;
             for (int row_i = 0; row_i < dataGridView1.RowCount-1; row_i++)
             {
                 if(dataGridView1[2,row_i].Value.ToString()!="KZ")
@@ -159,10 +168,10 @@ namespace aquadrom.Objects
         {
             KSRpresent = false;
             KZpresent = false;
-            int col_i = 2 * Convert.ToInt32(time.Month.ToString()) + 1;
+            int col_i = 2 * Convert.ToInt32(time.Day.ToString()) + 1;
             for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
             {
-                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) <= 0)
+                if (time.CompareTo(GetCellDateTime(col_i, row_i)) >= 0 && time.CompareTo(GetCellDateTime(col_i + 1, row_i)) < 0)
                     if (dataGridView1[2, row_i].Value.ToString() == "KZ")
                         KZpresent = true;
                     else if(dataGridView1[2, row_i].Value.ToString() == "KSR")
@@ -173,16 +182,7 @@ namespace aquadrom.Objects
             return false;
         }
 
-        public bool correctCellFormat(string value)
-        {
-            DateTime dateValue;
-            if (DateTime.TryParse(value, out dateValue))
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+        
 
         public string Save()
         {
@@ -200,7 +200,7 @@ namespace aquadrom.Objects
                     {
                         if (dataGridView1[col_i, row_i].Visible)
                         {
-                            if (bothTimesAreReady(col_i,row_i))
+                            if (harmonogramValidations.bothTimesAreReady(col_i,row_i,dataGridView1))
                             {
                                 DateTime StartTimeToSave = GetColumnDate(col_i, row_i);
                                 DateTime StopTimeToSave = GetColumnDate(col_i + 1, row_i);
@@ -267,32 +267,6 @@ namespace aquadrom.Objects
             return span;
         }
 
-        public bool bothTimesAreReady(int columnIndex,int rowIndex)
-        {
-            
-            int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
-
-            if (dataGridView1[start, rowIndex].Value == null || dataGridView1[start, rowIndex].Value.ToString() == "")
-            {//pierwsza pusta
-                if(dataGridView1[start + 1, rowIndex].Value != null && dataGridView1[start + 1, rowIndex].Value.ToString() != "")
-                {//druga niepusta
-                    dataGridView1[2, rowIndex].Tag = "Prawie";
-                    return false;
-                }
-                else
-                {//i druga też pusta
-                    dataGridView1[2, rowIndex].Tag = "";
-                    return false;
-                }
-            }
-            else if (dataGridView1[start + 1, rowIndex].Value == null || dataGridView1[start + 1, rowIndex].Value.ToString() == "")
-            {//druga pusta, ale pierwsza nie
-                dataGridView1[2, rowIndex].Tag = "Prawie";
-                return false;
-            }
-            dataGridView1[2, rowIndex].Tag = "Gotowe";
-            return true;
-        }
         public bool onlyOneTimesAreReady(int columnIndex, int rowIndex)
         {
             int start = columnIndex % 2 == 1 ? columnIndex : columnIndex - 1;
@@ -326,32 +300,6 @@ namespace aquadrom.Objects
                     dataGridView1[2, row_i].Tag = "Gotowe";
                 }
             
-        }
-        public string ValidateCell(DataGridViewCellValidatingEventArgs e)
-        {
-            DateTime dateValue;
-
-            if (DateTime.TryParse(e.FormattedValue.ToString(), out dateValue))
-            {
-                DateTime godz = new DateTime(dateValue.Year, dateValue.Month, dateValue.Day, 8, 0, 0);
-                DateTime godz2 = godz.AddHours(14);
-
-                if (dateValue.CompareTo(godz) >= 0 && dateValue.CompareTo(godz.AddHours(14)) <= 0)
-                {
-                    if (Convert.ToInt32(dateValue.Minute.ToString()) % 15 != 0)
-                        return "Czas podajemy co 15min";
-                }
-                else
-                {
-                    return "Błędna godzina - pracujemy 8-22!";
-                }
-            }
-            else
-                if (e.FormattedValue.ToString().Length > 0)
-                {
-                    return "Zły format";
-                }
-            return "";
         }
 
         private string GetNazwisko(int rowIndex)
