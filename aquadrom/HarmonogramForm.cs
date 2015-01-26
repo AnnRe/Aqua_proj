@@ -21,10 +21,11 @@ namespace aquadrom
         private bool saved;
         private Harmonogram harmonogram;
         public static bool exists;
+        public bool editable;
 
-
-        public HarmonogramForm()
+        public HarmonogramForm(bool editable)
         {
+            this.editable = editable;
             settingUp = true;
             InitializeComponent();
             settingUp = false;
@@ -116,7 +117,6 @@ namespace aquadrom
                 column2.DividerWidth = 1;
                 dataGridView1.Columns[i.ToString() + "od"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView1.Columns[i.ToString() + "do"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             }
 
             UpdateColumnsToDate();
@@ -127,6 +127,17 @@ namespace aquadrom
                 column.DividerWidth = 1;
                 dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            SetCellsMode();
+
+        }
+
+        private void SetCellsMode()
+        {
+            for(int i=0;i<dataGridView1.RowCount;i++)
+                for (int j = 3; j < dataGridView1.Columns.Count; j++)
+                {
+                    dataGridView1[j, i].ReadOnly = !editable;    
+                }
 
         }
 
