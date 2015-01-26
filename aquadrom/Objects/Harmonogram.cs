@@ -115,7 +115,7 @@ namespace aquadrom.Objects
                     if (numberOfWorkersAtTime < neededWorkers)
                     {
                         int dif=neededWorkers-numberOfWorkersAtTime;
-                        return "\n Za mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
+                        return "\nZa mało pracowników (o "+dif+") "+time.ToShortDateString()+" o godzinie "+ time_i.ToString("HH:mm");
                     }
                     else
                         if (!KSRandKZPresenceAtTime(time))

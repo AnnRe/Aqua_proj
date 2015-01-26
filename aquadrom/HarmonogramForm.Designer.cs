@@ -213,6 +213,7 @@
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HarmonogramForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HarmonogramForm_FormClosed);
             this.Load += new System.EventHandler(this.HarmonogramForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).EndInit();

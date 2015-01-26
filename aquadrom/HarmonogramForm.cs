@@ -20,6 +20,8 @@ namespace aquadrom
         private bool valueChanged;
         private bool saved;
         private Harmonogram harmonogram;
+        public static bool exists;
+
 
         public HarmonogramForm()
         {
@@ -33,6 +35,7 @@ namespace aquadrom
             loadingFromDB = true;
             valueChanged = true;
             saved = true;
+            exists = true;
             harmonogram = new Harmonogram(dataGridView1);
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
@@ -402,5 +405,11 @@ namespace aquadrom
             DateTime time;
             bool parsed = DateTime.TryParse(dataGridView1[e.ColumnIndex,e.RowIndex].Value.ToString(), out time);
         }
+
+        private void HarmonogramForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            exists = false;
+        }
+
     }
 }
