@@ -98,9 +98,10 @@
             // 
             // PolaczenieStripStatusU
             // 
+            this.PolaczenieStripStatusU.BackColor = System.Drawing.Color.LightCyan;
             this.PolaczenieStripStatusU.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.PolaczenieStripUser});
-            this.PolaczenieStripStatusU.Location = new System.Drawing.Point(0, 261);
+            this.PolaczenieStripStatusU.Location = new System.Drawing.Point(0, 209);
             this.PolaczenieStripStatusU.Name = "PolaczenieStripStatusU";
             this.PolaczenieStripStatusU.Size = new System.Drawing.Size(488, 22);
             this.PolaczenieStripStatusU.TabIndex = 2;
@@ -129,7 +130,7 @@
             this.Dane_osobowe.Controls.Add(this.Pesel);
             this.Dane_osobowe.Controls.Add(this.Nazwisko);
             this.Dane_osobowe.Controls.Add(this.Imie);
-            this.Dane_osobowe.Location = new System.Drawing.Point(12, 37);
+            this.Dane_osobowe.Location = new System.Drawing.Point(12, 42);
             this.Dane_osobowe.Name = "Dane_osobowe";
             this.Dane_osobowe.Size = new System.Drawing.Size(464, 142);
             this.Dane_osobowe.TabIndex = 35;
@@ -268,7 +269,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
-            this.ClientSize = new System.Drawing.Size(488, 283);
+            this.ClientSize = new System.Drawing.Size(488, 231);
             this.Controls.Add(this.Dane_osobowe);
             this.Controls.Add(this.PolaczenieStripStatusU);
             this.Controls.Add(this.menuStrip1);

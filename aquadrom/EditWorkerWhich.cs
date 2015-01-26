@@ -87,7 +87,7 @@ namespace aquadrom
         private void EditWorkerComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             int index = e.Index >= 0 ? e.Index : 0;
-            var brush = Brushes.Red;
+            var brush = Brushes.Black;
             e.DrawBackground();
             e.Graphics.DrawString(EditWorkerComboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
             e.DrawFocusRectangle();

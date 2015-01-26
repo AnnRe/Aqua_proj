@@ -30,21 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             this.HasloZmienG = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.PowtorzHaslo2 = new System.Windows.Forms.TextBox();
+            this.ZmianaHasla = new System.Windows.Forms.Button();
             this.NoweHaslo2 = new System.Windows.Forms.TextBox();
             this.StareHaslo2 = new System.Windows.Forms.TextBox();
             this.PowtorzHaslo = new System.Windows.Forms.Label();
             this.NoweHaslo = new System.Windows.Forms.Label();
             this.StareHaslo = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.ZmianaHasla = new System.Windows.Forms.Button();
             this.HasloZmienG.SuspendLayout();
             this.SuspendLayout();
             // 
             // HasloZmienG
             // 
-            this.HasloZmienG.BackColor = System.Drawing.Color.LightCyan;
+            this.HasloZmienG.BackColor = System.Drawing.Color.Azure;
+            this.HasloZmienG.Controls.Add(this.button2);
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo2);
+            this.HasloZmienG.Controls.Add(this.ZmianaHasla);
             this.HasloZmienG.Controls.Add(this.NoweHaslo2);
             this.HasloZmienG.Controls.Add(this.StareHaslo2);
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo);
@@ -52,10 +54,22 @@
             this.HasloZmienG.Controls.Add(this.StareHaslo);
             this.HasloZmienG.Location = new System.Drawing.Point(2, 3);
             this.HasloZmienG.Name = "HasloZmienG";
-            this.HasloZmienG.Size = new System.Drawing.Size(283, 111);
+            this.HasloZmienG.Size = new System.Drawing.Size(283, 140);
             this.HasloZmienG.TabIndex = 0;
             this.HasloZmienG.TabStop = false;
             this.HasloZmienG.Text = "Formularz";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Azure;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(200, 108);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Anuluj";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // PowtorzHaslo2
             // 
@@ -64,6 +78,18 @@
             this.PowtorzHaslo2.Size = new System.Drawing.Size(166, 20);
             this.PowtorzHaslo2.TabIndex = 5;
             this.PowtorzHaslo2.UseSystemPasswordChar = true;
+            // 
+            // ZmianaHasla
+            // 
+            this.ZmianaHasla.BackColor = System.Drawing.Color.Azure;
+            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ZmianaHasla.Location = new System.Drawing.Point(110, 108);
+            this.ZmianaHasla.Name = "ZmianaHasla";
+            this.ZmianaHasla.Size = new System.Drawing.Size(82, 23);
+            this.ZmianaHasla.TabIndex = 1;
+            this.ZmianaHasla.Text = "Zmień hasło";
+            this.ZmianaHasla.UseVisualStyleBackColor = false;
+            this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
             // 
             // NoweHaslo2
             // 
@@ -93,6 +119,7 @@
             // NoweHaslo
             // 
             this.NoweHaslo.AutoSize = true;
+            this.NoweHaslo.BackColor = System.Drawing.Color.Azure;
             this.NoweHaslo.Location = new System.Drawing.Point(7, 52);
             this.NoweHaslo.Name = "NoweHaslo";
             this.NoweHaslo.Size = new System.Drawing.Size(68, 13);
@@ -108,38 +135,13 @@
             this.StareHaslo.TabIndex = 0;
             this.StareHaslo.Text = "Stare hasło:";
             // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(210, 120);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Anuluj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // ZmianaHasla
-            // 
-            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ZmianaHasla.Location = new System.Drawing.Point(96, 120);
-            this.ZmianaHasla.Name = "ZmianaHasla";
-            this.ZmianaHasla.Size = new System.Drawing.Size(94, 23);
-            this.ZmianaHasla.TabIndex = 1;
-            this.ZmianaHasla.Text = "Zmień hasło";
-            this.ZmianaHasla.UseVisualStyleBackColor = true;
-            this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
-            // 
             // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(289, 146);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.ZmianaHasla);
+            this.ClientSize = new System.Drawing.Size(287, 144);
             this.Controls.Add(this.HasloZmienG);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

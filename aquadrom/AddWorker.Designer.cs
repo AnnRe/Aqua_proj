@@ -105,7 +105,7 @@
             this.Pracownik.Controls.Add(this.Dane_osobowe);
             this.Pracownik.Location = new System.Drawing.Point(3, 3);
             this.Pracownik.Name = "Pracownik";
-            this.Pracownik.Size = new System.Drawing.Size(583, 459);
+            this.Pracownik.Size = new System.Drawing.Size(586, 463);
             this.Pracownik.TabIndex = 0;
             this.Pracownik.TabStop = false;
             this.Pracownik.Text = "Pracownik";
@@ -120,7 +120,6 @@
             this.Anuluj.Size = new System.Drawing.Size(75, 23);
             this.Anuluj.TabIndex = 25;
             this.Anuluj.Text = "Anuluj";
-        
             this.Anuluj.UseVisualStyleBackColor = false;
             this.Anuluj.Click += new System.EventHandler(this.CancelButton_Click);
             // 
@@ -133,7 +132,6 @@
             this.AddEmployer.Size = new System.Drawing.Size(128, 23);
             this.AddEmployer.TabIndex = 24;
             this.AddEmployer.Text = "Dodaj pracownika";
-          
             this.AddEmployer.UseVisualStyleBackColor = false;
             this.AddEmployer.Click += new System.EventHandler(this.AddEmployer_Click);
             // 
@@ -351,23 +349,6 @@
             this.PowtórzHasło.Text = "Powtórz hasło:";
             this.PowtórzHasło.Click += new System.EventHandler(this.PowtórzHasło_Click);
             // 
-            // PowtorzHasloUżytkownika
-            // 
-            this.PowtorzHasloUżytkownika.Location = new System.Drawing.Point(106, 75);
-            this.PowtorzHasloUżytkownika.Name = "PowtorzHasloUżytkownika";
-            this.PowtorzHasloUżytkownika.Size = new System.Drawing.Size(148, 20);
-            this.PowtorzHasloUżytkownika.TabIndex = 22;
-            this.PowtorzHasloUżytkownika.UseSystemPasswordChar = true;
-            // 
-            // PowtórzHasło
-            // 
-            this.PowtórzHasło.AutoSize = true;
-            this.PowtórzHasło.Location = new System.Drawing.Point(6, 78);
-            this.PowtórzHasło.Name = "PowtórzHasło";
-            this.PowtórzHasło.Size = new System.Drawing.Size(78, 13);
-            this.PowtórzHasło.TabIndex = 18;
-            this.PowtórzHasło.Text = "Powtórz hasło:";
-            // 
             // TypKonta2
             // 
             this.TypKonta2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -377,8 +358,8 @@
             this.TypKonta2.Name = "TypKonta2";
             this.TypKonta2.Size = new System.Drawing.Size(148, 21);
             this.TypKonta2.TabIndex = 23;
-            this.TypKonta2.SelectedIndexChanged += new System.EventHandler(this.TypKonta2_SelectedIndexChanged);
             this.TypKonta2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.TypKonta2_DrawItem);
+            this.TypKonta2.SelectedIndexChanged += new System.EventHandler(this.TypKonta2_SelectedIndexChanged);
             // 
             // TypKonta
             // 
@@ -735,7 +716,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(591, 468);
+            this.ClientSize = new System.Drawing.Size(579, 468);
             this.Controls.Add(this.Pracownik);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
