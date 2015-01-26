@@ -21,7 +21,6 @@ namespace aquadrom
     {
         //public static string login, haslo;
         private static bool AllowToLog = false;
-        AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
         
         public Login()
@@ -71,7 +70,7 @@ namespace aquadrom
                         {
                             //UserPanel UserPanel = new UserPanel();
                             //UserPanel.Show();
-                            AdminPanel AdminPanel = new AdminPanel();
+                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
                             AdminPanel.Show();
 
                         }
@@ -79,7 +78,7 @@ namespace aquadrom
                         {
                            //UserPanel UserPanel = new UserPanel();
                            //UserPanel.Show();
-                           AdminPanel AdminPanel = new AdminPanel();
+                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
                            AdminPanel.Show();
                         }
                         break;
