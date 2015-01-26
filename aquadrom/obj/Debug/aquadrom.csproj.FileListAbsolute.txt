@@ -117,3 +117,22 @@ C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.ChangePassword.resour
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Objects.MyMessageBox.resources
 C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.Charting.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.Charting.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\PdfSharp.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.Objects.MyMessageBox.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources

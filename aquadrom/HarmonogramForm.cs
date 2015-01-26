@@ -402,13 +402,6 @@ namespace aquadrom
             {
                 comboBoxMonths.Enabled = true;
             }
-
-        }
-
-        private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
-        {
-            
-
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
