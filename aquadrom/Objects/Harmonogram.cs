@@ -89,7 +89,7 @@ namespace aquadrom.Objects
             string messageGodziny = pracownicyMajaOdpowiednieGodziny(time);
             if (messageGodziny.Length > 0)
                 return messageGodziny;
-            for (int i = 1; i <= 10/*DateTime.DaysInMonth(time.Year, time.Month)*/;i++ )//Odkomentować
+            for (int i = 1; i <= DateTime.DaysInMonth(time.Year, time.Month);i++ )
             {
                 string message = PoprawnieRozplanowanyDzien(day_i);
                 if (message.Length > 0)
