@@ -44,27 +44,23 @@
             // HasloZmienG
             // 
             this.HasloZmienG.BackColor = System.Drawing.Color.LightCyan;
-            this.HasloZmienG.Controls.Add(this.button2);
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo2);
-            this.HasloZmienG.Controls.Add(this.ZmianaHasla);
             this.HasloZmienG.Controls.Add(this.NoweHaslo2);
             this.HasloZmienG.Controls.Add(this.StareHaslo2);
             this.HasloZmienG.Controls.Add(this.PowtorzHaslo);
             this.HasloZmienG.Controls.Add(this.NoweHaslo);
             this.HasloZmienG.Controls.Add(this.StareHaslo);
-
             this.HasloZmienG.Location = new System.Drawing.Point(2, 3);
             this.HasloZmienG.Name = "HasloZmienG";
-
             this.HasloZmienG.Size = new System.Drawing.Size(283, 111);
             this.HasloZmienG.TabIndex = 0;
             this.HasloZmienG.TabStop = false;
             this.HasloZmienG.Text = "Formularz";
-            this.HasloZmienG.Enter += new System.EventHandler(this.HasloZmienG_Enter);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(201, 101);
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(210, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -82,7 +78,8 @@
             // 
             // ZmianaHasla
             // 
-            this.ZmianaHasla.Location = new System.Drawing.Point(101, 101);
+            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ZmianaHasla.Location = new System.Drawing.Point(96, 120);
             this.ZmianaHasla.Name = "ZmianaHasla";
             this.ZmianaHasla.Size = new System.Drawing.Size(94, 23);
             this.ZmianaHasla.TabIndex = 1;
@@ -100,12 +97,10 @@
             // 
             // StareHaslo2
             // 
-            this.NoweHaslo.AutoSize = true;
-            this.NoweHaslo.Location = new System.Drawing.Point(7, 52);
-            this.NoweHaslo.Name = "NoweHaslo";
-            this.NoweHaslo.Size = new System.Drawing.Size(68, 13);
-            this.NoweHaslo.TabIndex = 1;
-            this.NoweHaslo.Text = "Nowe hasło:";
+            this.StareHaslo2.Location = new System.Drawing.Point(110, 23);
+            this.StareHaslo2.Name = "StareHaslo2";
+            this.StareHaslo2.Size = new System.Drawing.Size(165, 20);
+            this.StareHaslo2.TabIndex = 6;
             this.StareHaslo2.TextChanged += new System.EventHandler(this.StareHaslo2_TextChanged);
             // 
             // PowtorzHaslo
@@ -134,16 +129,6 @@
             this.StareHaslo.Size = new System.Drawing.Size(65, 13);
             this.StareHaslo.TabIndex = 0;
             this.StareHaslo.Text = "Stare hasło:";
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(210, 120);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Anuluj";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // ChangePassword
             // 

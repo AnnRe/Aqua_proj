@@ -250,7 +250,7 @@ namespace aquadrom
                 Add_Contract();
                 string query = " MAX(" + Constants.UmowaIDu + ")" + " from " + Constants.TabUmowa;
                 DataTable ids = polaczenie.Select(query);
-                string ID = ids.Rows[0][0].ToString();".");
+                string ID = ids.Rows[0][0].ToString();
                 MyMessageBox.ShowBox("Numer umowy to: " +ID + ".");
                 NrUmowy.Text = ID;
                 TypUmowy.Enabled = false;
