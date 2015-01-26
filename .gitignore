@@ -1,7 +1,6 @@
 *.exe
 DBTests/obj/Debug/
 aquadrom/obj/Debug/
-aquadrom/bin/Debug/
 Tests/bin/Debug/
 Tests/onj/Debug/
 aquadrom/xc3nr253.ikq
@@ -13,3 +12,6 @@ aquadrom/App.config
 Dokumentacja/Dokumentacja projektu.aux
 Dokumentacja/Dokumentacja projektu.synctex.gz
 Dokumentacja/Dokumentacja projektu.toc
+aquadrom/bin/Debug/MigraDoc*
+aquadrom/bin/Debug/PdfSharp*
+aquadrom/bin/Debug/aquadrom*
