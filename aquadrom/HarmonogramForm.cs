@@ -262,27 +262,32 @@ namespace aquadrom
         private void buttonSave_Click(object sender, EventArgs e)
         {
             UpdateHarmonogramClass();
-            DateTime currentTime = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), 1);
-            string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
-            if (messageMiesiac.Length != 0)
+            if (!saved)
             {
-                MyMessageBox.ShowBox("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
-                string message = harmonogram.Save();
-                MyMessageBox.ShowBox(message);
-                saved = true;
+                DateTime currentTime = new DateTime(GetYearFromCombo(), GetMonthFromCombo(), 1);
+                string messageMiesiac = harmonogram.poprawnieRozplanowanyMiesiac(currentTime);
+                if (messageMiesiac.Length != 0)
+                {
+                    MyMessageBox.ShowBox("Źle rozplanowany dzień! " + currentTime.ToShortDateString() + " " + messageMiesiac);
+                    string message = harmonogram.Save();
+                    MyMessageBox.ShowBox(message);
+                    saved = true;
+                }
+                else
+                {
+                    string message = harmonogram.Save();
+                    MyMessageBox.ShowBox(message);
+                    saved = true;
+                    for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+                        for (int col_i = 3; col_i < 65; col_i += 2)
+                        {
+                            if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
+                                HighlightCell(row_i, col_i);
+                        }
+                }
             }
             else
-            {
-                string message = harmonogram.Save();
-                MyMessageBox.ShowBox(message);
-                saved = true;
-                for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
-                    for (int col_i = 3; col_i < 65; col_i += 2)
-                    {
-                        if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
-                            HighlightCell(row_i, col_i);
-                    }
-            }
+                MyMessageBox.ShowBox("Brak zmian do zapisania!");
         }
 
         private void HighlightCell(int row_i, int col_i)
