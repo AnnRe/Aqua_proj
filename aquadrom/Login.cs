@@ -77,10 +77,10 @@ namespace aquadrom
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
                         {
-                           UserPanel UserPanel = new UserPanel();
-                           UserPanel.Show();
-                           //AdminPanel AdminPanel = new AdminPanel();
-                           //AdminPanel.Show();
+                           //UserPanel UserPanel = new UserPanel();
+                           //UserPanel.Show();
+                           AdminPanel AdminPanel = new AdminPanel();
+                           AdminPanel.Show();
                         }
                         break;
                     }

@@ -36,6 +36,7 @@
             // 
             // Generuj
             // 
+            this.Generuj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Generuj.Location = new System.Drawing.Point(351, 407);
             this.Generuj.Name = "Generuj";
             this.Generuj.Size = new System.Drawing.Size(116, 23);
@@ -46,6 +47,7 @@
             // 
             // AnulujNotatke
             // 
+            this.AnulujNotatke.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AnulujNotatke.Location = new System.Drawing.Point(473, 407);
             this.AnulujNotatke.Name = "AnulujNotatke";
             this.AnulujNotatke.Size = new System.Drawing.Size(75, 23);

@@ -185,6 +185,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Location = new System.Drawing.Point(268, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(112, 23);
@@ -195,6 +196,7 @@
             // 
             // btn_check
             // 
+            this.btn_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_check.Location = new System.Drawing.Point(386, 12);
             this.btn_check.Name = "btn_check";
             this.btn_check.Size = new System.Drawing.Size(112, 23);
@@ -218,6 +220,7 @@
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HarmonogramForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HarmonogramForm_FormClosed);
             this.Load += new System.EventHandler(this.HarmonogramForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.aquadromDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.godzinypracyBindingSource)).EndInit();

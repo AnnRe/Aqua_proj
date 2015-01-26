@@ -31,9 +31,9 @@ namespace aquadrom.Objects
 
             newMessageBox = new MyMessageBox();
             newMessageBox.buttons = MessageBoxButtons.OK;
-            newMessageBox.button1.Text = "OK";
-            newMessageBox.button1.Visible = true;
-            newMessageBox.button2.Visible = false;
+            newMessageBox.button2.Text = "OK";
+            newMessageBox.button2.Visible = true;
+            newMessageBox.button1.Visible = false;
             newMessageBox.button3.Visible = false;
 
             newMessageBox.label.Text = txtMessage;
@@ -47,9 +47,9 @@ namespace aquadrom.Objects
             newMessageBox = new MyMessageBox();
 
             newMessageBox.buttons = MessageBoxButtons.OK;
-            newMessageBox.button1.Text = "OK";
-            newMessageBox.button1.Visible = true;
-            newMessageBox.button2.Visible = false;
+            newMessageBox.button2.Text = "OK";
+            newMessageBox.button2.Visible = true;
+            newMessageBox.button1.Visible = false;
             newMessageBox.button3.Visible = false;
             newMessageBox.Text = txtTitle;
             newMessageBox.label.Text = txtMessage;
@@ -65,9 +65,9 @@ namespace aquadrom.Objects
 
             if (messageBoxButtons == MessageBoxButtons.OK)
             {
-                newMessageBox.button1.Text = "OK";
-                newMessageBox.button1.Visible = true;
-                newMessageBox.button2.Visible = false;
+                newMessageBox.button2.Text = "OK";
+                newMessageBox.button2.Visible = true;
+                newMessageBox.button1.Visible = false;
                 newMessageBox.button3.Visible = false;
             }
             else if(messageBoxButtons==MessageBoxButtons.YesNo)
@@ -97,10 +97,8 @@ namespace aquadrom.Objects
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (buttons == MessageBoxButtons.OK)
-                dialogResult = DialogResult.OK;
-            else 
-                dialogResult = DialogResult.Yes;
+             
+            dialogResult = DialogResult.Yes;
             
             Button_id = "1";
             newMessageBox.Dispose();
@@ -108,7 +106,10 @@ namespace aquadrom.Objects
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dialogResult = DialogResult.No;
+            if (buttons == MessageBoxButtons.OK)
+                dialogResult = DialogResult.OK;
+            else
+                dialogResult = DialogResult.No;
             Button_id = "2";
             newMessageBox.Dispose();
         }

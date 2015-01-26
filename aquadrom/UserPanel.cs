@@ -30,8 +30,9 @@ namespace aquadrom
 
         private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HarmonogramForm harmonogramF = new HarmonogramForm();
-            harmonogramF.Show();
+                HarmonogramForm harmonogramF = new HarmonogramForm();
+            if(!HarmonogramForm.exists)
+                harmonogramF.Show();
         }
 
         private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)

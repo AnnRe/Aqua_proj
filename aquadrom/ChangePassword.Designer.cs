@@ -111,6 +111,7 @@
             // 
             // ZmianaHasla
             // 
+            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ZmianaHasla.Location = new System.Drawing.Point(110, 120);
             this.ZmianaHasla.Name = "ZmianaHasla";
             this.ZmianaHasla.Size = new System.Drawing.Size(94, 23);
@@ -120,6 +121,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(210, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
