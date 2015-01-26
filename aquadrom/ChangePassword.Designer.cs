@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             this.HasloZmienG = new System.Windows.Forms.GroupBox();
             this.PowtorzHaslo2 = new System.Windows.Forms.TextBox();
             this.NoweHaslo2 = new System.Windows.Forms.TextBox();
@@ -138,6 +139,7 @@
             this.Controls.Add(this.ZmianaHasla);
             this.Controls.Add(this.HasloZmienG);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePassword";
             this.Text = "Zmień hasło";
             this.HasloZmienG.ResumeLayout(false);

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HarmonogramForm));
             this.aquadromDataSet = new aquadrom.aquadromDataSet();
             this.godzinypracyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.godziny_pracyTableAdapter = new aquadrom.aquadromDataSetTableAdapters.Godziny_pracyTableAdapter();
@@ -74,6 +75,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -204,12 +206,15 @@
             // HarmonogramForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
             this.ClientSize = new System.Drawing.Size(697, 262);
             this.Controls.Add(this.btn_check);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxYear);
             this.Controls.Add(this.comboBoxMonths);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HarmonogramForm";
             this.Text = "Harmonogram";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HarmonogramForm_FormClosing);

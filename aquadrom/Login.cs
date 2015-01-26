@@ -79,8 +79,8 @@ namespace aquadrom
                         {
                            UserPanel UserPanel = new UserPanel();
                            UserPanel.Show();
-                            //AdminPanel AdminPanel = new AdminPanel();
-                            //AdminPanel.Show();
+                           //AdminPanel AdminPanel = new AdminPanel();
+                           //AdminPanel.Show();
                         }
                         break;
                     }
