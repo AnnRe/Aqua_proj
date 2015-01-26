@@ -65,10 +65,10 @@ namespace aquadrom
                         AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
-                            //UserPanel UserPanel = new UserPanel();
-                            //UserPanel.Show();
-                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
-                            AdminPanel.Show();
+                            UserPanel UserPanel = new UserPanel(UserNameBox.Text);
+                            UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
+                            //AdminPanel.Show();
 
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")

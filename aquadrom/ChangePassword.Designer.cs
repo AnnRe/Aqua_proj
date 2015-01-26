@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePassword));
             this.HasloZmienG = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.PowtorzHaslo2 = new System.Windows.Forms.TextBox();
-            this.ZmianaHasla = new System.Windows.Forms.Button();
             this.NoweHaslo2 = new System.Windows.Forms.TextBox();
             this.StareHaslo2 = new System.Windows.Forms.TextBox();
             this.PowtorzHaslo = new System.Windows.Forms.Label();
             this.NoweHaslo = new System.Windows.Forms.Label();
             this.StareHaslo = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ZmianaHasla = new System.Windows.Forms.Button();
             this.HasloZmienG.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,17 +57,6 @@
             this.HasloZmienG.TabStop = false;
             this.HasloZmienG.Text = "Formularz";
             // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(210, 120);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Anuluj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // PowtorzHaslo2
             // 
             this.PowtorzHaslo2.Location = new System.Drawing.Point(110, 75);
@@ -75,17 +64,6 @@
             this.PowtorzHaslo2.Size = new System.Drawing.Size(166, 20);
             this.PowtorzHaslo2.TabIndex = 5;
             this.PowtorzHaslo2.UseSystemPasswordChar = true;
-            // 
-            // ZmianaHasla
-            // 
-            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ZmianaHasla.Location = new System.Drawing.Point(96, 120);
-            this.ZmianaHasla.Name = "ZmianaHasla";
-            this.ZmianaHasla.Size = new System.Drawing.Size(94, 23);
-            this.ZmianaHasla.TabIndex = 1;
-            this.ZmianaHasla.Text = "Zmień hasło";
-            this.ZmianaHasla.UseVisualStyleBackColor = true;
-            this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
             // 
             // NoweHaslo2
             // 
@@ -130,6 +108,28 @@
             this.StareHaslo.TabIndex = 0;
             this.StareHaslo.Text = "Stare hasło:";
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(210, 120);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Anuluj";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ZmianaHasla
+            // 
+            this.ZmianaHasla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ZmianaHasla.Location = new System.Drawing.Point(96, 120);
+            this.ZmianaHasla.Name = "ZmianaHasla";
+            this.ZmianaHasla.Size = new System.Drawing.Size(94, 23);
+            this.ZmianaHasla.TabIndex = 1;
+            this.ZmianaHasla.Text = "Zmień hasło";
+            this.ZmianaHasla.UseVisualStyleBackColor = true;
+            this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
+            // 
             // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +146,7 @@
             this.Name = "ChangePassword";
             this.Text = "Zmień hasło";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChangePassword_FormClosing);
+            this.Load += new System.EventHandler(this.ChangePassword_Load);
             this.HasloZmienG.ResumeLayout(false);
             this.HasloZmienG.PerformLayout();
             this.ResumeLayout(false);

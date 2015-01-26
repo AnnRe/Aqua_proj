@@ -151,8 +151,8 @@ namespace aquadrom
 
 
             format.Alignment = XStringAlignment.Center;
-            XImage image = XImage.FromFile("logo.png");
-            gfx.DrawImage(image, 410, 30, 171, 34);
+//            XImage image = XImage.FromFile("logo.png");
+ //           gfx.DrawImage(image, 410, 30, 171, 34);
             gfx.DrawString("AQUADROM Ruda Śląska", font2, XBrushes.Black, new XRect(100, 60, page.Width - 200, 5), XStringFormats.Center);
             gfx.DrawString("Notatka - Zdarzenie", font3, XBrushes.Black, new XRect(100, 75, page.Width - 200, 20), XStringFormats.Center);
             gfx.DrawLine(pen,50,100,540,100); //poziome

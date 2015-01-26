@@ -76,7 +76,7 @@ namespace aquadrom
                         maile.sendMail(loginek, NoweHaslo2.Text, mail, name, surname);
                         MessageBox.Show("Hasło zostało zmienione, sprawdź swoją pocztę!");
                     }
-                    else if (adapter.Update(query3))
+                    else if (adapter.Update(query3)==false)
                     {
                         MessageBox.Show("Bład!");
                     }
@@ -105,13 +105,18 @@ namespace aquadrom
 
         private void button2_Click(object sender, EventArgs e)
         {
+            exist = false;
             this.Close();
         }
 
         private void ChangePassword_FormClosing(object sender, FormClosingEventArgs e)
         {
             exist = false;
-            this.Close();
+        }
+
+        private void ChangePassword_Load(object sender, EventArgs e)
+        {
+
         }
        
     }

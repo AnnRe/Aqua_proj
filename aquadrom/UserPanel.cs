@@ -8,62 +8,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using aquadrom.Utilities;
 
 namespace aquadrom
 {
     public partial class UserPanel : Form
     {
-        string sql = "";
-        public UserPanel(string login)
+        string login = "";
+        DBConnector connector = new DBConnector();
+        public UserPanel(string sql)
         {
             InitializeComponent();
-            string login2 = login;
-            sql += login2; 
-        }
-
-        
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
+            login += sql;
         }
 
         private void UserPanel_Load(object sender, EventArgs e)
         {
+            DataTable dtlist = connector.Select("* from " + Constants.TabPracownik + " p," + Constants.TabUmowa + " u where p." + Constants.PracownikIDUmowy + "=u." + Constants.UmowaIDu + " and p." + Constants.PracownikLogin +"='"+ login+"'");
+
+            ImieUzytkownika.Text = TakeValue(dtlist, Constants.PracownikImie);
+            NazwiskoUzytkownika.Text = TakeValue(dtlist, Constants.PracownikNazwisko);
+            PeselUzytkownika.Text = TakeValue(dtlist, Constants.PracownikPesel);
+            PoczatekUmowy.Text = TakeValue(dtlist, Constants.UmowaPoczatekUmowy);
+            KoniecUmowy.Text = TakeValue(dtlist, Constants.UmowaKoniecUmowy);
+            KoniecKPPDateTimePicker.Text = TakeValue(dtlist, Constants.PracownikWaznKPP);
+            DataBadanDateTimePicker.Text = TakeValue(dtlist, Constants.PracownikDataBadan);
+            if (CheckInternetConnection() == false)     // sprawdzanie połączenia internetowego
+                PolaczenieStripUser.Text = "Brak połączenia internetowego";
+            else
+                PolaczenieStripUser.Text = "Połączenie internetowe aktywne";
         }
 
         private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HarmonogramForm harmonogramF = new HarmonogramForm(false);
-            if (!HarmonogramForm.exists)
+            if (CanOpen() == false)
+            {
+                HarmonogramForm harmonogramF = new HarmonogramForm(false);
                 harmonogramF.Show();
+            }
         }
 
         private void UserPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+
         }
 
-        private void UserPanel_FormClosed(object sender, FormClosedEventArgs e)
+        private string TakeValue(DataTable dtlist, string what)
         {
-            Application.Exit();
+            return dtlist.Rows[0][what].ToString();
         }
 
         private void daneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (CanOpen() == false)
+            {
+                ChangePassword change = new ChangePassword(login);
+                change.Show();
+            }
+            
         }
 
-        private void zmieńHasłoToolStripMenuItem_Click(object sender, EventArgs e)
+        private bool CheckInternetConnection()
         {
-            ChangePassword change = new ChangePassword(sql);
-            change.Show();
+            try{
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                { return true; } }
+            catch{ return false;}
         }
 
-        private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
+        private bool CanOpen()
         {
-            GeneratorNotatek change = new GeneratorNotatek(sql);
-            change.Show();
+            if ((HarmonogramForm.exists==false) &&
+            (GeneratorNotatek.exist==false) &&
+            (ChangePassword.exist==false)
+                )
+                return false;
+            else return true;
+        }
 
+        private void notatkiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(CanOpen()==false)
+            {
+                GeneratorNotatek change = new GeneratorNotatek(login);
+                change.Show();
+            }
+        }
+
+        private void UserPanel_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
