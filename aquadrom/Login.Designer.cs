@@ -75,7 +75,7 @@
             // LoginButton
             // 
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.LoginButton.Location = new System.Drawing.Point(150, 115);
+            this.LoginButton.Location = new System.Drawing.Point(204, 97);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -85,7 +85,7 @@
             // 
             // noweHaslo
             // 
-            this.noweHaslo.Location = new System.Drawing.Point(120, 106);
+            this.noweHaslo.Location = new System.Drawing.Point(12, 115);
             this.noweHaslo.Name = "noweHaslo";
             this.noweHaslo.Size = new System.Drawing.Size(131, 23);
             this.noweHaslo.TabIndex = 11;

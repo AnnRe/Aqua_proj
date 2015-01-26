@@ -221,8 +221,8 @@ namespace aquadrom
         {
             if(CanOpen()==false)
             {
-                //HarmonogramForm HarmonogramAdmin = new HarmonogramForm(true);
-                //HarmonogramAdmin.Show();
+                HarmonogramForm HarmonogramAdmin = new HarmonogramForm(true);
+                HarmonogramAdmin.Show();
             }
         }
 
@@ -230,8 +230,8 @@ namespace aquadrom
         {
             if (CanOpen() == false)
             {
-                //GeneratorNotatek notatka = new GeneratorNotatek(sql);
-                //notatka.Show();
+                GeneratorNotatek notatka = new GeneratorNotatek(sql);
+                notatka.Show();
             }
         }
 
