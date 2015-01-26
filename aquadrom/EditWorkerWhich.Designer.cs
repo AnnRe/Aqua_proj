@@ -37,6 +37,7 @@
             // EditWorkerComboBox
             // 
             this.EditWorkerComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.EditWorkerComboBox.BackColor = System.Drawing.Color.Azure;
             this.EditWorkerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EditWorkerComboBox.FormattingEnabled = true;
             this.EditWorkerComboBox.Location = new System.Drawing.Point(62, 31);
@@ -47,16 +48,19 @@
             // 
             // ChooseButton
             // 
+            this.ChooseButton.BackColor = System.Drawing.Color.Azure;
+            this.ChooseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ChooseButton.Location = new System.Drawing.Point(62, 77);
             this.ChooseButton.Name = "ChooseButton";
             this.ChooseButton.Size = new System.Drawing.Size(110, 23);
             this.ChooseButton.TabIndex = 1;
             this.ChooseButton.Text = "Wybierz";
-            this.ChooseButton.UseVisualStyleBackColor = true;
+            this.ChooseButton.UseVisualStyleBackColor = false;
             this.ChooseButton.Click += new System.EventHandler(this.ChooseButton_Click);
             // 
             // CancelButton
             // 
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CancelButton.Location = new System.Drawing.Point(183, 77);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(110, 23);

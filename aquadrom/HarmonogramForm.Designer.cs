@@ -185,6 +185,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Location = new System.Drawing.Point(268, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(112, 23);
@@ -195,6 +196,7 @@
             // 
             // btn_check
             // 
+            this.btn_check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_check.Location = new System.Drawing.Point(386, 12);
             this.btn_check.Name = "btn_check";
             this.btn_check.Size = new System.Drawing.Size(112, 23);

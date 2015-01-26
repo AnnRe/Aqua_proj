@@ -565,6 +565,7 @@
             // 
             // AnulujButton
             // 
+            this.AnulujButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AnulujButton.Location = new System.Drawing.Point(511, 420);
             this.AnulujButton.Name = "AnulujButton";
             this.AnulujButton.Size = new System.Drawing.Size(75, 23);
@@ -575,6 +576,7 @@
             // 
             // EdytujUseraButton
             // 
+            this.EdytujUseraButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EdytujUseraButton.Location = new System.Drawing.Point(377, 420);
             this.EdytujUseraButton.Name = "EdytujUseraButton";
             this.EdytujUseraButton.Size = new System.Drawing.Size(128, 23);

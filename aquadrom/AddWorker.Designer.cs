@@ -112,22 +112,26 @@
             // 
             // Anuluj
             // 
+            this.Anuluj.BackColor = System.Drawing.Color.Azure;
+            this.Anuluj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Anuluj.Location = new System.Drawing.Point(488, 427);
             this.Anuluj.Name = "Anuluj";
             this.Anuluj.Size = new System.Drawing.Size(75, 23);
             this.Anuluj.TabIndex = 25;
             this.Anuluj.Text = "Anuluj";
-            this.Anuluj.UseVisualStyleBackColor = true;
+            this.Anuluj.UseVisualStyleBackColor = false;
             this.Anuluj.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AddEmployer
             // 
+            this.AddEmployer.BackColor = System.Drawing.Color.Azure;
+            this.AddEmployer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddEmployer.Location = new System.Drawing.Point(354, 427);
             this.AddEmployer.Name = "AddEmployer";
             this.AddEmployer.Size = new System.Drawing.Size(128, 23);
             this.AddEmployer.TabIndex = 24;
             this.AddEmployer.Text = "Dodaj pracownika";
-            this.AddEmployer.UseVisualStyleBackColor = true;
+            this.AddEmployer.UseVisualStyleBackColor = false;
             this.AddEmployer.Click += new System.EventHandler(this.AddEmployer_Click);
             // 
             // Badania
@@ -194,6 +198,7 @@
             // Stopień
             // 
             this.Stopień.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Stopień.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Stopień.FormattingEnabled = true;
             this.Stopień.Location = new System.Drawing.Point(97, 23);
             this.Stopień.Name = "Stopień";
@@ -398,12 +403,14 @@
             // 
             // StwórzUmowe
             // 
+            this.StwórzUmowe.BackColor = System.Drawing.Color.Azure;
+            this.StwórzUmowe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.StwórzUmowe.Location = new System.Drawing.Point(150, 133);
             this.StwórzUmowe.Name = "StwórzUmowe";
             this.StwórzUmowe.Size = new System.Drawing.Size(104, 23);
             this.StwórzUmowe.TabIndex = 5;
             this.StwórzUmowe.Text = "Stwórz umowę";
-            this.StwórzUmowe.UseVisualStyleBackColor = true;
+            this.StwórzUmowe.UseVisualStyleBackColor = false;
             this.StwórzUmowe.Click += new System.EventHandler(this.StwórzUmowe_Click);
             // 
             // KoniecUmowy
