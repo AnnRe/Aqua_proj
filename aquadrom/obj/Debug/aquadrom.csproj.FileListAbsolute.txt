@@ -1,0 +1,137 @@
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.EditWorker.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Form2.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.HarmonogramForm.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Login.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.UserPanel.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\aquadrom.exe.config
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\aquadrom.exe
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\aquadrom.pdb
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.exe
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.pdb
+D:\projektio\aquadrom\bin\Debug\aquadrom.exe.config
+D:\projektio\aquadrom\obj\Debug\aquadrom.exe
+D:\projektio\aquadrom\obj\Debug\aquadrom.pdb
+D:\projektio\aquadrom\obj\Debug\aquadrom.EditWorker.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.Form2.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.HarmonogramForm.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.Login.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.UserPanel.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
+D:\projektio\aquadrom\bin\Debug\aquadrom.exe
+D:\projektio\aquadrom\bin\Debug\aquadrom.pdb
+D:\projektio\aquadrom\bin\Debug\PdfSharp.Charting.dll
+D:\projektio\aquadrom\bin\Debug\PdfSharp.dll
+D:\projektio\aquadrom\bin\Debug\PdfSharp.xml
+D:\projektio\aquadrom\bin\Debug\PdfSharp.Charting.xml
+D:\projektio\aquadrom\bin\Debug\de\PdfSharp.resources.dll
+D:\projektio\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+D:\projektio\aquadrom\obj\Debug\aquadrom.csprojResolveAssemblyReference.cache
+D:\projektio\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+D:\projektio\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+D:\projektio\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+D:\projektio\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+D:\projektio\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+D:\projektio\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
+D:\Aqua_proj\aquadrom\bin\Debug\aquadrom.exe.config
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.exe
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.pdb
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.csprojResolveAssemblyReference.cache
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.EditWorker.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.Form2.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.HarmonogramForm.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.Login.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.Objects.MyMessageBox.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.UserPanel.resources
+D:\Aqua_proj\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
+D:\Aqua_proj\aquadrom\bin\Debug\aquadrom.exe
+D:\Aqua_proj\aquadrom\bin\Debug\aquadrom.pdb
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+D:\Aqua_proj\aquadrom\bin\Debug\PdfSharp.Charting.dll
+D:\Aqua_proj\aquadrom\bin\Debug\PdfSharp.dll
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+D:\Aqua_proj\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+D:\Aqua_proj\aquadrom\bin\Debug\PdfSharp.xml
+D:\Aqua_proj\aquadrom\bin\Debug\PdfSharp.Charting.xml
+D:\Aqua_proj\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+D:\Aqua_proj\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+D:\Aqua_proj\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+D:\Aqua_proj\aquadrom\bin\Debug\de\PdfSharp.resources.dll
+D:\Aqua_proj\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\PdfSharp.Charting.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\PdfSharp.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\PdfSharp.xml
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\PdfSharp.Charting.xml
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.Objects.MyMessageBox.resources
+C:\Users\HP\Documents\aquaproj\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.exe.config
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.exe
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\aquadrom.pdb
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.Rendering.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.RtfRendering.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.Charting.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.DocumentObjectModel.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.Rendering.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\MigraDoc.RtfRendering.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\PdfSharp.Charting.xml
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\PdfSharp.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\bin\Debug\de\PdfSharp.Charting.resources.dll
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.EditWorker.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.EditWorkerWhich.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.DeleteWorker.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.Form2.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.GeneratorNotatek.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.HarmonogramForm.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.Login.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.AdminPanel.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.Objects.MyMessageBox.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.Properties.Resources.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.UserPanel.resources
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.csproj.GenerateResource.Cache
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.exe
+E:\Studia\Informatyka\Semestr V\IO\aquadrom\obj\Debug\aquadrom.pdb

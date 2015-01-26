@@ -25,7 +25,11 @@ namespace aquadrom
         public AdminPanel(string login)
         {
             InitializeComponent();
+<<<<<<< HEAD
+            sql += login; 
+=======
             sql += login;
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
         }
 
         public void AdminPanel_Load(object sender, EventArgs e) // wypelnienie głównego DataTable
@@ -41,10 +45,14 @@ namespace aquadrom
             dataGridView1.Columns[Constants.PracownikOstrzezenieUmowa].Visible = false;
             ColorCheckUser();
 
+<<<<<<< HEAD
+           /*if (CheckInternetConnection() == false)
+=======
             if (CheckInternetConnection() == false)     // sprawdzanie połączenia internetowego
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
                 PolczenieStripStatus.Text = "Brak połączenia internetowego";
             else
-                PolczenieStripStatus.Text = "Połączenie internetowe aktywne";
+                PolczenieStripStatus.Text = "Połączenie internetowe aktywne";*/
         }
 
         private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,7 +62,6 @@ namespace aquadrom
 
         private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if(CanOpen()==false)
             {
                 DeleteWorker DelWor = new DeleteWorker(this);
@@ -69,7 +76,6 @@ namespace aquadrom
 
         private void edytujUżytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if(CanOpen()==false)
             {
                 EditWorkerWhich EdWor = new EditWorkerWhich(this);
@@ -79,14 +85,12 @@ namespace aquadrom
 
         private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (CanOpen() == false)
             {
                 Form2 AddWor = new Form2();
                 AddWor.Show();
             }
         }
-
 
         private void ColorCheckUser()       //zaznaczanie na czerwowo użytkowników którym kończą się badania,kpp,umowa
         {
@@ -160,7 +164,6 @@ namespace aquadrom
                 what += "Data ważności umowy: " + medicaldate.ToString("dd-MM-yyyy") + "\n";
                 adapter.Update(Constants.TabPracownik + " set " + Constants.PracownikOstrzezenieUmowa + "='t' where " + Constants.PracownikID + "=" + dataGridView1.Rows[iterator].Cells[Constants.PracownikID].Value.ToString());
             }
-
             if (what.Length != 0)   // jeśli jest ostrzeżenie i mail nie był jeszcze wysłany to wyślij
             {
                 var fromAdress = new MailAddress("aquadromautomat@gmail.com", "System automatycznej informacji");
@@ -212,7 +215,6 @@ namespace aquadrom
 
         private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             GeneratorNotatek notatka = new GeneratorNotatek(sql);
             notatka.Show();
         }
@@ -221,8 +223,8 @@ namespace aquadrom
         {
             if(CanOpen()==false)
             {
-                HarmonogramForm HarmonogramAdmin = new HarmonogramForm(true);
-                HarmonogramAdmin.Show();
+                //HarmonogramForm HarmonogramAdmin = new HarmonogramForm(true);
+                //HarmonogramAdmin.Show();
             }
         }
 
@@ -230,8 +232,8 @@ namespace aquadrom
         {
             if (CanOpen() == false)
             {
-                GeneratorNotatek notatka = new GeneratorNotatek(sql);
-                notatka.Show();
+                //GeneratorNotatek notatka = new GeneratorNotatek(sql);
+                //notatka.Show();
             }
         }
 

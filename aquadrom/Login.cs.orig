@@ -14,6 +14,10 @@ using DB;
 using aquadrom.Utilities;
 using System.Security.Cryptography;
 using aquadrom.Objects;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
 namespace aquadrom
 {
     public partial class Login : Form
@@ -25,7 +29,6 @@ namespace aquadrom
         {
             InitializeComponent();
         }
-
         public static String sha256_hash(String value) //funkcja hashujaca haslo
         {
             StringBuilder Sb = new StringBuilder();
@@ -38,7 +41,6 @@ namespace aquadrom
             }
             return Sb.ToString();
         }
-
         private bool CheckBase() // sprawdzenie połączenia z bazą
         {
             DBConnector con = new DBConnector();
@@ -48,10 +50,14 @@ namespace aquadrom
             return true;
         }
         private void LoginButton_Click(object sender, EventArgs e)
-{
+        {
             if (CheckBase() == false) // if brak bazy, pokaż info i zamknij
             {
+<<<<<<< HEAD
+                MessageBox.Show("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
+=======
                 MyMessageBox.ShowBox("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
                 this.Close();
             }
             else
@@ -65,10 +71,25 @@ namespace aquadrom
                         AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
-                            UserPanel UserPanel = new UserPanel(UserNameBox.Text);
+<<<<<<< HEAD
+                            string login = UserNameBox.Text;
+                            UserPanel UserPanel = new UserPanel(login);
                             UserPanel.Show();
-                            //AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
+                            //AdminPanel AdminPanel = new AdminPanel(login);
                             //AdminPanel.Show();
+                        }
+                        if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
+                        {
+                            string login = UserNameBox.Text;
+                            UserPanel UserPanel = new UserPanel(login);
+                            UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel(login);
+                            //AdminPanel.Show();
+=======
+                            //UserPanel UserPanel = new UserPanel();
+                            //UserPanel.Show();
+                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
+                            AdminPanel.Show();
 
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
@@ -77,8 +98,7 @@ namespace aquadrom
                            //UserPanel.Show();
                             AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
                            AdminPanel.Show();
-                            //AdminPanel AdminPanel = new AdminPanel(login);
-                            //AdminPanel.Show();
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
                         }
                         break;
                     }
@@ -113,6 +133,7 @@ namespace aquadrom
         {
             Application.Exit();
         }
+<<<<<<< HEAD
         private void LoginButton_KeyPress(object sender, KeyPressEventArgs e)
         {
         }
@@ -124,6 +145,10 @@ namespace aquadrom
         }
 
         private void UserNameBox_TextChanged(object sender, EventArgs e)
+=======
+
+        private void LoginButton_KeyPress(object sender, KeyPressEventArgs e)
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
         {
 
         }
