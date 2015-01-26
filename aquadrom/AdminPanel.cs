@@ -21,9 +21,11 @@ namespace aquadrom
     {
         DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
-        public AdminPanel()
+        string sql = "";
+        public AdminPanel(string login)
         {
             InitializeComponent();
+            sql += login;
         }
 
         public void AdminPanel_Load(object sender, EventArgs e) // wypelnienie głównego DataTable
@@ -52,7 +54,7 @@ namespace aquadrom
 
         private void UsuńToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) && (EditWorker.exist==false) )  // jeśli okno DeleteWorker,WhichWorker,EditWorker zamknięte to je otwórz else nic
+            if(CanOpen()==false)
             {
                 DeleteWorker DelWor = new DeleteWorker(this);
                 DelWor.Show();
@@ -66,7 +68,7 @@ namespace aquadrom
 
         private void edytujUżytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if( (DeleteWorker.exist==false) && (EditWorkerWhich.exist==false) )
+            if(CanOpen()==false)
             {
                 EditWorkerWhich EdWor = new EditWorkerWhich(this);
                 EdWor.Show();
@@ -75,8 +77,11 @@ namespace aquadrom
 
         private void DodajUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 AddWor = new Form2();
-            AddWor.Show();
+            if (CanOpen() == false)
+            {
+                Form2 AddWor = new Form2();
+                AddWor.Show();
+            }
         }
 
         private void ColorCheckUser()       //zaznaczanie na czerwowo użytkowników którym kończą się badania,kpp,umowa
@@ -204,6 +209,37 @@ namespace aquadrom
         {
             GeneratorNotatek notatka = new GeneratorNotatek();
             notatka.Show();
+        }
+
+        private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(CanOpen()==false)
+            {
+                HarmonogramForm HarmonogramAdmin = new HarmonogramForm(true);
+                HarmonogramAdmin.Show();
+            }
+        }
+
+        private void napiszNotatkęToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (CanOpen() == false)
+            {
+                GeneratorNotatek notatka = new GeneratorNotatek(sql);
+                notatka.Show();
+            }
+        }
+
+        private bool CanOpen()
+        {
+            if ((DeleteWorker.exist == false) &&
+                (EditWorkerWhich.exist == false) &&
+                (EditWorker.exist == false) &&
+                (HarmonogramForm.exist == false) &&
+                (GeneratorNotatek.exist == false) &&
+                (Form2.exist == false)
+                )
+                return false;
+            else return true;
         }
 
         private void ądzajToolStripMenuItem_Click(object sender, EventArgs e)

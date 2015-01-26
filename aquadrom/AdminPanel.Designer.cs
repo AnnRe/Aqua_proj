@@ -39,6 +39,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.PolczenieStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.harmonogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -106,7 +108,9 @@
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ądzajToolStripMenuItem});
+            this.ądzajToolStripMenuItem,
+            this.harmonogramToolStripMenuItem,
+            this.napiszNotatkęToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(980, 24);
@@ -128,6 +132,20 @@
             this.PolczenieStripStatus.Name = "PolczenieStripStatus";
             this.PolczenieStripStatus.Size = new System.Drawing.Size(63, 17);
             this.PolczenieStripStatus.Text = "Polaczenie";
+            // 
+            // harmonogramToolStripMenuItem
+            // 
+            this.harmonogramToolStripMenuItem.Name = "harmonogramToolStripMenuItem";
+            this.harmonogramToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.harmonogramToolStripMenuItem.Text = "Harmonogram";
+            this.harmonogramToolStripMenuItem.Click += new System.EventHandler(this.harmonogramToolStripMenuItem_Click);
+            // 
+            // napiszNotatkęToolStripMenuItem
+            // 
+            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
+            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
+            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click_1);
             // 
             // AdminPanel
             // 
@@ -170,6 +188,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel PolczenieStripStatus;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.ToolStripMenuItem harmonogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem napiszNotatkęToolStripMenuItem;
 
     }
 }
