@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="RecoverPassword.Designer.cs">
       <DependentUpon>RecoverPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validators\harmonogramValidations.cs" />
     <Compile Include="Validators\pracownikValidations.cs" />
     <Compile Include="Program.cs" />

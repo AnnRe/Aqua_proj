@@ -1,0 +1,17 @@
+*.exe
+DBTests/obj/Debug/
+aquadrom/obj/Debug/
+Tests/bin/Debug/
+Tests/onj/Debug/
+aquadrom/xc3nr253.ikq
+aquadrom/zejfv2tk.5t3
+TestResults/aquadrom.TE.Tests.mdf
+TestResults/aquadrom.TE.Tests_log.ldf
+Tests/obj/Debug/build.force
+aquadrom/App.config
+Dokumentacja/Dokumentacja projektu.aux
+Dokumentacja/Dokumentacja projektu.synctex.gz
+Dokumentacja/Dokumentacja projektu.toc
+aquadrom/bin/Debug/MigraDoc*
+aquadrom/bin/Debug/PdfSharp*
+aquadrom/bin/Debug/aquadrom*
