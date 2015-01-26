@@ -1,0 +1,428 @@
+\documentclass{article}
+\usepackage[cp1250]{inputenc}
+\usepackage[MeX]{polski}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstdefinestyle{sharpc}{language=[Sharp]C,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{green},
+keywordstyle=\color{blue}\bfseries,
+stringstyle=\color{red},
+basicstyle=\ttfamily
+}
+\usepackage{titlesec}%do subsubsubsection
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm, headsep=1.2cm]{geometry}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Dokumentacja projektu}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\setcounter{secnumdepth}{4} % do  subsubsubsection=paragraph
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}% -||-
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+\begin{document}\lstset{style=sharpc}
+%strona tytu³owa%
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE In¿ynieria \\ Oprogramowania}\\[2cm]
+\textsc{\Large Dokumentacja Projektu}\\[0.5cm]
+% Title
+\HRule \\[0.5cm]
+{ \huge \bfseries Aquadrom}\\[0.3cm]
+\HRule \\[1.5cm]
+% Author
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Autorzy:} \\
+Anna \textsc{Reichel} \\
+Magdalena \textsc{P¹chalska}\\
+Sebastian \textsc{Nalepka}\\
+Mateusz \textsc{Ogiermann}
+\end{flushright}
+\end{minipage}
+\vfill
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+
+
+\newpage %spis treœci%
+\tableofcontents
+\newpage
+\section{Wstêp} %%%%%%%%%%%%%%%%%%%%%%%%% Wstêp
+\subsection{Autorzy}
+\begin{center}
+
+Informatyka sem. V \\
+Wydzia³ Matematyki Stosowanej \\
+Politechnika Œl¹ska
+\end{center}
+\subsection{Wprowadzenie}
+
+\newpage
+\section{Czêœæ I -- dla u¿ytkowników} %%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ I
+
+\subsection{Opis programu} % OPIS PROGRAMU %
+
+\subsection{Minimalne wymagania sprzêtowe}
+
+
+
+\subsection{Instrukcja obs³ugi} % INSTRUKCJA OBS£UGI %
+
+
+\newpage
+\section{Czêœæ II -- dla specjalistów} %%%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ II
+\subsection{Program} %---------------------%
+\subsubsection{Podzia³ na pliki}
+\subsubsection{Klasy}
+\paragraph{Okno Harmonogramu (Harmonogram)}
+Okno odpowiedzialne za wyœwietlanie harmonogramu wybranego miesi¹ca i roku na podstawie danych przechowywanych w bazie. Daje mo¿liwoœæ modyfikacji danych oraz walidacji czasu pracy w zale¿noœci od typu umowy. Sprawdza poprawnoœæ wprowadzanych danych i obecnoœæ odpowiednich pracowników na stanowiskach.
+
+\begin{lstlisting}
+private string PoprawnieRozplanowanyDzien(DateTime day)
+\end{lstlisting}
+Sprawdza, czy w ka¿dym momencie jest wystarczaj¹ca iloœæ pracowników oraz czy s¹ KZ/KSR
+\begin{lstlisting}
+private string pracownicyMajaOdpowiednieGodziny(DateTime time)
+\end{lstlisting}
+Kontroluje, czy w zale¿noœci od typu umowy pracownicy maj¹ wype³nion¹ odpowiedni¹ iloœæ godzin w harmonogramie.
+
+\begin{lstlisting}
+public string poprawnieRozplanowanyMiesiac(DateTime time)
+\end{lstlisting}
+Sprawdza kolejne dni miesi¹ca pod k¹tem odpowiedniego rozplanowania.
+
+\begin{lstlisting}
+private int GetNeededWorkersAmount(DateTime time)
+\end{lstlisting}
+Sprawdza ilu w danym czasie potrzebnych jest ratowników w pracy.
+
+\begin{lstlisting}
+private string stanowiskaObsadzone(DateTime time)
+\end{lstlisting}
+Sprawdza czy w danym czasie na stanowiskach jest odpowiednia liczba ratowników, kierowników zmiany oraz .
+\begin{lstlisting}
+private int GetNumberOfRescuresAtTime(DateTime time)
+\end{lstlisting}
+Zwraca liczbê ratowników na stanowistach w danym czasie.
+\begin{lstlisting}
+private bool KZPresentAtTime(DateTime time)
+\end{lstlisting}
+Sprawdza czy w danym czasie obecny jest Kierownik Zmiany na p³ywalni.
+\begin{lstlisting}
+private bool KSRandKZPresenceAtTime(DateTime time)
+\end{lstlisting}
+Sprawdza czy Kierownik Zmiany (KZ) i (KSR) obecni na stanowiskach w danym czasie.
+
+\begin{lstlisting}
+public string Save()
+\end{lstlisting}
+Sprawdza, czy wszystkie godziny maj¹ wprowadzone pocz¹tek i koniec pracy i zapisuje zmiany do bazy.
+
+\begin{lstlisting}
+public int GetColumnIndexForDate(DateTime date)
+\end{lstlisting}
+Zwraca numer kolumny, której tytu³ zawiera zadan¹ datê. 
+\begin{lstlisting}
+private DateTime GetColumnDate(int columnIndex, int rowIndex)
+\end{lstlisting}
+Zwraca datê, umieszczon¹ w tytule tabeli dla komórki o danych wspó³rzêdnych.
+
+\begin{lstlisting}
+private DateTime GetCellHourAtDate(DateTime oldDate, int columnIndex)
+\end{lstlisting}
+Uzupe³nia wczytan¹ datê o dzieñ w zale¿noœci od kolumny dla której zosta³a wywo³ana metoda.
+
+        
+\begin{lstlisting}
+private DateTime GetCellDateTime(int columnIndex, int rowIndex)
+\end{lstlisting}
+        Zwraca datê i godzinê dla danej komórki na podstawie nag³ówka i wprowadzonej godziny rozpoczêcia/zakoñczenia pracy.
+\begin{lstlisting}
+private TimeSpan GetUserHoursAtDate(int rowIndex, DateTime date)
+\end{lstlisting}
+Zwraca  liczbê godzin pracy danego pracownika w danym dniu. 
+\begin{lstlisting}
+public bool bothTimesAreReady(int columnIndex,int rowIndex)
+\end{lstlisting}
+        
+		Zwraca true je¿eli wype³nione s¹ zarówno godzina rozpoczêcia i zakoñczenia pracy.
+\begin{lstlisting}
+public bool onlyOneTimesAreReady(int columnIndex, int rowIndex)
+\end{lstlisting}
+        Zwraca true, je¿eli wype³niona jest tylko jedna z dwóch godzin pracy (rozpoczêcia lub zakoñczenia).
+
+       
+\begin{lstlisting}
+public string ValidateCell(DataGridViewCellValidatingEventArgs e)
+\end{lstlisting}
+        Sprawdza czy:
+\begin{itemize}		
+\item dane zapisane s¹ w formacie GG:mm
+\item godziny s¹ z przedzia³u 8:00-22:00
+\item minuty podane s¹ z dok³adnoœci¹ 15min
+
+\end{itemize}
+\begin{lstlisting}
+private string GetNazwisko(int rowIndex)
+\end{lstlisting}
+Pobiera nazwisko z tabeli harmonogramu w danym wierszu
+\begin{lstlisting}
+private string GetImie(int rowIndex)
+\end{lstlisting}
+Pobiera imie z tabeli harmonogramu w danym wierszu
+        
+
+\subsubsection{Okna}
+\paragraph{Harmonogram}
+Odpowiada za wyœwietlanie siatki siatki godzin, obs³ugê zdarzeñ wykorzystuj¹c metody klasy \textit{Harmonogram.cs}. Metody pomocnicze:
+
+\begin{lstlisting}
+private void FillFromDB()
+\end{lstlisting}
+Wype³nia tabelê danymi z bazy.
+\begin{lstlisting}
+private int GetYearFromCombo()
+\end{lstlisting}
+Pobiera wybrany rok z listy rozwijanej.
+\begin{lstlisting}
+private int GetMonthFromCombo()
+\end{lstlisting}
+Pobiera wybrany miesi¹c z listy rozwijanej.
+
+\begin{lstlisting}
+private void CreateDayColumns()
+\end{lstlisting}
+    Inicjalizuje tabelê siatki, dodaj¹c kolumny dla ka¿dego nia.
+\begin{lstlisting}
+private void UpdateColumnsToDate()
+\end{lstlisting}
+Aktualizuje wyœwietlon¹ siatkêdo wybranej daty.
+
+\begin{lstlisting}
+private void HighlightCell(int row_i, int col_i)
+\end{lstlisting}
+Podœwietla nieuzupe³nion¹ komórkê w przypadku gdy uzupe³niona jest tylko jedna czêœæ godzin dla danych osoby i dnia.
+
+Obs³ugiwane zdarzenia:
+
+\begin{lstlisting}
+private int GetFirstIndexOfPair(int columnIndex)
+\end{lstlisting}
+Poniewa¿ dzieñ miesi¹ca dzielony jest na godziny rozpoczêcia i zakoñczenia pracy, metoda sprawdza czy dana komórka jest rozpoczêciem, czy zakoñczeniem.
+
+\begin{lstlisting}
+private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+\end{lstlisting}
+Sprawdza poprawnoœæ wpisanych godzin, pod wzglêdem formatu oraz godzin otwarcia p³ywalni.
+\begin{lstlisting}
+private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
+\end{lstlisting}
+\begin{lstlisting}
+private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
+\end{lstlisting}
+Wywo³ywane po zmianie wartoœci w liœcie rozwijanej, powoduje aktualizacjê siatki godzin do wybranej daty.  
+\begin{lstlisting} 
+private void buttonSave_Click(object sender, EventArgs e)
+\end{lstlisting}
+ Po naciœniêciu przycisku zapisywania, sprawdzana jest poprawnoœæ, wyœwietlane s¹ ewentualne komunikaty i zapisywane s¹ zmiany.
+
+\begin{lstlisting} 
+private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+\end{lstlisting}
+Po usuniêciu zawartoœci komórki, jej zawartoœæ zamieniana jest na pusty ci¹g.
+\begin{lstlisting}
+private void btn_check_Click(object sender, EventArgs e)
+\end{lstlisting}
+Po naciœniêciu sprawdzana jest poprawnoœæ wype³nienia siatki godzin danego miesi¹ca.
+
+\begin{lstlisting}
+private void HarmonogramForm_FormClosing(object sender, FormClosingEventArgs e)
+\end{lstlisting}
+Wywo³ywane jest po naciœniêciu przycisku zamykania. Jeœli zmiany nie zosta³y zapisane, wyœwietlane jest okno dialogowe.
+\begin{lstlisting}
+private void comboBoxMonths_MouseClick(object sender, MouseEventArgs e)
+\end{lstlisting}
+Naciœniêcie na liniê rozwijan¹zmiany miesiêcy. Przez zmian¹ sprawdzane jest, czy zapisane zosta³y zmiany.
+\begin{lstlisting}
+private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+\end{lstlisting}
+Zakoñczenie edycji komórki - sprawdzana jest poprawnoœæ formatu
+
+\paragraph{Okno administratora (Admin Panel)}
+\begin{enumerate}[a)]
+\item G³ówna tabela danych
+\item Sprawdzenie wa¿noœci badañ lekarskich, KPP oraz daty zakoñczenia umowy (podœwietlanie)
+\item Wysy³anie e-maila w chwili pojawienia siê ostrze¿enia (zakoñczenie badañ,KPP,umowy)
+\item Sprawdzanie po³¹czenia internetowego + stosowna informacja
+\end{enumerate}
+\begin{lstlisting}
+public void AdminPanel_Load(object sender, EventArgs e)
+\end{lstlisting}
+Wype³nianie g³ównej tabeli zawieraj¹cej wszystkie potrzebne informacje dotycz¹ce ka¿dego pracownika oraz sprawdzane jest po³¹czenie internetowe, o którym informacja umieszczona jest na pasku stanu.
+\begin{lstlisting}
+private void UsuñToolStripMenuItem_Click(object sender, EventArgs e)
+private void edytujU¿ytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
+private void Przegl¹dajU¿ytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
+\end{lstlisting}
+
+Po wybraniu z menu Zarz¹dzaj pozycji ‘Usuñ u¿ytkownika’ lub ‘Edytuj u¿ytkownika’ nastêpuje wywo³anie okna odpowiedniego okna, jeœli uprzednio ¿adne inne nie zosta³o w³¹czone.
+\begin{lstlisting}
+private void DodajU¿ytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
+\end{lstlisting}
+CZÊŒÆ OGIEGO
+\begin{lstlisting}
+private void ColorCheckUser()
+\end{lstlisting}
+Funkcja sprawdza daty zakoñczenia badañ, KPP oraz umowy kolejno wszystkich u¿ytkowników i w chwili gdy zbli¿a siê ich koniec, z 7 dniowym wyprzedzeniem informuje o tym. ID rekord tej osoby oraz koñcz¹ca siê data zaznaczana jest na czerwono oraz wysy³ana jest stosowna informacja mailowa informacja.
+
+\begin{lstlisting}
+private void sendmail(int iterator, DateTime KPPdate, bool changeKPP, DateTime medicaldate, bool changemedi, DateTime concractdate, bool changeconcract )
+\end{lstlisting}
+W sytuacji zbli¿aj¹cego zakoñczenia siê daty badañ, KPP lub umowy wysy³ana jest wiadomoœæ mailowa, gdy obecne jest po³¹czenie internetowe oraz, gdy mail nie zosta³ ju¿ z tego samego powodu uprzednio wys³any.
+
+\begin{lstlisting}
+private bool CheckInternetConnection()
+\end{lstlisting}
+Próbuj¹c po³¹czyæ siê z stron¹ internetow¹ Google.com sprawdzamy dostêpnoœæ po³¹czenia internetowego zwracaj¹c twierdz¹c¹ lub przecz¹c¹ odpowiedŸ.
+
+\begin{lstlisting}
+private void napiszNotatkêToolStripMenuItem_Click(object sender, EventArgs e)
+\end{lstlisting}
+CZÊŒÆ OGIEGO
+
+\paragraph{Logowanie (Login)}
+a. Haszowanie has³a oraz sprawdzenia pary login:haslo z baz¹ danych
+b. Sprawdzanie dostêpnoœci bazy oraz wystosowanie odpowiedniego komunikatu w chwili braku po³¹czenia
+\begin{lstlisting}
+public static String sha256_hash(String value)
+\end{lstlisting}
+U¿ywaj¹c gotowej funkcji haszuj¹cej1 dla stringa podanego w jej argumencie uzyskujemy 256 bitowy skrót SHA – wszystkie has³a przetwarzane w programie s¹ w postaciach niejawnych i tak te¿ porównywane s¹ ich zgodnoœci.
+
+\begin{lstlisting}
+private bool CheckBase()
+\end{lstlisting}
+Tworz¹c nowe tymczasowe po³¹czenie sprawdzamy po³¹czenie z baz¹. W chwili negatywnego wyniku jej dzia³ania po³¹czenie z baz¹ jest niemo¿liwe i wystosowywana jest odpowiednia dla u¿ytkownika informacja.
+
+\begin{lstlisting}
+private void LoginButton_Click(object sender, EventArgs e)
+\end{lstlisting}
+Klikniêcie przycisku zaloguj powoduje sprawdzenie dostêpnoœci bazy i w chwili jej obecnoœci sprawdzane jest z dopasowanie wpisanej pary login:has³o z wszystkimi parami login:has³o znajduj¹cymi siê w bazie danych. W przypadku ich zgodnoœci u¿ytkownik przekierowany zostaje do odpowiedniego okna, które zale¿y od jego typu konta.
+W przypadku, gdy para nie zosta³a odnaleziona wystosowywana jest odpowiednia informacja o nieprawid³owym loginie lub haœle.
+
+
+\paragraph{Edycja u¿ytkownika (EditWorker)}
+a. Wczytanie danych odpowiedniego pracownika oraz odpowiednia walidacja komórek
+b. Sprawdzanie poprawnoœci zmienionych edytowanych danych
+c. Wprowadzenie edytowanej umowy i danych pracownika do bazy danych
+\begin{lstlisting}
+private void EditWorker_Load(object sender, EventArgs e)
+\end{lstlisting}
+W czasie ³adowania okna edycji u¿ytkownika automatycznie wype³niane s¹ wszystkie dane wybranego uprzednio u¿ytkownika. Ka¿da rozwijana lista zawiera wszystkie mo¿liwe do wyboru wartoœci, ka¿de pole tekstowe umo¿liwia wpisanie tylko danych we w³aœciwym formacie i we w³aœciwej d³ugoœci. Sprawdzane s¹ tak¿e wszystkie zale¿noœci, które mog¹ lub nie mog¹ wyst¹piæ i zale¿nie od nich blokowane lub odblokowywane s¹ mo¿liwe do wyboru wartoœci.
+
+\begin{lstlisting}
+private void TypUmowyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+\end{lstlisting}
+W zale¿noœci od wybranego typu umowy blokowana lub odblokowywana jest do wyboru liczba godzin. W przypadku umowy zlecenia do bazy jako liczba godzin wysy³ana jest wartoœæ NULL.
+
+\begin{lstlisting}
+private void StanowiskoUseraComboBox_SelectedIndexChanged(object sender, EventArgs e)
+\end{lstlisting}
+Dla stanowiska KZ data KPP oraz stopieñ nie obowi¹zuje. Funkcja ta w chwili wyboru KZ blokuje wy¿ej wymienione okna edycji.
+
+\begin{lstlisting}
+private string TakeValue(DataTable dtlist, string what)
+\end{lstlisting}
+Funkcja zwracaj¹ca dan¹ wartoœæ kolumny z listy podanej w argumencie (tablica z jednym rekordem – danymi jednego pracownika)
+
+\begin{lstlisting}
+private void EdytujUseraButton_Click(object sender, EventArgs e)
+\end{lstlisting}
+W chwili wprowadzenia wszystkich zmian po klikniêciu przycisku edytuj oraz potwierdzeniu wybranej opcji nastêpuje dodatkowa walidacja Peselu, adresu e-mail oraz numeru telefonu. W chwili ich b³êdnego wprowadzenia wartoœci, u¿ytkownik informowany jest co musi poprawiæ w celu poprawnej edycji. W sytuacji, gdy proces walidacji przejdzie pomyœlnie wywo³ywana jest funkcja edytuj¹ca umowê EditConcart oraz pracownika EditEmployee. Gdy obie funkcje zostan¹ poprawnie wykonane edycja zakoñczona jest pomyœlnie, w przeciwnym wypadku wyœwietlana jest informacja o b³êdzie.
+
+\begin{lstlisting}
+private bool EditEmployee()
+\end{lstlisting}
+Funkcja ta tworzy obiekt pracownik, który zawiera odpowiednio zwalidowane dane oraz dodaje je do bazy (edytowanie danych wybranego pracownika). W sytuacji, gdy aktualizacja danych przebiega niepomyœlnie – wyœwietlana jest stosowna informacja.
+
+\begin{lstlisting}
+private bool EditContract()
+\end{lstlisting}
+Funkcja analogiczna do EditEmployee() z t¹ ró¿nic¹, i¿ tworzony obiekt dotyczy
+ umowy wybranego u¿ytkownika. Wszystkie dane poddane s¹ walidacji a nastêpnie aktualizowane s¹ w bazie danych. W sytuacji, gdy operacja Update koñczy siê niepowodzeniem – wyœwietlany jest komunikat.
+4. Wybór pracownika do edycji (EditWhichWorker)
+a. Lista imion i nazwisk z przekazaniem parametru wybranego pracownika do edycji
+b. Wywo³anie okna ‘EditWorker’ dla odpowiednio wybranego pracownika.
+
+\begin{lstlisting}
+public void EditWorkerWhich_Load(object sender, EventArgs e)
+\end{lstlisting}
+Przy wywo³aniu okna wyboru pracownika do edycji generowana jest lista wszystkich par ‘Nazwisko Imiê’ oraz przekazana do rozwijanej listy.
+
+\begin{lstlisting}
+private void ChooseButton_Click(object sender, EventArgs e)
+\end{lstlisting}
+W chwili klikniêcia Wybierz nastêpuje wywo³anie okna ‘EditWorker’ wybranego pracownika. Operacja ta wykonywana jest tylko w momencie, gdy uprzednio nie zosta³o otwarte ju¿ inne okno.
+5. Usuwanie pracownika (DeleteWorker)
+a. Lista imion i nazwisk z przekazaniem parametru wybranego pracownika do usuniêcia
+b. Usuniêcie umowy wybranego pracownika
+c. Usuniêcie pracownika z bazy
+\begin{lstlisting}
+public void DeleteWorker_Load(object sender, EventArgs e)
+\end{lstlisting}
+Przy wywo³aniu okna wyboru pracownika do usuniêcia generowana jest lista wszystkich par ‘Nazwisko Imiê’ oraz przekazana do rozwijanej listy.
+
+\begin{lstlisting}
+private void DeleteWorkerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+\end{lstlisting}
+W chwili zmiany (wyboru) pracownika zapamiêtywany jest jego numer ID oraz ID jego umowy. 
+
+\begin{lstlisting}
+private void DeleteButton_Click(object sender, EventArgs e)
+\end{lstlisting}
+W chwili klikniêcia Wybierz nastêpuje wywo³anie stosownego komunikatu (potwierdzenia dokonania wyboru). W chwili ponownej akceptacji ze strony u¿ytkownika, wybrany przez niego pracownik jest usuwany z bazy danych (w kolejnoœci usuñ umowê, usuñ pracownika) i okno zostaje automatycznie zamkniête.
+
+
+\newpage
+\subsection{Baza danych} %---------------------%
+\subsubsection{Struktura bazy danych}
+
+
+\newpage
+\section{Wnioski} %%%%%%%%%%%%%%%%%%%%%%%%%% Wnioski
+\subsection{Zastosowania programu}
+
+\subsection{Propozycje rozszerzeñ programu}
+
+
+\end{document}
