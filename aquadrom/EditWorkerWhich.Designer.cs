@@ -37,13 +37,15 @@
             // EditWorkerComboBox
             // 
             this.EditWorkerComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.EditWorkerComboBox.BackColor = System.Drawing.Color.Azure;
+            this.EditWorkerComboBox.BackColor = System.Drawing.Color.White;
+            this.EditWorkerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.EditWorkerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EditWorkerComboBox.FormattingEnabled = true;
             this.EditWorkerComboBox.Location = new System.Drawing.Point(62, 31);
             this.EditWorkerComboBox.Name = "EditWorkerComboBox";
             this.EditWorkerComboBox.Size = new System.Drawing.Size(231, 21);
             this.EditWorkerComboBox.TabIndex = 8;
+            this.EditWorkerComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.EditWorkerComboBox_DrawItem);
             this.EditWorkerComboBox.SelectedIndexChanged += new System.EventHandler(this.EditWorkerComboBox_SelectedIndexChanged);
             // 
             // ChooseButton

@@ -129,10 +129,14 @@ namespace aquadrom
                 //adapter.Insert(pracownik); 
                 if (adapter.Insert(pracownik) == true)
                 {
+<<<<<<< HEAD
                     sendMail(LoginUzytkownika.Text, HasloUzytkownika.Text, AdresEmail.Text, ImieUzytkownika.Text, NazwiskoUzytkownika.Text);
-                    MyMessageBox.ShowBox("Dane pracownika zostały zapsiane w bazie.");
+                    MessageBox.Show("Dane pracownika zostały zapsiane w bazie.");
                     this.Close();
                     exist = false;
+=======
+                    MyMessageBox.ShowBox("Dane pracownika zostały zapsiane w bazie.");
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
                 }
                 else if (adapter.Insert(pracownik) == false)
                 {
@@ -174,10 +178,13 @@ namespace aquadrom
             {
                 MyMessageBox.ShowBox("Podane hasła są różne!");
             }
+<<<<<<< HEAD
+=======
             else if ( CheckInternetConnection()==false)
             {
                 MyMessageBox.ShowBox("Błąd połączenia internetowego!");
             }
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
             else
             {
                 Add_Employer();
@@ -243,7 +250,7 @@ namespace aquadrom
             }
             else if(( CheckInternetConnection()==false))
             {
-                MyMessageBox.ShowBox("Błąd połączenia internetowego!");
+                MessageBox.Show("Błąd połączenia internetowego!");
             }
             else
             {
@@ -421,6 +428,7 @@ namespace aquadrom
                     smtp.Send(message);
                 }
         }
+
         public bool CheckInternetConnection()
         {
             try
@@ -437,45 +445,7 @@ namespace aquadrom
             }
         }
 
-        private void TypUmowy_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int index = e.Index >= 0 ? e.Index : 0;
-            var brush = Brushes.Black;
-            e.DrawBackground();
-            e.Graphics.DrawString(TypUmowy.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
-        private void TypKonta2_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int index = e.Index >= 0 ? e.Index : 0;
-            var brush = Brushes.Red;
-            e.DrawBackground();
-            e.Graphics.DrawString(TypKonta2.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
-        private void Stopień_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int index = e.Index >= 0 ? e.Index : 0;
-            var brush = Brushes.Red;
-            e.DrawBackground();
-            e.Graphics.DrawString(Stopień.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
-        private void StanowiskoUzytkownika_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int index = e.Index >= 0 ? e.Index : 0;
-            var brush = Brushes.Red;
-            e.DrawBackground();
-            e.Graphics.DrawString(StanowiskoUzytkownika.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
-
-
-
+<<<<<<< HEAD
         private void Imie_Click(object sender, EventArgs e)
         {
 
@@ -675,6 +645,45 @@ namespace aquadrom
         {
 
         }
+=======
+        private void TypUmowy_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Black;
+            e.DrawBackground();
+            e.Graphics.DrawString(TypUmowy.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void TypKonta2_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(TypKonta2.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void Stopień_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(Stopień.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void StanowiskoUzytkownika_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            int index = e.Index >= 0 ? e.Index : 0;
+            var brush = Brushes.Red;
+            e.DrawBackground();
+            e.Graphics.DrawString(StanowiskoUzytkownika.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+
+>>>>>>> 74e8c1f4297c480f5d677bd7cf95601cd51b0b2f
 
     }
 }

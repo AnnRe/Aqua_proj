@@ -141,22 +141,26 @@
             // 
             // StanowiskoUseraComboBox
             // 
+            this.StanowiskoUseraComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.StanowiskoUseraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StanowiskoUseraComboBox.FormattingEnabled = true;
             this.StanowiskoUseraComboBox.Location = new System.Drawing.Point(97, 49);
             this.StanowiskoUseraComboBox.Name = "StanowiskoUseraComboBox";
             this.StanowiskoUseraComboBox.Size = new System.Drawing.Size(148, 21);
             this.StanowiskoUseraComboBox.TabIndex = 14;
+            this.StanowiskoUseraComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.StanowiskoUseraComboBox_DrawItem);
             this.StanowiskoUseraComboBox.SelectedIndexChanged += new System.EventHandler(this.StanowiskoUseraComboBox_SelectedIndexChanged);
             // 
             // StopienComboBox
             // 
+            this.StopienComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.StopienComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StopienComboBox.FormattingEnabled = true;
             this.StopienComboBox.Location = new System.Drawing.Point(97, 23);
             this.StopienComboBox.Name = "StopienComboBox";
             this.StopienComboBox.Size = new System.Drawing.Size(148, 21);
             this.StopienComboBox.TabIndex = 13;
+            this.StopienComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.StopienComboBox_DrawItem);
             // 
             // Data_KPP
             // 
@@ -365,12 +369,14 @@
             // 
             // TypUmowyComboBox
             // 
+            this.TypUmowyComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TypUmowyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypUmowyComboBox.FormattingEnabled = true;
             this.TypUmowyComboBox.Location = new System.Drawing.Point(106, 46);
             this.TypUmowyComboBox.Name = "TypUmowyComboBox";
             this.TypUmowyComboBox.Size = new System.Drawing.Size(148, 21);
             this.TypUmowyComboBox.TabIndex = 34;
+            this.TypUmowyComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.TypUmowyComboBox_DrawItem);
             this.TypUmowyComboBox.SelectedIndexChanged += new System.EventHandler(this.TypUmowyComboBox_SelectedIndexChanged);
             // 
             // Koniec_umowy

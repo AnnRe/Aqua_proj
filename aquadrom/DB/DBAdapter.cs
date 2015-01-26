@@ -126,6 +126,12 @@ namespace DB
             catch { return false; }
             return true;
         }
+        public bool Insert(Notatka notatka)
+        {
+            try { polaczenie.Insert(notatka); }
+            catch { return false; }
+            return true;
+        }
 
         public bool Update(Umowa umowa)
         {

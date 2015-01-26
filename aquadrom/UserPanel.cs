@@ -13,19 +13,22 @@ namespace aquadrom
 {
     public partial class UserPanel : Form
     {
-        public UserPanel()
+        string sql = "";
+        public UserPanel(string login)
         {
             InitializeComponent();
+            string login2 = login;
+            sql += login2; 
         }
 
+        
         private void label1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void UserPanel_Load(object sender, EventArgs e)
         {
-
         }
 
         private void harmonogramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,6 +46,24 @@ namespace aquadrom
         private void UserPanel_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void daneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zmieńHasłoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePassword change = new ChangePassword(sql);
+            change.Show();
+        }
+
+        private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GeneratorNotatek change = new GeneratorNotatek(sql);
+            change.Show();
+
         }
     }
 }
