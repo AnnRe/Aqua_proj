@@ -61,6 +61,17 @@ namespace aquadrom.Utilities
         public const int PoczatekPracy = 8;
         public const int KoniecPracy = 22;
 
+        public const string NotatkaOpis = "Opis";
+        public const string NotatkaCzas = "Czas";
+        public const string NotatkaRodzaj = "Rodzaj_zdarzenia";
+        public const string NotatkaUwagi = "Uwagi";
+        public const string NotatkaAkcKZ = "Akceptacja_KZ";
+        public const string NotatkaAkcKSR = "Akceptacja_KSR";
+        public const string NotatkaIdR = "ID_R";
+        public const string NotatkaIdKZ = "ID_KZ";
+        public const string NotatkaIdKSR = "ID_KSR";
+
+
         
      
       

@@ -118,8 +118,6 @@ namespace aquadrom
                 typKonta = (eTypKonta)Enum.Parse(typeof(eTypKonta), TypKonta2.SelectedItem.ToString()),
             };
 
-            sendMail(LoginUzytkownika.Text, HasloUzytkownika.Text, AdresEmail.Text, ImieUzytkownika.Text, NazwiskoUzytkownika.Text );
-
             if (KoniecKPP.Enabled == false)   // jeśli KPP nie wymagane to minvalue (NULL to base)
                 pracownik.dataWażnościKPP = DateTime.MinValue;
                  //DateTime? MyNullDateValue = null;
@@ -131,7 +129,10 @@ namespace aquadrom
                 //adapter.Insert(pracownik); 
                 if (adapter.Insert(pracownik) == true)
                 {
+                    sendMail(LoginUzytkownika.Text, HasloUzytkownika.Text, AdresEmail.Text, ImieUzytkownika.Text, NazwiskoUzytkownika.Text);
                     MessageBox.Show("Dane pracownika zostały zapsiane w bazie.");
+                    this.Close();
+                    exist = false;
                 }
                 else if (adapter.Insert(pracownik) == false)
                 {
@@ -173,14 +174,9 @@ namespace aquadrom
             {
                 MessageBox.Show("Podane hasła są różne!");
             }
-            else if ( CheckInternetConnection()==false)
-            {
-                MessageBox.Show("Błąd połączenia internetowego!");
-            }
             else
             {
                 Add_Employer();
-                this.Close();
             }
 
 
@@ -240,6 +236,10 @@ namespace aquadrom
         {
             if (walidacja.isNullOrNot(WymiarGodzin, "Wymiar godzin"))
             {
+            }
+            else if(( CheckInternetConnection()==false))
+            {
+                MessageBox.Show("Błąd połączenia internetowego!");
             }
             else
             {
@@ -379,7 +379,7 @@ namespace aquadrom
 
         }
 
-        private string createPassword(int length)
+        public string createPassword(int length)
         {
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder res = new StringBuilder();
@@ -397,7 +397,7 @@ namespace aquadrom
                 var toAdress = new MailAddress(mail, imie + " " + nazwisko);
                 const string fromPassword = "aquadrom123";
                 string subject = "Dane dostępowe";
-                string body = "Witaj " + imie + nazwisko + " !" + "\n" + "Login: " + login + "\n" +"Hasło: " + haslo;
+                string body = "Witaj " + imie+ " " + nazwisko + " !" + "\n" + "Login: " + login + "\n" +"Hasło: " + haslo;
                 var smtp = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
@@ -418,7 +418,7 @@ namespace aquadrom
                 }
         }
 
-        private bool CheckInternetConnection()
+        public bool CheckInternetConnection()
         {
             try
             {
@@ -432,6 +432,206 @@ namespace aquadrom
             {
                 return false;
             }
+        }
+
+        private void Imie_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WymiarGodzin_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PowtórzHasło_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pracownik_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Poczatek_umowy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Konto_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TypKonta2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dane_osobowe_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dane_umowy_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TypKonta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Nr_domu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumerUmowy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NazwiskoUzytkownika_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Stanowisko_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Haslo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ulica_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Wymiar_godzin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Nazwisko_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Koniec_umowy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HasloUzytkownika_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pesel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dane_kontaktowe_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KoniecUmowy_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Data_badan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PowtorzHasloUżytkownika_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Numer_mieszkania_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Stopien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Data_KPP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Numer_telefonu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumerTelefonu_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KoniecKPP_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Typ_umowy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NrUmowy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Badania_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UlicaUzytkownika_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Miasto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataBadan_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MiastoUzytkownika_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

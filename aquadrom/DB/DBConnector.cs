@@ -89,6 +89,38 @@ namespace DB
                                    reader.GetDateTime(colIndex); ;
         }
 
+        public void Insert(Notatka notatka)
+        {
+            string uwagi;
+            if (notatka.uwagi == "")
+                uwagi = "null";
+            else
+                uwagi = "null";
+
+            string query = " Notatka (" +
+               Constants.NotatkaOpis + "," +
+               Constants.NotatkaCzas + "," +
+               Constants.NotatkaRodzaj + "," +
+               Constants.NotatkaUwagi + "," +
+               Constants.NotatkaAkcKZ + "," +
+               Constants.NotatkaAkcKSR + "," +
+               Constants.NotatkaIdR + "," +
+               Constants.NotatkaIdKZ + "," +
+               Constants.NotatkaIdKSR;
+            query += ") VALUES ('";
+            query += notatka.opis +"','" +
+                notatka.czasZdarzenia + "','" +
+                notatka.rodzajZdarzenia + "'," +
+                uwagi + ",'" +
+                notatka.akceptacjaKZ + "','" +
+                notatka.akceptacjaKSR + "','" +
+                notatka.ID_R + "','" +
+                notatka.ID_KZ + "','" +
+                notatka.ID_KSR + "')";
+
+            Insert(query);
+
+        }
         public void Insert(Pracownik pracownik)
         {
             string KPP, stopien, mieszkania;

@@ -33,6 +33,7 @@
             this.UserName = new System.Windows.Forms.Label();
             this.UserNameBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.noweHaslo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UserPasswordBox
@@ -68,11 +69,12 @@
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(182, 20);
             this.UserNameBox.TabIndex = 7;
+            this.UserNameBox.TextChanged += new System.EventHandler(this.UserNameBox_TextChanged);
             this.UserNameBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameBox_KeyDown);
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(150, 120);
+            this.LoginButton.Location = new System.Drawing.Point(257, 106);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -80,11 +82,22 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // noweHaslo
+            // 
+            this.noweHaslo.Location = new System.Drawing.Point(120, 106);
+            this.noweHaslo.Name = "noweHaslo";
+            this.noweHaslo.Size = new System.Drawing.Size(131, 23);
+            this.noweHaslo.TabIndex = 11;
+            this.noweHaslo.Text = "Zapomniałem hasła";
+            this.noweHaslo.UseVisualStyleBackColor = true;
+            this.noweHaslo.Click += new System.EventHandler(this.noweHaslo_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 162);
+            this.Controls.Add(this.noweHaslo);
             this.Controls.Add(this.UserPasswordBox);
             this.Controls.Add(this.UserPassword);
             this.Controls.Add(this.UserName);
@@ -106,8 +119,9 @@
         private System.Windows.Forms.TextBox UserPasswordBox;
         private System.Windows.Forms.Label UserPassword;
         private System.Windows.Forms.Label UserName;
-        private System.Windows.Forms.TextBox UserNameBox;
         private System.Windows.Forms.Button LoginButton;
+        public System.Windows.Forms.TextBox UserNameBox;
+        private System.Windows.Forms.Button noweHaslo;
 
     }
 }

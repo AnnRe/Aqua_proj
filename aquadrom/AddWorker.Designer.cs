@@ -32,6 +32,7 @@
             this.Anuluj = new System.Windows.Forms.Button();
             this.AddEmployer = new System.Windows.Forms.Button();
             this.Badania = new System.Windows.Forms.GroupBox();
+            this.NrUmowy = new System.Windows.Forms.TextBox();
             this.NumerUmowy = new System.Windows.Forms.Label();
             this.DataBadan = new System.Windows.Forms.DateTimePicker();
             this.KoniecKPP = new System.Windows.Forms.DateTimePicker();
@@ -47,6 +48,8 @@
             this.Email = new System.Windows.Forms.Label();
             this.Numer_telefonu = new System.Windows.Forms.Label();
             this.Konto = new System.Windows.Forms.GroupBox();
+            this.PowtorzHasloUżytkownika = new System.Windows.Forms.TextBox();
+            this.PowtórzHasło = new System.Windows.Forms.Label();
             this.TypKonta2 = new System.Windows.Forms.ComboBox();
             this.TypKonta = new System.Windows.Forms.Label();
             this.HasloUzytkownika = new System.Windows.Forms.TextBox();
@@ -78,9 +81,6 @@
             this.Pesel = new System.Windows.Forms.Label();
             this.Nazwisko = new System.Windows.Forms.Label();
             this.Imie = new System.Windows.Forms.Label();
-            this.NrUmowy = new System.Windows.Forms.TextBox();
-            this.PowtórzHasło = new System.Windows.Forms.Label();
-            this.PowtorzHasloUżytkownika = new System.Windows.Forms.TextBox();
             this.Pracownik.SuspendLayout();
             this.Badania.SuspendLayout();
             this.Dane_kontaktowe.SuspendLayout();
@@ -106,6 +106,7 @@
             this.Pracownik.TabIndex = 0;
             this.Pracownik.TabStop = false;
             this.Pracownik.Text = "Pracownik";
+            this.Pracownik.Enter += new System.EventHandler(this.Pracownik_Enter);
             // 
             // Anuluj
             // 
@@ -145,6 +146,16 @@
             this.Badania.TabIndex = 38;
             this.Badania.TabStop = false;
             this.Badania.Text = "Badania i stanowisko";
+            this.Badania.Enter += new System.EventHandler(this.Badania_Enter);
+            // 
+            // NrUmowy
+            // 
+            this.NrUmowy.Location = new System.Drawing.Point(97, 127);
+            this.NrUmowy.Name = "NrUmowy";
+            this.NrUmowy.Size = new System.Drawing.Size(148, 20);
+            this.NrUmowy.TabIndex = 19;
+            this.NrUmowy.Text = "brak";
+            this.NrUmowy.TextChanged += new System.EventHandler(this.NrUmowy_TextChanged);
             // 
             // NumerUmowy
             // 
@@ -154,6 +165,7 @@
             this.NumerUmowy.Size = new System.Drawing.Size(57, 13);
             this.NumerUmowy.TabIndex = 17;
             this.NumerUmowy.Text = "Nr umowy:";
+            this.NumerUmowy.Click += new System.EventHandler(this.NumerUmowy_Click);
             // 
             // DataBadan
             // 
@@ -161,6 +173,7 @@
             this.DataBadan.Name = "DataBadan";
             this.DataBadan.Size = new System.Drawing.Size(148, 20);
             this.DataBadan.TabIndex = 18;
+            this.DataBadan.ValueChanged += new System.EventHandler(this.DataBadan_ValueChanged);
             // 
             // KoniecKPP
             // 
@@ -168,6 +181,7 @@
             this.KoniecKPP.Name = "KoniecKPP";
             this.KoniecKPP.Size = new System.Drawing.Size(148, 20);
             this.KoniecKPP.TabIndex = 17;
+            this.KoniecKPP.ValueChanged += new System.EventHandler(this.KoniecKPP_ValueChanged);
             // 
             // StanowiskoUzytkownika
             // 
@@ -197,6 +211,7 @@
             this.Data_KPP.Size = new System.Drawing.Size(79, 13);
             this.Data_KPP.TabIndex = 10;
             this.Data_KPP.Text = "Ważność KPP:";
+            this.Data_KPP.Click += new System.EventHandler(this.Data_KPP_Click);
             // 
             // Stanowisko
             // 
@@ -206,6 +221,7 @@
             this.Stanowisko.Size = new System.Drawing.Size(65, 13);
             this.Stanowisko.TabIndex = 9;
             this.Stanowisko.Text = "Stanowisko:";
+            this.Stanowisko.Click += new System.EventHandler(this.Stanowisko_Click);
             // 
             // Data_badan
             // 
@@ -215,6 +231,7 @@
             this.Data_badan.Size = new System.Drawing.Size(66, 13);
             this.Data_badan.TabIndex = 11;
             this.Data_badan.Text = "Data badań:";
+            this.Data_badan.Click += new System.EventHandler(this.Data_badan_Click);
             // 
             // Stopien
             // 
@@ -224,6 +241,7 @@
             this.Stopien.Size = new System.Drawing.Size(46, 13);
             this.Stopien.TabIndex = 12;
             this.Stopien.Text = "Stopień:";
+            this.Stopien.Click += new System.EventHandler(this.Stopien_Click);
             // 
             // Dane_kontaktowe
             // 
@@ -237,6 +255,7 @@
             this.Dane_kontaktowe.TabIndex = 37;
             this.Dane_kontaktowe.TabStop = false;
             this.Dane_kontaktowe.Text = "Dane kontaktowe";
+            this.Dane_kontaktowe.Enter += new System.EventHandler(this.Dane_kontaktowe_Enter);
             // 
             // AdresEmail
             // 
@@ -255,6 +274,7 @@
             this.NumerTelefonu.Size = new System.Drawing.Size(148, 20);
             this.NumerTelefonu.TabIndex = 13;
             this.NumerTelefonu.Text = "+48500500500";
+            this.NumerTelefonu.TextChanged += new System.EventHandler(this.NumerTelefonu_TextChanged_1);
             this.NumerTelefonu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumerTelefonu_KeyPress);
             // 
             // Email
@@ -265,6 +285,7 @@
             this.Email.Size = new System.Drawing.Size(38, 13);
             this.Email.TabIndex = 3;
             this.Email.Text = "E-mail:";
+            this.Email.Click += new System.EventHandler(this.Email_Click);
             // 
             // Numer_telefonu
             // 
@@ -274,6 +295,7 @@
             this.Numer_telefonu.Size = new System.Drawing.Size(82, 13);
             this.Numer_telefonu.TabIndex = 8;
             this.Numer_telefonu.Text = "Numer telefonu:";
+            this.Numer_telefonu.Click += new System.EventHandler(this.Numer_telefonu_Click);
             // 
             // Konto
             // 
@@ -291,6 +313,26 @@
             this.Konto.TabIndex = 36;
             this.Konto.TabStop = false;
             this.Konto.Text = "Konto";
+            this.Konto.Enter += new System.EventHandler(this.Konto_Enter);
+            // 
+            // PowtorzHasloUżytkownika
+            // 
+            this.PowtorzHasloUżytkownika.Location = new System.Drawing.Point(106, 75);
+            this.PowtorzHasloUżytkownika.Name = "PowtorzHasloUżytkownika";
+            this.PowtorzHasloUżytkownika.Size = new System.Drawing.Size(148, 20);
+            this.PowtorzHasloUżytkownika.TabIndex = 22;
+            this.PowtorzHasloUżytkownika.UseSystemPasswordChar = true;
+            this.PowtorzHasloUżytkownika.TextChanged += new System.EventHandler(this.PowtorzHasloUżytkownika_TextChanged);
+            // 
+            // PowtórzHasło
+            // 
+            this.PowtórzHasło.AutoSize = true;
+            this.PowtórzHasło.Location = new System.Drawing.Point(6, 78);
+            this.PowtórzHasło.Name = "PowtórzHasło";
+            this.PowtórzHasło.Size = new System.Drawing.Size(78, 13);
+            this.PowtórzHasło.TabIndex = 18;
+            this.PowtórzHasło.Text = "Powtórz hasło:";
+            this.PowtórzHasło.Click += new System.EventHandler(this.PowtórzHasło_Click);
             // 
             // TypKonta2
             // 
@@ -300,6 +342,7 @@
             this.TypKonta2.Name = "TypKonta2";
             this.TypKonta2.Size = new System.Drawing.Size(148, 21);
             this.TypKonta2.TabIndex = 23;
+            this.TypKonta2.SelectedIndexChanged += new System.EventHandler(this.TypKonta2_SelectedIndexChanged);
             // 
             // TypKonta
             // 
@@ -309,6 +352,7 @@
             this.TypKonta.Size = new System.Drawing.Size(58, 13);
             this.TypKonta.TabIndex = 15;
             this.TypKonta.Text = "Typ konta:";
+            this.TypKonta.Click += new System.EventHandler(this.TypKonta_Click);
             // 
             // HasloUzytkownika
             // 
@@ -318,6 +362,7 @@
             this.HasloUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.HasloUzytkownika.TabIndex = 21;
             this.HasloUzytkownika.UseSystemPasswordChar = true;
+            this.HasloUzytkownika.TextChanged += new System.EventHandler(this.HasloUzytkownika_TextChanged);
             // 
             // LoginUzytkownika
             // 
@@ -336,6 +381,7 @@
             this.Haslo.Size = new System.Drawing.Size(39, 13);
             this.Haslo.TabIndex = 14;
             this.Haslo.Text = "Hasło:";
+            this.Haslo.Click += new System.EventHandler(this.Haslo_Click);
             // 
             // Login
             // 
@@ -345,6 +391,7 @@
             this.Login.Size = new System.Drawing.Size(36, 13);
             this.Login.TabIndex = 13;
             this.Login.Text = "Login:";
+            this.Login.Click += new System.EventHandler(this.Login_Click);
             // 
             // Dane_umowy
             // 
@@ -363,6 +410,7 @@
             this.Dane_umowy.TabIndex = 35;
             this.Dane_umowy.TabStop = false;
             this.Dane_umowy.Text = "Dane umowy";
+            this.Dane_umowy.Enter += new System.EventHandler(this.Dane_umowy_Enter);
             // 
             // StwórzUmowe
             // 
@@ -380,6 +428,7 @@
             this.KoniecUmowy.Name = "KoniecUmowy";
             this.KoniecUmowy.Size = new System.Drawing.Size(148, 20);
             this.KoniecUmowy.TabIndex = 4;
+            this.KoniecUmowy.ValueChanged += new System.EventHandler(this.KoniecUmowy_ValueChanged);
             // 
             // PoczatekUmowy
             // 
@@ -410,6 +459,7 @@
             0,
             0,
             0});
+            this.WymiarGodzin.ValueChanged += new System.EventHandler(this.WymiarGodzin_ValueChanged);
             // 
             // TypUmowy
             // 
@@ -429,6 +479,7 @@
             this.Koniec_umowy.Size = new System.Drawing.Size(79, 13);
             this.Koniec_umowy.TabIndex = 33;
             this.Koniec_umowy.Text = "Koniec umowy:";
+            this.Koniec_umowy.Click += new System.EventHandler(this.Koniec_umowy_Click);
             // 
             // Poczatek_umowy
             // 
@@ -438,6 +489,7 @@
             this.Poczatek_umowy.Size = new System.Drawing.Size(91, 13);
             this.Poczatek_umowy.TabIndex = 32;
             this.Poczatek_umowy.Text = "Początek umowy:";
+            this.Poczatek_umowy.Click += new System.EventHandler(this.Poczatek_umowy_Click);
             // 
             // Wymiar_godzin
             // 
@@ -447,6 +499,7 @@
             this.Wymiar_godzin.Size = new System.Drawing.Size(79, 13);
             this.Wymiar_godzin.TabIndex = 30;
             this.Wymiar_godzin.Text = "Wymiar godzin:";
+            this.Wymiar_godzin.Click += new System.EventHandler(this.Wymiar_godzin_Click);
             // 
             // Typ_umowy
             // 
@@ -456,6 +509,7 @@
             this.Typ_umowy.Size = new System.Drawing.Size(64, 13);
             this.Typ_umowy.TabIndex = 29;
             this.Typ_umowy.Text = "Typ umowy:";
+            this.Typ_umowy.Click += new System.EventHandler(this.Typ_umowy_Click);
             // 
             // Dane_osobowe
             // 
@@ -479,6 +533,7 @@
             this.Dane_osobowe.TabIndex = 34;
             this.Dane_osobowe.TabStop = false;
             this.Dane_osobowe.Text = "Dane osobowe";
+            this.Dane_osobowe.Enter += new System.EventHandler(this.Dane_osobowe_Enter);
             // 
             // NumerMieszkania
             // 
@@ -520,6 +575,7 @@
             this.UlicaUzytkownika.Name = "UlicaUzytkownika";
             this.UlicaUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.UlicaUzytkownika.TabIndex = 10;
+            this.UlicaUzytkownika.TextChanged += new System.EventHandler(this.UlicaUzytkownika_TextChanged);
             this.UlicaUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UlicaUzytkownika_KeyPress);
             // 
             // MiastoUzytkownika
@@ -529,6 +585,7 @@
             this.MiastoUzytkownika.Name = "MiastoUzytkownika";
             this.MiastoUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.MiastoUzytkownika.TabIndex = 9;
+            this.MiastoUzytkownika.TextChanged += new System.EventHandler(this.MiastoUzytkownika_TextChanged);
             this.MiastoUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MiastoUzytkownika_KeyPress);
             // 
             // PeselUzytkownika
@@ -548,6 +605,7 @@
             this.NazwiskoUzytkownika.Name = "NazwiskoUzytkownika";
             this.NazwiskoUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.NazwiskoUzytkownika.TabIndex = 7;
+            this.NazwiskoUzytkownika.TextChanged += new System.EventHandler(this.NazwiskoUzytkownika_TextChanged);
             this.NazwiskoUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NazwiskoUzytkownika_KeyPress);
             // 
             // ImieUzytkownika
@@ -568,6 +626,7 @@
             this.Numer_mieszkania.Size = new System.Drawing.Size(76, 13);
             this.Numer_mieszkania.TabIndex = 7;
             this.Numer_mieszkania.Text = "Nr mieszkania:";
+            this.Numer_mieszkania.Click += new System.EventHandler(this.Numer_mieszkania_Click);
             // 
             // Nr_domu
             // 
@@ -577,6 +636,7 @@
             this.Nr_domu.Size = new System.Drawing.Size(50, 13);
             this.Nr_domu.TabIndex = 6;
             this.Nr_domu.Text = "Nr domu:";
+            this.Nr_domu.Click += new System.EventHandler(this.Nr_domu_Click);
             // 
             // Ulica
             // 
@@ -586,6 +646,7 @@
             this.Ulica.Size = new System.Drawing.Size(34, 13);
             this.Ulica.TabIndex = 5;
             this.Ulica.Text = "Ulica:";
+            this.Ulica.Click += new System.EventHandler(this.Ulica_Click);
             // 
             // Miasto
             // 
@@ -595,6 +656,7 @@
             this.Miasto.Size = new System.Drawing.Size(41, 13);
             this.Miasto.TabIndex = 4;
             this.Miasto.Text = "Miasto:";
+            this.Miasto.Click += new System.EventHandler(this.Miasto_Click);
             // 
             // Pesel
             // 
@@ -604,6 +666,7 @@
             this.Pesel.Size = new System.Drawing.Size(36, 13);
             this.Pesel.TabIndex = 2;
             this.Pesel.Text = "Pesel:";
+            this.Pesel.Click += new System.EventHandler(this.Pesel_Click);
             // 
             // Nazwisko
             // 
@@ -613,6 +676,7 @@
             this.Nazwisko.Size = new System.Drawing.Size(56, 13);
             this.Nazwisko.TabIndex = 1;
             this.Nazwisko.Text = "Nazwisko:";
+            this.Nazwisko.Click += new System.EventHandler(this.Nazwisko_Click);
             // 
             // Imie
             // 
@@ -622,31 +686,7 @@
             this.Imie.Size = new System.Drawing.Size(29, 13);
             this.Imie.TabIndex = 0;
             this.Imie.Text = "Imię:";
-            // 
-            // NrUmowy
-            // 
-            this.NrUmowy.Location = new System.Drawing.Point(97, 127);
-            this.NrUmowy.Name = "NrUmowy";
-            this.NrUmowy.Size = new System.Drawing.Size(148, 20);
-            this.NrUmowy.TabIndex = 19;
-            this.NrUmowy.Text = "brak";
-            // 
-            // PowtórzHasło
-            // 
-            this.PowtórzHasło.AutoSize = true;
-            this.PowtórzHasło.Location = new System.Drawing.Point(6, 78);
-            this.PowtórzHasło.Name = "PowtórzHasło";
-            this.PowtórzHasło.Size = new System.Drawing.Size(78, 13);
-            this.PowtórzHasło.TabIndex = 18;
-            this.PowtórzHasło.Text = "Powtórz hasło:";
-            // 
-            // PowtorzHasloUżytkownika
-            // 
-            this.PowtorzHasloUżytkownika.Location = new System.Drawing.Point(106, 75);
-            this.PowtorzHasloUżytkownika.Name = "PowtorzHasloUżytkownika";
-            this.PowtorzHasloUżytkownika.Size = new System.Drawing.Size(148, 20);
-            this.PowtorzHasloUżytkownika.TabIndex = 22;
-            this.PowtorzHasloUżytkownika.UseSystemPasswordChar = true;
+            this.Imie.Click += new System.EventHandler(this.Imie_Click);
             // 
             // Form2
             // 

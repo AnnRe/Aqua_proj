@@ -12,29 +12,38 @@ namespace aquadrom.Objects
         public DateTime czasZdarzenia { get; set; }
         public string rodzajZdarzenia { get; set; }//TODO:?string?
         public string uwagi { get; set; }
-        private bool akceptacjaKZ { get; set; }
-        private bool akceptacjaKSR { get; set; }
+        public bool akceptacjaKZ { get; set; }
+        public bool akceptacjaKSR { get; set; }
 
         public int ID_R { get; set; }
         public int ID_KZ { get; set; }
         public int ID_KSR { get; set; }
 
-        public Notatka(DateTime czasZdarzenia)
+        public Notatka()
         {
-            akceptacjaKSR = false; akceptacjaKZ = false;
+            this.opis = opis;
             this.czasZdarzenia = czasZdarzenia;
-            ID_KSR = GetKSR_ID();
-            ID_KZ = GetKZ_ID();
+            this.rodzajZdarzenia = rodzajZdarzenia;
+            this.uwagi = uwagi;
+            this.akceptacjaKSR = true; 
+            this.akceptacjaKZ = true;
+            this.ID_R = ID_R;
+            this.ID_KSR = 1;
+            this.ID_KZ = 1;
+        }
+        public Notatka(string opis, DateTime czasZdarzenia, string rodzajZdarzenia, string uwagi, bool akceptackaKZ,
+            bool akceptacjaKSR, int ID_R, int ID_KZ, int ID_KSR)
+        {
+            this.opis = opis;
+            this.czasZdarzenia = czasZdarzenia;
+            this.rodzajZdarzenia = rodzajZdarzenia;
+            this.uwagi = "Wyjaśnienie składane jest później.";
+            this.akceptacjaKSR = true;
+            this.akceptacjaKZ = true;
+            this.ID_R = ID_R;
+            this.ID_KSR = 1;
+            this.ID_KZ = 1;
         }
 
-
-        private int GetKSR_ID()
-        {
-            return 1;//TODO:sprawdzenie kto w czasie zdarzenia pracował
-        }
-        private int GetKZ_ID()
-        {
-            return 1;//TODO:sprawdzenie kto w czasie zdarzenia pracował
-        }
     }
 }

@@ -21,9 +21,11 @@ namespace aquadrom
     {
         DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
-        public AdminPanel()
+        string sql = "";
+        public AdminPanel(string login)
         {
             InitializeComponent();
+            sql += login; 
         }
 
         public void AdminPanel_Load(object sender, EventArgs e)
@@ -39,10 +41,10 @@ namespace aquadrom
             dataGridView1.Columns[Constants.PracownikOstrzezenieUmowa].Visible = false;
             ColorCheckUser();
 
-            if (CheckInternetConnection() == false)
+           /*if (CheckInternetConnection() == false)
                 PolczenieStripStatus.Text = "Brak połączenia internetowego";
             else
-                PolczenieStripStatus.Text = "Połączenie internetowe aktywne";
+                PolczenieStripStatus.Text = "Połączenie internetowe aktywne";*/
         }
 
         private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
@@ -202,13 +204,24 @@ namespace aquadrom
 
         private void napiszNotatkęToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GeneratorNotatek notatka = new GeneratorNotatek();
+            GeneratorNotatek notatka = new GeneratorNotatek(sql);
             notatka.Show();
         }
 
         private void ądzajToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void notatkiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zmieńHasłoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePassword change = new ChangePassword(sql);
+            change.Show();
         }
     }
 }

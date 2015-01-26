@@ -13,22 +13,19 @@ using System.Data.SqlTypes;
 using DB;
 using aquadrom.Utilities;
 using System.Security.Cryptography;
-
+using aquadrom.Objects;
 namespace aquadrom
 {
     public partial class Login : Form
     {
         //public static string login, haslo;
         private static bool AllowToLog = false;
-        AdminPanel AdminPanel = new AdminPanel();
         DBAdapter adapter = new DBAdapter();
-        
         public Login()
         {
             InitializeComponent();
         }
-
-        public static String sha256_hash(String value)  //funkcja hashujaca haslo
+        public static String sha256_hash(String value) //funkcja hashujaca haslo
         {
             StringBuilder Sb = new StringBuilder();
             using (SHA256 hash = SHA256Managed.Create())
@@ -40,22 +37,20 @@ namespace aquadrom
             }
             return Sb.ToString();
         }
-
-        private bool CheckBase()    // sprawdzenie połączenia z bazą
+        private bool CheckBase() // sprawdzenie połączenia z bazą
         {
             DBConnector con = new DBConnector();
-            try{ con.Open(); }
-            catch{ return false;}
+            try { con.Open(); }
+            catch { return false; }
             con.Close();
             return true;
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            if (CheckBase() == false)   // if brak bazy, pokaż info i zamknij
+            if (CheckBase() == false) // if brak bazy, pokaż info i zamknij
             {
-                MessageBox.Show("Baza danych nie odnaleziona. \nSkontaktuj się z administratorem.");
+                MessageBox.Show("Baza danych nie została odnaleziona. \nSkontaktuj się z administratorem.");
                 this.Close();
-
             }
             else
             {
@@ -68,14 +63,19 @@ namespace aquadrom
                         AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
-                            AdminPanel AdminPanel = new AdminPanel();
-                            AdminPanel.Show();
-
+                            string login = UserNameBox.Text;
+                            UserPanel UserPanel = new UserPanel(login);
+                            UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel(login);
+                            //AdminPanel.Show();
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
                         {
-                            UserPanel UserPanel = new UserPanel();
+                            string login = UserNameBox.Text;
+                            UserPanel UserPanel = new UserPanel(login);
                             UserPanel.Show();
+                            //AdminPanel AdminPanel = new AdminPanel(login);
+                            //AdminPanel.Show();
                         }
                         break;
                     }
@@ -90,28 +90,39 @@ namespace aquadrom
                 MessageBox.Show("Nieprawidłowy login lub hasło.");
             }
         }
-
         private void UserNameBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)    // obsługa entera
+            if (e.KeyCode == Keys.Enter) // obsługa entera
             {
                 LoginButton_Click(sender, e);
                 e.Handled = true;
             }
         }
-
         private void UserPasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)     // obsługa entera
+            if (e.KeyCode == Keys.Enter) // obsługa entera
             {
                 LoginButton_Click(sender, e);
                 e.Handled = true;
             }
         }
-
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+        private void LoginButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void noweHaslo_Click(object sender, EventArgs e)
+        {
+            RecoverPassword newPassw = new RecoverPassword();  // otwieranie okna do edycji odpowiedniego użytkownika (ID)
+            newPassw.Show();
+        }
+
+        private void UserNameBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

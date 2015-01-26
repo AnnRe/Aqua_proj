@@ -37,6 +37,8 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zmieńHasłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +106,8 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ądzajToolStripMenuItem,
-            this.notatkiToolStripMenuItem});
+            this.notatkiToolStripMenuItem,
+            this.daneToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(980, 24);
@@ -118,6 +121,7 @@
             this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
             this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.notatkiToolStripMenuItem.Text = "Notatki";
+            this.notatkiToolStripMenuItem.Click += new System.EventHandler(this.notatkiToolStripMenuItem_Click);
             // 
             // napiszNotatkęToolStripMenuItem
             // 
@@ -125,6 +129,21 @@
             this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
             this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click);
+            // 
+            // daneToolStripMenuItem
+            // 
+            this.daneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zmieńHasłoToolStripMenuItem});
+            this.daneToolStripMenuItem.Name = "daneToolStripMenuItem";
+            this.daneToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.daneToolStripMenuItem.Text = "Dane";
+            // 
+            // zmieńHasłoToolStripMenuItem
+            // 
+            this.zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
+            this.zmieńHasłoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
+            this.zmieńHasłoToolStripMenuItem.Click += new System.EventHandler(this.zmieńHasłoToolStripMenuItem_Click);
             // 
             // AdminPanel
             // 
@@ -160,6 +179,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem notatkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem napiszNotatkęToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem daneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zmieńHasłoToolStripMenuItem;
 
     }
 }

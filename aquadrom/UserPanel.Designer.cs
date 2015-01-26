@@ -36,7 +36,9 @@
             this.notatkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.umowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zmieńHasłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.napiszNotatkęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,19 +68,21 @@
             // wyświetlToolStripMenuItem
             // 
             this.wyświetlToolStripMenuItem.Name = "wyświetlToolStripMenuItem";
-            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wyświetlToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.wyświetlToolStripMenuItem.Text = "Wyświetl";
             this.wyświetlToolStripMenuItem.Click += new System.EventHandler(this.wyświetlToolStripMenuItem_Click);
             // 
             // edytujToolStripMenuItem
             // 
             this.edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
-            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.edytujToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.edytujToolStripMenuItem.Text = "Edytuj";
             this.edytujToolStripMenuItem.Click += new System.EventHandler(this.edytujToolStripMenuItem_Click);
             // 
             // notatkiToolStripMenuItem
             // 
+            this.notatkiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.napiszNotatkęToolStripMenuItem});
             this.notatkiToolStripMenuItem.Name = "notatkiToolStripMenuItem";
             this.notatkiToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.notatkiToolStripMenuItem.Text = "Notatki";
@@ -91,14 +95,31 @@
             // 
             // daneToolStripMenuItem
             // 
+            this.daneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zmieńHasłoToolStripMenuItem});
             this.daneToolStripMenuItem.Name = "daneToolStripMenuItem";
             this.daneToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.daneToolStripMenuItem.Text = "Dane";
+            this.daneToolStripMenuItem.Click += new System.EventHandler(this.daneToolStripMenuItem_Click);
+            // 
+            // zmieńHasłoToolStripMenuItem
+            // 
+            this.zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
+            this.zmieńHasłoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
+            this.zmieńHasłoToolStripMenuItem.Click += new System.EventHandler(this.zmieńHasłoToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // napiszNotatkęToolStripMenuItem
+            // 
+            this.napiszNotatkęToolStripMenuItem.Name = "napiszNotatkęToolStripMenuItem";
+            this.napiszNotatkęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.napiszNotatkęToolStripMenuItem.Text = "Napisz notatkę";
+            this.napiszNotatkęToolStripMenuItem.Click += new System.EventHandler(this.napiszNotatkęToolStripMenuItem_Click);
             // 
             // UserPanel
             // 
@@ -127,5 +148,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem wyświetlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem edytujToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zmieńHasłoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem napiszNotatkęToolStripMenuItem;
     }
 }

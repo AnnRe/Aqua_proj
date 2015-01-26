@@ -63,3 +63,4 @@ D:\projektio\aquadrom\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
 D:\projektio\aquadrom\bin\Debug\de\MigraDoc.Rendering.resources.dll
 D:\projektio\aquadrom\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
 D:\projektio\aquadrom\obj\Debug\aquadrom.ChangePassword.resources
+D:\projektio\aquadrom\obj\Debug\aquadrom.RecoverPassword.resources
