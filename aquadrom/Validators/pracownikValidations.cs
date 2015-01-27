@@ -181,6 +181,18 @@ namespace Objects
                 return false;
             } // wywołać na textboxach
         }
+        public bool isNullOrNot(RichTextBox tekst, string nazwaPola)
+        {
+            if (String.IsNullOrEmpty(tekst.Text))
+            {
+                MyMessageBox.ShowBox("Wypełnij pole: " + nazwaPola + "!");
+                return true;
+            }
+            else
+            {
+                return false;
+            } // wywołać na textboxach
+        }
         public bool isNullOrNot(string tekst, string nazwaPola)
         {
             if (String.IsNullOrEmpty(tekst))

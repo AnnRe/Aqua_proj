@@ -278,7 +278,6 @@
             this.AdresEmail.Size = new System.Drawing.Size(148, 20);
             this.AdresEmail.TabIndex = 14;
             this.AdresEmail.Text = "nazwa@domena";
-            this.AdresEmail.TextChanged += new System.EventHandler(this.AdresEmail_TextChanged);
             // 
             // NumerTelefonu
             // 
@@ -618,7 +617,6 @@
             this.PeselUzytkownika.Name = "PeselUzytkownika";
             this.PeselUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.PeselUzytkownika.TabIndex = 8;
-            this.PeselUzytkownika.TextChanged += new System.EventHandler(this.PeselUzytkownika_TextChanged);
             this.PeselUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PeselUzytkownika_KeyPress);
             // 
             // NazwiskoUzytkownika
@@ -638,7 +636,6 @@
             this.ImieUzytkownika.Name = "ImieUzytkownika";
             this.ImieUzytkownika.Size = new System.Drawing.Size(148, 20);
             this.ImieUzytkownika.TabIndex = 6;
-            this.ImieUzytkownika.TextChanged += new System.EventHandler(this.ImieUzytkownika_TextChanged);
             this.ImieUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ImieUzytkownika_KeyPress);
             // 
             // Numer_mieszkania

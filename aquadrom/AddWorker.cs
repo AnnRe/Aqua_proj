@@ -95,7 +95,7 @@ namespace aquadrom
              LoginUzytkownika.Text = walidacja.CaloscNaMale(ImieUzytkownika.Text + "." + NazwiskoUzytkownika.Text);
              HasloUzytkownika.Text = createPassword(10);
              PowtorzHasloUżytkownika.Text = HasloUzytkownika.Text;
-
+           
              Pracownik pracownik = new Pracownik()
              {
 
@@ -113,7 +113,7 @@ namespace aquadrom
                 mail = AdresEmail.Text,
                 dataBadan = DateTime.Parse(DataBadan.Text),
                 login = LoginUzytkownika.Text,
-                haslo = HasloUzytkownika.Text,
+                haslo = aquadrom.Login.sha256_hash( HasloUzytkownika.Text),
                 idUmowy = NrUmowy.Text,
                 typKonta = (eTypKonta)Enum.Parse(typeof(eTypKonta), TypKonta2.SelectedItem.ToString()),
             };
@@ -228,7 +228,8 @@ namespace aquadrom
 
         private void PoczatekUmowy_ValueChanged(object sender, EventArgs e)
         {
-
+            if (PoczatekUmowy.Value > KoniecUmowy.Value)
+                KoniecUmowy.Value = PoczatekUmowy.Value;
         }
 
         private void Stopień_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -261,21 +262,6 @@ namespace aquadrom
             }
         }
 
-        private void NrUmowy_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AdresEmail_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void ImieUzytkownika_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ImieUzytkownika_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -287,10 +273,6 @@ namespace aquadrom
             blokady.tylkoLiteryMyslnik(e);
         }
 
-
-        private void PeselUzytkownika_TextChanged(object sender, EventArgs e)
-        {
-        }
 
         private void PeselUzytkownika_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -598,6 +580,8 @@ namespace aquadrom
 
         private void KoniecUmowy_ValueChanged(object sender, EventArgs e)
         {
+            if (PoczatekUmowy.Value > KoniecUmowy.Value)
+                KoniecUmowy.Value = PoczatekUmowy.Value;
 
         }
 

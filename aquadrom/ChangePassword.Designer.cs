@@ -66,7 +66,7 @@
             this.button2.Location = new System.Drawing.Point(200, 108);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 5;
             this.button2.Text = "Anuluj";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -76,7 +76,7 @@
             this.PowtorzHaslo2.Location = new System.Drawing.Point(110, 75);
             this.PowtorzHaslo2.Name = "PowtorzHaslo2";
             this.PowtorzHaslo2.Size = new System.Drawing.Size(166, 20);
-            this.PowtorzHaslo2.TabIndex = 5;
+            this.PowtorzHaslo2.TabIndex = 3;
             this.PowtorzHaslo2.UseSystemPasswordChar = true;
             // 
             // ZmianaHasla
@@ -86,7 +86,7 @@
             this.ZmianaHasla.Location = new System.Drawing.Point(110, 108);
             this.ZmianaHasla.Name = "ZmianaHasla";
             this.ZmianaHasla.Size = new System.Drawing.Size(82, 23);
-            this.ZmianaHasla.TabIndex = 1;
+            this.ZmianaHasla.TabIndex = 4;
             this.ZmianaHasla.Text = "Zmień hasło";
             this.ZmianaHasla.UseVisualStyleBackColor = false;
             this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
@@ -96,7 +96,7 @@
             this.NoweHaslo2.Location = new System.Drawing.Point(110, 49);
             this.NoweHaslo2.Name = "NoweHaslo2";
             this.NoweHaslo2.Size = new System.Drawing.Size(166, 20);
-            this.NoweHaslo2.TabIndex = 4;
+            this.NoweHaslo2.TabIndex = 2;
             this.NoweHaslo2.UseSystemPasswordChar = true;
             // 
             // StareHaslo2
@@ -104,7 +104,8 @@
             this.StareHaslo2.Location = new System.Drawing.Point(110, 23);
             this.StareHaslo2.Name = "StareHaslo2";
             this.StareHaslo2.Size = new System.Drawing.Size(165, 20);
-            this.StareHaslo2.TabIndex = 6;
+            this.StareHaslo2.TabIndex = 1;
+            this.StareHaslo2.UseSystemPasswordChar = true;
             this.StareHaslo2.TextChanged += new System.EventHandler(this.StareHaslo2_TextChanged);
             // 
             // PowtorzHaslo

@@ -22,10 +22,12 @@ namespace aquadrom
         DBConnector connector = new DBConnector();
         DBAdapter adapter = new DBAdapter();
         string sql = "";
+        bool reload;
         public AdminPanel(string login)
         {
             InitializeComponent();
             sql += login;
+            reload = false;
         }
 
         public void AdminPanel_Load(object sender, EventArgs e) // wypelnienie głównego DataTable
@@ -59,6 +61,7 @@ namespace aquadrom
             {
                 DeleteWorker DelWor = new DeleteWorker(this);
                 DelWor.Show();
+                reload = true;
             }
         }
 
@@ -85,6 +88,7 @@ namespace aquadrom
                 Form2 AddWor = new Form2();
                 AddWor.Show();
             }
+            
         }
 
 
@@ -262,6 +266,12 @@ namespace aquadrom
         {
             ChangePassword change = new ChangePassword(sql);
             change.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AdminPanel_Load(this, e);
+            reload = false;
         }
     }
 }

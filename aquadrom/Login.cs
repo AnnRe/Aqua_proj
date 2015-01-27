@@ -56,29 +56,24 @@ namespace aquadrom
             }
             else
             {
-                string sql_testLogin = "SELECT " + Constants.PracownikLogin + "," + Constants.PracownikHaslo + "," + Constants.PracownikTypKonta + " FROM " + Constants.TabPracownik;
-                DataTable dtUserLogin = adapter.GetData(sql_testLogin);
+                string sql_testLogin = Constants.PracownikLogin + "," + Constants.PracownikHaslo + "," + Constants.PracownikTypKonta + " FROM " + Constants.TabPracownik;
+                DataTable dtUserLogin = adapter.Select(sql_testLogin);
+                //DataTable dtUserLogin = adapter.GetData(sql_testLogin);
                 foreach (DataRow row in dtUserLogin.Rows)
                 {
-                    if (true) /*row[Constants.PracownikLogin].ToString() == this.UserNameBox.Text )&& row[Constants.PracownikHaslo].ToString() ==/* sha256_hash(this.UserPasswordBox.Text))*/
-                    {
-                        AllowToLog = true;
+                    if (row[Constants.PracownikLogin].ToString() == this.UserNameBox.Text) 
+                        if(row[Constants.PracownikHaslo].ToString() == sha256_hash(this.UserPasswordBox.Text))
+                        {
+                            AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
-                            UserPanel UserPanel = new UserPanel(UserNameBox.Text);
-                            UserPanel.Show();
-                            //AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
-                            //AdminPanel.Show();
-
+                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
+                            AdminPanel.Show();
                         }
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "U")
                         {
-                           //UserPanel UserPanel = new UserPanel();
-                           //UserPanel.Show();
-                            AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);
-                           AdminPanel.Show();
-                            //AdminPanel AdminPanel = new AdminPanel(login);
-                            //AdminPanel.Show();
+                           UserPanel UserPanel = new UserPanel(UserNameBox.Text);
+                           UserPanel.Show();
                         }
                         break;
                     }

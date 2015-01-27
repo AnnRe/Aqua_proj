@@ -34,7 +34,7 @@ namespace aquadrom
         {
             Form2 newPass = new Form2();
             string Password = newPass.createPassword(10);
-            string updatePass = " Pracownik set " + Constants.PracownikHaslo + "='" + Password+"'"+" WHERE ";
+            string updatePass = " Pracownik set " + Constants.PracownikHaslo + "='" + Login.sha256_hash(Password)+"'"+" WHERE ";
             string updatePass2 = Constants.PracownikLogin + "='" +loginZapomniany.Text+ "'";
             string updatePass3 = updatePass + updatePass2;
 

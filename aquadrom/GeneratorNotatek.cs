@@ -152,7 +152,7 @@ namespace aquadrom
 
 
             format.Alignment = XStringAlignment.Center;
-            XImage image = XImage.FromFile("logo.png");
+            XImage image = XImage.FromFile("logo.jpg");
             gfx.DrawImage(image, 410, 30, 171, 34);
             gfx.DrawString("AQUADROM Ruda Śląska", font2, XBrushes.Black, new XRect(100, 60, page.Width - 200, 5), XStringFormats.Center);
             gfx.DrawString("Notatka - Zdarzenie", font3, XBrushes.Black, new XRect(100, 75, page.Width - 200, 20), XStringFormats.Center);
@@ -203,6 +203,8 @@ namespace aquadrom
                 string filename = "Notatki/"+ kiedyZdarzenie.Value.ToString("dd-MM-yyyy") +name + "" + surname+strefaMiejsce.Text+  ".pdf";
                 document.Save(filename);
                 MyMessageBox.ShowBox("Wygenerowano notatkę.");
+                exist = false;
+                this.Close();
             }
             else if (adapter.Insert(notatka) == false)
             {
@@ -228,7 +230,7 @@ namespace aquadrom
             walidacja.deleteNumbers(nazwiskoFunkc);
             walidacja.deleteNumbers(rodzajZdarzenia);
             walidacja.deleteNumbers(strefaMiejsce);
-            if (walidacja.isNullOrNot(rodzajZdarzenia, "Rodzaj zdarzenia") || walidacja.isNullOrNot(strefaMiejsce, "Strefa/Miejsce"))
+            if (walidacja.isNullOrNot(rodzajZdarzenia, "Rodzaj zdarzenia") || walidacja.isNullOrNot(strefaMiejsce, "Strefa/Miejsce") || walidacja.isNullOrNot(TekstNotatki, "Opis zdarzenia"))
             {
             }
             else if (funkcjonariusze.Checked == true)
