@@ -42,11 +42,20 @@ namespace aquadrom
 
             this.pracownikTableAdapter.Fill(this.aquadromDataSet.Pracownik);
             CreateDayColumns();
+            DisableSorting();
             comboBoxMonths.SelectedIndex = DateTime.Now.Month - 1;
             comboBoxYear.SelectedItem = DateTime.Now.Year.ToString();
 
             loadingFromDB = false;
 
+        }
+
+        private void DisableSorting()
+        {
+            for (int kol = 0; kol < dataGridView1.ColumnCount;kol++ )
+            {
+                dataGridView1.Columns[kol].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void FillFromDB()
@@ -62,7 +71,7 @@ namespace aquadrom
 
                 for (int j = 0; j < godziny.Rows.Count; j++)
                 {
-                    for (int nrWierszaGrid = 0; nrWierszaGrid < dataGridView1.RowCount - 1; nrWierszaGrid++)
+                    for (int nrWierszaGrid = 0; nrWierszaGrid < dataGridView1.RowCount ; nrWierszaGrid++)
                     {
                         string[] val = new string[4];
                         val[0] = godziny.Rows[j][0].ToString();
@@ -95,7 +104,7 @@ namespace aquadrom
 
         private void ClearHours()
         {
-            for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+            for (int j = 0; j < dataGridView1.RowCount ; j++)
                 for (int i = 3; i < dataGridView1.ColumnCount; i++)
                     dataGridView1.Rows[j].Cells[i].Value = "";
 
@@ -278,7 +287,7 @@ namespace aquadrom
                     string message = harmonogram.Save();
                     MyMessageBox.ShowBox(message);
                     saved = true;
-                    for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+                    for (int row_i = 0; row_i < dataGridView1.RowCount ; row_i++)
                         for (int col_i = 3; col_i < 65; col_i += 2)
                         {
                             if (harmonogram.onlyOneTimesAreReady(col_i, row_i))
@@ -336,7 +345,7 @@ namespace aquadrom
             else
             {
                 string message = "";
-                for (int row_i = 0; row_i < dataGridView1.RowCount - 1; row_i++)
+                for (int row_i = 0; row_i < dataGridView1.RowCount ; row_i++)
                     for (int col_i = 3; col_i < 65; col_i += 2)
                     {
                         if (harmonogram.onlyOneTimesAreReady(col_i, row_i))

@@ -64,7 +64,7 @@
             // 
             this.Generuj.BackColor = System.Drawing.Color.Azure;
             this.Generuj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Generuj.Location = new System.Drawing.Point(47, 394);
+            this.Generuj.Location = new System.Drawing.Point(47, 406);
             this.Generuj.Name = "Generuj";
             this.Generuj.Size = new System.Drawing.Size(116, 23);
             this.Generuj.TabIndex = 11;
@@ -76,7 +76,7 @@
             // 
             this.AnulujNotatke.BackColor = System.Drawing.Color.Azure;
             this.AnulujNotatke.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AnulujNotatke.Location = new System.Drawing.Point(301, 394);
+            this.AnulujNotatke.Location = new System.Drawing.Point(301, 406);
             this.AnulujNotatke.Name = "AnulujNotatke";
             this.AnulujNotatke.Size = new System.Drawing.Size(75, 23);
             this.AnulujNotatke.TabIndex = 12;
@@ -87,7 +87,7 @@
             // TekstNotatki
             // 
             this.TekstNotatki.BackColor = System.Drawing.Color.Azure;
-            this.TekstNotatki.Location = new System.Drawing.Point(6, 151);
+            this.TekstNotatki.Location = new System.Drawing.Point(7, 171);
             this.TekstNotatki.MaxLength = 200;
             this.TekstNotatki.Name = "TekstNotatki";
             this.TekstNotatki.Size = new System.Drawing.Size(424, 143);
@@ -134,7 +134,7 @@
             this.notatka.Controls.Add(this.kiedyZdarzenie);
             this.notatka.Location = new System.Drawing.Point(12, 12);
             this.notatka.Name = "notatka";
-            this.notatka.Size = new System.Drawing.Size(437, 423);
+            this.notatka.Size = new System.Drawing.Size(437, 435);
             this.notatka.TabIndex = 6;
             this.notatka.TabStop = false;
             this.notatka.Text = "Napisz notatkę";
@@ -142,7 +142,7 @@
             // znaki2
             // 
             this.znaki2.AutoSize = true;
-            this.znaki2.Location = new System.Drawing.Point(399, 132);
+            this.znaki2.Location = new System.Drawing.Point(400, 152);
             this.znaki2.Name = "znaki2";
             this.znaki2.Size = new System.Drawing.Size(13, 13);
             this.znaki2.TabIndex = 16;
@@ -151,7 +151,7 @@
             // znaki
             // 
             this.znaki.AutoSize = true;
-            this.znaki.Location = new System.Drawing.Point(298, 132);
+            this.znaki.Location = new System.Drawing.Point(299, 152);
             this.znaki.Name = "znaki";
             this.znaki.Size = new System.Drawing.Size(95, 13);
             this.znaki.TabIndex = 15;
@@ -197,7 +197,7 @@
             // funkcjonariusze
             // 
             this.funkcjonariusze.AutoSize = true;
-            this.funkcjonariusze.Location = new System.Drawing.Point(12, 128);
+            this.funkcjonariusze.Location = new System.Drawing.Point(10, 127);
             this.funkcjonariusze.Name = "funkcjonariusze";
             this.funkcjonariusze.Size = new System.Drawing.Size(125, 17);
             this.funkcjonariusze.TabIndex = 6;
@@ -212,7 +212,7 @@
             this.daneFunk.Controls.Add(this.imieFunkcL);
             this.daneFunk.Controls.Add(this.nazwiskoFunkc);
             this.daneFunk.Controls.Add(this.imieFunkc);
-            this.daneFunk.Location = new System.Drawing.Point(236, 308);
+            this.daneFunk.Location = new System.Drawing.Point(237, 320);
             this.daneFunk.Name = "daneFunk";
             this.daneFunk.Size = new System.Drawing.Size(194, 80);
             this.daneFunk.TabIndex = 10;
@@ -260,7 +260,7 @@
             this.daneInformatora.Controls.Add(this.imieWzywaL);
             this.daneInformatora.Controls.Add(this.nazwiskoWzywajacego);
             this.daneInformatora.Controls.Add(this.imieWzywajacego);
-            this.daneInformatora.Location = new System.Drawing.Point(6, 308);
+            this.daneInformatora.Location = new System.Drawing.Point(6, 320);
             this.daneInformatora.Name = "daneInformatora";
             this.daneInformatora.Size = new System.Drawing.Size(194, 80);
             this.daneInformatora.TabIndex = 9;
@@ -304,7 +304,7 @@
             // trescNotatki
             // 
             this.trescNotatki.AutoSize = true;
-            this.trescNotatki.Location = new System.Drawing.Point(7, 130);
+            this.trescNotatki.Location = new System.Drawing.Point(13, 152);
             this.trescNotatki.Name = "trescNotatki";
             this.trescNotatki.Size = new System.Drawing.Size(72, 13);
             this.trescNotatki.TabIndex = 8;
@@ -334,7 +334,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImage = global::aquadrom.Properties.Resources.bg_page;
-            this.ClientSize = new System.Drawing.Size(460, 442);
+            this.ClientSize = new System.Drawing.Size(460, 459);
             this.Controls.Add(this.notatka);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GeneratorNotatek";

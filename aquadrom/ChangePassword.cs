@@ -56,13 +56,14 @@ namespace aquadrom
             //MessageBox.Show(getPass);
             string query2 = getPass;
             DataTable ids = polaczenie.Select(query2);
-            string Pass = ids.Rows[0][0].ToString();
-            if (Pass != StareHaslo2.Text)
+            string Pass = ids.Rows[0][0].ToString();//hash hasła w bazie
+            if (Pass != Login.sha256_hash(StareHaslo2.Text))
             { 
                 MessageBox.Show("Podano złe hasło!");
             }
-            else if(Pass == StareHaslo2.Text){
-                string query3 = " Pracownik set " + Constants.PracownikHaslo + "='" + NoweHaslo2.Text;
+            else if(Pass == Login.sha256_hash(StareHaslo2.Text))
+            {
+                string query3 = " Pracownik set " + Constants.PracownikHaslo + "='" +Login.sha256_hash(NoweHaslo2.Text);
                 query3 += query;
                 DataTable ids2 = polaczenie.Select(getName);
                 string name = ids2.Rows[0][0].ToString();

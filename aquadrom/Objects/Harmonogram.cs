@@ -86,9 +86,7 @@ namespace aquadrom.Objects
         public string poprawnieRozplanowanyMiesiac(DateTime time)
         {
             DateTime day_i = new DateTime(time.Year, time.Month, 1, 0, 0, 0);
-            string messageGodziny = pracownicyMajaOdpowiednieGodziny(time);
-            if (messageGodziny.Length > 0)
-                return messageGodziny;
+            
             for (int i = 1; i <= DateTime.DaysInMonth(time.Year, time.Month);i++ )
             {
                 string message = PoprawnieRozplanowanyDzien(day_i);
@@ -96,6 +94,9 @@ namespace aquadrom.Objects
                     return message;
                 day_i = day_i.AddDays(1);
             }
+            string messageGodziny = pracownicyMajaOdpowiednieGodziny(time);
+            if (messageGodziny.Length > 0)
+                return messageGodziny;
             return "";
         }
 
