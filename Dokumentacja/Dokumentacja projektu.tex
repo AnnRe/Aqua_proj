@@ -86,7 +86,12 @@ Politechnika Œl¹ska
 \subsection{Wprowadzenie}
 Celem projektu by³o stworzenie aplikacji w zwi¹zku z zaliczeniem przedmiotu In¿ynieria Oprogramowania na V semestrze studiów in¿ynierskich na kierunku Informatyka. Do realizacji tego zadania przyst¹piliœmy, dobieraj¹c siê w 4-osobow¹ grupê, w której rozdzielane by³y zadania, sk³adaj¹ce siê na ca³oœæ projektu.
 \subsection{Za³o¿enia}
-Za³o¿eniem naszego projektu by³o stworzenie aplikacji z baz¹ danych, która ma s³u¿yæ w Parku Wodnym Aquadrom w Rudzie Œl¹skiej. Program ma zawieraæ funkcjonalnoœci u³atwiaj¹ce pracownikom Parku Wodnego wykonywanie swojej pracy.
+Za³o¿eniem naszego projektu by³o stworzenie aplikacji z baz¹ danych, która ma s³u¿yæ w Parku Wodnym Aquadrom w Rudzie Œl¹skiej. Program ma zawieraæ funkcjonalnoœci u³atwiaj¹ce pracownikom Parku Wodnego wykonywanie swojej pracy, tzn:
+\begin{itemize}
+\item Przechowywanie i zarz¹dzanie danymi pracowników,
+\item Obs³uga harmonogramu godzin pracy,
+\item Tworzenie i zarz¹dzanie notatkami ze zdarzeñ.
+\end{itemize}
 
 \newpage
 \section{Realizacja projektu} %%%%%%%%%%%%%%%%%%%%%
@@ -94,11 +99,13 @@ Za³o¿eniem naszego projektu by³o stworzenie aplikacji z baz¹ danych, która ma s³
 Rozpoczynaj¹c projekt grupa omówi³a zagadnienia zwi¹zane z planowan¹ aplikacj¹. Przedyskutowane zosta³y potrzeby u¿ytkowników aplikacji, które prze³o¿one zosta³y na planowane funkcjonalnoœci aplikacji. \\
 Na pocz¹tku ka¿dy z cz³onków grupy wybra³ wstêpnie zadanie do realizacji, natomiast w trakcie tworzenia aplikacji zadania z listy "do zrobienia" by³y kolejno wykonywane przez autorów.\\
 
+Przyjêliœmy metodykê pracy wzorowan¹ na SCRUM'ie -- co tydzieñ lub dwa dostarczaliœmy nowych funkcjonalnoœci. Ponadto projekt by³ stale na bie¿¹co konsultowany.
+
 Zarz¹dzanie wykonanymi i trwaj¹cymi czynnoœciami, rzeczami do zrobienia oraz list¹ opcjonaln¹ dokonywa³o siê dziêki aplikacji Trello dostêpnej na www.trello.com. Tam tak¿e zadania by³y na bie¿¹co rozdzielane miêdzy cz³onków grupy.
 Ostateczny wygl¹d naszej tablicy przedstawia rys. \ref{trello}.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.4]{trello.jpg}
+\includegraphics[scale=0.45]{trello.jpg}
 \caption{Podzia³ zadañ}
 \label{trello}
 \end{center}
@@ -118,7 +125,7 @@ Udokumentowanie wykonanych zadañ zosta³o te¿ dokonane przez repozytorium stworzo
 \newpage
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{wykresy.jpg}
+\includegraphics[scale=0.7]{wykresy.jpg}
 \caption{Statystyka}
 \label{git}
 \end{center}
@@ -223,7 +230,7 @@ Uzupe³nia wczytan¹ datê o dzieñ w zale¿noœci od kolumny dla której zosta³a wywo³
 \begin{lstlisting}
 private DateTime GetCellDateTime(int columnIndex, int rowIndex)
 \end{lstlisting}
-        Zwraca datê i godzinê dla danej komórki na podstawie nag³ówka i wprowadzonej godziny rozpoczêcia/zakoñczenia pracy.
+        Zwraca datê i godzinê dla danej komórki na podstawie nag³ówka i wprowadzonej godziny rozpoczêcia lub zakoñczenia pracy.
 \begin{lstlisting}
 private TimeSpan GetUserHoursAtDate(int rowIndex, DateTime date)
 \end{lstlisting}
@@ -375,7 +382,7 @@ Próbuj¹c po³¹czyæ siê z stron¹ internetow¹ Google.com sprawdzamy dostêpnoœæ po³¹
 \begin{lstlisting}
 public static String sha256_hash(String value)
 \end{lstlisting}
-U¿ywaj¹c gotowej funkcji haszuj¹cej1 dla stringa podanego w jej argumencie uzyskujemy 256 bitowy skrót SHA – wszystkie has³a przetwarzane w programie s¹ w postaciach niejawnych i tak te¿ porównywane s¹ ich zgodnoœci.
+U¿ywaj¹c gotowej funkcji haszuj¹cej dla stringa podanego w jej argumencie uzyskujemy 256 bitowy skrót SHA – wszystkie has³a przetwarzane w programie s¹ w postaciach niejawnych i tak te¿ porównywane s¹ ich zgodnoœci.
 
 \begin{lstlisting}
 private bool CheckBase()
@@ -576,7 +583,7 @@ public void tylkoLiteryMyslnik(KeyPressEventArgs e)
 \end{lstlisting}
 Umo¿liwia wpisywanie wy³¹cznie liter i myœlników.
 \begin{lstlisting}
-public void tylkoLiteryMyslnikSpacja(KeyPressEventArgs e) \\
+public void tylkoLiteryMyslnikSpacja(KeyPressEventArgs e)
 \end{lstlisting}
 Umo¿liwia wpisywanie wy³¹cznie liter, myœlników oraz spacji.
 \begin{lstlisting}
@@ -593,8 +600,16 @@ public void tylkoCyfryLitery(KeyPressEventArgs e)
 Umo¿liwia wpisywanie wy³¹cznie liter i liczb.
 \\
 
+\subsection{Testy}
+Poprawnoœæ dzia³ania aplikacji zosta³a przetestowana za pomoc¹ testów automatycznych (przy u¿yciu pakietu NuGet). W trakcie powstawania programu by³y na bie¿¹co przeprowadzane testy manualne. Przed oddaniem projektu do oceny zosta³y przeprowadzone ostateczne testy manualne, potwierdzaj¹ce poprawnoœæ zachowañ aplikacji.
+
+\subsection{Bezpieczeñstwo danych i aplikacji}
+Has³a u¿ytkowników przechowywane w bazie danych programu s¹ hashowane przy u¿yciu funkcji hashuj¹cej SHA-256.\\
+
+Aplikacja poprzez walidacjê wprowadzanych danych zosta³a uodporniona na ataki typu SQL injection.
+
 \section{Podsumowanie} %%%%%%%%%%%%%%%%%%%%%%%%%% Wnioski
-Wszystkie za³o¿enia projektu zosta³y spe³nione. Praca w grupie umo¿liwi³a nam zapoznanie siê z aspektem tworzenia oprogramowania w zespole programistów. Niewielkie problemy z jakimi spotkaliœmy siê podczas realizacji projektu zosta³y sprawnie rozwi¹zane dziêki naszemu repozytorium i jego obs³udze w programie SourceTree. Wspólnymi si³ami osi¹gnêliœmy zamierzony cel -- dostarczyliœmy aplikacjê, która mo¿e byæ z powodzeniem u¿ywana w Parku Wodnym Aquadrom w Rudzie Œl¹skiej.
+Wszystkie za³o¿enia projektu zosta³y spe³nione. Praca w grupie umo¿liwi³a nam zapoznanie siê z~aspektem tworzenia oprogramowania w zespole programistów. Niewielkie problemy z jakimi spotkaliœmy siê podczas realizacji projektu zosta³y sprawnie rozwi¹zane, dziêki dobrej wspó³pracy w grupie, a tak¿e dziêki naszemu repozytorium i jego obs³udze w programie SourceTree. Wspólnymi si³ami osi¹gnêliœmy zamierzony cel -- dostarczyliœmy aplikacjê, która mo¿e byæ z powodzeniem u¿ywana w Parku Wodnym Aquadrom w Rudzie Œl¹skiej.
 
 
 \end{document}
