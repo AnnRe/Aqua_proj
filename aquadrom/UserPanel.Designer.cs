@@ -38,12 +38,8 @@
             this.PolaczenieStripStatusU = new System.Windows.Forms.StatusStrip();
             this.PolaczenieStripUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.Dane_osobowe = new System.Windows.Forms.GroupBox();
-            this.DataBadanDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.KoniecKPPDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Data_KPP = new System.Windows.Forms.Label();
             this.Data_badan = new System.Windows.Forms.Label();
-            this.KoniecUmowy = new System.Windows.Forms.DateTimePicker();
-            this.PoczatekUmowy = new System.Windows.Forms.DateTimePicker();
             this.Koniec_umowy = new System.Windows.Forms.Label();
             this.Poczatek_umowy = new System.Windows.Forms.Label();
             this.PeselUzytkownika = new System.Windows.Forms.TextBox();
@@ -52,6 +48,10 @@
             this.Pesel = new System.Windows.Forms.Label();
             this.Nazwisko = new System.Windows.Forms.Label();
             this.Imie = new System.Windows.Forms.Label();
+            this.PoczatekUmowyTextBox = new System.Windows.Forms.TextBox();
+            this.KoniecUmowyTextBox = new System.Windows.Forms.TextBox();
+            this.WaznoscKPPTextBox = new System.Windows.Forms.TextBox();
+            this.DataBadanTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.PolaczenieStripStatusU.SuspendLayout();
             this.Dane_osobowe.SuspendLayout();
@@ -116,12 +116,12 @@
             // Dane_osobowe
             // 
             this.Dane_osobowe.BackColor = System.Drawing.Color.LightCyan;
-            this.Dane_osobowe.Controls.Add(this.DataBadanDateTimePicker);
-            this.Dane_osobowe.Controls.Add(this.KoniecKPPDateTimePicker);
+            this.Dane_osobowe.Controls.Add(this.DataBadanTextBox);
+            this.Dane_osobowe.Controls.Add(this.WaznoscKPPTextBox);
+            this.Dane_osobowe.Controls.Add(this.KoniecUmowyTextBox);
+            this.Dane_osobowe.Controls.Add(this.PoczatekUmowyTextBox);
             this.Dane_osobowe.Controls.Add(this.Data_KPP);
             this.Dane_osobowe.Controls.Add(this.Data_badan);
-            this.Dane_osobowe.Controls.Add(this.KoniecUmowy);
-            this.Dane_osobowe.Controls.Add(this.PoczatekUmowy);
             this.Dane_osobowe.Controls.Add(this.Koniec_umowy);
             this.Dane_osobowe.Controls.Add(this.Poczatek_umowy);
             this.Dane_osobowe.Controls.Add(this.PeselUzytkownika);
@@ -136,26 +136,6 @@
             this.Dane_osobowe.TabIndex = 35;
             this.Dane_osobowe.TabStop = false;
             this.Dane_osobowe.Text = "Dane osobowe";
-            // 
-            // DataBadanDateTimePicker
-            // 
-            this.DataBadanDateTimePicker.Enabled = false;
-            this.DataBadanDateTimePicker.Location = new System.Drawing.Point(304, 103);
-            this.DataBadanDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.DataBadanDateTimePicker.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
-            this.DataBadanDateTimePicker.Name = "DataBadanDateTimePicker";
-            this.DataBadanDateTimePicker.Size = new System.Drawing.Size(148, 20);
-            this.DataBadanDateTimePicker.TabIndex = 41;
-            // 
-            // KoniecKPPDateTimePicker
-            // 
-            this.KoniecKPPDateTimePicker.Enabled = false;
-            this.KoniecKPPDateTimePicker.Location = new System.Drawing.Point(304, 77);
-            this.KoniecKPPDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.KoniecKPPDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.KoniecKPPDateTimePicker.Name = "KoniecKPPDateTimePicker";
-            this.KoniecKPPDateTimePicker.Size = new System.Drawing.Size(148, 20);
-            this.KoniecKPPDateTimePicker.TabIndex = 40;
             // 
             // Data_KPP
             // 
@@ -174,22 +154,6 @@
             this.Data_badan.Size = new System.Drawing.Size(66, 13);
             this.Data_badan.TabIndex = 39;
             this.Data_badan.Text = "Data badań:";
-            // 
-            // KoniecUmowy
-            // 
-            this.KoniecUmowy.Enabled = false;
-            this.KoniecUmowy.Location = new System.Drawing.Point(305, 49);
-            this.KoniecUmowy.Name = "KoniecUmowy";
-            this.KoniecUmowy.Size = new System.Drawing.Size(148, 20);
-            this.KoniecUmowy.TabIndex = 35;
-            // 
-            // PoczatekUmowy
-            // 
-            this.PoczatekUmowy.Enabled = false;
-            this.PoczatekUmowy.Location = new System.Drawing.Point(305, 23);
-            this.PoczatekUmowy.Name = "PoczatekUmowy";
-            this.PoczatekUmowy.Size = new System.Drawing.Size(148, 20);
-            this.PoczatekUmowy.TabIndex = 34;
             // 
             // Koniec_umowy
             // 
@@ -263,6 +227,42 @@
             this.Imie.TabIndex = 0;
             this.Imie.Text = "Imię:";
             // 
+            // PoczatekUmowyTextBox
+            // 
+            this.PoczatekUmowyTextBox.Enabled = false;
+            this.PoczatekUmowyTextBox.Location = new System.Drawing.Point(304, 19);
+            this.PoczatekUmowyTextBox.MaxLength = 50;
+            this.PoczatekUmowyTextBox.Name = "PoczatekUmowyTextBox";
+            this.PoczatekUmowyTextBox.Size = new System.Drawing.Size(148, 20);
+            this.PoczatekUmowyTextBox.TabIndex = 42;
+            // 
+            // KoniecUmowyTextBox
+            // 
+            this.KoniecUmowyTextBox.Enabled = false;
+            this.KoniecUmowyTextBox.Location = new System.Drawing.Point(304, 49);
+            this.KoniecUmowyTextBox.MaxLength = 50;
+            this.KoniecUmowyTextBox.Name = "KoniecUmowyTextBox";
+            this.KoniecUmowyTextBox.Size = new System.Drawing.Size(148, 20);
+            this.KoniecUmowyTextBox.TabIndex = 43;
+            // 
+            // WaznoscKPPTextBox
+            // 
+            this.WaznoscKPPTextBox.Enabled = false;
+            this.WaznoscKPPTextBox.Location = new System.Drawing.Point(304, 75);
+            this.WaznoscKPPTextBox.MaxLength = 50;
+            this.WaznoscKPPTextBox.Name = "WaznoscKPPTextBox";
+            this.WaznoscKPPTextBox.Size = new System.Drawing.Size(148, 20);
+            this.WaznoscKPPTextBox.TabIndex = 44;
+            // 
+            // DataBadanTextBox
+            // 
+            this.DataBadanTextBox.Enabled = false;
+            this.DataBadanTextBox.Location = new System.Drawing.Point(304, 103);
+            this.DataBadanTextBox.MaxLength = 50;
+            this.DataBadanTextBox.Name = "DataBadanTextBox";
+            this.DataBadanTextBox.Size = new System.Drawing.Size(148, 20);
+            this.DataBadanTextBox.TabIndex = 45;
+            // 
             // UserPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,13 +308,13 @@
         private System.Windows.Forms.Label Pesel;
         private System.Windows.Forms.Label Nazwisko;
         private System.Windows.Forms.Label Imie;
-        private System.Windows.Forms.DateTimePicker KoniecUmowy;
-        private System.Windows.Forms.DateTimePicker PoczatekUmowy;
         private System.Windows.Forms.Label Koniec_umowy;
         private System.Windows.Forms.Label Poczatek_umowy;
-        private System.Windows.Forms.DateTimePicker DataBadanDateTimePicker;
-        private System.Windows.Forms.DateTimePicker KoniecKPPDateTimePicker;
         private System.Windows.Forms.Label Data_KPP;
         private System.Windows.Forms.Label Data_badan;
+        private System.Windows.Forms.TextBox DataBadanTextBox;
+        private System.Windows.Forms.TextBox WaznoscKPPTextBox;
+        private System.Windows.Forms.TextBox KoniecUmowyTextBox;
+        private System.Windows.Forms.TextBox PoczatekUmowyTextBox;
     }
 }

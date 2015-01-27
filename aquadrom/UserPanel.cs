@@ -30,10 +30,13 @@ namespace aquadrom
             ImieUzytkownika.Text = TakeValue(dtlist, Constants.PracownikImie);
             NazwiskoUzytkownika.Text = TakeValue(dtlist, Constants.PracownikNazwisko);
             PeselUzytkownika.Text = TakeValue(dtlist, Constants.PracownikPesel);
-            PoczatekUmowy.Text = TakeValue(dtlist, Constants.UmowaPoczatekUmowy);
-            KoniecUmowy.Text = TakeValue(dtlist, Constants.UmowaKoniecUmowy);
-            KoniecKPPDateTimePicker.Text = TakeValue(dtlist, Constants.PracownikWaznKPP);
-            DataBadanDateTimePicker.Text = TakeValue(dtlist, Constants.PracownikDataBadan);
+            PoczatekUmowyTextBox.Text = TakeDateValue(dtlist, Constants.UmowaPoczatekUmowy).ToString("yyyy-MM-dd");
+            KoniecUmowyTextBox.Text = TakeDateValue(dtlist, Constants.UmowaKoniecUmowy).ToString("yyyy-MM-dd");
+            if (TakeValue(dtlist, Constants.PracownikWaznKPP).Length <= 1)
+                WaznoscKPPTextBox.Text = "";
+            else
+                WaznoscKPPTextBox.Text = TakeValue(dtlist, Constants.PracownikWaznKPP);
+            DataBadanTextBox.Text = TakeDateValue(dtlist, Constants.PracownikDataBadan).ToString("yyyy-MM-dd");
             if (CheckInternetConnection() == false)     // sprawdzanie połączenia internetowego
                 PolaczenieStripUser.Text = "Brak połączenia internetowego";
             else
@@ -57,6 +60,11 @@ namespace aquadrom
         private string TakeValue(DataTable dtlist, string what)
         {
             return dtlist.Rows[0][what].ToString();
+        }
+
+        private DateTime TakeDateValue(DataTable dtlist, string what)
+        {
+            return Convert.ToDateTime(dtlist.Rows[0][what]);
         }
 
         private void daneToolStripMenuItem_Click(object sender, EventArgs e)
