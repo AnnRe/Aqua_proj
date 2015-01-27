@@ -26,8 +26,6 @@ basicstyle=\ttfamily
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm, headsep=1.2cm]{geometry}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \lhead{}
@@ -39,14 +37,12 @@ basicstyle=\ttfamily
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-
 \setcounter{secnumdepth}{4} % do  subsubsubsection=paragraph
 
 \titleformat{\paragraph}
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}% -||-
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 
 \begin{document}\lstset{style=sharpc}
 %strona tytu³owa%
@@ -60,13 +56,13 @@ basicstyle=\ttfamily
 \HRule \\[1.5cm]
 % Author
 \begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
+\begin{center} \Large
 \emph{Autorzy:} \\
 Anna \textsc{Reichel} \\
 Magdalena \textsc{P¹chalska}\\
 Sebastian \textsc{Nalepka}\\
 Mateusz \textsc{Ogiermann}
-\end{flushright}
+\end{center}
 \end{minipage}
 \vfill
 % Bottom of the page
@@ -81,30 +77,90 @@ Mateusz \textsc{Ogiermann}
 \section{Wstêp} %%%%%%%%%%%%%%%%%%%%%%%%% Wstêp
 \subsection{Autorzy}
 \begin{center}
+Anna Reichel, Magdalena P¹chalska, Sebastian Nalepka, Mateusz Ogiermann 
 
 Informatyka sem. V \\
 Wydzia³ Matematyki Stosowanej \\
 Politechnika Œl¹ska
 \end{center}
 \subsection{Wprowadzenie}
+Celem projektu by³o stworzenie aplikacji w zwi¹zku z zaliczeniem przedmiotu In¿ynieria Oprogramowania na V semestrze studiów in¿ynierskich na kierunku Informatyka. Do realizacji tego zadania przyst¹piliœmy, dobieraj¹c siê w 4-osobow¹ grupê, w której rozdzielane by³y zadania, sk³adaj¹ce siê na ca³oœæ projektu.
+\subsection{Za³o¿enia}
+Za³o¿eniem naszego projektu by³o stworzenie aplikacji z baz¹ danych, która ma s³u¿yæ w Parku Wodnym Aquadrom w Rudzie Œl¹skiej. Program ma zawieraæ funkcjonalnoœci u³atwiaj¹ce pracownikom Parku Wodnego wykonywanie swojej pracy.
 
 \newpage
-\section{Czêœæ I -- dla u¿ytkowników} %%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ I
+\section{Realizacja projektu} %%%%%%%%%%%%%%%%%%%%%
+\subsection{Podzia³ pracy}
+Rozpoczynaj¹c projekt grupa omówi³a zagadnienia zwi¹zane z planowan¹ aplikacj¹. Przedyskutowane zosta³y potrzeby u¿ytkowników aplikacji, które prze³o¿one zosta³y na planowane funkcjonalnoœci aplikacji. \\
+Na pocz¹tku ka¿dy z cz³onków grupy wybra³ wstêpnie zadanie do realizacji, natomiast w trakcie tworzenia aplikacji zadania z listy "do zrobienia" by³y kolejno wykonywane przez autorów.\\
 
-\subsection{Opis programu} % OPIS PROGRAMU %
+Zarz¹dzanie wykonanymi i trwaj¹cymi czynnoœciami, rzeczami do zrobienia oraz list¹ opcjonaln¹ dokonywa³o siê dziêki aplikacji Trello dostêpnej na www.trello.com. Tam tak¿e zadania by³y na bie¿¹co rozdzielane miêdzy cz³onków grupy.
+Ostateczny wygl¹d naszej tablicy przedstawia rys. \ref{trello}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{trello.jpg}
+\caption{Podzia³ zadañ}
+\label{trello}
+\end{center}
+\end{figure}
 
-\subsection{Minimalne wymagania sprzêtowe}
+Gdzie:
+\begin{itemize}
+\item A -- Anna Reichel
+\item M -- Magdalena P¹chalska
+\item S -- Sebastian Nalepka
+\item O -- Mateusz Ogiermann
+\end{itemize}
 
+Pe³ny wydruk wykonanych zadañ wraz z podzia³em pracy znajduje siê w Za³¹czniku nr 1 do Dokumentacji.\\
 
+Udokumentowanie wykonanych zadañ zosta³o te¿ dokonane przez repozytorium stworzone na github.com, dziêki któremu mo¿liwe by³o stworzenie statystyki widocznej na rys. \ref{git}.
+\newpage
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{wykresy.jpg}
+\caption{Statystyka}
+\label{git}
+\end{center}
+\end{figure}
 
-\subsection{Instrukcja obs³ugi} % INSTRUKCJA OBS£UGI %
-
+\subsection{Aplikacje u¿yte przy realizacji projektu}
+Wykaz u¿ywanych przez nas aplikacji:
+\begin{itemize}
+\item Microsoft Visual Studio 2012
+\item Microsoft SQL Server Menagement Studio
+\item SourceTree (obs³uguj¹ca repozytorium z github.com)
+\item Trello (trello.com)
+\end{itemize}
 
 \newpage
-\section{Czêœæ II -- dla specjalistów} %%%%%%%%%%%%%%%%%%%%%%%%%% Czêœæ II
+\subsection{Baza danych} %---------------------%
+Baza danych zosta³a stworzona w jêzyku T-SQL przy pomocy aplikacji Microsoft SQL Server Menagement Studio.
+Struktura bazy zosta³a omówiona przez zespó³ na wstêpie procesu realizacji projektu, czego wynikiem by³ schemat bazy przedstawiony na rys. \ref{baza}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{Baza1.png}
+\caption{Schemat bazy danych}
+\label{baza}
+\end{center}
+\end{figure}
+
+Jedynymi zmianami wprowadzonymi w trakcie tworzenia aplikacji by³o dodanie do tabeli $Pracownik$ trzech kolumn: $Ostrzezenie\_umowa$, $Ostrzezenie\_KPP$ i $Ostrzezenie\_badania$. Zwi¹zane s¹ one z funkcj¹ ostrzegania przez program o zbli¿aj¹cej siê dacie wygaœniêcia umowy, badañ lub uprawnieñ pracownika. Doda³a zosta³a równie¿ kolumna $Typ\_konta$, z której program czerpie informacjê, czy zalogowany pracownik jest u¿ytkownikiem czy administratorem.
+
+\newpage
 \subsection{Program} %---------------------%
+
 \subsubsection{Podzia³ na pliki}
-\subsubsection{Klasy}
+Podzia³ projektu na pliki przedstawia rys. \ref{podzial}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{podzialnapliki.jpg}
+\caption{Podzia³ aplikacji na pliki}
+\label{podzial}
+\end{center}
+\end{figure}
+
+\subsubsection{Klasy i okna}
 \paragraph{Okno Harmonogramu (Harmonogram)}
 Okno odpowiedzialne za wyœwietlanie harmonogramu wybranego miesi¹ca i roku na podstawie danych przechowywanych w bazie. Daje mo¿liwoœæ modyfikacji danych oraz walidacji czasu pracy w zale¿noœci od typu umowy. Sprawdza poprawnoœæ wprowadzanych danych i obecnoœæ odpowiednich pracowników na stanowiskach.
 
@@ -130,7 +186,7 @@ Sprawdza ilu w danym czasie potrzebnych jest ratowników w pracy.
 \begin{lstlisting}
 private string stanowiskaObsadzone(DateTime time)
 \end{lstlisting}
-Sprawdza czy w danym czasie na stanowiskach jest odpowiednia liczba ratowników, kierowników zmiany oraz .
+Sprawdza czy w danym czasie na stanowiskach jest odpowiednia liczba ratowników, kierowników zmiany oraz kierowników sztabu ratunkowego.
 \begin{lstlisting}
 private int GetNumberOfRescuresAtTime(DateTime time)
 \end{lstlisting}
@@ -202,8 +258,6 @@ private string GetImie(int rowIndex)
 \end{lstlisting}
 Pobiera imie z tabeli harmonogramu w danym wierszu
         
-
-\subsubsection{Okna}
 \paragraph{Harmonogram}
 Odpowiada za wyœwietlanie siatki siatki godzin, obs³ugê zdarzeñ wykorzystuj¹c metody klasy \textit{Harmonogram.cs}. Metody pomocnicze:
 
@@ -298,10 +352,6 @@ private void Przegl¹dajU¿ytkownikówToolStripMenuItem_Click(object sender, EventA
 
 Po wybraniu z menu Zarz¹dzaj pozycji ‘Usuñ u¿ytkownika’ lub ‘Edytuj u¿ytkownika’ nastêpuje wywo³anie okna odpowiedniego okna, jeœli uprzednio ¿adne inne nie zosta³o w³¹czone.
 \begin{lstlisting}
-private void DodajU¿ytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
-\end{lstlisting}
-CZÊŒÆ OGIEGO
-\begin{lstlisting}
 private void ColorCheckUser()
 \end{lstlisting}
 Funkcja sprawdza daty zakoñczenia badañ, KPP oraz umowy kolejno wszystkich u¿ytkowników i w chwili gdy zbli¿a siê ich koniec, z 7 dniowym wyprzedzeniem informuje o tym. ID rekord tej osoby oraz koñcz¹ca siê data zaznaczana jest na czerwono oraz wysy³ana jest stosowna informacja mailowa informacja.
@@ -316,14 +366,12 @@ private bool CheckInternetConnection()
 \end{lstlisting}
 Próbuj¹c po³¹czyæ siê z stron¹ internetow¹ Google.com sprawdzamy dostêpnoœæ po³¹czenia internetowego zwracaj¹c twierdz¹c¹ lub przecz¹c¹ odpowiedŸ.
 
-\begin{lstlisting}
-private void napiszNotatkêToolStripMenuItem_Click(object sender, EventArgs e)
-\end{lstlisting}
-CZÊŒÆ OGIEGO
 
 \paragraph{Logowanie (Login)}
-a. Haszowanie has³a oraz sprawdzenia pary login:haslo z baz¹ danych
-b. Sprawdzanie dostêpnoœci bazy oraz wystosowanie odpowiedniego komunikatu w chwili braku po³¹czenia
+\begin{enumerate}[a)]
+\item Haszowanie has³a oraz sprawdzenia pary login:haslo z baz¹ danych
+\item Sprawdzanie dostêpnoœci bazy oraz wystosowanie odpowiedniego komunikatu w chwili braku po³¹czenia
+\end{enumerate}
 \begin{lstlisting}
 public static String sha256_hash(String value)
 \end{lstlisting}
@@ -340,11 +388,36 @@ private void LoginButton_Click(object sender, EventArgs e)
 Klikniêcie przycisku zaloguj powoduje sprawdzenie dostêpnoœci bazy i w chwili jej obecnoœci sprawdzane jest z dopasowanie wpisanej pary login:has³o z wszystkimi parami login:has³o znajduj¹cymi siê w bazie danych. W przypadku ich zgodnoœci u¿ytkownik przekierowany zostaje do odpowiedniego okna, które zale¿y od jego typu konta.
 W przypadku, gdy para nie zosta³a odnaleziona wystosowywana jest odpowiednia informacja o nieprawid³owym loginie lub haœle.
 
+\paragraph{Dodawanie u¿ytkownika (AddWorker)}
+\begin{enumerate}[a)]
+\item Sprawdzanie poprawnoœci zmienionych edytowanych danych
+\item Utworzenie nowej umowy pracownika
+\item Zapis wprowadzonych informacji do bazy danych
+\end{enumerate}
+\begin{lstlisting}
+private void Add_Contract() 
+\end{lstlisting}
+Dodaje umowê u¿ytkownika do bazy danych.
+\begin{lstlisting}
+private void Add_Employer() 
+\end{lstlisting}
+Dodaje pracownika do bazy danych.
+\begin{lstlisting}
+public string createPassword(int length)
+\end{lstlisting} 
+Zwraca losowy ci¹g znaków o podanej d³ugoœci, sk³adaj¹cy siê z ma³ych i du¿ych liter oraz cyfr.
+\begin{lstlisting}
+public void sendMail(string login, string haslo, string mail, string imie, string nazwisko) 
+\end{lstlisting}
+Wysy³a do pracownika wiadomoœæ e-mail z danymi niezbêdnymi do logowania.\\
+
 
 \paragraph{Edycja u¿ytkownika (EditWorker)}
-a. Wczytanie danych odpowiedniego pracownika oraz odpowiednia walidacja komórek
-b. Sprawdzanie poprawnoœci zmienionych edytowanych danych
-c. Wprowadzenie edytowanej umowy i danych pracownika do bazy danych
+\begin{enumerate}[a)]
+\item Wczytanie danych odpowiedniego pracownika oraz odpowiednia walidacja komórek
+\item Sprawdzanie poprawnoœci zmienionych edytowanych danych
+\item Wprowadzenie edytowanej umowy i danych pracownika do bazy danych
+\end{enumerate}
 \begin{lstlisting}
 private void EditWorker_Load(object sender, EventArgs e)
 \end{lstlisting}
@@ -393,10 +466,13 @@ Przy wywo³aniu okna wyboru pracownika do edycji generowana jest lista wszystkich
 private void ChooseButton_Click(object sender, EventArgs e)
 \end{lstlisting}
 W chwili klikniêcia Wybierz nastêpuje wywo³anie okna ‘EditWorker’ wybranego pracownika. Operacja ta wykonywana jest tylko w momencie, gdy uprzednio nie zosta³o otwarte ju¿ inne okno.
-5. Usuwanie pracownika (DeleteWorker)
-a. Lista imion i nazwisk z przekazaniem parametru wybranego pracownika do usuniêcia
-b. Usuniêcie umowy wybranego pracownika
-c. Usuniêcie pracownika z bazy
+
+\paragraph{Usuwanie pracownika (DeleteWorker)}
+\begin{enumerate}[a)]
+\item Lista imion i nazwisk z przekazaniem parametru wybranego pracownika do usuniêcia
+\item Usuniêcie umowy wybranego pracownika
+\item Usuniêcie pracownika z bazy
+\end{enumerate}
 \begin{lstlisting}
 public void DeleteWorker_Load(object sender, EventArgs e)
 \end{lstlisting}
@@ -412,17 +488,113 @@ private void DeleteButton_Click(object sender, EventArgs e)
 \end{lstlisting}
 W chwili klikniêcia Wybierz nastêpuje wywo³anie stosownego komunikatu (potwierdzenia dokonania wyboru). W chwili ponownej akceptacji ze strony u¿ytkownika, wybrany przez niego pracownik jest usuwany z bazy danych (w kolejnoœci usuñ umowê, usuñ pracownika) i okno zostaje automatycznie zamkniête.
 
+\paragraph{Zmiana has³a u¿ytkownika (changePassword)}
+\begin{lstlisting}
+public void changePassword() 
+\end{lstlisting}
+Umo¿liwia zmianê has³a zalogowanego u¿ytkownika.\\
 
-\newpage
-\subsection{Baza danych} %---------------------%
-\subsubsection{Struktura bazy danych}
+\paragraph{Odzyskiwanie has³a (RecoverPassword)}
+\begin{lstlisting}
+public void newPassword()
+\end{lstlisting} 
+Umo¿liwia przypomnienie has³a.\\
 
+\paragraph{Generator notatek (generujNotatke)}
+\begin{lstlisting}
+public void generujNotatke() 
+\end{lstlisting}
+Generuje dokument *.pdf z notatk¹-zdarzeniem.
+\begin{lstlisting}
+private void CreateIfMissing(string path)
+\end{lstlisting}
+Tworzy folder „Notatki” jeœli nie istnieje lub zosta³ usuniêty.
+\begin{lstlisting}
+private void TekstNotatki_KeyDown(object sender, KeyEventArgs e) 
+\end{lstlisting}
+Blokuje mo¿liwoœæ u¿ywania klawisza Enter.\\
 
-\newpage
-\section{Wnioski} %%%%%%%%%%%%%%%%%%%%%%%%%% Wnioski
-\subsection{Zastosowania programu}
+\paragraph{Walidacja wprowadzanych danych (pracownikValidators)}
+\begin{lstlisting}
+public bool ValidatePesel(string pesel) 
+\end{lstlisting}
+Sprawdza czy numer PESEL ma poprawny format.
+\begin{lstlisting}
+private static string ObliczSumeKontrolna(string pesel) 
+\end{lstlisting}
+Zwraca sumê kontroln¹.
+\begin{lstlisting}
+public bool ValidateNumber(string numer) 
+\end{lstlisting}
+Sprawdza czy numer telefonu ma poprawny format.
+\begin{lstlisting}
+public bool ValidateMail(string mail)
+\end{lstlisting} 
+Sprawdza czy adres e-mail ma poprawny format.
+\begin{lstlisting}
+private string OdwzorujDomene(Match match) 
+\end{lstlisting}
+Zwraca domenê.
+\begin{lstlisting}
+public string CaloscNaMale(string nazwa)
+\end{lstlisting} 
+Zmienia wielkoœæ liter w ci¹gu na ma³e.
+\begin{lstlisting}
+public string PierwszyZnakNaDuzaLitere(string nazwa) 
+\end{lstlisting}
+Zmienia wielkoœæ pierwszej litery w ci¹gu na du¿¹.
+\begin{lstlisting}
+public string ResztaZnakowNaMale(string litera)
+\end{lstlisting}
+Zmienia wielkoœæ liter w ci¹gu na ma³e z pominiêciem pierwszego znaku.
+\begin{lstlisting}
+public string PoMyslnikuLubSpacji(string nazwa, string znaki, CultureInfo culture) 
+\end{lstlisting}
+Zmienia wielkoœæ liter w ci¹gu na ma³e z pominiêciem pierwszego znaku oraz  wielkoœæ pierwszej litery w ci¹gu na du¿¹, po wyst¹pianiu znaku specjalnego.
+\begin{lstlisting}
+public bool isNullOrNot(TextBox tekst, string nazwaPola) 
+\end{lstlisting}
+Sprawdza czy pole tekstowe jest puste.
+\begin{lstlisting}
+public bool isNullOrNot(string tekst, string nazwaPola) 
+\end{lstlisting}
+Sprawdza czy podany ci¹g znaków jest pusty.
+\begin{lstlisting}
+public bool isNullOrNot(NumericUpDown tekst, string nazwaPola) 
+\end{lstlisting}
+Sprawdza czy pole numeryczne jest puste.
+\begin{lstlisting}
+public string deleteNumbers(TextBox tekst) 
+\end{lstlisting}
+Usuwa cyfry z ci¹gu znaków.
+\begin{lstlisting}
+public void tylkoLitery(KeyPressEventArgs e) 
+\end{lstlisting}
+Umo¿liwia wpisywanie wy³¹cznie liter.
+\begin{lstlisting}
+public void tylkoLiteryMyslnik(KeyPressEventArgs e) 
+\end{lstlisting}
+Umo¿liwia wpisywanie wy³¹cznie liter i myœlników.
+\begin{lstlisting}
+public void tylkoLiteryMyslnikSpacja(KeyPressEventArgs e) \\
+\end{lstlisting}
+Umo¿liwia wpisywanie wy³¹cznie liter, myœlników oraz spacji.
+\begin{lstlisting}
+public void tylkoCyfryPlus(KeyPressEventArgs e) 
+\end{lstlisting}
+Umo¿liwia wpisywanie wy³¹cznie liczb oraz plusów.
+\begin{lstlisting}
+public void tylkoCyfry(KeyPressEventArgs e)
+\end{lstlisting} 
+Umo¿liwia wpisywanie wy³¹cznie liczb.
+\begin{lstlisting}
+public void tylkoCyfryLitery(KeyPressEventArgs e) 
+\end{lstlisting}
+Umo¿liwia wpisywanie wy³¹cznie liter i liczb.
+\\
 
-\subsection{Propozycje rozszerzeñ programu}
+\section{Podsumowanie} %%%%%%%%%%%%%%%%%%%%%%%%%% Wnioski
+Wszystkie za³o¿enia projektu zosta³y spe³nione. Praca w grupie umo¿liwi³a nam zapoznanie siê z aspektem tworzenia oprogramowania w zespole programistów. Niewielkie problemy z jakimi spotkaliœmy siê podczas realizacji projektu zosta³y sprawnie rozwi¹zane dziêki naszemu repozytorium i jego obs³udze w programie SourceTree. Wspólnymi si³ami osi¹gnêliœmy zamierzony cel -- dostarczyliœmy aplikacjê, która mo¿e byæ z powodzeniem u¿ywana w Parku Wodnym Aquadrom w Rudzie Œl¹skiej.
 
 
 \end{document}
