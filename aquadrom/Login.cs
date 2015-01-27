@@ -59,12 +59,12 @@ namespace aquadrom
                 string sql_testLogin = Constants.PracownikLogin + "," + Constants.PracownikHaslo + "," + Constants.PracownikTypKonta + " FROM " + Constants.TabPracownik;
                 DataTable dtUserLogin = adapter.Select(sql_testLogin);
                 //DataTable dtUserLogin = adapter.GetData(sql_testLogin);
-                MessageBox.Show(this.UserNameBox.Text);
                 foreach (DataRow row in dtUserLogin.Rows)
                 {
                     if (row[Constants.PracownikLogin].ToString() == this.UserNameBox.Text) 
                         if(row[Constants.PracownikHaslo].ToString() == sha256_hash(this.UserPasswordBox.Text))
-                    {
+                        {
+                            AllowToLog = true;
                         if (row[Constants.PracownikTypKonta].ToString().ToUpper() == "A") // if znaleziono login i poprawne hasło to otwórz odpowiednie okno
                         {
                             AdminPanel AdminPanel = new AdminPanel(UserNameBox.Text);

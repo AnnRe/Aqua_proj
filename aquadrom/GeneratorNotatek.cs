@@ -203,6 +203,8 @@ namespace aquadrom
                 string filename = "Notatki/"+ kiedyZdarzenie.Value.ToString("dd-MM-yyyy") +name + "" + surname+strefaMiejsce.Text+  ".pdf";
                 document.Save(filename);
                 MyMessageBox.ShowBox("Wygenerowano notatkę.");
+                exist = false;
+                this.Close();
             }
             else if (adapter.Insert(notatka) == false)
             {

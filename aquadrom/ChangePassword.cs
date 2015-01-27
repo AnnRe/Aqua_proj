@@ -76,6 +76,8 @@ namespace aquadrom
                         Form2 maile = new Form2();
                         maile.sendMail(loginek, NoweHaslo2.Text, mail, name, surname);
                         MessageBox.Show("Hasło zostało zmienione, sprawdź swoją pocztę!");
+                        exist = false;
+                        this.Close();
                     }
                     else if (adapter.Update(query3)==false)
                     {
